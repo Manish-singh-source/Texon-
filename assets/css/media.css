@@ -13,10 +13,10 @@
 		text-align:center;
 	}
 .min-vh-100 {
-    min-height: 95vh!important;
+    min-height: 90vh!important;
 }
 	.logo img {
-		max-height:40px;
+		max-height:70px;
 	}
 
 	.welcome h2 {
