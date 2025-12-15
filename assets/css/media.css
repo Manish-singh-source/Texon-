@@ -5,13 +5,17 @@
 	.about {
 		overflow:auto;
 	}
-	
+
 	.logo,
-	.welcome, 
+	.welcome,
 	.buttons,
 	.social {
 		text-align:center;
 	}
+
+	/* .logo img {
+		max-height:40px;
+	} */
 
 	.welcome h2 {
 		font-size:24px;
@@ -21,7 +25,7 @@
 	.countdown-section {
 		width:calc(48% - 20px);
 	}
-	
+
 	.action-btn {
 		padding-left:20px !important;
 		padding-right:20px !important;
@@ -58,7 +62,11 @@
 	.about {
 		overflow:auto;
 	}
-	
+
+	.logo img {
+		max-height:50px;
+	}
+
 	.welcome h2 {
 		font-size:30px;
 		line-height:30px;
