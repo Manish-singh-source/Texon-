@@ -12,10 +12,12 @@
 	.social {
 		text-align:center;
 	}
-
-	/* .logo img {
+.min-vh-100 {
+    min-height: 95vh!important;
+}
+	.logo img {
 		max-height:40px;
-	} */
+	}
 
 	.welcome h2 {
 		font-size:24px;
