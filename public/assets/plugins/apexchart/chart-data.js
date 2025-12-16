@@ -2540,9 +2540,40 @@ if ($('#plan-overview').length > 0) {
     );
 
     chart.render();
-  }
+   }
 
-  // Performance Chart
+   // Income Distribution Pie Chart
+   if ($('#income-distribution').length > 0) {
+     var pieCtx = document.getElementById("income-distribution"),
+       pieConfig = {
+         colors: ['#03C95A', '#FFC107', '#AB47BC'],
+         series: [60, 25, 15],
+         chart: {
+           fontFamily: 'Poppins, sans-serif',
+           height: 300,
+           type: 'pie',
+         },
+         labels: ['Product Sales', 'Subscriptions', 'Commissions'],
+         legend: { show: true },
+         dataLabels: {
+           enabled: true,
+           formatter: function (val) {
+             return val + "%";
+           }
+         },
+         tooltip: {
+           y: {
+             formatter: function (val) {
+               return "$" + val + "k";
+             }
+           }
+         }
+       };
+     var pieChart = new ApexCharts(pieCtx, pieConfig);
+     pieChart.render();
+   }
+
+   // Performance Chart
   if($('#performance_chart2').length > 0 ){
     var options = {
       series: [{

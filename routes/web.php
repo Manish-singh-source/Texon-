@@ -43,6 +43,14 @@ Route::get('/add-promotional-banner', function () {
     return view('add-promotional-banner');
 })->name('add-promotional-banner');
 
+Route::get('/testimonials', function () {
+    return view('testimonials');
+})->name('testimonials');
+
+Route::get('/add-testimonial', function () {
+    return view('add-testimonial');
+})->name('add-testimonial');
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
