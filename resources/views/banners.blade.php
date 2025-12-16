@@ -104,8 +104,6 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Start Date/Time</th>
-                                    <th>End Date/Time</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -126,8 +124,6 @@
                                     </td>
                                     <td>Welcome to Our Site</td>
                                     <td>This is a sample banner description.</td>
-                                    <td>01/01/2024 10:00</td>
-                                    <td>31/12/2024 23:59</td>
                                     <td>
                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                             <i class="ti ti-point-filled me-1"></i>Active
@@ -155,8 +151,6 @@
                                     </td>
                                     <td>Explore Our Services</td>
                                     <td>Another sample banner description.</td>
-                                    <td>01/02/2024 10:00</td>
-                                    <td>28/02/2024 23:59</td>
                                     <td>
                                         <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
                                             <i class="ti ti-point-filled me-1"></i>Inactive
@@ -181,7 +175,7 @@
 
         <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
             <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-            <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Dreams</a></p>
+            <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Technofra</a></p>
         </div>
 
     </div>

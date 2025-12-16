@@ -76,10 +76,8 @@
                                         <th>Sr. No.</th>
                                         <th>Category Iamge</th>
                                         <th>Category Name</th>
-                                        <th>URL</th>
-                                        <th>E-Commerce Status</th>
-                                        <th>General Status</th>
-                                        <th>Sort Order</th>
+                                        <th>Sub Category</th>
+                                        <th>Status</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -91,8 +89,7 @@
                                                 <input class="form-check-input" type="checkbox">
                                             </div>
                                         </td>
-                                        <td><a href="https://smarthr.co.in/demo/html/template/employee-details.html">
-                                                1</a></td>
+                                        <td>1</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
@@ -103,27 +100,7 @@
                                             </div>
                                         </td>
                                         <td>Brian Villalobos</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Finance
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Developer</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>1</td>
+                                        <td>Multi Axis</td>
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -170,27 +147,8 @@
                                             </div>
                                         </td>
                                         <td>Brian Villalobos</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Developer
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>2</td>
+                                        <td>Multi Axis</td>
+                                        
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -237,27 +195,8 @@
                                             </div>
                                         </td>
                                         <td>Harvey Smith</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Developer
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>3</td>
+                                        <td>Multi Axis</td>
+                                        
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -304,27 +243,8 @@
                                             </div>
                                         </td>
                                         <td>Stephan Peralt</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Executive
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Developer</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>4</td>
+                                        <td>Multi Axis</td>
+                                        
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -371,27 +291,8 @@
                                             </div>
                                         </td>
                                         <td>Doglas Martini</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Manager
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Developer</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>5</td>
+                                        <td>Multi Axis</td>
+                                        
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -438,27 +339,8 @@
                                             </div>
                                         </td>
                                         <td>Linda Ray</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Finance
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Developer</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>6</td>
+                                        <td>Multi Axis</td>
+                                      
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
@@ -485,270 +367,8 @@
 
                                             </div>
                                         </td>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">7</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-35.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Elliot Murray</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Developer
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>7</td>
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">8</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-36.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Rebecca Smtih</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Executive
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Developer</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>8</td>
-                                        <td>
-                                            <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
-                                                <i class="ti ti-point-filled me-1"></i>Inactive
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">9</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-37.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Connie Waters</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Developer
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Executive</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);"
-                                                            class="dropdown-item rounded-1">Finance</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>9</td>
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">10</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-38.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Connie Waters</td>
-                                        <td><a href="https://technofra.com/">https://technofra.com/</a></td>
-                                        <td>
-                                            <div class="dropdown me-3">
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                                    data-bs-toggle="dropdown">
-                                                    Finance
-                                                </a>
-                                                <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                                    <span
-                                                        class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                        <i class="ti ti-point-filled me-1"></i>Active
-                                                    </span>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td>10</td>
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
+                                  
+                                   
                         </div>
                     </div>
 
@@ -777,13 +397,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Category url</label>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Enter Image URL">
-                                                </div>
-                                            </div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Category Image</label>
@@ -794,13 +408,7 @@
 
 
                                             <!-- Row 2 -->
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Sort Order</label>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Enter Sort Order">
-                                                </div>
-                                            </div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">General Status</label>

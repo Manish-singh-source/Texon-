@@ -681,6 +681,7 @@
 		<!-- /Add Project -->
 
 		<!-- Add Leaves -->
+		
 		<div class="modal fade" id="add_leaves">
 			<div class="modal-dialog modal-dialog-centered modal-md">
 				<div class="modal-content">

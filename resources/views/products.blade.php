@@ -8,28 +8,11 @@
             <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
                 <div class="my-auto mb-2">
                     <h2 class="mb-1">Product</h2>
-                    <nav>
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="https://smarthr.co.in/demo/html/template/index.html"><i
-                                        class="ti ti-smart-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                Product
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Product List</li>
-                        </ol>
-                    </nav>
+                    
                 </div>
                 <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
                     <div class="me-2 mb-2">
-                        <div class="d-flex align-items-center border bg-white rounded p-1 me-2 icon-list">
-                            <a href="https://smarthr.co.in/demo/html/template/products.html"
-                                class="btn btn-icon btn-sm active bg-primary text-white me-1"><i
-                                    class="ti ti-list-tree"></i></a>
-                            <a href="https://smarthr.co.in/demo/html/template/products-grid.html"
-                                class="btn btn-icon btn-sm"><i class="ti ti-layout-grid"></i></a>
-                        </div>
+                        
                     </div>
                     <div class="me-2 mb-2">
                         <div class="dropdown">
@@ -97,8 +80,7 @@
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
                                 <div>
-                                    <span class="avatar avatar-lg bg-success rounded-circle"><i
-                                            class="ti ti-check-circle"></i></span>
+                                    <span class="avatar avatar-lg bg-success rounded-circle"> <i class="fas fa-check-circle"></i></span>
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">In Stock</p>
@@ -122,8 +104,7 @@
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
                                 <div>
-                                    <span class="avatar avatar-lg bg-danger rounded-circle"><i
-                                            class="ti ti-x-circle"></i></span>
+                                    <span class="avatar avatar-lg bg-danger rounded-circle">  <i class="fas fa-times-circle"></i> </span>
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Out of Stock</p>
@@ -184,24 +165,6 @@
                             <a href="javascript:void(0);"
                                 class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
                                 data-bs-toggle="dropdown">
-                                Designation
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Finance</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Developer</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Executive</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="dropdown me-3">
-                            <a href="javascript:void(0);"
-                                class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                data-bs-toggle="dropdown">
                                 Select Status
                             </a>
                             <ul class="dropdown-menu  dropdown-menu-end p-3">
@@ -244,7 +207,7 @@
                                     <th>Stock</th>
                                     <th>Added Date</th>
                                     <th>Status</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -273,7 +236,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$999.99</td>
+                                     <td>₹999.99</td>
                                      <td>Electronics</td>
                                      <td>50</td>
                                      <td>12 Sep 2024</td>
@@ -317,7 +280,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$699.99</td>
+                                     <td>₹699.99</td>
                                      <td>Electronics</td>
                                      <td>30</td>
                                      <td>15 Oct 2024</td>
@@ -361,7 +324,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$499.99</td>
+                                     <td>₹499.99</td>
                                      <td>Electronics</td>
                                      <td>20</td>
                                      <td>20 Nov 2024</td>
@@ -405,7 +368,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$199.99</td>
+                                     <td>₹199.99</td>
                                      <td>Electronics</td>
                                      <td>100</td>
                                      <td>05 Dec 2024</td>
@@ -449,7 +412,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$299.99</td>
+                                     <td>₹299.99</td>
                                      <td>Electronics</td>
                                      <td>15</td>
                                      <td>10 Jan 2025</td>
@@ -493,7 +456,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$89.99</td>
+                                     <td>₹89.99</td>
                                      <td>Electronics</td>
                                      <td>50</td>
                                      <td>25 Feb 2025</td>
@@ -537,7 +500,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$49.99</td>
+                                     <td>₹49.99</td>
                                      <td>Electronics</td>
                                      <td>80</td>
                                      <td>12 Mar 2025</td>
@@ -581,7 +544,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$249.99</td>
+                                     <td>₹249.99</td>
                                      <td>Electronics</td>
                                      <td>10</td>
                                      <td>18 Apr 2025</td>
@@ -625,7 +588,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$129.99</td>
+                                     <td>₹129.99</td>
                                      <td>Electronics</td>
                                      <td>25</td>
                                      <td>30 May 2025</td>
@@ -669,7 +632,7 @@
                                              </div>
                                          </div>
                                      </td>
-                                     <td>$79.99</td>
+                                     <td>₹79.99</td>
                                      <td>Electronics</td>
                                      <td>40</td>
                                      <td>14 Jun 2025</td>
@@ -780,7 +743,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Price <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" value="$999.99">
+                                            <input type="text" class="form-control" value="₹999.99">
                                         </div>
                                     </div>
                                     <div class="col-md-6">

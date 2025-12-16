@@ -42,21 +42,14 @@
 												<input type="text" class="form-control" placeholder="Enter Brand Name">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Brand URL</label>
-												<input type="text" class="form-control" placeholder="Enter Brand URL">
-											</div>
-											<div class="mb-3">
-												<label class="form-label">Sort Order</label>
-												<input type="text" class="form-control" placeholder="Enter Sort Order">
-											</div>
-
-										</div>
-										<div class="col-md-6">
-											<div class="mb-3">
 												<label class="form-label">Brand Image</label>
 												<input type="file" class="form-control" name="brand_image" accept="image/*">
 												<small class="text-muted">Upload brand image (JPEG, PNG, JPG, GIF - Max: 2MB)</small>
 											</div>
+
+										</div>
+										<div class="col-md-6">
+											
 											<div class="mb-3">
 												<label class="form-label">Status</label>
 												<select class="form-select">

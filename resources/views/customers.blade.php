@@ -88,7 +88,6 @@
 												<th>Username</th>
 												<th>Email</th>
 												<th>Contact Number</th>
-												<th>Branches</th>
 												<th>No Of Orders</th>
 												<th>Status</th>
 												<th>Joined At</th>
@@ -115,10 +114,9 @@
 																Lewis</a></h6>
 													</div>
 												</td>
-												<td>Finance</td>
-												<td>Accountant</td>
-												<td>Sr Accountant</td>
-												<td>14 Jan 2024</td>
+												<td>Amisha</td>
+												<td>accountant@gmail.com</td>
+												<td>+ 9111 55 9999</td>
 												<td>1</td>
 												<td>Active</td>
 												<td>14 Jan 2024</td>
@@ -164,10 +162,9 @@
 																Villalobos</a></h6>
 													</div>
 												</td>
-												<td>Application Development</td>
-												<td>Jr App Developer</td>
-												<td>Sr App Developer</td>
-												<td>21 Jan 2024</td>
+												<td>Pradnya</td>
+												<td>developer@gmail.com</td>
+												<td>+ 9111 55 9999</td>
 												<td>2</td>
 												<td>Active</td>
 												<td>21 Jan 2024</td>
@@ -213,10 +210,9 @@
 																Smith</a></h6>
 													</div>
 												</td>
-												<td>Web Development</td>
-												<td>Sr Web Developer</td>
-												<td>Team Lead</td>
-												<td>20 Feb 2024</td>
+												<td>Manish</td>
+												<td>Web@gmail.com</td>
+												<td>+ 9111 55 9999</td>
 												<td>3</td>
 												<td>Active</td>
 												<td>20 Feb 2024</td>
@@ -262,10 +258,9 @@
 																Peralt</a></h6>
 													</div>
 												</td>
-												<td>UI / UX</td>
-												<td>Jr Designer</td>
-												<td>Sr Designer</td>
-												<td>15 Mar 2024</td>
+												<td>Khushi</td>
+												<td>Designer@gmail.com</td>
+												<td>+ 9111 55 9999</td>
 												<td>4</td>
 												<td>Active</td>
 												<td>15 Mar 2024</td>
@@ -310,10 +305,9 @@
 																Martini</a></h6>
 													</div>
 												</td>
-												<td>Marketing</td>
-												<td>SEO Analyst</td>
-												<td>Sr SEO Analyst</td>
-												<td>10 Apr 2024</td>
+												<td>Roshan</td>
+												<td>Analyst@gmail.com</td>
+												<td>+ 9111 55 9999</td>
 												<td>6</td>
 												<td>Active</td>
 												<td>10 Apr 2024</td>

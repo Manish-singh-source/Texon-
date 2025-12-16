@@ -49,9 +49,7 @@
                                         <th>Sr. No.</th>
                                         <th>Brand Image</th>
                                         <th>Brand Name</th>
-                                        <th>URL</th>
                                         <th>Status</th>
-                                        <th>Sort Order</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -75,13 +73,11 @@
                                             </div>
                                         </td>
                                         <td>Nike</td>
-                                        <td><a href="https://nike.com/">https://nike.com/</a></td>
-                                        <td>
+                                                                  <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
                                             </span>
                                         </td>
-                                        <td>1</td>
                                         <td>
 
                                             <div class="action-icon d-inline-flex">
@@ -123,13 +119,11 @@
                                             </div>
                                         </td>
                                         <td>Adidas</td>
-                                        <td><a href="https://adidas.com/">https://adidas.com/</a></td>
-                                        <td>
+                                                                      <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
                                             </span>
                                         </td>
-                                        <td>2</td>
                                         <td>
 
                                             <div class="action-icon d-inline-flex">
@@ -171,13 +165,11 @@
                                             </div>
                                         </td>
                                         <td>Puma</td>
-                                        <td><a href="https://puma.com/">https://puma.com/</a></td>
-                                        <td>
+                                                                  <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
                                             </span>
                                         </td>
-                                        <td>3</td>
                                         <td>
 
                                             <div class="action-icon d-inline-flex">
@@ -219,13 +211,11 @@
                                             </div>
                                         </td>
                                         <td>Reebok</td>
-                                        <td><a href="https://reebok.com/">https://reebok.com/</a></td>
-                                        <td>
+                                                                      <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
                                             </span>
                                         </td>
-                                        <td>4</td>
                                         <td>
 
                                             <div class="action-icon d-inline-flex">
@@ -267,13 +257,12 @@
                                             </div>
                                         </td>
                                         <td>Under Armour</td>
-                                        <td><a href="https://underarmour.com/">https://underarmour.com/</a></td>
+                                       
                                         <td>
                                             <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>Active
                                             </span>
                                         </td>
-                                        <td>5</td>
                                         <td>
 
                                             <div class="action-icon d-inline-flex">

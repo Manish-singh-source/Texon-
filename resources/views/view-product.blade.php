@@ -70,12 +70,7 @@
                                                     <p>No video uploaded</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">360° View / AR Model</label>
-                                                    <p>No AR model uploaded</p>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -139,12 +134,7 @@
                                         <p>In stock</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Allow Backorders?</label>
-                                        <p>Yes</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Low Stock Threshold</label>
@@ -157,12 +147,7 @@
                                         <p>12 Sep 2024</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Supplier</label>
-                                        <p>Tech Supplier Inc.</p>
-                                    </div>
-                                </div>
+                               
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Weight</label>
@@ -175,12 +160,7 @@
                                         <p>35x25x2 cm</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Shipping Class / Type</label>
-                                        <p>Standard</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
@@ -269,7 +249,7 @@
 
         <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
             <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-            <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Dreams</a></p>
+            <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Technofra</a></p>
         </div>
 
     </div>

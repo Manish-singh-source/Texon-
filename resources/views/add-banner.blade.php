@@ -62,28 +62,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Start Date/Time <span class="text-danger"> *</span></label>
-                                        <div class="input-icon-end position-relative">
-                                            <input type="text" class="form-control datetimepicker" name="start_date_time" placeholder="dd/mm/yyyy hh:mm">
-                                            <span class="input-icon-addon">
-                                                <i class="ti ti-calendar text-gray-7"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">End Date/Time <span class="text-danger"> *</span></label>
-                                        <div class="input-icon-end position-relative">
-                                            <input type="text" class="form-control datetimepicker" name="end_date_time" placeholder="dd/mm/yyyy hh:mm">
-                                            <span class="input-icon-addon">
-                                                <i class="ti ti-calendar text-gray-7"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
                                         <label class="form-label">Status <span class="text-danger"> *</span></label>
                                         <select class="select" name="status">
                                             <option>Select</option>
@@ -123,7 +101,7 @@
 
     <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
         <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-        <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Dreams</a></p>
+        <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Technofra</a></p>
     </div>
 
 </div>

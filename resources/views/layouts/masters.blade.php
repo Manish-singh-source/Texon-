@@ -28,6 +28,9 @@
 	<!-- Feather CSS -->
 	<link rel="stylesheet" href="assets/plugins/icons/feather/feather.css">
 
+	 <!-- Datatable CSS -->
+    <link rel="stylesheet" href="https://smarthr.co.in/demo/html/template/assets/css/dataTables.bootstrap5.min.css">
+
 	<!-- Tabler Icon CSS -->
     <link rel="stylesheet" href="assets/plugins/tabler-icons/tabler-icons.min.css">
 
@@ -55,7 +58,9 @@
 
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papZfPssX++m0C1pR6MFhJr8Gc6S5k+lwF7Rtpr2HlmSXEJ9u+5i6T5n5a9V6k6rX+XsZlT6Qgk6Y4+R+QmS6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+	
 </head>
 
 <body>
@@ -72,10 +77,10 @@
 			<div class="main-header">
 
 				<div class="header-left">
-					<a href="index.html" class="logo">
-						<img src="assets/img/logo.svg" alt="Logo">
+					<a href="{{route('index')}}" class="logo">
+						<img src="assets/img/logo.png" alt="Logo">
 					</a>
-					<a href="index.html" class="dark-logo">
+					<a href="{{route('index')}}" class="dark-logo">
 						<img src="assets/img/logo.png" alt="Logo">
 					</a>
 				</div>
@@ -125,7 +130,7 @@
 												<span class="menu-arrow"></span>
 											</a>
 											<ul>
-												<li><a href="index.html" class="active">Admin Dashboard</a></li>
+												<li><a href="{{route('index')}}" class="active">Admin Dashboard</a></li>
 												<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 												<li><a href="deals-dashboard.html">Deals Dashboard</a></li>
 												<li><a href="leads-dashboard.html">Leads Dashboard</a></li>
@@ -1083,7 +1088,7 @@
 										</div>
 										
 										<div class="card-footer">
-											<a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="login.html">
+											<a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="{{route('login')}}">
 												<i class="ti ti-login me-2"></i>Logout
 											</a>
 										</div>
@@ -1114,13 +1119,13 @@
 		<div class="sidebar" id="sidebar">
 			<!-- Logo -->
 			<div class="sidebar-logo">
-				{{-- <a href="index.html" class="logo logo-normal">
+				{{-- <a href="{{route('index')}}" class="logo logo-normal">
 					<img src="assets/img/logo.svg" alt="Logo">
 				</a> --}}
-				<a href="index.html" class="logo-small">
+				<a href="{{route('index')}}" class="logo-small">
 					<img src="assets/img/favicon.png" alt="Logo">
 				</a>
-				<a href="index.html" class="dark-logo">
+				<a href="{{route('index')}}" class="dark-logo">
 					<img src="assets/img/logo.png" alt="Logo">
 				</a>
 			</div>
@@ -1216,6 +1221,7 @@
 										<i class="ti ti-message"></i><span>Testimonials</span>
 									</a>
 								</li>
+								
 								<li>
 									<a href="{{route('customers')}}">
 										<i class="ti ti-message"></i><span>Customers</span>
@@ -1254,7 +1260,7 @@
 								<span class="menu-arrow"></span>
 							</a>
 							<ul>
-								<li><a href="index.html" class="active">Admin Dashboard</a></li>
+								<li><a href="{{route('index')}}" class="active">Admin Dashboard</a></li>
 								<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 								<li><a href="deals-dashboard.html">Deals Dashboard</a></li>
 								<li><a href="leads-dashboard.html">Leads Dashboard</a></li>
@@ -2100,7 +2106,7 @@
 		<div class="two-col-sidebar" id="two-col-sidebar">
 			<div class="sidebar sidebar-twocol">
 				<div class="twocol-mini">
-					<a href="index.html" class="logo-small">
+					<a href="{{route('index')}}" class="logo-small">
 						<img src="assets/img/favicon.png" alt="Logo">
 					</a>
 					<div class="sidebar-left slimscroll">
@@ -2154,10 +2160,10 @@
 				</div>
 				<div class="sidebar-right">
 					<div class="sidebar-logo mb-4">
-						<a href="index.html" class="logo logo-normal">
-							<img src="assets/img/logo.svg" alt="Logo">
+						<a href="{{route('index')}}" class="logo logo-normal">
+							<img src="assets/img/logo.png" alt="Logo">
 						</a>
-						<a href="index.html" class="dark-logo">
+						<a href="{{route('index')}}" class="dark-logo">
 							<img src="assets/img/logo.png" alt="Logo">
 						</a>
 					</div>
@@ -2174,7 +2180,7 @@
 							<div class="tab-pane fade show active" id="dashboard">
 								<ul>
 									<li class="menu-title"><span>MAIN MENU</span></li>
-									<li><a href="index.html" class="active">Admin Dashboard</a></li>
+									<li><a href="{{route('index')}}" class="active">Admin Dashboard</a></li>
 									<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 									<li><a href="deals-dashboard.html">Deals Dashboard</a></li>
 									<li><a href="leads-dashboard.html">Leads Dashboard</a></li>
@@ -2788,7 +2794,7 @@
 		<div class="stacked-sidebar" id="stacked-sidebar">
 			<div class="sidebar sidebar-stacked" style="display: flex !important;">
 				<div class="stacked-mini">
-					<a href="index.html" class="logo-small">
+					<a href="{{route('index')}}" class="logo-small">
 						<img src="assets/img/logo-small.svg" alt="Logo">
 					</a>
 					<div class="sidebar-left slimscroll">
@@ -2920,7 +2926,7 @@
 							<div class="tab-content">
 								<div class="tab-pane fade show active" id="menu-dashboard">
 									<ul class="stack-submenu">
-										<li><a href="index.html" class="active">Admin Dashboard</a></li>
+										<li><a href="{{route('index')}}" class="active">Admin Dashboard</a></li>
 										<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 										<li><a href="deals-dashboard.html">Deals Dashboard</a></li>
 										<li><a href="leads-dashboard.html">Leads Dashboard</a></li>
@@ -3503,6 +3509,10 @@
 	<!-- Chart JS -->
 	<script src="assets/plugins/chartjs/chart.min.js"></script>
 	<script src="assets/plugins/chartjs/chart-data.js"></script>
+
+	 <!-- Datatable JS -->
+    <script src="https://smarthr.co.in/demo/html/template/assets/js/jquery.dataTables.min.js"></script>
+    <script src="https://smarthr.co.in/demo/html/template/assets/js/dataTables.bootstrap5.min.js"></script>
 
 	<!-- Datetimepicker JS -->
 	<script src="assets/js/moment.min.js"></script>

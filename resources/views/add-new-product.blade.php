@@ -71,13 +71,7 @@
                                                     <small class="text-muted">Upload product video (optional)</small>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">360° View / AR Model</label>
-                                                    <input type="file" class="form-control" name="ar_model" accept=".glb,.usdz">
-                                                    <small class="text-muted">Upload AR model (optional)</small>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -87,12 +81,7 @@
                                         <input type="text" class="form-control" name="product_name">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Product ID <span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" name="product_id">
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Brand / Manufacturer</label>
@@ -137,6 +126,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
+                                        <label class="form-label">PDF<span class="text-danger"> *</span></label>
+                                        <input type="file" class="form-control" name="pdf">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
                                         <label class="form-label">Stock Status</label>
                                         <select class="select" name="stock_status">
                                             <option>Select</option>
@@ -144,21 +139,6 @@
                                             <option>Out of stock</option>
                                             <option>Backorder</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Allow Backorders?</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="allow_backorders" value="1">
-                                            <label class="form-check-label">Yes</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Low Stock Threshold</label>
-                                        <input type="number" class="form-control" name="low_stock_threshold">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -174,12 +154,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Supplier</label>
-                                        <input type="text" class="form-control" name="supplier">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
                                         <label class="form-label">Weight</label>
                                         <input type="text" class="form-control" name="weight" placeholder="e.g. 1.5 kg">
                                     </div>
@@ -190,17 +164,7 @@
                                         <input type="text" class="form-control" name="dimensions" placeholder="e.g. 10x5x2 cm">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Shipping Class / Type</label>
-                                        <select class="select" name="shipping_class">
-                                            <option>Select</option>
-                                            <option>Standard</option>
-                                            <option>Express</option>
-                                            <option>Overnight</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
@@ -283,17 +247,7 @@
                                         <textarea class="form-control" rows="2" name="custom_attributes" placeholder="e.g. Eco-friendly: Yes, Warranty: 1 year"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Availability Date / Launch Date</label>
-                                        <div class="input-icon-end position-relative">
-                                            <input type="text" class="form-control datetimepicker" name="availability_date" placeholder="dd/mm/yyyy">
-                                            <span class="input-icon-addon">
-                                                <i class="ti ti-calendar text-gray-7"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-light border me-2">Cancel</button>
@@ -309,7 +263,7 @@
 
     <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
         <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-        <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Dreams</a></p>
+        <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Technofra</a></p>
     </div>
 
 </div>
