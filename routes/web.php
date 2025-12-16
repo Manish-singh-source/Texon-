@@ -57,3 +57,27 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+Route::get('/customers', function () {
+    return view('customers');
+})->name('customers');
+Route::get('/add-customer', function () {
+    return view('add-customers');
+})->name('add-customer');
+Route::get('/view-customer', function () {
+    return view('customer-details');
+})->name('view-customer');
+Route::get('/categories', function () {
+    return view('categories');
+})->name('categories');
+Route::get('/view-category', function () {
+    return view('view-categories');
+})->name('view-category');
+Route::get('/add-brand', function () {
+    return view('add-brands');
+})->name('add-brand');
+Route::get('/brands', function () {
+    return view('brands');
+})->name('brands');
+Route::get('/view-brand', function () {
+    return view('view-brands');
+})->name('view-brand');

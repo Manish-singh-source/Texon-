@@ -1118,7 +1118,7 @@
 					<img src="assets/img/logo.svg" alt="Logo">
 				</a> --}}
 				<a href="index.html" class="logo-small">
-					<img src="assets/img/logo-small.svg" alt="Logo">
+					<img src="assets/img/favicon.png" alt="Logo">
 				</a>
 				<a href="index.html" class="dark-logo">
 					<img src="assets/img/logo.png" alt="Logo">
@@ -1214,6 +1214,21 @@
 								<li>
 									<a href="{{route('testimonials')}}">
 										<i class="ti ti-message"></i><span>Testimonials</span>
+									</a>
+								</li>
+								<li>
+									<a href="{{route('customers')}}">
+										<i class="ti ti-message"></i><span>Customers</span>
+									</a>
+								</li>
+								<li>
+									<a href="{{route('categories')}}">
+										<i class="ti ti-message"></i><span>Categories</span>
+									</a>
+								</li>
+								<li>
+									<a href="{{route('brands')}}">
+										<i class="ti ti-message"></i><span>Brands</span>
 									</a>
 								</li>
 							</ul>
@@ -2086,7 +2101,7 @@
 			<div class="sidebar sidebar-twocol">
 				<div class="twocol-mini">
 					<a href="index.html" class="logo-small">
-						<img src="assets/img/logo-small.svg" alt="Logo">
+						<img src="assets/img/favicon.png" alt="Logo">
 					</a>
 					<div class="sidebar-left slimscroll">
 						<div class="nav flex-column align-items-center nav-pills" id="sidebar-tabs" role="tablist" aria-orientation="vertical">
