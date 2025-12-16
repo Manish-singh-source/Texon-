@@ -35,8 +35,7 @@
 	<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
 
 	<!-- Fontawesome CSS -->
-	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 	<!-- Datetimepicker CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
@@ -982,7 +981,7 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-end notification-dropdown p-4">
 									<div class="d-flex align-items-center justify-content-between border-bottom p-0 pb-3 mb-3">
-										<h4 class="notification-title">Notifications (2)</h4>
+										<h4 class="notification-title">Enquiries (3)</h4>
 										<div class="d-flex align-items-center">
 											<a href="#" class="text-primary fs-15 me-3 lh-1">Mark all as read</a>
 											<div class="dropdown">
@@ -1013,62 +1012,43 @@
 									<div class="noti-content">
 										<div class="d-flex flex-column">
 											<div class="border-bottom mb-3 pb-3">
-												<a href="activity.html">
+												<a href="{{route('enquiries')}}">
 													<div class="d-flex">
 														<span class="avatar avatar-lg me-2 flex-shrink-0">
 															<img src="assets/img/profiles/avatar-27.jpg" alt="Profile">
 														</span>
 														<div class="flex-grow-1">
-															<p class="mb-1"><span
-																	class="text-dark fw-semibold">Shawn</span>
-																performance in Math is below the threshold.</p>
+															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ001<br><strong>Customer:</strong> John Doe<br><strong>Product:</strong> Web Development Service</p>
 															<span>Just Now</span>
 														</div>
 													</div>
 												</a>
 											</div>
 											<div class="border-bottom mb-3 pb-3">
-												<a href="activity.html" class="pb-0">
+												<a href="{{route('enquiries')}}" class="pb-0">
 													<div class="d-flex">
 														<span class="avatar avatar-lg me-2 flex-shrink-0">
 															<img src="assets/img/profiles/avatar-23.jpg" alt="Profile">
 														</span>
 														<div class="flex-grow-1">
-															<p class="mb-1"><span
-																	class="text-dark fw-semibold">Sylvia</span> added
-																appointment on 02:00 PM</p>
+															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ002<br><strong>Customer:</strong> Jane Smith<br><strong>Product:</strong> Mobile App Development</p>
 															<span>10 mins ago</span>
-															<div
-																class="d-flex justify-content-start align-items-center mt-1">
-																<span class="btn btn-light btn-sm me-2">Deny</span>
-																<span class="btn btn-primary btn-sm">Approve</span>
+															<div class="d-flex justify-content-start align-items-center mt-1">
+																<span class="btn btn-primary btn-sm">View Details</span>
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
-											<div class="border-bottom mb-3 pb-3">
-												<a href="activity.html">
+											<div class="border-0 mb-3 pb-0">
+												<a href="{{route('enquiries')}}">
 													<div class="d-flex">
 														<span class="avatar avatar-lg me-2 flex-shrink-0">
 															<img src="assets/img/profiles/avatar-25.jpg" alt="Profile">
 														</span>
 														<div class="flex-grow-1">
-															<p class="mb-1">New student record <span class="text-dark fw-semibold"> George</span> is created by <span class="text-dark fw-semibold">Teressa</span></p>
+															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ003<br><strong>Customer:</strong> Mike Johnson<br><strong>Product:</strong> SEO Optimization</p>
 															<span>2 hrs ago</span>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="border-0 mb-3 pb-0">
-												<a href="activity.html">
-													<div class="d-flex">
-														<span class="avatar avatar-lg me-2 flex-shrink-0">
-															<img src="assets/img/profiles/avatar-01.jpg" alt="Profile">
-														</span>
-														<div class="flex-grow-1">
-															<p class="mb-1">A new teacher record for <span class="text-dark fw-semibold">Elisa</span> </p>
-															<span>09:45 AM</span>
 														</div>
 													</div>
 												</a>
@@ -1077,7 +1057,7 @@
 									</div>
 									<div class="d-flex p-0">
 										<a href="#" class="btn btn-light w-100 me-2">Cancel</a>
-										<a href="activity.html" class="btn btn-primary w-100">View All</a>
+										<a href="{{route('enquiries')}}" class="btn btn-primary w-100">View All Enquiries</a>
 									</div>
 								</div>
 							</div>
