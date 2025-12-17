@@ -60,9 +60,8 @@ Route::get('/register', function () {
 Route::get('/customers', function () {
     return view('customers');
 })->name('customers');
-Route::get('/add-customer', function () {
-    return view('add-customers');
-})->name('add-customer');
+Route::get('/add-customer', [App\Http\Controllers\CustomerController::class, 'create'])->name('add-customer');
+Route::post('/add-customer', [App\Http\Controllers\CustomerController::class, 'store'])->name('add-customer.store');
 Route::get('/view-customer', function () {
     return view('customer-details');
 })->name('view-customer');
