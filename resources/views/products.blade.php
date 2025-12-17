@@ -176,18 +176,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="dropdown">
-                            <a href="javascript:void(0);"
-                                class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                data-bs-toggle="dropdown">
-                                Sort By : Last 7 Days
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -218,19 +207,19 @@
                                          </div>
                                      </td>
                                      <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-001</a>
+                                             href="#">Prod-001</a>
                                      </td>
                                      <td>
                                          <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
+                                             <a href="#"
                                                  class="avatar avatar-md" data-bs-toggle="modal"
                                                  data-bs-target="#view_details"><img
                                                      src="https://placehold.co/100x100"
                                                      class="img-fluid rounded-circle" alt="img"></a>
                                              <div class="ms-2">
                                                  <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Laptop</a>
+                                                         href="#"
+                                                         data-bs-toggle="modal" data-bs-target="#view_details">Texon Grooved Pegboard</a>
                                                  </p>
                                                  <span class="fs-12">Electronics</span>
                                              </div>
@@ -262,19 +251,19 @@
                                          </div>
                                      </td>
                                      <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-002</a>
+                                             href="#">Prod-002</a>
                                      </td>
                                      <td>
                                          <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
+                                             <a href="#"
                                                  class="avatar avatar-md" data-bs-toggle="modal"
                                                  data-bs-target="#view_details"><img
                                                      src="https://placehold.co/100x100"
                                                      class="img-fluid rounded-circle" alt="img"></a>
                                              <div class="ms-2">
                                                  <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Smartphone</a>
+                                                         href="#"
+                                                         data-bs-toggle="modal" data-bs-target="#view_details">Rehabilitation Equipment</a>
                                                  </p>
                                                  <span class="fs-12">Electronics</span>
                                              </div>
@@ -299,358 +288,7 @@
                                          </div>
                                      </td>
                                  </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-003</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Tablet</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹499.99</td>
-                                     <td>Electronics</td>
-                                     <td>20</td>
-                                     <td>20 Nov 2024</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-004</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Headphones</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹199.99</td>
-                                     <td>Electronics</td>
-                                     <td>100</td>
-                                     <td>05 Dec 2024</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-005</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Monitor</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹299.99</td>
-                                     <td>Electronics</td>
-                                     <td>15</td>
-                                     <td>10 Jan 2025</td>
-                                     <td>
-                                         <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
-                                             <i class="ti ti-point-filled me-1"></i>Inactive
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-006</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Keyboard</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹89.99</td>
-                                     <td>Electronics</td>
-                                     <td>50</td>
-                                     <td>25 Feb 2025</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-007</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Mouse</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹49.99</td>
-                                     <td>Electronics</td>
-                                     <td>80</td>
-                                     <td>12 Mar 2025</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-008</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Printer</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹249.99</td>
-                                     <td>Electronics</td>
-                                     <td>10</td>
-                                     <td>18 Apr 2025</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-009</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Router</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹129.99</td>
-                                     <td>Electronics</td>
-                                     <td>25</td>
-                                     <td>30 May 2025</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a
-                                             href="https://smarthr.co.in/demo/html/template/product-details.html">Prod-010</a>
-                                     </td>
-                                     <td>
-                                         <div class="d-flex align-items-center">
-                                             <a href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                 class="avatar avatar-md" data-bs-toggle="modal"
-                                                 data-bs-target="#view_details"><img
-                                                     src="https://placehold.co/100x100"
-                                                     class="img-fluid rounded-circle" alt="img"></a>
-                                             <div class="ms-2">
-                                                 <p class="text-dark mb-0"><a
-                                                         href="https://smarthr.co.in/demo/html/template/product-details.html"
-                                                         data-bs-toggle="modal" data-bs-target="#view_details">Webcam</a>
-                                                 </p>
-                                                 <span class="fs-12">Electronics</span>
-                                             </div>
-                                         </div>
-                                     </td>
-                                     <td>₹79.99</td>
-                                     <td>Electronics</td>
-                                     <td>40</td>
-                                     <td>14 Jun 2025</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-product" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
+                                 
                             </tbody>
                         </table>
                     </div>
@@ -1348,7 +986,7 @@
                                         class="btn btn-dark w-100">Back to List</a>
                                 </div>
                                 <div class="col-6">
-                                    <a href="https://smarthr.co.in/demo/html/template/product-details.html"
+                                    <a href="#"
                                         class="btn btn-primary w-100">Detail Page</a>
                                 </div>
                             </div>

@@ -165,14 +165,7 @@ let themesettings = `
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <a href="layout-rtl.html" class="theme-layout mb-3">
-                                    <span class="d-block mb-2 layout-img">
-                                        <img src="assets/img/theme/rtl.svg" alt="img">
-                                    </span>                                    
-                                    <span class="layout-type">RTL</span>
-                                </a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

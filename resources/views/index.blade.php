@@ -8,17 +8,7 @@
 				<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
 					<div class="my-auto mb-2">
 						<h2 class="mb-1">Sales Overview Dashboard</h2>
-						<nav>
-							<ol class="breadcrumb mb-0">
-								<li class="breadcrumb-item">
-									<a href="index.html"><i class="ti ti-smart-home"></i></a>
-								</li>
-								<li class="breadcrumb-item">
-									Dashboard
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Sales Overview</li>
-							</ol>
-						</nav>
+						
 					</div>
 					<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
 						
@@ -316,7 +306,7 @@
 															<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
 														</a>
 														<div class="ms-2">
-															<h6 class="fw-medium"><a href="javascript:void(0);">Laptop Pro</a></h6>
+															<h6 class="fw-medium"><a href="javascript:void(0);">Texon Grooved Pegboard</a></h6>
 															<span class="fs-12">Electronics</span>
 														</div>
 													</div>
@@ -338,7 +328,7 @@
 															<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
 														</a>
 														<div class="ms-2">
-															<h6 class="fw-medium"><a href="#">Smartphone X</a></h6>
+															<h6 class="fw-medium"><a href="#">Rehabilitation Equipment</a></h6>
 															<span class="fs-12">Electronics</span>
 														</div>
 													</div>

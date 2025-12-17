@@ -70,7 +70,7 @@
 								<div class="authen-overlay-item border w-100">
 									<h1 class="text-white display-1">Welcome to Our CRM System</h1>
 									<div class="my-4 mx-auto authen-overlay-img">
-										<img src="https://smarthr.co.in/demo/html/template/assets/img/bg/authentication-bg-01.png" alt="Img">
+										<img src="https://adrack.com/wp-content/uploads/2021/12/signup.png" alt="Img">
 									</div>
 									<div>
 										<p class="text-white fs-20 fw-semibold text-center">Efficiently manage your workforce, streamline <br> operations effortlessly.</p>
@@ -121,7 +121,7 @@
 												</div>
 											</div>
 											<div class="mb-3">
-												<a href="{{ route('register') }}" class="btn btn-primary w-100">Sign In</a>
+												<a href="{{ route('index') }}" class="btn btn-primary w-100">Sign In</a>
 											</div>
 											<div class="text-center">
 												<h6 class="fw-normal text-dark mb-0">Don’t have an account? 

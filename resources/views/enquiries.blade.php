@@ -8,17 +8,7 @@
             <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
                 <div class="my-auto mb-2">
                     <h2 class="mb-1">Enquiries</h2>
-                    <nav>
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="/"><i class="ti ti-smart-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                Enquiries
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Enquiries List</li>
-                        </ol>
-                    </nav>
+                    
                 </div>
                 <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
                     
@@ -109,8 +99,7 @@
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
                                 <div>
-                                    <span class="avatar avatar-lg bg-success rounded-circle"><i
-                                            class="ti ti-check-circle"></i></span>
+                                    <span class="avatar avatar-lg bg-success rounded-circle"> <i class="fas fa-reply"></i></span>
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Responded</p>
@@ -134,7 +123,7 @@
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
                                 <div>
-                                    <span class="avatar avatar-lg bg-danger rounded-circle"><i class="ti ti-x-circle"></i></span>
+                                    <span class="avatar avatar-lg bg-danger rounded-circle">  <i class="fas fa-lock"></i> </span>
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Closed</p>
