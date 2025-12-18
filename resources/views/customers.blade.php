@@ -85,17 +85,16 @@
 													</div>
 												</th>
 												<th>Name</th>
-												<th>Username</th>
 												<th>Email</th>
-												<th>Contact Number</th>
-												<th>No Of Orders</th>
-												<th>Status</th>
+												<th>Phone</th>
+												<th>Gender</th>
+												<th>Customer Type</th>
 												<th>Joined At</th>
-
 												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
+											@foreach($customers as $customer)
 											<tr>
 												<td>
 													<div class="form-check form-check-md">
@@ -104,239 +103,36 @@
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<a href="https://smarthr.co.in/demo/html/template/invoice-details.html"
-															class="avatar avatar-md me-2">
-															<img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
-																class="rounded-circle" alt="user">
-														</a>
-														<h6 class="fw-medium"><a
-																href="https://smarthr.co.in/demo/html/template/invoice-details.html">Anthony
-																Lewis</a></h6>
+														<h6 class="fw-medium">{{ $customer->first_name }} {{ $customer->last_name }}</h6>
 													</div>
 												</td>
-												<td>Amisha</td>
-												<td>accountant@gmail.com</td>
-												<td>+ 9111 55 9999</td>
-												<td>1</td>
-												<td>Active</td>
-												<td>14 Jan 2024</td>
-
-
+												<td>{{ $customer->email }}</td>
+												<td>{{ $customer->phone }}</td>
+												<td>@if($customer->gender == 1) Male @elseif($customer->gender == 2) Female @endif</td>
+												<td>{{ $customer->customer_type ?? 'N/A' }}</td>
+												<td>{{ $customer->created_at->format('d M Y') }}</td>
 												<td>
 													<div class="action-icon d-inline-flex">
-
 														<!-- View Customer Details (Page Navigation) -->
-														<a href="{{route('view-customer')}}" class="me-2">
+														<a href="{{ route('view-customer', $customer->id) }}" class="me-2">
 															<i class="ti ti-eye"></i>
 														</a>
-
 														<!-- Edit (Modal) -->
-														<a href="edit-customer.html" class="me-2">
+														<a href="#" class="me-2">
 															<i class="ti ti-edit"></i>
 														</a>
-
-														<!-- Delete (Modal) -->
-														<a href="#" data-bs-toggle="modal"
-															data-bs-target="#delete_modal">
-															<i class="ti ti-trash"></i>
-														</a>
-
+														<!-- Delete -->
+														<form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display: inline;">
+															@csrf
+															@method('DELETE')
+															<button type="submit" class="btn btn-link p-0 text-danger" onclick="return confirm('Are you sure you want to delete this customer?')">
+																<i class="ti ti-trash"></i>
+															</button>
+														</form>
 													</div>
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<div class="form-check form-check-md">
-														<input class="form-check-input" type="checkbox">
-													</div>
-												</td>
-												<td>
-													<div class="d-flex align-items-center">
-														<a href="https://smarthr.co.in/demo/html/template/invoice-details.html"
-															class="avatar avatar-md me-2">
-															<img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-09.jpg"
-																class="rounded-circle" alt="user">
-														</a>
-														<h6 class="fw-medium"><a
-																href="https://smarthr.co.in/demo/html/template/invoice-details.html">Brian
-																Villalobos</a></h6>
-													</div>
-												</td>
-												<td>Pradnya</td>
-												<td>developer@gmail.com</td>
-												<td>+ 9111 55 9999</td>
-												<td>2</td>
-												<td>Active</td>
-												<td>21 Jan 2024</td>
-
-
-												<td>
-													<div class="action-icon d-inline-flex">
-
-														<!-- View Customer Details (Page Navigation) -->
-														<a href="{{route('view-customer')}}" class="me-2">
-															<i class="ti ti-eye"></i>
-														</a>
-
-														<!-- Edit (Modal) -->
-														<a href="edit-customer.html" class="me-2">
-															<i class="ti ti-edit"></i>
-														</a>
-
-														<!-- Delete (Modal) -->
-														<a href="#" data-bs-toggle="modal"
-															data-bs-target="#delete_modal">
-															<i class="ti ti-trash"></i>
-														</a>
-
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check form-check-md">
-														<input class="form-check-input" type="checkbox">
-													</div>
-												</td>
-												<td>
-													<div class="d-flex align-items-center">
-														<a href="https://smarthr.co.in/demo/html/template/invoice-details.html"
-															class="avatar avatar-md me-2">
-															<img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-01.jpg"
-																class="rounded-circle" alt="user">
-														</a>
-														<h6 class="fw-medium"><a
-																href="https://smarthr.co.in/demo/html/template/invoice-details.html">Harvey
-																Smith</a></h6>
-													</div>
-												</td>
-												<td>Manish</td>
-												<td>Web@gmail.com</td>
-												<td>+ 9111 55 9999</td>
-												<td>3</td>
-												<td>Active</td>
-												<td>20 Feb 2024</td>
-
-
-												<td>
-													<div class="action-icon d-inline-flex">
-
-														<!-- View Customer Details (Page Navigation) -->
-														<a href="{{route('view-customer')}}" class="me-2">
-															<i class="ti ti-eye"></i>
-														</a>
-
-														<!-- Edit (Modal) -->
-														<a href="edit-customer.html" class="me-2">
-															<i class="ti ti-edit"></i>
-														</a>
-
-														<!-- Delete (Modal) -->
-														<a href="#" data-bs-toggle="modal"
-															data-bs-target="#delete_modal">
-															<i class="ti ti-trash"></i>
-														</a>
-
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check form-check-md">
-														<input class="form-check-input" type="checkbox">
-													</div>
-												</td>
-												<td>
-													<div class="d-flex align-items-center">
-														<a href="https://smarthr.co.in/demo/html/template/invoice-details.html"
-															class="avatar avatar-md me-2">
-															<img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-33.jpg"
-																class="rounded-circle" alt="user">
-														</a>
-														<h6 class="fw-medium"><a
-																href="https://smarthr.co.in/demo/html/template/invoice-details.html">Stephan
-																Peralt</a></h6>
-													</div>
-												</td>
-												<td>Khushi</td>
-												<td>Designer@gmail.com</td>
-												<td>+ 9111 55 9999</td>
-												<td>4</td>
-												<td>Active</td>
-												<td>15 Mar 2024</td>
-
-												<td>
-													<div class="action-icon d-inline-flex">
-
-														<!-- View Customer Details (Page Navigation) -->
-														<a href="{{route('view-customer')}}" class="me-2">
-															<i class="ti ti-eye"></i>
-														</a>
-
-														<!-- Edit (Modal) -->
-														<a href="edit-customer.html" class="me-2">
-															<i class="ti ti-edit"></i>
-														</a>
-
-														<!-- Delete (Modal) -->
-														<a href="#" data-bs-toggle="modal"
-															data-bs-target="#delete_modal">
-															<i class="ti ti-trash"></i>
-														</a>
-
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check form-check-md">
-														<input class="form-check-input" type="checkbox">
-													</div>
-												</td>
-												<td>
-													<div class="d-flex align-items-center">
-														<a href="https://smarthr.co.in/demo/html/template/invoice-details.html"
-															class="avatar avatar-md me-2">
-															<img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-34.jpg"
-																class="rounded-circle" alt="user">
-														</a>
-														<h6 class="fw-medium"><a
-																href="https://smarthr.co.in/demo/html/template/invoice-details.html">Doglas
-																Martini</a></h6>
-													</div>
-												</td>
-												<td>Roshan</td>
-												<td>Analyst@gmail.com</td>
-												<td>+ 9111 55 9999</td>
-												<td>6</td>
-												<td>Active</td>
-												<td>10 Apr 2024</td>
-
-
-
-												<td>
-													<div class="action-icon d-inline-flex">
-
-														<!-- View Customer Details (Page Navigation) -->
-														<a href="{{route('view-customer')}}" class="me-2">
-															<i class="ti ti-eye"></i>
-														</a>
-
-														<!-- Edit (Modal) -->
-														<a href="edit-customer.html" class="me-2">
-															<i class="ti ti-edit"></i>
-														</a>
-
-														<!-- Delete (Modal) -->
-														<a href="#" data-bs-toggle="modal"
-															data-bs-target="#delete_modal">
-															<i class="ti ti-trash"></i>
-														</a>
-
-													</div>
-												</td>
-											</tr>
-
+											@endforeach
 										</tbody>
 									</table>
 								</div>

@@ -20,44 +20,44 @@
 	<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
 	<!-- Theme Script js -->
-	<script src="assets/js/theme-script.js"></script>
+	<script src="{{asset('assets/js/theme-script.js')}}"></script>
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
 	<!-- Feather CSS -->
-	<link rel="stylesheet" href="assets/plugins/icons/feather/feather.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/icons/feather/feather.css')}}">
 
 	 <!-- Datatable CSS -->
-    <link rel="stylesheet" href="https://smarthr.co.in/demo/html/template/assets/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap5.min.css')}}">
 
 	<!-- Tabler Icon CSS -->
-    <link rel="stylesheet" href="assets/plugins/tabler-icons/tabler-icons.min.css">
+    <link rel="stylesheet" href="{{asset('assets/plugins/tabler-icons/tabler-icons.min.css')}}">
 
 	<!-- Select2 CSS -->
-	<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 	<!-- Datetimepicker CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="{{asset('assets/css/bootstrap-datetimepicker.min.css')}}">
 
 	<!-- Bootstrap Tagsinput CSS -->
-	<link rel="stylesheet" href="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 
 	<!-- Summernote CSS -->
-	<link rel="stylesheet" href="assets/plugins/summernote/summernote-lite.min.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-lite.min.css')}}">
 
 	<!-- Daterangepikcer CSS -->
-	<link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}">
 
 	<!-- Color Picker Css -->
-	<link rel="stylesheet" href="assets/plugins/flatpickr/flatpickr.min.css">
-	<link rel="stylesheet" href="assets/plugins/%40simonwep/pickr/themes/nano.min.css">
+	<link rel="stylesheet" href="{{asset('assets/plugins/flatpickr/flatpickr.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/plugins/%40simonwep/pickr/themes/nano.min.css')}}">
 
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papZfPssX++m0C1pR6MFhJr8Gc6S5k+lwF7Rtpr2HlmSXEJ9u+5i6T5n5a9V6k6rX+XsZlT6Qgk6Y4+R+QmS6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	
@@ -78,10 +78,10 @@
 
 				<div class="header-left">
 					<a href="{{route('index')}}" class="logo">
-						<img src="assets/img/logo.png" alt="Logo">
+						<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
 					</a>
 					<a href="{{route('index')}}" class="dark-logo">
-						<img src="assets/img/logo.png" alt="Logo">
+						<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
 					</a>
 				</div>
 
@@ -1126,7 +1126,7 @@
 					<img src="assets/img/favicon.png" alt="Logo">
 				</a>
 				<a href="{{route('index')}}" class="dark-logo">
-					<img src="assets/img/logo.png" alt="Logo">
+					<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -2161,10 +2161,10 @@
 				<div class="sidebar-right">
 					<div class="sidebar-logo mb-4">
 						<a href="{{route('index')}}" class="logo logo-normal">
-							<img src="assets/img/logo.png" alt="Logo">
+							<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
 						</a>
 						<a href="{{route('index')}}" class="dark-logo">
-							<img src="assets/img/logo.png" alt="Logo">
+							<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
 						</a>
 					</div>
 					<div class="sidebar-scroll">
@@ -3494,49 +3494,49 @@
 	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 
 	<!-- Feather Icon JS -->
-	<script src="assets/js/feather.min.js"></script>
+	<script src="{{asset('assets/js/feather.min.js')}}"></script>
 
 	<!-- Slimscroll JS -->
-	<script src="assets/js/jquery.slimscroll.min.js"></script>
+	<script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
 
 	<!-- Chart JS -->
-	<script src="assets/plugins/apexchart/apexcharts.min.js"></script>
-	<script src="assets/plugins/apexchart/chart-data.js"></script>
+	<script src="{{asset('assets/plugins/apexchart/apexcharts.min.js')}}"></script>
+	<script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>
 
 	<!-- Chart JS -->
-	<script src="assets/plugins/chartjs/chart.min.js"></script>
-	<script src="assets/plugins/chartjs/chart-data.js"></script>
+	<script src="{{asset('assets/plugins/chartjs/chart.min.js')}}"></script>
+	<script src="{{asset('assets/plugins/chartjs/chart-data.js')}}"></script>
 
 	 <!-- Datatable JS -->
-    <script src="https://smarthr.co.in/demo/html/template/assets/js/jquery.dataTables.min.js"></script>
-    <script src="https://smarthr.co.in/demo/html/template/assets/js/dataTables.bootstrap5.min.js"></script>
+   <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>	
 
 	<!-- Datetimepicker JS -->
-	<script src="assets/js/moment.min.js"></script>
-	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="{{asset('assets/js/moment.min.js')}}"></script>
+	<script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
 
 	<!-- Daterangepikcer JS -->
-	<script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
+	<script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
 	<!-- Summernote JS -->
-	<script src="assets/plugins/summernote/summernote-lite.min.js"></script>
+	<script src="{{asset('assets/plugins/summernote/summernote-lite.min.js')}}"></script>
 
 	<!-- Bootstrap Tagsinput JS -->
-	<script src="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+	<script src="{{asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>
 
 	<!-- Select2 JS -->
-	<script src="assets/plugins/select2/js/select2.min.js"></script>
+	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 
 	<!-- Color Picker JS -->
-	<script src="assets/plugins/%40simonwep/pickr/pickr.es5.min.js"></script>
+	<script src="{{asset('assets/plugins/%40simonwep/pickr/pickr.es5.min.js')}}"></script>
 
 	<!-- Custom JS -->
-	<script src="assets/js/todo.js"></script>
-	<script src="assets/js/theme-colorpicker.js"></script>
-	<script src="assets/js/script.js"></script>
+	<script src="{{asset('assets/js/todo.js')}}"></script>
+	<script src="{{asset('assets/js/theme-colorpicker.js')}}"></script>
+	<script src="{{asset('assets/js/script.js')}}"></script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d05194593ce14c8fa5c20a9737ff5d07","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
