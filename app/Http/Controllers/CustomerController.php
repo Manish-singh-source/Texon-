@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function index()
+    {
+        $customers = Customer::all();
+        return view('customers', compact('customers'));
+    }
+
     public function create()
     {
         return view('add-customers');
@@ -31,5 +37,19 @@ class CustomerController extends Controller
         Customer::create($request->only(['first_name', 'last_name', 'email', 'phone', 'gender', 'date_of_birth', 'customer_type', 'gst_number', 'pan_number', 'company_name', 'company_address']));
 
         return redirect()->back()->with('success', 'Customer added successfully!');
+    }
+
+    public function show($id)
+    {
+        $customer = Customer::findOrFail($id);
+        return view('customer-details', compact('customer'));
+    }
+
+    public function destroy($id)
+    {
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        return redirect()->back()->with('success', 'Customer deleted successfully!');
     }
 }
