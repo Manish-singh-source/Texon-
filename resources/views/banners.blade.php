@@ -94,67 +94,57 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Button Name</th>
+                                    <th>Button Link</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Sample rows for demonstration -->
+                                @foreach($banners as $index => $banner)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-md">
                                             <input class="form-check-input" type="checkbox">
                                         </div>
                                     </td>
-                                    <td>1</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @if($banner->banner_image)
+                                                <img src="{{ asset('storage/' . $banner->banner_image) }}" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @else
+                                                <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @endif
                                         </div>
                                     </td>
-                                    <td>Welcome to Our Site</td>
-                                    <td>This is a sample banner description.</td>
+                                    <td>{{ $banner->heading }}</td>
+                                    <td>{{ $banner->subheading }}</td>
+                                    <td>{{ $banner->button_name }}</td>
+                                    <td>{{ $banner->button_url }}</td>
                                     <td>
-                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                            <i class="ti ti-point-filled me-1"></i>Active
-                                        </span>
+                                        @if($banner->status == 'active')
+                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                                <i class="ti ti-point-filled me-1"></i>Active
+                                            </span>
+                                        @else
+                                            <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
+                                                <i class="ti ti-point-filled me-1"></i>Inactive
+                                            </span>
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_banner"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                            <a href="{{ route('edit-banner', $banner->id) }}" class="me-2"><i class="ti ti-edit"></i></a>
+                                            <form action="{{ route('banners.destroy', $banner->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this banner?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-link p-0 text-danger" style="border:none; background:none;"><i class="ti ti-trash"></i></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check form-check-md">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
-                                        </div>
-                                    </td>
-                                    <td>Explore Our Services</td>
-                                    <td>Another sample banner description.</td>
-                                    <td>
-                                        <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
-                                            <i class="ti ti-point-filled me-1"></i>Inactive
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_banner"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Add more rows as needed -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
