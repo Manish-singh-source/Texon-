@@ -27,13 +27,18 @@ Route::get('/view-enquiry', function () {
     return view('view-enquiry');
 })->name('view-enquiry');
 
-Route::get('/banners', function () {
-    return view('banners');
-})->name('banners');
+Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
 Route::get('/add-banner', function () {
     return view('add-banner');
 })->name('add-banner');
+
+Route::post('/add-banner', [App\Http\Controllers\BannerController::class, 'store'])->name('add-banner.store');
+
+Route::delete('/banners/{id}', [App\Http\Controllers\BannerController::class, 'destroy'])->name('banners.destroy');
+
+Route::get('/edit-banner/{id}', [App\Http\Controllers\BannerController::class, 'edit'])->name('edit-banner');
+Route::put('/edit-banner/{id}', [App\Http\Controllers\BannerController::class, 'update'])->name('edit-banner.update');
 
 Route::get('/promotional-banners', function () {
     return view('promotional-banners');
