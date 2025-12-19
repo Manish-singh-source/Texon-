@@ -95,19 +95,19 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <p class="mb-1">City</p>
-                                    <h6 class="fw-normal">Mumbai</h6>
+                                    <h6 class="fw-normal">{{ $customer->city ?? 'N/A' }}</h6>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <p class="mb-1">Country</p>
-                                    <h6 class="fw-normal">India</h6>
+                                    <h6 class="fw-normal">{{ $customer->country ?? 'N/A' }}</h6>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <p class="mb-1">State</p>
-                                    <h6 class="fw-normal">Maharashtra</h6>
+                                    <h6 class="fw-normal">{{ $customer->state ?? 'N/A' }}</h6>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -116,24 +116,7 @@
                                     <h6 class="fw-normal">{{ $customer->email }}</h6>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <p class="mb-1">Nationality</p>
-                                    <h6 class="fw-normal">Indian</h6>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <p class="mb-1">Religion</p>
-                                    <h6 class="fw-normal">Christianity</h6>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <p class="mb-1">Marital status</p>
-                                    <h6 class="fw-normal">No</h6>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
 

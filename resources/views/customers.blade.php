@@ -89,6 +89,7 @@
 												<th>Phone</th>
 												<th>Gender</th>
 												<th>Customer Type</th>
+												<th>Country</th>
 												<th>Joined At</th>
 												<th>Action</th>
 											</tr>
@@ -110,6 +111,8 @@
 												<td>{{ $customer->phone }}</td>
 												<td>@if($customer->gender == 1) Male @elseif($customer->gender == 2) Female @endif</td>
 												<td>{{ $customer->customer_type ?? 'N/A' }}</td>
+												
+												<td>{{ $customer->country ?? 'N/A' }}</td>
 												<td>{{ $customer->created_at->format('d M Y') }}</td>
 												<td>
 													<div class="action-icon d-inline-flex">
@@ -118,7 +121,7 @@
 															<i class="ti ti-eye"></i>
 														</a>
 														<!-- Edit (Modal) -->
-														<a href="#" class="me-2">
+														<a href="{{ route('edit-customer', $customer->id) }}" class="me-2">
 															<i class="ti ti-edit"></i>
 														</a>
 														<!-- Delete -->

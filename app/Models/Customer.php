@@ -18,5 +18,8 @@ class Customer extends Model
         'pan_number',
         'company_name',
         'company_address',
+        'city',
+        'state',
+        'country',
     ];
 }
