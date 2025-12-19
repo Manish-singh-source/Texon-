@@ -60,6 +60,8 @@ Route::get('/register', function () {
 Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers');
 Route::get('/add-customer', [App\Http\Controllers\CustomerController::class, 'create'])->name('add-customer');
 Route::post('/add-customer', [App\Http\Controllers\CustomerController::class, 'store'])->name('add-customer.store');
+Route::get('/edit-customer/{id}', [App\Http\Controllers\CustomerController::class, 'edit'])->name('edit-customer');
+Route::put('/edit-customer/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('edit-customer.update');
 Route::delete('/customers/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customers.destroy');
 Route::get('/view-customer/{id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('view-customer');
 Route::get('/categories', function () {

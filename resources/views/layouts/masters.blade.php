@@ -13,7 +13,7 @@
 	<meta name="robots" content="index, follow">
 
 	<!-- Apple Touch Icon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/img/favicon.png')}}">
 
 	<!-- Favicon -->
 	<link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
@@ -1070,7 +1070,7 @@
 								<a href="javascript:void(0);" class="dropdown-toggle d-flex align-items-center"
 									data-bs-toggle="dropdown">
 									<span class="avatar avatar-sm online">
-										<img src="assets/img/profiles/avatar-12.jpg" alt="Img" class="img-fluid rounded-circle">
+										<img src="{{asset('assets/img/profiles/avatar-12.jpg')}}" alt="Img" class="img-fluid rounded-circle">
 									</span>
 								</a>
 								<div class="dropdown-menu shadow-none">
@@ -1078,7 +1078,7 @@
 										<div class="card-header">
 											<div class="d-flex align-items-center">
 												<span class="avatar avatar-lg me-2 avatar-rounded">
-													<img src="assets/img/profiles/avatar-12.jpg" alt="img">
+													<img src="{{asset('assets/img/profiles/avatar-12.jpg')}}" alt="img">
 												</span>
 												<div>
 													<h5 class="mb-0">Kevin Larry</h5>
@@ -1237,6 +1237,7 @@
 										<i class="ti ti-message"></i><span>Brands</span>
 									</a>
 								</li>
+							
 							</ul>
 						</li>
 						
