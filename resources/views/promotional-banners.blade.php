@@ -22,10 +22,10 @@
                 </div>
                 <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
                     <div class="me-2 mb-2">
-                        <div class="d-flex align-items-center border bg-white rounded p-1 me-2 icon-list">
-                            <a href="{{ route('promotional-banners') }}" class="btn btn-icon btn-sm active bg-primary text-white me-1"><i class="ti ti-list-tree"></i></a>
-                        </div>
+                    <div class="d-flex align-items-center border bg-white rounded p-1 me-2 icon-list">
+                        <a href="{{ route('promotional-banners') }}" class="btn btn-icon btn-sm active bg-primary text-white me-1"><i class="ti ti-list-tree"></i></a>
                     </div>
+                </div>
                     <div class="me-2 mb-2">
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
@@ -111,66 +111,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Sample rows for demonstration -->
+                                @foreach($promotionalBanners as $index => $banner)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-md">
                                             <input class="form-check-input" type="checkbox">
                                         </div>
                                     </td>
-                                    <td>1</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @if($banner->banner_image)
+                                                <img src="{{ asset('storage/' . $banner->banner_image) }}" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @else
+                                                <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
+                                            @endif
                                         </div>
                                     </td>
-                                    <td>Special Offer</td>
-                                    <td>This is a promotional banner description.</td>
-                                    <td>01/01/2024 10:00</td>
-                                    <td>31/12/2024 23:59</td>
+                                    <td>{{ $banner->title }}</td>
+                                    <td>{{ $banner->description }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($banner->start_date)->format('d/m/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($banner->end_date)->format('d/m/Y') }}</td>
                                     <td>
-                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                            <i class="ti ti-point-filled me-1"></i>Active
-                                        </span>
+                                        @if($banner->status == 'active')
+                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                                <i class="ti ti-point-filled me-1"></i>Active
+                                            </span>
+                                        @else
+                                            <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
+                                                <i class="ti ti-point-filled me-1"></i>Inactive
+                                            </span>
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_banner"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                            <a href="{{ route('edit-promotional-banner', $banner->id) }}" class="me-2"><i class="ti ti-edit"></i></a>
+                                            <form action="{{ route('promotional-banners.destroy', $banner->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-link p-0 text-danger" onclick="return confirm('Are you sure you want to delete this banner?')">
+                                                    <i class="ti ti-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check form-check-md">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Banner Image" style="width: 50px; height: 50px;">
-                                        </div>
-                                    </td>
-                                    <td>Flash Sale</td>
-                                    <td>Another promotional banner description.</td>
-                                    <td>01/02/2024 10:00</td>
-                                    <td>28/02/2024 23:59</td>
-                                    <td>
-                                        <span class="badge badge-danger d-inline-flex align-items-center badge-sm">
-                                            <i class="ti ti-point-filled me-1"></i>Inactive
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_banner"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Add more rows as needed -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
