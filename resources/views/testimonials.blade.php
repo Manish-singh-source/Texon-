@@ -110,81 +110,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Sample rows for demonstration -->
+                                @foreach($testimonials as $index => $testimonial)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-md">
                                             <input class="form-check-input" type="checkbox">
                                         </div>
                                     </td>
-                                    <td>1</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Testimonial Image" style="width: 50px; height: 50px;">
+                                            <img src="{{ $testimonial->testimonial_image ? asset('storage/' . $testimonial->testimonial_image) : 'https://placehold.co/100x100' }}" class="img-fluid rounded-circle" alt="Testimonial Image" style="width: 50px; height: 50px;">
                                         </div>
                                     </td>
-                                    <td>John Doe</td>
-                                    <td>Great service! Highly recommend.</td>
+                                    <td>{{ $testimonial->name }}</td>
+                                    <td>{{ $testimonial->message }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <span class="ms-1">5</span>
+                                            @for($i = 1; $i <= 5; $i++)
+                                                <i class="ti ti-star-filled {{ $i <= $testimonial->rating ? 'text-warning' : 'text-muted' }}"></i>
+                                            @endfor
+                                            {{-- <span class="ms-1">{{ $testimonial->rating }}</span> --}}
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        <span class="badge {{ $testimonial->status == 'active' ? 'badge-success' : 'badge-danger' }} d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>{{ ucfirst($testimonial->status) }}
                                         </span>
                                     </td>
                                     <td>
                                         <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
                                             <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_testimonial"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                            <form action="{{ route('testimonials.destroy', $testimonial->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-link p-0 text-danger" onclick="return confirm('Are you sure you want to delete this testimonial?')">
+                                                    <i class="ti ti-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check form-check-md">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="Testimonial Image" style="width: 50px; height: 50px;">
-                                        </div>
-                                    </td>
-                                    <td>Jane Smith</td>
-                                    <td>Excellent experience overall.</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <i class="ti ti-star-filled text-warning"></i>
-                                            <span class="ms-1">4</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                            <i class="ti ti-point-filled me-1"></i>Active
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2"><i class="ti ti-eye"></i></a>
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_testimonial"><i class="ti ti-edit"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Add more rows as needed -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

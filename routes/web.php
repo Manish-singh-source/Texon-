@@ -51,13 +51,13 @@ Route::delete('/promotional-banners/{id}', [App\Http\Controllers\PromotionalBann
 Route::get('/edit-promotional-banner/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'edit'])->name('edit-promotional-banner');
 Route::put('/edit-promotional-banner/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'update'])->name('edit-promotional-banner.update');
 
-Route::get('/testimonials', function () {
-    return view('testimonials');
-})->name('testimonials');
+Route::get('/testimonials', [App\Http\Controllers\TestimonialController::class, 'index'])->name('testimonials');
 
-Route::get('/add-testimonial', function () {
-    return view('add-testimonial');
-})->name('add-testimonial');
+Route::get('/add-testimonial', [App\Http\Controllers\TestimonialController::class, 'create'])->name('add-testimonial');
+
+Route::post('/add-testimonial', [App\Http\Controllers\TestimonialController::class, 'store'])->name('add-testimonial.store');
+
+Route::delete('/testimonials/{id}', [App\Http\Controllers\TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
 Route::get('/login', function () {
     return view('login');
