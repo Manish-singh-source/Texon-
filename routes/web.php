@@ -87,3 +87,18 @@ Route::get('/brands', function () {
 Route::get('/view-brand', function () {
     return view('view-brands');
 })->name('view-brand');
+Route::get('/presence', function () {
+    return view('presence');
+})->name('presence');
+Route::get('/add-presence', function () {
+    return view('add-presence');
+})->name('add-presence');
+Route::resource('blogs', App\Http\Controllers\BlogController::class);
+
+Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+Route::get('/add-blog', [App\Http\Controllers\BlogController::class, 'create'])->name('add-blog');
+Route::post('/add-blog', [App\Http\Controllers\BlogController::class, 'store'])->name('add-blog.store');
+Route::get('/view-blog/{id}', [App\Http\Controllers\BlogController::class, 'show'])->name('view-blog');
+Route::get('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'edit'])->name('edit-blog');
+Route::put('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('edit-blog.update');
+Route::delete('/blogs/{id}', [App\Http\Controllers\BlogController::class, 'destroy'])->name('blogs.destroy');

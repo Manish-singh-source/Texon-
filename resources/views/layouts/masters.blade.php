@@ -1238,8 +1238,13 @@
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="{{route('presence')}}">
 										<i class="ti ti-message"></i><span>Presence</span>
+									</a>
+								</li>
+								<li>
+									<a href="{{route('blog')}}">
+										<i class="ti ti-message"></i><span>Blogs</span>
 									</a>
 								</li>
 							</ul>
