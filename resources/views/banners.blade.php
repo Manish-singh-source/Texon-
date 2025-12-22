@@ -42,7 +42,6 @@
                 </div>
             </div>
             <!-- /Breadcrumb -->
-
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
                     <h5>Banner List</h5>

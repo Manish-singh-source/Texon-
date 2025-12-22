@@ -40,13 +40,16 @@ Route::delete('/banners/{id}', [App\Http\Controllers\BannerController::class, 'd
 Route::get('/edit-banner/{id}', [App\Http\Controllers\BannerController::class, 'edit'])->name('edit-banner');
 Route::put('/edit-banner/{id}', [App\Http\Controllers\BannerController::class, 'update'])->name('edit-banner.update');
 
-Route::get('/promotional-banners', function () {
-    return view('promotional-banners');
-})->name('promotional-banners');
+Route::get('/promotional-banners', [App\Http\Controllers\PromotionalBannerController::class, 'index'])->name('promotional-banners');
 
-Route::get('/add-promotional-banner', function () {
-    return view('add-promotional-banner');
-})->name('add-promotional-banner');
+Route::get('/add-promotional-banner', [App\Http\Controllers\PromotionalBannerController::class, 'create'])->name('add-promotional-banner');
+
+Route::post('/add-promotional-banner', [App\Http\Controllers\PromotionalBannerController::class, 'store'])->name('add-promotional-banner.store');
+
+Route::delete('/promotional-banners/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'destroy'])->name('promotional-banners.destroy');
+
+Route::get('/edit-promotional-banner/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'edit'])->name('edit-promotional-banner');
+Route::put('/edit-promotional-banner/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'update'])->name('edit-promotional-banner.update');
 
 Route::get('/testimonials', function () {
     return view('testimonials');
