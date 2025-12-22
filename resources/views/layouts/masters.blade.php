@@ -1237,7 +1237,11 @@
 										<i class="ti ti-message"></i><span>Brands</span>
 									</a>
 								</li>
-							
+								<li>
+									<a href="#">
+										<i class="ti ti-message"></i><span>Presence</span>
+									</a>
+								</li>
 							</ul>
 						</li>
 						
