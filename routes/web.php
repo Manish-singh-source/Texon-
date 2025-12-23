@@ -7,17 +7,13 @@ Route::get('/', function () {
     
 })->name('index'); 
 
-Route::get('/products', function () {
-    return view('products');
-})->name('products');
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
-Route::get('/add-new-product', function () {
-    return view('add-new-product');
-})->name('add-new-product');
+Route::get('/add-new-product', [App\Http\Controllers\ProductController::class, 'create'])->name('add-new-product');
 
-Route::get('/view-product', function () {
-    return view('view-product');
-})->name('view-product');
+Route::post('/add-new-product', [App\Http\Controllers\ProductController::class, 'store'])->name('add-new-product.store');
+
+Route::get('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('view-product');
 
 Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
