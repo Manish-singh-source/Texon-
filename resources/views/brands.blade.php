@@ -55,266 +55,66 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($brands as $index => $brand)
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-md">
                                                 <input class="form-check-input" type="checkbox">
                                             </div>
                                         </td>
-                                        <td><a href="#">
-                                                1</a></td>
+                                        <td><a href="#">{{ $index + 1 }}</a></td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="#"
                                                     class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
+                                                    data-bs-target="#view_details">
+                                                    @if($brand->image)
+                                                        <img src="{{ asset('storage/' . $brand->image) }}"
+                                                             class="img-fluid rounded-circle" alt="img">
+                                                    @else
+                                                        <img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
+                                                             class="img-fluid rounded-circle" alt="img">
+                                                    @endif
+                                                </a>
                                             </div>
                                         </td>
-                                        <td>Nike</td>
-                                                                  <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
+                                        <td>{{ $brand->name }}</td>
+                                        <td>
+                                            @if($brand->status == 'active')
+                                                <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                                    <i class="ti ti-point-filled me-1"></i>Active
+                                                </span>
+                                            @else
+                                                <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+                                                    <i class="ti ti-point-filled me-1"></i>Inactive
+                                                </span>
+                                            @endif
                                         </td>
                                         <td>
-
                                             <div class="action-icon d-inline-flex">
 
-                                                <!-- View Brand Details (Page Navigation) -->
-                                                <a href="{{ route('view-brand') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
+                                                <!-- Edit -->
+                                                <a href="{{ route('edit-brand', $brand->id) }}" class="me-2">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
+                                                <!-- Delete -->
+                                                <form action="{{ route('brands.destroy', $brand->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this brand?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link p-0" style="color: inherit;">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="#">2</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-09.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Adidas</td>
-                                                                      <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Brand Details (Page Navigation) -->
-                                                <a href="{{ route('view-brand') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="#">3</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-01.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Puma</td>
-                                                                  <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Brand Details (Page Navigation) -->
-                                                <a href="{{ route('view-brand') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="#">4</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-33.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Reebok</td>
-                                                                      <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Brand Details (Page Navigation) -->
-                                                <a href="{{ route('view-brand') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="#">5</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-33.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Under Armour</td>
-                                       
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Brand Details (Page Navigation) -->
-                                                <a href="{{ route('view-brand') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <!-- /Add Brand -->
-
-                    <!-- Delete Modal -->
-                    <div class="modal fade" id="delete_modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body text-center">
-                                    <span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
-                                        <i class="ti ti-trash-x fs-36"></i>
-                                    </span>
-                                    <h4 class="mb-1">Confirm Delete</h4>
-                                    <p class="mb-3">You want to delete all the marked items, this cant be undone once
-                                        you delete.</p>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="javascript:void(0);" class="btn btn-light me-3"
-                                            data-bs-dismiss="modal">Cancel</a>
-                                        <a href="https://smarthr.co.in/demo/html/template/brands.html"
-                                            class="btn btn-danger">Yes,
-                                            Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Delete Modal -->
 
 
                 </div>

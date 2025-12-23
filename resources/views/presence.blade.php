@@ -16,7 +16,7 @@
 								<li class="breadcrumb-item">
 									HR
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Brands</li>
+								<li class="breadcrumb-item active" aria-current="page">Presence</li>
 							</ol>
 						</nav>-->
                     </div>
@@ -34,7 +34,7 @@
                 </div>
                 <!-- /Breadcrumb -->
 
-                <!-- Brands Table -->
+                <!-- Presence Table -->
                 <div class="card">
                     <div class="card-body p-0">
                         <div class="custom-datatable-filter table-responsive">
@@ -55,79 +55,66 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($presences as $index => $presence)
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-md">
                                                 <input class="form-check-input" type="checkbox">
                                             </div>
                                         </td>
-                                        <td><a href="#">
-                                                1</a></td>
+                                        <td><a href="#">{{ $index + 1 }}</a></td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="#"
                                                     class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
+                                                    data-bs-target="#view_details">
+                                                    @if($presence->image)
+                                                        <img src="{{ asset('storage/' . $presence->image) }}"
+                                                             class="img-fluid rounded-circle" alt="img">
+                                                    @else
+                                                        <img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
+                                                             class="img-fluid rounded-circle" alt="img">
+                                                    @endif
+                                                </a>
                                             </div>
                                         </td>
-                                        <td>Nike</td>
-                                                                  <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
+                                        <td>{{ $presence->name }}</td>
+                                        <td>
+                                            @if($presence->status == 'active')
+                                                <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                                    <i class="ti ti-point-filled me-1"></i>Active
+                                                </span>
+                                            @else
+                                                <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+                                                    <i class="ti ti-point-filled me-1"></i>Inactive
+                                                </span>
+                                            @endif
                                         </td>
                                         <td>
-
                                             <div class="action-icon d-inline-flex">
 
-                                              
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-brand.html" class="me-2">
+                                                <!-- Edit -->
+                                                <a href="{{ route('edit-presence', $presence->id) }}" class="me-2">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
+                                                <!-- Delete -->
+                                                <form action="{{ route('presence.destroy', $presence->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this presence?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link p-0" style="color: inherit;">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
-                                   
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- /Add Brand -->
-
-                    <!-- Delete Modal -->
-                    <div class="modal fade" id="delete_modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body text-center">
-                                    <span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
-                                        <i class="ti ti-trash-x fs-36"></i>
-                                    </span>
-                                    <h4 class="mb-1">Confirm Delete</h4>
-                                    <p class="mb-3">You want to delete all the marked items, this cant be undone once
-                                        you delete.</p>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="javascript:void(0);" class="btn btn-light me-3"
-                                            data-bs-dismiss="modal">Cancel</a>
-                                        <a href="https://smarthr.co.in/demo/html/template/brands.html"
-                                            class="btn btn-danger">Yes,
-                                            Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Delete Modal -->
+                    <!-- /Add Presence -->
 
 
                 </div>

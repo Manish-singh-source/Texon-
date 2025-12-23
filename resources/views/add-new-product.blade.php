@@ -50,12 +50,6 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">SKU <span class="text-danger"> *</span></label>
-                                                    <input type="text" class="form-control" name="sku">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
                                                     <label class="form-label">Product Video</label>
                                                     <input type="file" class="form-control" name="product_video" accept="video/*">
                                                     <small class="text-muted">Upload product video (optional)</small>
@@ -111,18 +105,22 @@
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active btn btn-outline-primary w-100 mb-2 text-start" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true" style="border: 1px solid #007bff;">Banner</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false" style="border: 1px solid #007bff;">Product Features</button>
+                                     <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="false" style="border: 1px solid #007bff;">About Product</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false" style="border: 1px solid #007bff;">Product Gallery</button>
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab6-tab" data-bs-toggle="tab" data-bs-target="#tab6" type="button" role="tab" aria-controls="tab6" aria-selected="false" style="border: 1px solid #007bff;">Product Key Points</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false" style="border: 1px solid #007bff;">promotional Banners and Images</button>
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false" style="border: 1px solid #007bff;">Product Gallery</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="false" style="border: 1px solid #007bff;">Image Content</button>
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false" style="border: 1px solid #007bff;">Banner Video</button>
                                     </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false" style="border: 1px solid #007bff;">Product Features</button>
+                                    </li>
+                                   
                                 </ul>
                             </div>
                             <div class="col-md-9">
@@ -180,47 +178,14 @@
                                         </form>
                                        
                                     </div>
-                                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                                         <div class="card mt-3">
-                                             <div class="card-header" style="border-bottom: 1px solid #dee2e6;">
-                                                 <h5>Page Heading</h5>
-                                             </div>
-                                             <div class="card-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Heading</label>
-                                                                <input type="text" class="form-control" name="card_heading">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Subheading</label>
-                                                                <input type="text" class="form-control" name="card_subheading">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-end">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="card clone">
-                                        <div class="card-body d-flex  justify-content-between align-items-center mb-3">
-                                            <h5>Card Box</h5>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="toggle2">
-                                                <label class="form-check-label" for="toggle2"></label>
-                                            </div>
-                                        </div>
-                                        <form class="card-body">
+                                    <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+                                        <form>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Icon Image Upload</label>
-                                                        <input type="file" class="form-control" name="icon_image" accept="image/*">
+                                                        <label class="form-label">Image Upload</label>
+                                                        <input type="file" class="form-control" name="images[]" multiple accept="image/*">
+                                                        <small class="text-muted">Upload multiple images</small>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -229,10 +194,16 @@
                                                         <input type="text" class="form-control" name="heading">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Subheading</label>
+                                                        <input type="text" class="form-control" name="subheading">
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Paragraph</label>
-                                                        <textarea class="form-control" name="paragraph" rows="3"></textarea>
+                                                        <label class="form-label">Description</label>
+                                                        <textarea class="form-control" name="description" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,21 +211,145 @@
                                                 <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                         </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab6-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>Card 1</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Image Upload</label>
+                                                                <input type="file" class="form-control" name="image" accept="image/*">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Title</label>
+                                                                <input type="text" class="form-control" name="title">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Button</label>
+                                                                <input type="text" class="form-control" name="button">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">URL</label>
+                                                                <input type="url" class="form-control" name="url">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="card mt-3">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <h5>Card 2</h5>
+                                                <button type="button" class="btn btn-primary btn-sm" id="add-card2"><i class="ti ti-plus"></i> Add List</button>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Heading</label>
+                                                                <input type="text" class="form-control" name="heading">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Description</label>
+                                                                <textarea class="form-control" name="description2" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
+                                   <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                       <div class="card mt-3">
+                                           <div class="card-header">
+                                               <h5>Content</h5>
+                                           </div>
+                                           <div class="card-body">
+                                               <form>
+                                                   <div class="row">
+                                                       <div class="col-md-12">
+                                                           <div class="mb-3">
+                                                               <label class="form-label">Heading</label>
+                                                               <input type="text" class="form-control" name="heading_tab2">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-12">
+                                                           <div class="mb-3">
+                                                               <label class="form-label">Subheading</label>
+                                                               <input type="text" class="form-control" name="subheading_tab2">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-12">
+                                                           <div class="mb-3">
+                                                               <label class="form-label">Description</label>
+                                                               <textarea class="form-control" name="description_tab2" rows="3"></textarea>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="text-end">
+                                                       <button type="submit" class="btn btn-primary">Save</button>
+                                                   </div>
+                                               </form>
+                                           </div>
+                                       </div>
+                                       <div class="card mt-3">
+                                           <div class="card-header">
+                                               <h5>Images</h5>
+                                           </div>
+                                           <div class="card-body">
+                                               <form>
+                                                   <div class="mb-3">
+                                                       <label class="form-label">Upload Images</label>
+                                                       <input type="file" class="form-control" name="images_tab2[]" multiple accept="image/*">
+                                                   </div>
+                                                   <div id="image-previews-tab2" class="row"></div>
+                                                   <div class="text-end">
+                                                       <button type="submit" class="btn btn-primary">Save</button>
+                                                   </div>
+                                               </form>
+                                           </div>
+                                       </div>
+                                   </div>
                                     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
                                         <form>
                                             <div class="row">
+                                               
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Stock Quantity</label>
-                                                        <input type="number" class="form-control" name="stock">
+                                                        <label class="form-label">Banner Image</label>
+                                                        <input type="file" class="form-control" name="banner_image" accept="image/*">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Supplier</label>
-                                                        <input type="text" class="form-control" name="supplier">
+                                                        <label class="form-label">Banner Video URL</label>
+                                                        <input type="url" class="form-control" name="banner_video_url">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Banner Title</label>
+                                                        <input type="text" class="form-control" name="banner_title">
                                                     </div>
                                                 </div>
                                             </div>
@@ -263,6 +358,67 @@
                                             </div>
                                         </form>
                                     </div>
+                                     <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+                                         <div class="card">
+                                             <div class="card-header">
+                                                 <h5>Card 1</h5>
+                                             </div>
+                                             <div class="card-body">
+                                                 <form>
+                                                     <div class="row">
+                                                         <div class="col-md-6">
+                                                             <div class="mb-3">
+                                                                 <label class="form-label">Page Heading</label>
+                                                                 <input type="text" class="form-control" name="page_heading">
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-6">
+                                                             <div class="mb-3">
+                                                                 <label class="form-label">Sub Heading</label>
+                                                                 <input type="text" class="form-control" name="sub_heading">
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                     <div class="text-end">
+                                                         <button type="submit" class="btn btn-primary">Save</button>
+                                                     </div>
+                                                 </form>
+                                             </div>
+                                         </div>
+                                         <div class="card mt-3">
+                                             <div class="card-header d-flex justify-content-between align-items-center">
+                                                 <h5>Card 2</h5>
+                                                 <button type="button" class="btn btn-primary btn-sm" id="add-card2-tab4"><i class="ti ti-plus"></i> Add List</button>
+                                             </div>
+                                             <div class="card-body">
+                                                 <form>
+                                                     <div class="row">
+                                                         <div class="col-md-6">
+                                                             <div class="mb-3">
+                                                                 <label class="form-label">Title</label>
+                                                                 <input type="text" class="form-control" name="title">
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-6">
+                                                             <div class="mb-3">
+                                                                 <label class="form-label">Icon Image</label>
+                                                                 <input type="file" class="form-control" name="icon_image" accept="image/*">
+                                                             </div>
+                                                         </div>
+                                                         <div class="col-md-12">
+                                                             <div class="mb-3">
+                                                                 <label class="form-label">Description</label>
+                                                                 <textarea class="form-control" name="description_tab4" rows="3"></textarea>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                     <div class="text-end">
+                                                         <button type="submit" class="btn btn-primary">Save</button>
+                                                     </div>
+                                                 </form>
+                                             </div>
+                                         </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -280,5 +436,164 @@
 
 </div>
 <!-- /Page Wrapper -->
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+<script>
+ClassicEditor
+    .create( document.querySelector( 'textarea[name=description]' ), {
+        toolbar: [ 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
 
+ClassicEditor
+    .create( document.querySelector( 'textarea[name=description2]' ), {
+        toolbar: [ 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
+let card2Count = 2;
+
+document.getElementById('add-card2').addEventListener('click', function() {
+    const card = this.closest('.card');
+    const newCardHTML = `
+        <div class="card mt-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>Card 2</h5>
+                <button type="button" class="btn btn-danger btn-sm delete-card2"><i class="ti ti-trash"></i></button>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Heading</label>
+                                <input type="text" class="form-control" name="heading">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" name="description${card2Count}" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+    const newCard = document.createRange().createContextualFragment(newCardHTML);
+    card.parentNode.insertBefore(newCard, card.nextSibling);
+    const newTextarea = card.parentNode.lastElementChild.querySelector('textarea');
+    const deleteBtn = card.parentNode.lastElementChild.querySelector('.delete-card2');
+    deleteBtn.addEventListener('click', function() {
+        this.closest('.card').remove();
+    });
+    ClassicEditor
+        .create( newTextarea, {
+            toolbar: [ 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+    card2Count++;
+});
+
+let card2Tab4Count = 2;
+
+document.getElementById('add-card2-tab4').addEventListener('click', function() {
+    const card = this.closest('.card');
+    const newCardHTML = `
+        <div class="card mt-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>Card 2</h5>
+                <button type="button" class="btn btn-danger btn-sm delete-card2-tab4"><i class="ti ti-trash"></i></button>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control" name="title">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Icon Image</label>
+                                <input type="file" class="form-control" name="icon_image" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" name="description_tab4_${card2Tab4Count}" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+    const newCard = document.createRange().createContextualFragment(newCardHTML);
+    card.parentNode.insertBefore(newCard, card.nextSibling);
+    const deleteBtn = card.parentNode.lastElementChild.querySelector('.delete-card2-tab4');
+    deleteBtn.addEventListener('click', function() {
+        this.closest('.card').remove();
+    });
+    card2Tab4Count++;
+});
+
+ClassicEditor
+    .create( document.querySelector( 'textarea[name=description_tab2]' ), {
+        toolbar: [ 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
+document.querySelector('input[name="images_tab2[]"]').addEventListener('change', function(e) {
+    const previews = document.getElementById('image-previews-tab2');
+    previews.innerHTML = '';
+    Array.from(e.target.files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const div = document.createElement('div');
+            div.className = 'col-md-3 mb-3 position-relative';
+            div.innerHTML = `
+                <img src="${e.target.result}" class="img-thumbnail" style="width:100%; height:200px; object-fit:contain;">
+                <button type="button" class="btn btn-sm btn-secondary position-absolute top-0 end-0" onclick="moveUp(this)">↑</button>
+                <button type="button" class="btn btn-sm btn-secondary position-absolute bottom-0 end-0" onclick="moveDown(this)">↓</button>
+            `;
+            previews.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+function moveUp(btn) {
+    const item = btn.parentElement;
+    const prev = item.previousElementSibling;
+    if (prev) {
+        item.parentElement.insertBefore(item, prev);
+    }
+}
+
+function moveDown(btn) {
+    const item = btn.parentElement;
+    const next = item.nextElementSibling;
+    if (next) {
+        item.parentElement.insertBefore(next, item);
+    }
+}
+</script>
 @endsection
+

@@ -25,10 +25,7 @@
                             <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal"
                                 data-bs-target="#add_category">Create Categories</a>
                         </div>
-                        <div class="mb-3">
-                            <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal"
-                                data-bs-target="#sub_categories">Add Sub Categories</a>
-                        </div>
+                       
                         <div class="ms-2 head-icons">
                             <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-original-title="Collapse" id="collapse-header">
@@ -76,299 +73,48 @@
                                         <th>Sr. No.</th>
                                         <th>Category Iamge</th>
                                         <th>Category Name</th>
-                                        <th>Sub Category</th>
+                                        <th>Product</th>
                                         <th>Status</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($categories as $index => $category)
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-md">
                                                 <input class="form-check-input" type="checkbox">
                                             </div>
                                         </td>
-                                        <td>1</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
+                                                <a href="#" class="avatar avatar-md">
+                                                    <img src="{{ $category->image ? asset('storage/' . $category->image) : 'https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg' }}" class="img-fluid rounded-circle" alt="img">
+                                                </a>
                                             </div>
                                         </td>
-                                        <td>Brian Villalobos</td>
-                                        <td>Multi Axis</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>0</td>
                                         <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
+                                            <span class="badge badge-{{ $category->status == 'active' ? 'success' : 'danger' }} d-inline-flex align-items-center badge-xs">
+                                                <i class="ti ti-point-filled me-1"></i>{{ ucfirst($category->status) }}
                                             </span>
                                         </td>
                                         <td>
-
                                             <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
+                                                <a href="#" class="me-2">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-
-                                                <!-- Delete (Modal) -->
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
                                                     <i class="ti ti-trash"></i>
                                                 </a>
-
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">2</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-09.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Brian Villalobos</td>
-                                        <td>Multi Axis</td>
-                                        
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">3</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-01.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Harvey Smith</td>
-                                        <td>Multi Axis</td>
-                                        
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">4</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-33.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Stephan Peralt</td>
-                                        <td>Multi Axis</td>
-                                        
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">5</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-33.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Doglas Martini</td>
-                                        <td>Multi Axis</td>
-                                        
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
-                                        <td><a
-                                                href="https://smarthr.co.in/demo/html/template/employee-details.html">6</a>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <a href="https://smarthr.co.in/demo/html/template/employee-details.html"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details"><img
-                                                        src="https://smarthr.co.in/demo/html/template/assets/img/users/user-02.jpg"
-                                                        class="img-fluid rounded-circle" alt="img"></a>
-                                            </div>
-                                        </td>
-                                        <td>Linda Ray</td>
-                                        <td>Multi Axis</td>
-                                      
-                                        <td>
-                                            <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                <i class="ti ti-point-filled me-1"></i>Active
-                                            </span>
-                                        </td>
-                                        <td>
-
-                                            <div class="action-icon d-inline-flex">
-
-                                                <!-- View Customer Details (Page Navigation) -->
-                                                <a href="{{ route('view-category') }}" class="me-2">
-                                                    <i class="ti ti-eye"></i>
-                                                </a>
-
-                                                <!-- Edit (Modal) -->
-                                                <a href="edit-customer.html" class="me-2">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-
-                                                <!-- Delete (Modal) -->
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
-
-                                            </div>
-                                        </td>
-                                  
-                                   
+                                    @endforeach
+                                </tbody>
                         </div>
                     </div>
 
@@ -385,34 +131,35 @@
                                         <i class="ti ti-x"></i>
                                     </button>
                                 </div>
-                                <form action="">
+                                <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="modal-body pb-0">
                                         <div class="row">
                                             <!-- Row 1 -->
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Category Name</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="name"
                                                         placeholder="Enter Category Name">
                                                 </div>
                                             </div>
 
-                                            
+
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Category Image</label>
-                                                    <input type="file" class="form-control" name="category_image"
+                                                    <input type="file" class="form-control" name="image"
                                                         accept="image/*">
                                                 </div>
                                             </div>
 
 
                                             <!-- Row 2 -->
-                                           
+
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">General Status</label>
-                                                    <select class="form-select" name="general_status">
+                                                    <select class="form-select" name="status">
                                                         <option value="active">Active</option>
                                                         <option value="inactive">Inactive</option>
                                                     </select>

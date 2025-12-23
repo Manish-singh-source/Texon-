@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Total Enquiries</p>
-                                    <h4>150</h4>
+                                    <h4>{{ $totalEnquiries }}</h4>
                                 </div>
                             </div>
                             <div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Pending</p>
-                                    <h4>120</h4>
+                                    <h4>{{ $pending }}</h4>
                                 </div>
                             </div>
                             <div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Responded</p>
-                                    <h4>20</h4>
+                                    <h4>{{ $responded }}</h4>
                                 </div>
                             </div>
                             <div>
@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Closed</p>
-                                    <h4>10</h4>
+                                    <h4>{{ $closed }}</h4>
                                 </div>
                             </div>
                             <div>
@@ -205,80 +205,37 @@
                                     <th>User Phone</th>
                                     <th>Message</th>
                                     <th>Status</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($enquiries as $enquiry)
                                 <tr>
                                      <td>
                                          <div class="form-check form-check-md">
                                              <input class="form-check-input" type="checkbox">
                                          </div>
                                      </td>
-                                     <td><a href="/view-enquiry">ENQ-001</a></td>
-                                     <td>Prod-001</td>
-                                     <td>John Doe</td>
-                                     <td>john@example.com</td>
-                                     <td>+1234567890</td>
-                                     <td>Interested in this product...</td>
+                                     <td><a href="/view-enquiry">{{ $enquiry->enquiry_id }}</a></td>
+                                     <td>{{ $enquiry->product_id }}</td>
+                                     <td>{{ $enquiry->user_name }}</td>
+                                     <td>{{ $enquiry->user_email }}</td>
+                                     <td>{{ $enquiry->user_phone }}</td>
+                                     <td>{{ $enquiry->message }}</td>
                                      <td>
+                                         @if($enquiry->status == 'pending')
                                          <span class="badge badge-warning d-inline-flex align-items-center badge-xs">
                                              <i class="ti ti-point-filled me-1"></i>Pending
                                          </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-enquiry" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a href="/view-enquiry">ENQ-002</a></td>
-                                     <td>Prod-002</td>
-                                     <td>Jane Smith</td>
-                                     <td>jane@example.com</td>
-                                     <td>+1234567891</td>
-                                     <td>Can you provide more details?</td>
-                                     <td>
+                                         @elseif($enquiry->status == 'responded')
                                          <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                              <i class="ti ti-point-filled me-1"></i>Responded
                                          </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-enquiry" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a href="/view-enquiry">ENQ-003</a></td>
-                                     <td>Prod-003</td>
-                                     <td>Bob Johnson</td>
-                                     <td>bob@example.com</td>
-                                     <td>+1234567892</td>
-                                     <td>Is this available in stock?</td>
-                                     <td>
+                                         @elseif($enquiry->status == 'closed')
                                          <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
                                              <i class="ti ti-point-filled me-1"></i>Closed
                                          </span>
+                                         @endif
                                      </td>
                                      <td>
                                          <div class="action-icon d-inline-flex">
@@ -290,60 +247,7 @@
                                          </div>
                                      </td>
                                  </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a href="/view-enquiry">ENQ-004</a></td>
-                                     <td>Prod-004</td>
-                                     <td>Alice Brown</td>
-                                     <td>alice@example.com</td>
-                                     <td>+1234567893</td>
-                                     <td>Looking for bulk pricing.</td>
-                                     <td>
-                                         <span class="badge badge-warning d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Pending
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-enquiry" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
-                                     <td><a href="/view-enquiry">ENQ-005</a></td>
-                                     <td>Prod-005</td>
-                                     <td>Charlie Wilson</td>
-                                     <td>charlie@example.com</td>
-                                     <td>+1234567894</td>
-                                     <td>Need specifications.</td>
-                                     <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Responded
-                                         </span>
-                                     </td>
-                                     <td>
-                                         <div class="action-icon d-inline-flex">
-                                             <a href="/view-enquiry" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
-                                         </div>
-                                     </td>
-                                 </tr>
+                                 @endforeach
                              </tbody>
                         </table>
                     </div>
