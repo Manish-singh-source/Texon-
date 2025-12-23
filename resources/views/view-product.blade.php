@@ -28,44 +28,54 @@
                         <h5 class="card-title">Product Information</h5>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('view-product.update', $product->id) }}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="bg-light w-100 rounded p-3 mb-4">
                                         <h6 class="mb-3">Product Media</h6>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Product Thumbnail</label>
+                                                    <input type="file" class="form-control" name="product_thumbnail" accept="image/*">
                                                     @if($product->product_thumbnail)
-                                                        <img src="{{ asset('storage/' . $product->product_thumbnail) }}" class="img-fluid" style="max-width: 100px;">
-                                                    @else
-                                                        <p>No thumbnail uploaded</p>
+                                                        <div class="mt-2">
+                                                            <img src="{{ asset('storage/' . $product->product_thumbnail) }}" class="img-fluid" style="max-width: 100px;">
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Image Gallery</label>
+                                                    <input type="file" class="form-control" name="image_gallery[]" multiple accept="image/*">
                                                     @if($product->image_gallery)
                                                         @php $gallery = json_decode($product->image_gallery, true); @endphp
                                                         @if(is_array($gallery))
-                                                            @foreach($gallery as $image)
-                                                                <img src="{{ asset('storage/' . $image) }}" class="img-fluid me-2 mb-2" style="max-width: 100px;">
-                                                            @endforeach
+                                                            <div class="mt-2 row">
+                                                                @foreach($gallery as $image)
+                                                                    <div class="col-3 mb-2">
+                                                                        <img src="{{ asset('storage/' . $image) }}" class="img-fluid" style="max-width: 100px;">
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
                                                         @endif
-                                                    @else
-                                                        <p>No gallery images</p>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Product Video</label>
+                                                    <input type="file" class="form-control" name="product_video" accept="video/*">
                                                     @if($product->product_video)
-                                                        <a href="{{ asset('storage/' . $product->product_video) }}" target="_blank">View Video</a>
-                                                    @else
-                                                        <p>No video uploaded</p>
+                                                        <div class="mt-2">
+                                                            <video width="150" controls>
+                                                                <source src="{{ asset('storage/' . $product->product_video) }}" type="video/mp4">
+                                                                Your browser does not support the video tag.
+                                                            </video>
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -76,19 +86,19 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Product Name <span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" name="product_name" value="{{ $product->product_name }}" readonly>
+                                        <input type="text" class="form-control" name="product_name" value="{{ $product->product_name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Tags / Keywords</label>
-                                        <input type="text" class="form-control" name="tags" placeholder="Comma separated" value="{{ $product->tags }}" readonly>
+                                        <input type="text" class="form-control" name="tags" placeholder="Comma separated" value="{{ $product->tags }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
-                                        <select class="form-select" name="category" disabled>
+                                        <select class="form-select" name="category">
                                             <option>Select</option>
                                             @foreach($categories as $category)
                                             <option value="{{ $category->name }}" {{ $product->category == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -100,7 +110,8 @@
 
                             </div>
                             <div class="text-end">
-                                <a href="{{ route('products') }}" class="btn btn-outline-light border me-2">Back</a>
+                                <button type="submit" class="btn btn-primary me-2">Save</button>
+                                <a href="{{ route('products') }}" class="btn btn-outline-light border">Back</a>
                             </div>
                         </form>
                     </div>
@@ -146,42 +157,56 @@
                                                 <label class="form-check-label" for="toggle1"></label>
                                             </div>
                                         </div>
-                                        <form>
+                                        <form method="POST" action="{{ route('view-product.store-banner', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Video Upload</label>
                                                         <input type="file" class="form-control" name="video_upload" accept="video/*">
+                                                        @if(isset($productBanner) && $productBanner->video_upload)
+                                                            <div class="mt-2">
+                                                                <video width="200" controls>
+                                                                    <source src="{{ asset('storage/' . $productBanner->video_upload) }}" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Banner Image Upload</label>
                                                         <input type="file" class="form-control" name="banner_image" accept="image/*">
+                                                        @if(isset($productBanner) && $productBanner->banner_image)
+                                                            <div class="mt-2">
+                                                                <img src="{{ asset('storage/' . $productBanner->banner_image) }}" class="img-fluid" style="max-width: 200px;">
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Heading</label>
-                                                        <input type="text" class="form-control" name="heading">
+                                                        <input type="text" class="form-control" name="heading" value="{{ $productBanner->heading ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Subheading</label>
-                                                        <input type="text" class="form-control" name="subheading">
+                                                        <input type="text" class="form-control" name="subheading" value="{{ $productBanner->subheading ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Button Name</label>
-                                                        <input type="text" class="form-control" name="button_name">
+                                                        <input type="text" class="form-control" name="button_name" value="{{ $productBanner->button_name ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Button URL</label>
-                                                        <input type="url" class="form-control" name="button_url">
+                                                        <input type="url" class="form-control" name="button_url" value="{{ $productBanner->button_url ?? '' }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,31 +217,41 @@
                                        
                                     </div>
                                     <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
-                                        <form>
+                                        <form method="POST" action="{{ route('view-product.store-about', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Image Upload</label>
                                                         <input type="file" class="form-control" name="images[]" multiple accept="image/*">
                                                         <small class="text-muted">Upload multiple images</small>
+                                                        @if(isset($aboutProduct) && $aboutProduct->images)
+                                                            <div class="mt-2 row">
+                                                                @foreach(json_decode($aboutProduct->images, true) as $image)
+                                                                    <div class="col-md-3 mb-2">
+                                                                        <img src="{{ asset('storage/' . $image) }}" class="img-fluid" style="max-width: 100px;">
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Heading</label>
-                                                        <input type="text" class="form-control" name="heading">
+                                                        <input type="text" class="form-control" name="heading" value="{{ $aboutProduct->heading ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Subheading</label>
-                                                        <input type="text" class="form-control" name="subheading">
+                                                        <input type="text" class="form-control" name="subheading" value="{{ $aboutProduct->subheading ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Description</label>
-                                                        <textarea class="form-control" name="description" rows="3"></textarea>
+                                                        <textarea class="form-control" name="description" rows="3">{{ $aboutProduct->description ?? '' }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

@@ -15,6 +15,12 @@ Route::post('/add-new-product', [App\Http\Controllers\ProductController::class, 
 
 Route::get('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('view-product');
 
+Route::put('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('view-product.update');
+
+Route::post('/view-product/{productId}/store-banner', [App\Http\Controllers\ProductController::class, 'storeProductBanner'])->name('view-product.store-banner');
+
+Route::post('/view-product/{productId}/store-about', [App\Http\Controllers\ProductController::class, 'storeAboutProduct'])->name('view-product.store-about');
+
 Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
 Route::get('/view-enquiry', function () {

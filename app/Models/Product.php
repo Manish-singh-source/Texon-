@@ -14,4 +14,14 @@ class Product extends Model
         'image_gallery',
         'product_video',
     ];
+
+    public function productBanners()
+    {
+        return $this->hasMany(ProductBanner::class);
+    }
+
+    public function aboutProducts()
+    {
+        return $this->hasMany(AboutProduct::class);
+    }
 }
