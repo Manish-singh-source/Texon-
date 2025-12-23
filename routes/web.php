@@ -21,6 +21,8 @@ Route::post('/view-product/{productId}/store-banner', [App\Http\Controllers\Prod
 
 Route::post('/view-product/{productId}/store-about', [App\Http\Controllers\ProductController::class, 'storeAboutProduct'])->name('view-product.store-about');
 
+Route::post('/view-product/{productId}/store-keypoints', [App\Http\Controllers\ProductController::class, 'storeProductKeyPoints'])->name('view-product.store-keypoints');
+
 Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
 Route::get('/view-enquiry', function () {

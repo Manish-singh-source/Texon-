@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->hasMany(AboutProduct::class);
     }
+
+    public function productKeyPoints()
+    {
+        return $this->hasMany(ProductKeyPoint::class);
+    }
 }

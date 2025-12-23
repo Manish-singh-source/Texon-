@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductBanner;
 use App\Models\AboutProduct;
+use App\Models\ProductKeyPoint;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -28,7 +29,8 @@ class ProductController extends Controller
         $categories = Category::all();
         $productBanner = $product->productBanners()->latest()->first(); // Get the latest banner
         $aboutProduct = $product->aboutProducts()->latest()->first(); // Get the latest about product
-        return view('view-product', compact('product', 'categories', 'productBanner', 'aboutProduct'));
+        $keyPoints = $product->productKeyPoints; // Get all key points
+        return view('view-product', compact('product', 'categories', 'productBanner', 'aboutProduct', 'keyPoints'));
     }
 
     public function store(Request $request)
@@ -127,6 +129,57 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with('success', 'About product saved successfully!');
+    }
+
+    public function storeProductKeyPoints(Request $request, $productId)
+    {
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'title' => 'nullable|string|max:255',
+            'button' => 'nullable|string|max:255',
+            'url' => 'nullable|url',
+            'heading' => 'nullable|array',
+            'heading.*' => 'nullable|string|max:255',
+            'description' => 'nullable|array',
+            'description.*' => 'nullable|string',
+        ]);
+
+        // Delete existing key points for this product
+        ProductKeyPoint::where('product_id', $productId)->delete();
+
+        // Handle card1
+        $card1Data = [
+            'product_id' => $productId,
+            'type' => 'card1',
+            'title' => $request->title,
+            'button' => $request->button,
+            'url' => $request->url,
+        ];
+
+        if ($request->hasFile('image')) {
+            $card1Data['image'] = $request->file('image')->store('products/keypoints/images', 'public');
+        }
+
+        if ($request->title || $request->button || $request->url || $request->hasFile('image')) {
+            ProductKeyPoint::create($card1Data);
+        }
+
+        // Handle card2
+        if ($request->heading && is_array($request->heading)) {
+            foreach ($request->heading as $index => $heading) {
+                $description = $request->description[$index] ?? '';
+                if ($heading || $description) {
+                    ProductKeyPoint::create([
+                        'product_id' => $productId,
+                        'type' => 'card2',
+                        'heading' => $heading,
+                        'description' => $description,
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->back()->with('success', 'Product key points saved successfully!');
     }
 
     public function update(Request $request, $id)
