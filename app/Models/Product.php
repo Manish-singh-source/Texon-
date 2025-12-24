@@ -29,4 +29,19 @@ class Product extends Model
     {
         return $this->hasMany(ProductKeyPoint::class);
     }
+
+    public function productGalleries()
+    {
+        return $this->hasMany(ProductGallery::class);
+    }
+
+    public function bannerVideos()
+    {
+        return $this->hasMany(BannerVideo::class);
+    }
+
+    public function productFeatures()
+    {
+        return $this->hasMany(ProductFeature::class);
+    }
 }

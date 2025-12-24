@@ -50,7 +50,7 @@
             <div class="row">
 
                 <!-- Total Products -->
-                <div class="col-lg-3 col-md-6 d-flex">
+                {{-- <div class="col-lg-3 col-md-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
@@ -71,11 +71,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Total Products -->
 
                 <!-- In Stock -->
-                <div class="col-lg-3 col-md-6 d-flex">
+                {{-- <div class="col-lg-3 col-md-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
@@ -95,11 +95,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /In Stock -->
 
                 <!-- Out of Stock -->
-                <div class="col-lg-3 col-md-6 d-flex">
+                {{-- <div class="col-lg-3 col-md-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
@@ -119,11 +119,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Out of Stock -->
 
                 <!-- New Arrivals -->
-                <div class="col-lg-3 col-md-6 d-flex">
+                {{-- <div class="col-lg-3 col-md-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center overflow-hidden">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /New Arrivals -->
 
             </div>
@@ -176,7 +176,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -227,8 +227,11 @@
                                      <td>
                                          <div class="action-icon d-inline-flex">
                                              <a href="{{ route('view-product', $product->id) }}" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_product"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                             <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete {{ addslashes($product->product_name) }}?')">
+                                                 @csrf
+                                                 @method('DELETE')
+                                                 <button type="submit" class="btn btn-link p-0 text-danger"><i class="ti ti-trash"></i></button>
+                                             </form>
                                          </div>
                                      </td>
                                  </tr>
@@ -942,24 +945,4 @@
     </div>
     <!-- /Add Product Success -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="delete_modal">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
-                        <i class="ti ti-trash-x fs-36"></i>
-                    </span>
-                    <h4 class="mb-1">Confirm Delete</h4>
-                    <p class="mb-3">You want to delete all the marked products, this cant be undone once you delete.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
-                        <a href="https://smarthr.co.in/demo/html/template/products.html" class="btn btn-danger">Yes,
-                            Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Delete Modal -->
 @endsection

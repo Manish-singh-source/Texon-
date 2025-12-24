@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
+Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+
 Route::get('/add-new-product', [App\Http\Controllers\ProductController::class, 'create'])->name('add-new-product');
 
 Route::post('/add-new-product', [App\Http\Controllers\ProductController::class, 'store'])->name('add-new-product.store');
@@ -22,6 +24,12 @@ Route::post('/view-product/{productId}/store-banner', [App\Http\Controllers\Prod
 Route::post('/view-product/{productId}/store-about', [App\Http\Controllers\ProductController::class, 'storeAboutProduct'])->name('view-product.store-about');
 
 Route::post('/view-product/{productId}/store-keypoints', [App\Http\Controllers\ProductController::class, 'storeProductKeyPoints'])->name('view-product.store-keypoints');
+
+Route::post('/view-product/{productId}/store-gallery', [App\Http\Controllers\ProductController::class, 'storeProductGallery'])->name('view-product.store-gallery');
+
+Route::post('/view-product/{productId}/store-banner-video', [App\Http\Controllers\ProductController::class, 'storeBannerVideo'])->name('view-product.store-banner-video');
+
+Route::post('/view-product/{productId}/store-features', [App\Http\Controllers\ProductController::class, 'storeProductFeatures'])->name('view-product.store-features');
 
 Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 

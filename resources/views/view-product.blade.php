@@ -338,76 +338,88 @@
                                         </form>
                                     </div>
                                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                                       <div class="card mt-3">
-                                           <div class="card-header">
-                                               <h5>Content</h5>
-                                           </div>
-                                           <div class="card-body">
-                                               <form>
-                                                   <div class="row">
-                                                       <div class="col-md-12">
-                                                           <div class="mb-3">
-                                                               <label class="form-label">Heading</label>
-                                                               <input type="text" class="form-control" name="heading_tab2">
-                                                           </div>
-                                                       </div>
-                                                       <div class="col-md-12">
-                                                           <div class="mb-3">
-                                                               <label class="form-label">Subheading</label>
-                                                               <input type="text" class="form-control" name="subheading_tab2">
-                                                           </div>
-                                                       </div>
-                                                       <div class="col-md-12">
-                                                           <div class="mb-3">
-                                                               <label class="form-label">Description</label>
-                                                               <textarea class="form-control" name="description_tab2" rows="3"></textarea>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                                   <div class="text-end">
-                                                       <button type="submit" class="btn btn-primary">Save</button>
-                                                   </div>
-                                               </form>
-                                           </div>
-                                       </div>
-                                       <div class="card mt-3">
-                                           <div class="card-header">
-                                               <h5>Images</h5>
-                                           </div>
-                                           <div class="card-body">
-                                               <form>
-                                                   <div class="mb-3">
-                                                       <label class="form-label">Upload Images</label>
-                                                       <input type="file" class="form-control" name="images_tab2[]" multiple accept="image/*">
-                                                   </div>
-                                                   <div id="image-previews-tab2" class="row"></div>
-                                                   <div class="text-end">
-                                                       <button type="submit" class="btn btn-primary">Save</button>
-                                                   </div>
-                                               </form>
-                                           </div>
-                                       </div>
-                                   </div>
+                                        <div class="card mt-3">
+                                            <div class="card-header">
+                                                <h5>Product Gallery</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form method="POST" action="{{ route('view-product.store-gallery', $product->id) }}" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Heading</label>
+                                                                <input type="text" class="form-control" name="heading" value="{{ $productGallery->heading ?? '' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Subheading</label>
+                                                                <input type="text" class="form-control" name="subheading" value="{{ $productGallery->subheading ?? '' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Description</label>
+                                                                <textarea class="form-control" name="description" rows="3">{{ $productGallery->description ?? '' }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Upload Images</label>
+                                                                <input type="file" class="form-control" name="images[]" multiple accept="image/*">
+                                                                <small class="text-muted">Upload multiple images. You can arrange the order after upload.</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="image-previews-gallery" class="row">
+                                                        @if(isset($productGallery) && $productGallery->images)
+                                                            @php $galleryImages = json_decode($productGallery->images, true); @endphp
+                                                            @if(is_array($galleryImages))
+                                                                @foreach($galleryImages as $index => $image)
+                                                                    <div class="col-md-3 mb-3 position-relative gallery-image" data-order="{{ $index }}">
+                                                                        <img src="{{ asset('storage/' . $image) }}" class="img-thumbnail" style="width:100%; height:200px; object-fit:contain;">
+                                                                        <button type="button" class="btn btn-sm btn-secondary position-absolute top-0 end-0" onclick="moveUpGallery(this)">↑</button>
+                                                                        <button type="button" class="btn btn-sm btn-secondary position-absolute bottom-0 end-0" onclick="moveDownGallery(this)">↓</button>
+                                                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeImage(this)">×</button>
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
+                                                        @endif
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-                                        <form>
+                                        <form method="POST" action="{{ route('view-product.store-banner-video', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="row">
-                                               
+
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Banner Image</label>
                                                         <input type="file" class="form-control" name="banner_image" accept="image/*">
+                                                        @if(isset($bannerVideo) && $bannerVideo->banner_image)
+                                                            <div class="mt-2">
+                                                                <img src="{{ asset('storage/' . $bannerVideo->banner_image) }}" class="img-fluid" style="max-width: 200px;">
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Banner Video URL</label>
-                                                        <input type="url" class="form-control" name="banner_video_url">
+                                                        <label class="form-label">Banner Video URL (YouTube)</label>
+                                                        <input type="url" class="form-control" name="banner_video_url" placeholder="https://www.youtube.com/watch?v=..." value="{{ $bannerVideo->banner_video_url ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Banner Title</label>
-                                                        <input type="text" class="form-control" name="banner_title">
+                                                        <input type="text" class="form-control" name="banner_title" value="{{ $bannerVideo->banner_title ?? '' }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -417,65 +429,75 @@
                                         </form>
                                     </div>
                                      <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-                                         <div class="card">
-                                             <div class="card-header">
-                                                 <h5>Card 1</h5>
-                                             </div>
-                                             <div class="card-body">
-                                                 <form>
+                                         <form method="POST" action="{{ route('view-product.store-features', $product->id) }}" enctype="multipart/form-data">
+                                             @csrf
+                                             <div class="card">
+                                                 <div class="card-header">
+                                                     <h5>Card 1</h5>
+                                                 </div>
+                                                 <div class="card-body">
                                                      <div class="row">
+                                                         @php $card1 = $productFeatures->where('type', 'card1')->first(); @endphp
                                                          <div class="col-md-6">
                                                              <div class="mb-3">
                                                                  <label class="form-label">Page Heading</label>
-                                                                 <input type="text" class="form-control" name="page_heading">
+                                                                 <input type="text" class="form-control" name="page_heading" value="{{ $card1->page_heading ?? '' }}">
                                                              </div>
                                                          </div>
                                                          <div class="col-md-6">
                                                              <div class="mb-3">
                                                                  <label class="form-label">Sub Heading</label>
-                                                                 <input type="text" class="form-control" name="sub_heading">
+                                                                 <input type="text" class="form-control" name="sub_heading" value="{{ $card1->sub_heading ?? '' }}">
                                                              </div>
                                                          </div>
                                                      </div>
-                                                     <div class="text-end">
-                                                         <button type="submit" class="btn btn-primary">Save</button>
-                                                     </div>
-                                                 </form>
+                                                 </div>
                                              </div>
-                                         </div>
-                                         <div class="card mt-3">
-                                             <div class="card-header d-flex justify-content-between align-items-center">
-                                                 <h5>Card 2</h5>
-                                                 <button type="button" class="btn btn-primary btn-sm" id="add-card2-tab4"><i class="ti ti-plus"></i> Add List</button>
-                                             </div>
-                                             <div class="card-body">
-                                                 <form>
-                                                     <div class="row">
-                                                         <div class="col-md-6">
-                                                             <div class="mb-3">
-                                                                 <label class="form-label">Title</label>
-                                                                 <input type="text" class="form-control" name="title">
+                                             <div class="card mt-3">
+                                                 <div class="card-header d-flex justify-content-between align-items-center">
+                                                     <h5>Card 2</h5>
+                                                     <button type="button" class="btn btn-primary btn-sm" id="add-card2-tab4"><i class="ti ti-plus"></i> Add List</button>
+                                                 </div>
+                                                 <div class="card-body">
+                                                     <div id="card2-tab4-container">
+                                                         @php $card2s = $productFeatures->where('type', 'card2'); @endphp
+                                                         @foreach($card2s as $index => $card2)
+                                                             <div class="card2-tab4-item mb-3">
+                                                                 <div class="row">
+                                                                     <div class="col-md-6">
+                                                                         <div class="mb-3">
+                                                                             <label class="form-label">Title</label>
+                                                                             <input type="text" class="form-control" name="title[]" value="{{ $card2->title }}">
+                                                                         </div>
+                                                                     </div>
+                                                                     <div class="col-md-6">
+                                                                         <div class="mb-3">
+                                                                             <label class="form-label">Icon Image</label>
+                                                                             <input type="file" class="form-control" name="icon_image[]" accept="image/*">
+                                                                             @if($card2->icon_image)
+                                                                                 <div class="mt-2">
+                                                                                     <img src="{{ asset('storage/' . $card2->icon_image) }}" class="img-fluid" style="max-width: 100px;">
+                                                                                 </div>
+                                                                             @endif
+                                                                         </div>
+                                                                     </div>
+                                                                     <div class="col-md-12">
+                                                                         <div class="mb-3">
+                                                                             <label class="form-label">Description</label>
+                                                                             <textarea class="form-control" name="description[]" rows="3">{{ $card2->description }}</textarea>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <button type="button" class="btn btn-danger btn-sm remove-card2-tab4"><i class="ti ti-trash"></i> Remove</button>
                                                              </div>
-                                                         </div>
-                                                         <div class="col-md-6">
-                                                             <div class="mb-3">
-                                                                 <label class="form-label">Icon Image</label>
-                                                                 <input type="file" class="form-control" name="icon_image" accept="image/*">
-                                                             </div>
-                                                         </div>
-                                                         <div class="col-md-12">
-                                                             <div class="mb-3">
-                                                                 <label class="form-label">Description</label>
-                                                                 <textarea class="form-control" name="description_tab4" rows="3"></textarea>
-                                                             </div>
-                                                         </div>
+                                                         @endforeach
                                                      </div>
-                                                     <div class="text-end">
-                                                         <button type="submit" class="btn btn-primary">Save</button>
-                                                     </div>
-                                                 </form>
+                                                 </div>
                                              </div>
-                                         </div>
+                                             <div class="text-end">
+                                                 <button type="submit" class="btn btn-primary">Save</button>
+                                             </div>
+                                         </form>
                                      </div>
                                 </div>
                             </div>
@@ -540,76 +562,65 @@ document.addEventListener('click', function(e) {
     if (e.target.classList.contains('remove-card2')) {
         e.target.closest('.card2-item').remove();
     }
+    if (e.target.classList.contains('remove-card2-tab4')) {
+        e.target.closest('.card2-tab4-item').remove();
+    }
 });
 
 let card2Tab4Count = 2;
 
 document.getElementById('add-card2-tab4').addEventListener('click', function() {
-    const card = this.closest('.card');
-    const newCardHTML = `
-        <div class="card mt-3">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5>Card 2</h5>
-                <button type="button" class="btn btn-danger btn-sm delete-card2-tab4"><i class="ti ti-trash"></i></button>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">Icon Image</label>
-                                <input type="file" class="form-control" name="icon_image" accept="image/*">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea class="form-control" name="description_tab4_${card2Tab4Count}" rows="3"></textarea>
-                            </div>
-                        </div>
+    const container = document.getElementById('card2-tab4-container');
+    const newItemHTML = `
+        <div class="card2-tab4-item mb-3">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title[]">
                     </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Icon Image</label>
+                        <input type="file" class="form-control" name="icon_image[]" accept="image/*">
                     </div>
-                </form>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description[]" rows="3"></textarea>
+                    </div>
+                </div>
             </div>
+            <button type="button" class="btn btn-danger btn-sm remove-card2-tab4"><i class="ti ti-trash"></i> Remove</button>
         </div>
     `;
-    const newCard = document.createRange().createContextualFragment(newCardHTML);
-    card.parentNode.insertBefore(newCard, card.nextSibling);
-    const deleteBtn = card.parentNode.lastElementChild.querySelector('.delete-card2-tab4');
-    deleteBtn.addEventListener('click', function() {
-        this.closest('.card').remove();
-    });
-    card2Tab4Count++;
+    container.insertAdjacentHTML('beforeend', newItemHTML);
 });
 
 ClassicEditor
-    .create( document.querySelector( 'textarea[name=description_tab2]' ), {
+    .create( document.querySelector( 'textarea[name=description]' ), {
         toolbar: [ 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
     } )
     .catch( error => {
         console.error( error );
     } );
 
-document.querySelector('input[name="images_tab2[]"]').addEventListener('change', function(e) {
-    const previews = document.getElementById('image-previews-tab2');
-    previews.innerHTML = '';
+document.querySelector('input[name="images[]"]').addEventListener('change', function(e) {
+    const previews = document.getElementById('image-previews-gallery');
+    const existingCount = previews.querySelectorAll('.gallery-image').length;
     Array.from(e.target.files).forEach((file, index) => {
         const reader = new FileReader();
         reader.onload = function(e) {
             const div = document.createElement('div');
-            div.className = 'col-md-3 mb-3 position-relative';
+            div.className = 'col-md-3 mb-3 position-relative gallery-image';
+            div.dataset.order = existingCount + index;
             div.innerHTML = `
                 <img src="${e.target.result}" class="img-thumbnail" style="width:100%; height:200px; object-fit:contain;">
-                <button type="button" class="btn btn-sm btn-secondary position-absolute top-0 end-0" onclick="moveUp(this)">↑</button>
-                <button type="button" class="btn btn-sm btn-secondary position-absolute bottom-0 end-0" onclick="moveDown(this)">↓</button>
+                <button type="button" class="btn btn-sm btn-secondary position-absolute top-0 end-0" onclick="moveUpGallery(this)">↑</button>
+                <button type="button" class="btn btn-sm btn-secondary position-absolute bottom-0 end-0" onclick="moveDownGallery(this)">↓</button>
+                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeImage(this)">×</button>
             `;
             previews.appendChild(div);
         };
@@ -617,7 +628,7 @@ document.querySelector('input[name="images_tab2[]"]').addEventListener('change',
     });
 });
 
-function moveUp(btn) {
+function moveUpGallery(btn) {
     const item = btn.parentElement;
     const prev = item.previousElementSibling;
     if (prev) {
@@ -625,13 +636,28 @@ function moveUp(btn) {
     }
 }
 
-function moveDown(btn) {
+function moveDownGallery(btn) {
     const item = btn.parentElement;
     const next = item.nextElementSibling;
     if (next) {
         item.parentElement.insertBefore(next, item);
     }
 }
+
+function removeImage(btn) {
+    btn.parentElement.remove();
+}
+
+// Handle form submit to include image order
+document.querySelector('form[action*="store-gallery"]').addEventListener('submit', function(e) {
+    const images = document.querySelectorAll('#image-previews-gallery .gallery-image');
+    const orderInput = document.createElement('input');
+    orderInput.type = 'hidden';
+    orderInput.name = 'image_order';
+    orderInput.value = Array.from(images).map(img => img.dataset.order).join(',');
+    this.appendChild(orderInput);
+});
+
 </script>
 @endsection
 
