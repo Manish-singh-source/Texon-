@@ -116,3 +116,43 @@ Route::get('/view-blog/{id}', [App\Http\Controllers\BlogController::class, 'show
 Route::get('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'edit'])->name('edit-blog');
 Route::put('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('edit-blog.update');
 Route::delete('/blogs/{id}', [App\Http\Controllers\BlogController::class, 'destroy'])->name('blogs.destroy');
+
+
+
+// Forntend part
+
+Route::get('/index', function () {
+    return view('frontend.index');
+})->name('home');
+
+Route::get('/about-us', function () {
+    return view('frontend.about-us');
+})->name('about-us');
+
+Route::get('/category', function () {
+    return view('frontend.category');
+})->name('category');
+
+Route::get('/portfolio', function () {
+    return view('frontend.products');
+})->name('portfolio');
+
+Route::get('/contact-us', function () {
+    return view('frontend.contact-us');
+})->name('contact-us');
+
+Route::get('/get-a-quote', function () {
+    return view('frontend.get-a-quote');
+})->name('get-a-quote');
+
+Route::get('/our-presence', function () {
+    return view('frontend.our-presence');
+})->name('our-presence');
+
+Route::get('/blogs', function () {
+    return view('frontend.blogs');
+})->name('blogs');
+
+Route::get('/product-details', function () {
+    return view('frontend.product-details');
+})->name('product-details');
