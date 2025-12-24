@@ -29,7 +29,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">Brand Name</label>
+												<label class="form-label">Brand Name <span class="text-danger">*</span></label>
 												<input type="text" class="form-control" name="name" placeholder="Enter Brand Name">
 											</div>
 											<div class="mb-3">
@@ -42,7 +42,7 @@
 										<div class="col-md-6">
 											
 											<div class="mb-3">
-												<label class="form-label">Status</label>
+												<label class="form-label">Status <span class="text-danger">*</span></label>
 												<select class="form-select" name="status">
 													<option value="active">Active</option>
 													<option value="inactive">Inactive</option>

@@ -50,11 +50,11 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">Title</label>
+												<label class="form-label">Title <span class="text-danger">*</span></label>
 												<input type="text" name="title" class="form-control" value="{{ old('title', $blog->title) }}">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Author</label>
+												<label class="form-label">Author <span class="text-danger">*</span></label>
 												<input type="text" name="author" class="form-control" value="{{ old('author', $blog->author) }}">
 											</div>
 											<div class="mb-3">
@@ -75,7 +75,7 @@
 												<input type="text" name="tags" class="form-control" value="{{ old('tags', $blog->tags) }}" data-role="tagsinput">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Status</label>
+												<label class="form-label">Status <span class="text-danger">*</span></label>
 												<select name="status" class="select">
 													<option value="draft" {{ old('status', $blog->status) == 'draft' ? 'selected' : '' }}>Draft</option>
 													<option value="published" {{ old('status', $blog->status) == 'published' ? 'selected' : '' }}>Published</option>
@@ -114,7 +114,7 @@
 											<div class="row">
 												<div class="col-md-12">
 													<div class="mb-3">
-														<label class="form-label">Blog Content</label>
+														<label class="form-label">Blog Content <span class="text-danger">*</span></label>
 														<textarea name="content" class="form-control" rows="10">{{ old('content', $blog->content) }}</textarea>
 													</div>
 												</div>

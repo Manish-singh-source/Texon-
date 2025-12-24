@@ -1077,20 +1077,21 @@
 									<div class="card mb-0">
 										<div class="card-header">
 											<div class="d-flex align-items-center">
-												<span class="avatar avatar-lg me-2 avatar-rounded">
-													<img src="{{asset('assets/img/profiles/avatar-12.jpg')}}" alt="img">
-												</span>
+												
 												<div>
-													<h5 class="mb-0">Kevin Larry</h5>
-													<p class="fs-12 fw-medium mb-0"><a href="https://smarthr.co.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2156405353444f614459404c514d440f424e4c">[email&#160;protected]</a></p>
+													<h5 class="mb-0">{{ Auth::guard('register')->user()->name }}</h5>
+													<p class="fs-12 fw-medium mb-0">{{ Auth::guard('register')->user()->email }}</p>
 												</div>
 											</div>
 										</div>
 										
 										<div class="card-footer">
-											<a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="{{route('login')}}">
-												<i class="ti ti-login me-2"></i>Logout
-											</a>
+											<form method="POST" action="{{ route('logout') }}" class="d-inline">
+												@csrf
+												<button type="submit" class="dropdown-item d-inline-flex align-items-center p-0 py-2">
+													<i class="ti ti-login me-2"></i>Logout
+												</button>
+											</form>
 										</div>
 									</div>
 								</div>

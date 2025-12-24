@@ -70,7 +70,8 @@
 					<div class="col-lg-7 col-md-12 col-sm-12">
 						<div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
 							<div class="col-md-7 mx-auto vh-100">
-								<form action="" class="vh-100">
+								<form action="{{ route('register.store') }}" method="POST" class="vh-100">
+									@csrf
 									<div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
 										<div class=" mx-auto mb-5 text-center">
 											<img src="assets/img/logo.png" class="img-fluid" alt="Logo">
@@ -80,10 +81,24 @@
 												<h2 class="mb-2">Sign Up</h2>
 												<p class="mb-0">Please enter your details to sign up</p>
 											</div>
+											@if($errors->any())
+												<div class="alert alert-danger">
+													<ul class="mb-0">
+														@foreach($errors->all() as $error)
+															<li>{{ $error }}</li>
+														@endforeach
+													</ul>
+												</div>
+											@endif
+											@if(session('success'))
+												<div class="alert alert-success">
+													{{ session('success') }}
+												</div>
+											@endif
 											<div class="mb-3">
 												<label class="form-label">Name</label>
 												<div class="input-group">
-													<input type="text" value="" class="form-control border-end-0">
+													<input type="text" name="name" value="{{ old('name') }}" class="form-control border-end-0" required>
 													<span class="input-group-text border-start-0">
 														<i class="ti ti-user"></i>
 													</span>
@@ -92,7 +107,7 @@
 											<div class="mb-3">
 												<label class="form-label">Email Address</label>
 												<div class="input-group">
-													<input type="text" value="" class="form-control border-end-0">
+													<input type="email" name="email" value="{{ old('email') }}" class="form-control border-end-0" required>
 													<span class="input-group-text border-start-0">
 														<i class="ti ti-mail"></i>
 													</span>
@@ -101,34 +116,26 @@
 											<div class="mb-3">
 												<label class="form-label">Password</label>
 												<div class="pass-group">
-													<input type="password" class="pass-input form-control">
+													<input type="password" name="password" class="pass-input form-control" required>
 													<span class="ti toggle-password ti-eye-off"></span>
 												</div>
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Confirm Password</label>
 												<div class="pass-group">
-													<input type="password" class="pass-inputs form-control">
+													<input type="password" name="password_confirmation" class="pass-inputs form-control" required>
 													<span class="ti toggle-passwords ti-eye-off"></span>
 												</div>
 											</div>
-											<div class="d-flex align-items-center justify-content-between mb-3">
-												<div class="d-flex align-items-center">
-													<div class="form-check form-check-md mb-0">
-														<input class="form-check-input" id="remember_me" type="checkbox">
-														<label for="remember_me" class="form-check-label text-dark mt-0">Agree to <span class="text-primary">Terms & Privacy</span></label>
-													</div>
-												</div>
-											</div>
 											<div class="mb-3">
-												<a href="{{ route('login') }}" class="btn btn-primary w-100">Sign Up</a>
+												<button type="submit" class="btn btn-primary w-100">Sign Up</button>
 											</div>
 											<div class="text-center">
 												<h6 class="fw-normal text-dark mb-0">Already have an account?
 													<a href="{{ route('login') }}" class="hover-a">Sign In</a>
 												</h6>
 											</div>
-											
+
 										</div>
                                         <div class="mt-5 pb-4 text-center">
 											<p class="mb-0 text-gray-9">Copyright &copy; 2025 - Texon</p>

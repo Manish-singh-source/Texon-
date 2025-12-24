@@ -9,7 +9,7 @@
 	<meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
 	<meta name="author" content="Technofra technologies - Bootstrap Admin Template">
 	<meta name="robots" content="noindex, nofollow">
-	<title>Smarthr Admin Template</title>
+	<title>Texon Admin Panel</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -82,7 +82,8 @@
 					<div class="col-lg-7 col-md-12 col-sm-12">
 						<div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
 							<div class="col-md-7 mx-auto vh-100">
-								<form action="#" class="vh-100">
+								<form action="{{ route('login.store') }}" method="POST" class="vh-100">
+									@csrf
 									<div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
 										<div class=" mx-auto mb-5 text-center">
 											<img src="assets/img/logo.png"
@@ -93,10 +94,19 @@
 												<h2 class="mb-2">Sign In</h2>
 												<p class="mb-0">Please enter your details to sign in</p>
 											</div>
+											@if($errors->any())
+												<div class="alert alert-danger">
+													<ul class="mb-0">
+														@foreach($errors->all() as $error)
+															<li>{{ $error }}</li>
+														@endforeach
+													</ul>
+												</div>
+											@endif
 											<div class="mb-3">
 												<label class="form-label">Email Address</label>
 												<div class="input-group">
-													<input type="text" value="" class="form-control border-end-0">
+													<input type="email" name="email" value="{{ old('email') }}" class="form-control border-end-0" required>
 													<span class="input-group-text border-start-0">
 														<i class="ti ti-mail"></i>
 													</span>
@@ -105,14 +115,14 @@
 											<div class="mb-3">
 												<label class="form-label">Password</label>
 												<div class="pass-group">
-													<input type="password" class="pass-input form-control">
+													<input type="password" name="password" class="pass-input form-control" required>
 													<span class="ti toggle-password ti-eye-off"></span>
 												</div>
 											</div>
 											<div class="d-flex align-items-center justify-content-between mb-3">
 												<div class="d-flex align-items-center">
 													<div class="form-check form-check-md mb-0">
-														<input class="form-check-input" id="remember_me" type="checkbox">
+														<input class="form-check-input" name="remember" id="remember_me" type="checkbox">
 														<label for="remember_me" class="form-check-label mt-0">Remember Me</label>
 													</div>
 												</div>
@@ -121,14 +131,14 @@
 												</div>
 											</div>
 											<div class="mb-3">
-												<a href="{{ route('index') }}" class="btn btn-primary w-100">Sign In</a>
+												<button type="submit" class="btn btn-primary w-100">Sign In</button>
 											</div>
 											<div class="text-center">
-												<h6 class="fw-normal text-dark mb-0">Don’t have an account? 
+												<h6 class="fw-normal text-dark mb-0">Don’t have an account?
 													<a href="{{ route('register') }}" class="hover-a"> Create Account</a>
 												</h6>
 											</div>
-											
+
 										</div>
                                         <div class="mt-5 pb-4 text-center">
 											<p class="mb-0 text-gray-9">Copyright &copy; 2025 - Texon</p>
