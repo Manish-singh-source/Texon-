@@ -30,7 +30,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">Presence Name</label>
+												<label class="form-label">Presence Name <span class="text-danger">*</span></label>
 												<input type="text" class="form-control" name="name" value="{{ $presence->name }}" placeholder="Enter Presence Name">
 											</div>
 											<div class="mb-3">
@@ -48,7 +48,7 @@
 										<div class="col-md-6">
 
 											<div class="mb-3">
-												<label class="form-label">Status</label>
+												<label class="form-label">Status <span class="text-danger">*</span></label>
 												<select class="form-select" name="status">
 													<option value="active" {{ $presence->status == 'active' ? 'selected' : '' }}>Active</option>
 													<option value="inactive" {{ $presence->status == 'inactive' ? 'selected' : '' }}>Inactive</option>

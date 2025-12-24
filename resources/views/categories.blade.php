@@ -138,7 +138,7 @@
                                             <!-- Row 1 -->
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Category Name</label>
+                                                    <label class="form-label">Category Name <span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="name"
                                                         placeholder="Enter Category Name">
                                                 </div>
@@ -158,7 +158,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">General Status</label>
+                                                    <label class="form-label">General Status <span class="text-danger">*</span></label>
                                                     <select class="form-select" name="status">
                                                         <option value="active">Active</option>
                                                         <option value="inactive">Inactive</option>

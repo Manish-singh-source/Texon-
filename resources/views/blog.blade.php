@@ -103,7 +103,7 @@
 												<td>
 													<div class="d-flex align-items-center">
 														<div class="me-2">
-															<img src="{{ asset( $blog->featured_image) }}" alt="blog image" class="rounded-circle" width="40">
+															<img src="{{ asset( $blog->featured_image) }}" alt="blog image" width="40">
 														</div>
 														<h6 class="fw-medium">{{ $blog->title }}</h6>
 													</div>

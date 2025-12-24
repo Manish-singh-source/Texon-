@@ -42,15 +42,15 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">First Name</label>
+												<label class="form-label">First Name <span class="text-danger">*</span></label>
 												<input type="text" name="first_name" class="form-control" value="{{ $customer->first_name }}">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Phone Number</label>
+												<label class="form-label">Phone Number <span class="text-danger">*</span></label>
 												<input type="text" name="phone" class="form-control" value="{{ $customer->phone }}">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Gender</label>
+												<label class="form-label">Gender <span class="text-danger">*</span></label>
 												<select name="gender" class="form-select">
 													<option value="">Select</option>
 													<option value="1" {{ $customer->gender == '1' ? 'selected' : '' }}>Male</option>
@@ -62,11 +62,11 @@
 										</div>
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">Last Name</label>
+												<label class="form-label">Last Name <span class="text-danger">*</span></label>
 												<input type="text" name="last_name" class="form-control" value="{{ $customer->last_name }}">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">E-mail Address</label>
+												<label class="form-label">E-mail Address <span class="text-danger">*</span></label>
 												<input type="email" name="email" class="form-control" value="{{ $customer->email }}">
 											</div>
 
