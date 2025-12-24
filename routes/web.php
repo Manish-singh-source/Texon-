@@ -7,17 +7,29 @@ Route::get('/', function () {
     
 })->name('index'); 
 
-Route::get('/products', function () {
-    return view('products');
-})->name('products');
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
-Route::get('/add-new-product', function () {
-    return view('add-new-product');
-})->name('add-new-product');
+Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
 
-Route::get('/view-product', function () {
-    return view('view-product');
-})->name('view-product');
+Route::get('/add-new-product', [App\Http\Controllers\ProductController::class, 'create'])->name('add-new-product');
+
+Route::post('/add-new-product', [App\Http\Controllers\ProductController::class, 'store'])->name('add-new-product.store');
+
+Route::get('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('view-product');
+
+Route::put('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('view-product.update');
+
+Route::post('/view-product/{productId}/store-banner', [App\Http\Controllers\ProductController::class, 'storeProductBanner'])->name('view-product.store-banner');
+
+Route::post('/view-product/{productId}/store-about', [App\Http\Controllers\ProductController::class, 'storeAboutProduct'])->name('view-product.store-about');
+
+Route::post('/view-product/{productId}/store-keypoints', [App\Http\Controllers\ProductController::class, 'storeProductKeyPoints'])->name('view-product.store-keypoints');
+
+Route::post('/view-product/{productId}/store-gallery', [App\Http\Controllers\ProductController::class, 'storeProductGallery'])->name('view-product.store-gallery');
+
+Route::post('/view-product/{productId}/store-banner-video', [App\Http\Controllers\ProductController::class, 'storeBannerVideo'])->name('view-product.store-banner-video');
+
+Route::post('/view-product/{productId}/store-features', [App\Http\Controllers\ProductController::class, 'storeProductFeatures'])->name('view-product.store-features');
 
 Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
