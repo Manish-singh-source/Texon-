@@ -23,6 +23,7 @@ class TestimonialController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'position' => 'nullable|string|max:255',
             'rating' => 'required|integer|min:1|max:5',
             'message' => 'required|string',
             'status' => 'required|in:active,inactive',
@@ -36,6 +37,7 @@ class TestimonialController extends Controller
 
         Testimonial::create([
             'name' => $request->name,
+            'position' => $request->position,
             'rating' => $request->rating,
             'message' => $request->message,
             'status' => $request->status,
@@ -43,6 +45,41 @@ class TestimonialController extends Controller
         ]);
 
         return redirect()->route('testimonials')->with('success', 'Testimonial added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $testimonial = Testimonial::findOrFail($id);
+        return view('edit-testimonial', compact('testimonial'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $testimonial = Testimonial::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'position' => 'nullable|string|max:255',
+            'rating' => 'required|integer|min:1|max:5',
+            'message' => 'required|string',
+            'status' => 'required|in:active,inactive',
+            'testimonial_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+        ]);
+
+        $data = $request->only(['name', 'position', 'rating', 'message', 'status']);
+
+        if ($request->hasFile('testimonial_image')) {
+            $newImagePath = $request->file('testimonial_image')->store('testimonials', 'public');
+            // Delete old image if exists
+            if ($testimonial->testimonial_image && Storage::disk('public')->exists($testimonial->testimonial_image)) {
+                Storage::disk('public')->delete($testimonial->testimonial_image);
+            }
+            $data['testimonial_image'] = $newImagePath;
+        }
+
+        $testimonial->update($data);
+
+        return redirect()->route('testimonials')->with('success', 'Testimonial updated successfully.');
     }
 
     public function destroy($id)

@@ -40,14 +40,15 @@
         </div>
 
         <div class="row">
+            @foreach($categories as $index => $category)
             <div class="col-xl-6 col-md-6">
                 <!-- Case Study Item Start -->
                 <div class="case-study-item wow fadeInUp">
                     <!-- Case Study Image Start -->
                     <div class="case-study-image">
-                        <a href="products.php" data-cursor-text="View">
+                        <a href="{{ route('portfolio', ['category' => $category->name]) }}" data-cursor-text="View">
                             <figure>
-                                <img src="assets1/img/e1.png" alt="">
+                                <img src="{{ $category->image ? asset('storage/' . $category->image) : 'assets1/img/default.png' }}" alt="{{ $category->name }}">
                             </figure>
                         </a>
                     </div>
@@ -55,7 +56,7 @@
 
                     <!-- Case Study Item Button Start -->
                     <div class="case-study-item-btn">
-                        <a href="products.php">
+                        <a href="{{ route('portfolio', ['category' => $category->name]) }}">
                             <img src="assets1/images/arrow-white.svg" alt="">
                         </a>
                     </div>
@@ -63,48 +64,17 @@
 
                     <!-- Case Study Iten Content Start -->
                     <div class="case-study-item-content">
-                        <h3><a href="products.php">Engineering</a></h3>
-                       
+                        <h3><a href="{{ route('portfolio', ['category' => $category->name]) }}">{{ $category->name }}</a></h3>
+
                     </div>
                     <!-- Case Study Item Content End -->
                 </div>
                 <!-- Case Study Item End -->
             </div>
-
-            <div class="col-xl-6 col-md-6">
-                <!-- Case Study Item Start -->
-                <div class="case-study-item wow fadeInUp" data-wow-delay="0.2s">
-                    <!-- Case Study Image Start -->
-                    <div class="case-study-image">
-                        <a href="products.php" data-cursor-text="View">
-                            <figure>
-                                <img src="assets1/img/e2.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Case Study Image End -->
-
-                    <!-- Case Study Item Button Start -->
-                    <div class="case-study-item-btn">
-                        <a href="products.php">
-                            <img src="assets1/images/arrow-white.svg" alt="">
-                        </a>
-                    </div>
-                    <!-- Case Study Item Button End -->
-
-                    <!-- Case Study Iten Content Start -->
-                    <div class="case-study-item-content">
-                        <h3><a href="products.php">Life Science</a></h3>
-                        
-                    </div>
-                    <!-- Case Study Item Content End -->
-                </div>
-                <!-- Case Study Item End -->
-            </div>
-
-
-
-
+            @endforeach
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ $categories->links('pagination::bootstrap-4') }}
         </div>
     </div>
 </div>

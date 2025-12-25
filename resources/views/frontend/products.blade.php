@@ -7,11 +7,11 @@
             <div class="col-lg-12">
                 <!-- Page Header Box Start -->
                 <div class="page-header-box">
-                    <h1 class="text-anime-style-2" data-cursor="-opaque">Products </h1>
+                    <h1 class="text-anime-style-2" data-cursor="-opaque">Portfolio </h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Products</li>
+                            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
                         </ol>
                     </nav>
                 </div>
@@ -41,70 +41,27 @@
             <div class="col-lg-12">
                 <!-- Feature Item Box Start -->
                 <div class="feature-item-box">
-
-
-
-                    <div class="feature-item box-3 wow fadeInUp" data-wow-delay="0.4s">
+                    @foreach($products as $index => $product)
+                    <div class="feature-item box-{{3 + $index}} wow fadeInUp" data-wow-delay="{{0.4 + $index * 0.2}}s">
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/prod3.png"
-                                    alt="" class="imgh">
+                                <img src="{{ asset("./storage/".$product->product_thumbnail) }}" alt="" class="imgh">
                             </figure>
                         </div>
                         <div class="feature-item-content">
-                            <h3>MB ruler GONIOMETER</h3>
-                            <p>This transparent plastic goniometer permits observation of a joint's axis of motion and
-                                its range of motion. </p>
+                            <h3>{{ $product->product_name }}</h3>
+                            <p>{{ $product->sort_description }}</p>
                             <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
-                                <a href="{{route('product-details')}}">
-                                    <p><span>Learn More</span> </p>
+                                <a href="{{ route('product-details', $product->id) }}">
+                                    <p><span>Learn More</span></p>
                                 </a>
                             </div>
                         </div>
                     </div>
-
-
-
-                    <div class="feature-item box-4 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod4.png"
-                                    alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>Sysmex Manual Mandibulometer</h3>
-                            <p>Mandibular length, mandibular angle, and maximum ramus height measurements used during
-                                forensic evaluation of skeletal remains require use of a mandibulometer..</p>
-                            <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
-                                <a href="{{route('product-details')}}">
-                                    <p><span>Learn More</span> </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="feature-item box-5 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod5.png"
-                                    alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>CanDo Pedal Exerciser - with Digital Display, Fold-up</h3>
-                            <p>The CanDo fold-up digital pedal exerciser ships pre-assembled - just add tension knob!
-                                This model folds for easy storage, transportation and shipping. </p>
-                            <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
-                                <a href="{{route('product-details')}}">
-                                    <p><span>Learn More</span> </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
+                </div>
+                <div class="pt-3 d-flex justify-content-center">
+                    {{ $products->links('pagination::bootstrap-4') }}
                 </div>
                 <!-- Feature Item Box End -->
             </div>

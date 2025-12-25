@@ -1,13 +1,15 @@
 @extends('frontend.layouts.masters')
 @section('content')
 <!-- Intro Video Section Start -->
-<div class="intro-videos dark-section parallaxie">
+<div class="intro-videos dark-section parallaxie" @if($product->productBanners->first() && !$product->productBanners->first()->video_upload && $product->productBanners->first()->banner_image) style="background-image: url('{{ asset('storage/' . $product->productBanners->first()->banner_image) }}');" @endif>
 
     <!-- Background Video -->
+    @if($product->productBanners->first() && $product->productBanners->first()->video_upload)
     <video class="bg-video" autoplay muted loop playsinline>
-        <source src="assets1/videos/video1.mp4" type="video/mp4">
+        <source src="{{ asset('storage/' . $product->productBanners->first()->video_upload) }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    @endif
 
     <!-- Overlay (optional dark layer) -->
     <div class="video-overlay"></div>
@@ -18,14 +20,12 @@
                 <div class="intro-video-box">
                     <div class="section-title section-title-center">
                         <h2 class="text-anime-style-2 hd" data-cursor="-opaque">
-                            Trigno
-                            <span>Centro </span>
+                            {{ $product->product_name }}
                         </h2>
                         <div class="intro-video-list wow fadeInUp" data-wow-delay="0.2s">
-                            <p class="text-center pb-50 cl-white para">Solving complex problems with advanced sensing
-                                solutions</p>
+                            <p class="text-center pb-50 cl-white para">{{ $product->productBanners->first()->heading ?? 'Add Heading' }}</p>
                             <a href="{{route('get-a-quote')}}" class="btn-default text-center">Get a Quote</a> &nbsp;&nbsp;
-                            <a href="javascript:void(0);" class="btn-default text-center">Download Brochure</a>
+                            <a href="{{ $product->productBanners->first()->button_url ?? 'javascript:void(0);' }}" class="btn-default text-center">{{ $product->productBanners->first()->button_name ?? 'Download Brochure' }}</a>
                         </div>
                     </div>
                 </div>
@@ -64,19 +64,8 @@
                         <h3 class="wow fadeInUp">About Product </h3>
                     </div>
                     <div class="section-title">
-                        <h2 class="text-effect" data-cursor="-opaque">Trigno Centro</h2>
-                        <p class="wow fadeInUp">Created from over 30 years of experience and close collaboration with
-                            the EMG research community, Trigno Centro represents an evolutionary leap at the heart of
-                            our product ecosystem.</p>
-                        <p class="wow fadeInUp">Engineered to deliver uncompromising signal quality, Trigno Centro
-                            provides a powerful, centralized platform for acquiring and synchronizing high-fidelity
-                            biosignals. Its modular architecture supports a wide range of sensors and experimental
-                            configurations, enabling seamless adaptation across human movement science, engineering, and
-                            neurophysiology applications..</p>
-                        <p class="wow fadeInUp">With advanced data integrity, low latency performance, and robust
-                            scalability, Trigno Centro empowers researchers to design complex experiments with
-                            confidence. Whether capturing subtle neuromuscular activity or integrating multimodal data
-                            streams, the system ensures precision without sacrificing flexibility. </p>
+                        <h2 class="text-effect" data-cursor="-opaque">{{ $product->product_name }}</h2>
+                        <p class="wow fadeInUp">{{ $product->sort_description }}</p>
                     </div>
 
                 </div>

@@ -41,6 +41,15 @@
                                                     <label class="form-label">Video Upload</label>
                                                     <input type="file" class="form-control" name="video_upload" accept="video/*">
                                                     <small class="text-muted">Upload banner video (max 10MB). Leave empty to keep current video.</small>
+                                                    @if($banner->video_upload)
+                                                    <div class="mt-2">
+                                                        <label class="form-label">Current Video Preview:</label>
+                                                        <video width="100%" height="200" controls>
+                                                            <source src="{{ asset('storage/' . $banner->video_upload) }}" type="video/mp4">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -48,6 +57,12 @@
                                                     <label class="form-label">Banner Image</label>
                                                     <input type="file" class="form-control" name="banner_image" accept="image/*">
                                                     <small class="text-muted">Upload banner image (max 4MB). Leave empty to keep current image.</small>
+                                                    @if($banner->banner_image)
+                                                    <div class="mt-2">
+                                                        <label class="form-label">Current Image Preview:</label>
+                                                        <img src="{{ asset('storage/' . $banner->banner_image) }}" alt="Banner Image" class="img-fluid" style="max-height: 200px;">
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

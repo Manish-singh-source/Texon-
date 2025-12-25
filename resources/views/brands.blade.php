@@ -1,4 +1,4 @@
-@extends('layouts.masters')
+    @extends('layouts.masters')
 @section('content')
     <!-- Page Wrapper -->
     <div class="page-wrapper">
@@ -38,7 +38,7 @@
                 <div class="card">
                     <div class="card-body p-0">
                         <div class="custom-datatable-filter table-responsive">
-                            <table class="table datatable">
+                            <table id="brands-table" class="table datatable">
                                 <thead class="thead-light">
                                     <tr>
                                         <th class="no-sort">

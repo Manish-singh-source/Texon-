@@ -1,61 +1,88 @@
 @extends('frontend.layouts.masters')
 @section('content')
 <!-- Hero Section Start -->
-<div class="hero hero-bg-image hero-video dark-section">
-    <!-- Video Start -->
-    <div class="hero-bg-video">
-        <!-- Selfhosted Video Start -->
-        <video autoplay muted loop id="myvideo" height="100vh">
-            <source src="assets1/videos/video1.mp4" type="video/mp4">
-        </video>
-        <!-- <video autoplay muted loop id="myvideo"><source src="https://demo.awaikenthemes.com/assets/assets1/videos/netzon-video.mp4" type="video/mp4"></video> -->
-
-        <!-- Selfhosted Video End -->
-
-        <!-- Youtube Video Start -->
-        <!-- <div id="herovideo" class="player" data-property="{videoURL:'OjTRVpgtcG4',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div> -->
-        <!-- Youtube Video End -->
-    </div>
-    <!-- Video End -->
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-7 col-lg-10">
-                <!-- Hero Box Start -->
-                <div class="hero-box">
-                    <!-- Hero Content Start -->
-                    <div class="hero-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <!-- <h3 class="wow fadeInUp"><span>New!</span> Guardians of Your Digital World</h3>
-                                <h1 class="text-anime-style-2" data-cursor="-opaque">Powerful, scalable & intelligent security solutions that adapt <span>to new threats</span></h1>
-                                <p class="wow fadeInUp" data-wow-delay="0.2s">Our experts combine advanced technology with years of experience to deliver end-to-end protection, ensuring your business runs securely and without interruption.</p> -->
-                        </div>
-                        <!-- Section Title End -->
-
-                        <div class="hero-body wow fadeInUp" data-wow-delay="0.4s">
-                            <!-- Hero Button Start -->
-                            <div class="hero-btn">
-                                <!-- <a href="contact.html" class="btn-default btn-highlighted">Get Started Now</a> -->
+@if($banners->count() > 0)
+    @php $banner = $banners->first(); @endphp
+    <div class="hero hero-bg-image hero-video dark-section" @if($banner->banner_image) style="background-image: url('{{ asset('storage/' . $banner->banner_image) }}');" @endif>
+        <!-- Video Start -->
+        @if($banner->video_upload)
+        <div class="hero-bg-video">
+            <!-- Selfhosted Video Start -->
+            <video autoplay muted loop id="myvideo" height="100vh">
+                <source src="{{ asset('storage/' . $banner->video_upload) }}" type="video/mp4">
+            </video>
+            <!-- Selfhosted Video End -->
+        </div>
+        @endif
+        <!-- Video End -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-10">
+                    <!-- Hero Box Start -->
+                    <div class="hero-box">
+                        <!-- Hero Content Start -->
+                        <div class="hero-content">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                @if($banner->heading)
+                                <h1 class="text-anime-style-2" data-cursor="-opaque">{{ $banner->heading }}</h1>
+                                @endif
+                                @if($banner->subheading)
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">{{ $banner->subheading }}</p>
+                                @endif
                             </div>
-                            <!-- Hero Button End -->
+                            <!-- Section Title End -->
 
-                            <!-- Video Play Button Start -->
-                            <!-- <div class="video-play-button">
-                                    <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video" data-cursor-text="Play">
-                                        <i class="fa-solid fa-play"></i>
-                                    </a>
-                                    <p>Watch Our Video</p>
-                                </div> -->
-                            <!-- Video Play Button End -->
+                            <div class="hero-body wow fadeInUp" data-wow-delay="0.4s">
+                                <!-- Hero Button Start -->
+                                @if($banner->button_name && $banner->button_url)
+                                <div class="hero-btn">
+                                    <a href="{{ $banner->button_url }}" class="btn-default btn-highlighted">{{ $banner->button_name }}</a>
+                                </div>
+                                @endif
+                                <!-- Hero Button End -->
+                            </div>
                         </div>
+                        <!-- Hero Content End -->
                     </div>
-                    <!-- Hero Content End -->
+                    <!-- Hero Box End -->
                 </div>
-                <!-- Hero Box End -->
             </div>
         </div>
     </div>
-</div>
+@else
+    <!-- Default Hero if no banners -->
+    <div class="hero hero-bg-image hero-video dark-section">
+        <!-- Video Start -->
+        <div class="hero-bg-video">
+            <!-- Selfhosted Video Start -->
+            <video autoplay muted loop id="myvideo" height="100vh">
+                <source src="assets1/videos/video1.mp4" type="video/mp4">
+            </video>
+            <!-- Selfhosted Video End -->
+        </div>
+        <!-- Video End -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-10">
+                    <!-- Hero Box Start -->
+                    <div class="hero-box">
+                        <!-- Hero Content Start -->
+                        <div class="hero-content">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <!-- Default content if needed -->
+                            </div>
+                            <!-- Section Title End -->
+                        </div>
+                        <!-- Hero Content End -->
+                    </div>
+                    <!-- Hero Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 <!-- Hero Section End -->
 
 <!-- Scrolling Ticker Section Start -->
@@ -63,33 +90,17 @@
     <!-- Scrolling Ticker Start -->
     <div class="scrolling-ticker-box">
         <div class="scrolling-content">
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
+            @foreach($brands as $brand)
+                <span><img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->name }}"></span>
+            @endforeach
+            
         </div>
 
         <div class="scrolling-content">
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-1.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-2.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-3.svg" alt=""></span>
-            <span><img src="assets1/images/company-supports-logo-4.svg" alt=""></span>
+            @foreach($brands as $brand)
+                <span><img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->name }}"></span>
+            @endforeach
+           
         </div>
     </div>
     <!-- Scrolling Ticker End -->
@@ -674,12 +685,17 @@
                 <div class="testimonial-slider">
                     <div class="swiper">
                         <div class="swiper-wrapper" data-cursor-text="Drag">
+                            @foreach($testimonials as $testimonial)
                             <!-- Testimonial Slide Start -->
                             <div class="swiper-slide">
                                 <div class="testimonial-item">
                                     <div class="testimonial-header">
                                         <div class="testimonial-logo">
-                                            <img src="assets1/images/testimonial-company-logo-1.svg" alt="">
+                                            @if($testimonial->testimonial_image)
+                                                <img src="{{ asset('storage/' . $testimonial->testimonial_image) }}" alt="{{ $testimonial->name }}">
+                                            @else
+                                                <img src="assets1/images/testimonial-company-logo-1.svg" alt="">
+                                            @endif
                                         </div>
                                         <div class="testimonial-quote">
                                             <img src="assets1/images/testimonial-quote.svg" alt="">
@@ -687,50 +703,26 @@
                                     </div>
                                     <div class="testimonial-body">
                                         <div class="testimonial-content">
-                                            <p>“Texan's precision instruments have transformed our lab’s research
-                                                capabilities. Their reliable products and prompt support make them a
-                                                trusted partner.”</p>
+                                            <p>“{{ $testimonial->message }}”</p>
                                         </div>
                                         <div class="testimonial-author-content">
                                             <div class="testimonial-stars">
-                                                ⭐⭐⭐⭐⭐
+                                                @for($i = 1; $i <= 5; $i++)
+                                                    @if($i <= $testimonial->rating)
+                                                        ⭐
+                                                    @else
+                                                        ☆
+                                                    @endif
+                                                @endfor
                                             </div>
-                                            <h3>Darlene Robertson</h3>
-                                            <p>CEO & Founder</p>
+                                            <h3>{{ $testimonial->name }}</h3>
+                                            <p>{{ $testimonial->position }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Testimonial Slide End -->
-
-                            <!-- Testimonial Slide Start -->
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
-                                    <div class="testimonial-header">
-                                        <div class="testimonial-logo">
-                                            <img src="assets1/images/testimonial-company-logo-2.svg" alt="">
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <img src="assets1/images/testimonial-quote.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-body">
-                                        <div class="testimonial-content">
-                                            <p>“Texan's precision instruments have transformed our lab’s research
-                                                capabilities. Their reliable products and prompt support make them a
-                                                trusted partner.”</p>
-                                        </div>
-                                        <div class="testimonial-author-content">
-                                            <div class="testimonial-stars">
-                                                ⭐⭐⭐⭐⭐
-                                            </div>
-                                            <h3>John Carter</h3>
-                                            <p>CTO, FinSecure Ltd.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Testimonial Slide End -->
+                            @endforeach
                         </div>
 
                         <!-- Testimonial Slider Button Start -->
@@ -784,14 +776,15 @@
         </div>
 
         <div class="row">
+            @foreach($blogs as $blog)
             <div class="col-xl-4 col-md-6">
                 <!-- Post Item Start -->
-                <div class="post-item wow fadeInUp">
+                <div class="post-item wow fadeInUp" @if($loop->index > 0) data-wow-delay="{{ 0.2 * $loop->index }}s" @endif>
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
                         <a href="javascript:void(0);" data-cursor-text="View">
                             <figure class="image-anime">
-                                <img src="assets1/images/post-1.jpg" alt="">
+                                <img src="{{ asset('storage/' . $blog->featured_image) }}" alt="{{ $blog->title }}">
                             </figure>
                         </a>
                     </div>
@@ -801,8 +794,7 @@
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Advancements in Measurement Technology for R&D and
-                                    Healthcare</a></h2>
+                            <h2><a href="javascript:void(0);">{{ $blog->title }}</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
@@ -816,72 +808,7 @@
                 </div>
                 <!-- Post Item End -->
             </div>
-
-            <div class="col-xl-4 col-md-6">
-                <!-- Post Item Start -->
-                <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
-                    <!-- Post Featured Image Start-->
-                    <div class="post-featured-image">
-                        <a href="javascript:void(0);" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/images/post-2.jpg" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Post Featured Image End -->
-
-                    <!-- Post Item Body Start -->
-                    <div class="post-item-body">
-                        <!-- Post Item Content Start -->
-                        <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Role of Load Cells and Dynamometers in Accurate
-                                    Measurement</a></h2>
-                        </div>
-                        <!-- Post Item Content End -->
-
-                        <!-- Post Item Readmore Button Start-->
-                        <div class="post-item-btn">
-                            <a href="javascript:void(0);" class="readmore-btn">read more</a>
-                        </div>
-                        <!-- Post Item Readmore Button End-->
-                    </div>
-                    <!-- Post Item Body End -->
-                </div>
-                <!-- Post Item End -->
-            </div>
-
-            <div class="col-xl-4 col-md-6">
-                <!-- Post Item Start -->
-                <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
-                    <!-- Post Featured Image Start-->
-                    <div class="post-featured-image">
-                        <a href="javascript:void(0);" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/images/post-3.jpg" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Post Featured Image End -->
-
-                    <!-- Post Item Body Start -->
-                    <div class="post-item-body">
-                        <!-- Post Item Content Start -->
-                        <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Understanding Precision Sensors and Their Industrial
-                                    Applications</a></h2>
-                        </div>
-                        <!-- Post Item Content End -->
-
-                        <!-- Post Item Readmore Button Start-->
-                        <div class="post-item-btn">
-                            <a href="javascript:void(0);" class="readmore-btn">read more</a>
-                        </div>
-                        <!-- Post Item Readmore Button End-->
-                    </div>
-                    <!-- Post Item Body End -->
-                </div>
-                <!-- Post Item End -->
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

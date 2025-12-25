@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                             <div class="d-flex align-items-start">
                                 @if($blog->featured_image)
-                                    <img src="{{ asset($blog->featured_image) }}" alt="Featured Image" style="width:120px;height:120px;border-radius:4px;object-fit:cover;">
+                                    <img src="{{ asset('storage/' . $blog->featured_image) }}" alt="Featured Image" style="width:120px;height:120px;border-radius:4px;object-fit:cover;">
                                 @else
                                     <div
                                         style="width:120px;height:120px;background:#e0e0e0;border-radius:4px;

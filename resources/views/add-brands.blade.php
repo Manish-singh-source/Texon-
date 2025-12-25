@@ -33,7 +33,7 @@
 												<input type="text" class="form-control" name="name" placeholder="Enter Brand Name">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Brand Image</label>
+												<label class="form-label">Brand Image <span class="text-danger">( 170*41 PX )</span></label>
 												<input type="file" class="form-control" name="brand_image" accept="image/*">
 												<small class="text-muted">Upload brand image (JPEG, PNG, JPG, GIF - Max: 2MB)</small>
 											</div>

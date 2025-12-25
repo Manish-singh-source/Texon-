@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -43,9 +44,10 @@ class BlogController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('featured_image')) {
-            $imageName = time() . '.' . $request->featured_image->extension();
-            $request->featured_image->move(public_path('images/blogs'), $imageName);
-            $data['featured_image'] = 'images/blogs/' . $imageName;
+            $file = $request->file('featured_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blogs', $filename, 'public');
+            $data['featured_image'] = $path;
         }
 
         Blog::create($data);
@@ -92,13 +94,14 @@ class BlogController extends Controller
 
         if ($request->hasFile('featured_image')) {
             // Delete old image if exists
-            if ($blog->featured_image && file_exists(public_path($blog->featured_image))) {
-                unlink(public_path($blog->featured_image));
+            if ($blog->featured_image) {
+                Storage::disk('public')->delete($blog->featured_image);
             }
 
-            $imageName = time() . '.' . $request->featured_image->extension();
-            $request->featured_image->move(public_path('images/blogs'), $imageName);
-            $data['featured_image'] = 'images/blogs/' . $imageName;
+            $file = $request->file('featured_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('blogs', $filename, 'public');
+            $data['featured_image'] = $path;
         }
 
         $blog->update($data);
@@ -112,6 +115,12 @@ class BlogController extends Controller
     public function destroy(string $id)
     {
         $blog = Blog::findOrFail($id);
+
+        // Delete featured image if exists
+        if ($blog->featured_image) {
+            Storage::disk('public')->delete($blog->featured_image);
+        }
+
         $blog->delete();
 
         return redirect()->route('blog')->with('success', 'Blog deleted successfully.');

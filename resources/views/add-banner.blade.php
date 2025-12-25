@@ -44,7 +44,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Banner Image</label>
+                                                    <label class="form-label">Banner Image <span>( 1913*827 PX )</span></label>
                                                     <input type="file" class="form-control" name="banner_image" accept="image/*">
                                                     <small class="text-muted">Upload banner image (max 4MB)</small>
                                                 </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Heading <span class="text-danger"> *</span></label>
+                                        <label class="form-label">Heading</label>
                                         <input type="text" class="form-control" name="heading">
                                     </div>
                                 </div>

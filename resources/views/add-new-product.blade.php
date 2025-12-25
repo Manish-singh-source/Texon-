@@ -37,7 +37,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Product Thumbnail</label>
+                                                    <label class="form-label">Product Thumbnail <span class="text-danger">( 720*515 PX )</span></label>
                                                     <input type="file" class="form-control" name="product_thumbnail" accept="image/*">
                                                     <small class="text-muted">Upload a single thumbnail image (max 4MB)</small>
                                                 </div>
@@ -81,6 +81,21 @@
                                             <option value="{{ $category->name }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Status</label>
+                                        <select class="select" name="status">
+                                            <option value="active" selected>Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Sort Description</label>
+                                        <textarea class="form-control" name="sort_description" rows="3" placeholder="Enter sort description"></textarea>
                                     </div>
                                 </div>
 

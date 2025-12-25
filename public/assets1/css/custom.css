@@ -2047,9 +2047,9 @@ header.main-header .container-fluid {
 	transition: all 0.4s ease-in-out;
 }
 
-.case-study-item:hover .case-study-image figure img {
+/* .case-study-item:hover .case-study-image figure img {
 	transform: scale(1.1);
-}
+} */
 
 .case-study-item-btn {
 	position: absolute;
