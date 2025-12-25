@@ -37,15 +37,22 @@
 
 
 
-<div class="about-us pb-20">
+<div class="about-us pb-60 bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 gl">
                 <!-- About Image Box Start -->
                 <div class="image-gallery" style="position: relative;">
                     <figure>
                         <img id="sidebar-image" src="assets1/img/pd1.png" alt="Product Image"  >
                     </figure>
+                    <div class="thumbnails">
+                        <img src="assets1/img/pd1.png" alt="" class="thumbnail active" data-index="0">
+                        <img src="assets1/img/pd2.png" alt="" class="thumbnail" data-index="1">
+                        <img src="assets1/img/pd3.png" alt="" class="thumbnail" data-index="2">
+                        <img src="assets1/img/pd4.png" alt="" class="thumbnail" data-index="3">
+                        <img src="assets1/img/pd5.png" alt="" class="thumbnail" data-index="4">
+                    </div>
                     <button id="prev-btn" class="btn-defaults"
                         style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"> <img
                             src="assets1/img/left-arrow.png" alt=""> </button>
@@ -273,16 +280,7 @@
                             and <span>unwavering security</span></h2>
                     </div>
                     <!-- Section Title End -->
-
-                    <!-- Intro Video List Start -->
-                    <div class="intro-video-list wow fadeInUp" data-wow-delay="0.2s">
-                        <ul>
-                            <li>From a Bold Vision to a Trusted Reality</li>
-                            <li>Evolving With the Digital Landscape</li>
-                            <li>Built on Trust, Innovation and Partnership</li>
-                        </ul>
-                    </div>
-                    <!-- Intro Video List End -->
+ 
                 </div>
                 <!-- Intro Video Box End -->
             </div>
@@ -447,15 +445,33 @@ function updateImage() {
 document.getElementById('prev-btn').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
+    updateActiveThumbnail();
 });
 
 document.getElementById('next-btn').addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
+    updateActiveThumbnail();
 });
+
+const thumbnails = document.querySelectorAll('.thumbnail');
+thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+        currentIndex = index;
+        updateImage();
+        updateActiveThumbnail();
+    });
+});
+
+function updateActiveThumbnail() {
+    thumbnails.forEach((thumb, idx) => {
+        thumb.classList.toggle('active', idx === currentIndex);
+    });
+}
 
 // Initial load
 updateImage();
+updateActiveThumbnail();
 </script>
 <script>
 function openVideo() {
