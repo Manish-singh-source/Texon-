@@ -140,8 +140,12 @@ Route::get('/category', function () {
     return view('frontend.category');
 })->name('category');
 
-Route::get('/portfolio', function () {
+Route::get('/product', function () {
     return view('frontend.products');
+})->name('product');
+
+Route::get('/portfolio', function () {
+    return view('frontend.category');
 })->name('portfolio');
 
 Route::get('/contact-us', function () {

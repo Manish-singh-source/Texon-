@@ -26,29 +26,6 @@
 <div class="page-contact-us">
     <div class="container">
         <div class="row">
-             
-
-            <div class="col-xl-5">
-                <!-- Contact Us Content Start -->
-                <div class="contact-content-box">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">Get a Quote</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">Contact us</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">Have questions or need help? Contact Texon
-                            Corporation today and let us know how we can assist you.</p>
-                    </div>
-                    <!-- Section Title End -->
-
-                    <!-- Google Map IFrame Start -->
-                    <div class="google-map-iframe wow fadeInUp" data-wow-delay="0.4s">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3767.7701736415747!2d72.83828007520857!3d19.205237982026066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDEyJzE4LjkiTiA3MsKwNTAnMjcuMSJF!5e0!3m2!1sen!2sin!4v1766470911500!5m2!1sen!2sin" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <!-- Google Map IFrame End -->
-                </div>
-                <!-- Contact Us Content End -->
-            </div>
-
             <div class="col-xl-7">
                 <!-- Contact Us Form Start -->
                 <div class="contact-us-form">
@@ -92,7 +69,7 @@
                                     placeholder="Your Phone Number" required>
                                 <div class="help-block with-errors"></div>
                             </div>
-                             <div class="form-group col-md-12 mb-4">
+                            <div class="form-group col-md-12 mb-4">
                                 <label class="form-label">Product Name *</label>
                                 <input type="text" name="product" class="form-control" id="product"
                                     placeholder="Your Product Name" required>
@@ -122,6 +99,29 @@
                     </form>
                     <!-- Contact Form End -->
                 </div>
+            </div>
+            <div class="col-xl-5">
+                <!-- Contact Us Content Start -->
+                <div class="contact-content-box">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Product Detail</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Contact us</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Have questions or need help? Contact Texon
+                            Corporation today and let us know how we can assist you.</p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Google Map IFrame Start -->
+                    <div class="google-map-iframe wow fadeInUp" data-wow-delay="0.4s">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3767.7701736415747!2d72.83828007520857!3d19.205237982026066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDEyJzE4LjkiTiA3MsKwNTAnMjcuMSJF!5e0!3m2!1sen!2sin!4v1766470911500!5m2!1sen!2sin"
+                            width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                     
+                </div>
+                <!-- Contact Us Content End -->
             </div>
         </div>
     </div>

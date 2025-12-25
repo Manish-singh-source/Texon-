@@ -102,31 +102,12 @@
             <div class="col-xl-6">
                 <!-- Why Choose Image Box Start -->
                 <div class="why-choose-image-box wow fadeInUp" data-wow-delay="0.2s">
-                    <!-- Why Choose Image Box 1 Start -->
-                    <div class="why-choose-img-box-1">
-                        <!-- Why Choose Image Start -->
-                        <div class="why-choose-image image-1">
-                            <figure class="image-anime reveal">
-                                <img src="images/why-choose-image-1.jpg" alt="">
-                            </figure>
-                        </div>
-                        <!-- Why Choose Image End -->
-
-                        <!-- Year Experience Box Start -->
-                        <div class="year-experience-box">
-                            <h2><span class="counter">25</span>+</h2>
-                            <p>Years Of Experience</p>
-                        </div>
-                        <!-- Year Experience Box End -->
-                    </div>
-                    <!-- Why Choose Image Box 1 End -->
-
                     <!-- Why Choose Image Box 2 Start -->
                     <div class="why-choose-img-box-2">
                         <!-- Why Choose Image Start -->
                         <div class="why-choose-image image-2">
                             <figure class="image-anime reveal">
-                                <img src="images/why-choose-image-2.jpg" alt="">
+                                <img src="assets1/img/aa2.png" alt="">
                             </figure>
                         </div>
                         <!-- Why Choose Image End -->
@@ -134,11 +115,31 @@
                         <!-- Why Choose Image Start -->
                         <div class="why-choose-image image-3">
                             <figure class="image-anime reveal">
-                                <img src="images/why-choose-image-3.jpg" alt="">
+                                <img src="assets1/img/aa3.png" alt="">
                             </figure>
                         </div>
                         <!-- Why Choose Image End -->
                     </div>
+                    <!-- Why Choose Image Box 1 Start -->
+                    <div class="why-choose-img-box-1">
+                        <!-- Why Choose Image Start -->
+                        <div class="why-choose-image image-1">
+                            <figure class="image-anime reveal">
+                                <img src="assets1/img/aa1.png" alt="">
+                            </figure>
+                        </div>
+                        <!-- Why Choose Image End -->
+
+                        <!-- Year Experience Box Start -->
+                        <div class="year-experience-box">
+                            <h2><span class="counter">7</span>+</h2>
+                            <p>Years Of Experience</p>
+                        </div>
+                        <!-- Year Experience Box End -->
+                    </div>
+                    <!-- Why Choose Image Box 1 End -->
+
+                    
                     <!-- Why Choose Image Box 1 End -->
                 </div>
                 <!-- Why Choose Image Box End -->
@@ -148,77 +149,25 @@
                 <div class="why-choose-content">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">Why Choose Us</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">Future ready cybersecurity that
-                            <span>goes beyond defense</span>
+                        <h3 class="wow fadeInUp">About Us</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Precision Instrumentation and Analysis
+                            Solutions by <span>Texon Corporation</span>
                         </h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">We don't just stop attacks—we prepare your
-                            business to withstand them. By combining proactive defense, real-time intelligence, and
-                            long-term strategies.</p>
+                        <p class="wow fadeInUp">Texon Corporation was established as a sole proprietorship
+                            instrumentation firm in Mumbai, India, and has been operating since 2019, The company
+                            began with a focused mission to deliver precision sensors, measurement & Analysis
+                            systems, and engineering solutions that cater to R&D, industrial, clinical, and
+                            performance analysis needs.</p>
+                        <p class="wow fadeInUp">Over the years, Texon Corporation has developed a reputation
+                            for supplying a broad range of high-quality instruments—from load cells and dynamometers
+                            to specialized clinical measurement devices—serving customers across sectors such as
+                            healthcare, industrial automation, research laboratories, and technical education.</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Today, Texon’s offerings are trusted not only
+                            within India but also exported to markets such as Nepal , Bhutan , Bangladesh and Sri
+                            Lanka, reflecting its commitment to quality, reliability, and responsive service in
+                            precision measurement technology.</p>
                     </div>
-                    <!-- Section Title End -->
-
-                    <!-- Why Choose Body Start -->
-                    <div class="why-choose-body wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- Why Choose Counter Content Start -->
-                        <div class="why-choose-counter-content">
-                            <!-- Why Choose Counter Start -->
-                            <div class="why-choose-counter">
-                                <div class="circle" data-value="0.95">
-                                    <div class="progress_value"><span class="pro_data"></span><span>%</span></div>
-                                </div>
-                            </div>
-                            <!-- Why Choose Counter End -->
-
-                            <!-- Why Choose Counter Info Start -->
-                            <div class="why-choose-counter-info">
-                                <p>“Cybersecurity is not just about protecting systems, it's about protecting
-                                    trust.”</p>
-                            </div>
-                            <!-- Why Choose Counter Info End -->
-                        </div>
-                        <!-- Why Choose Counter Content End -->
-
-                        <!-- Why Choose Counter List Start -->
-                        <div class="why-choose-counter-list">
-                            <ul>
-                                <li>Future-Ready Security</li>
-                                <li>24/7 Support</li>
-                                <li>Advance data protection</li>
-                            </ul>
-                        </div>
-                        <!-- Why Choose Counter List End -->
-                    </div>
-                    <!-- Why Choose Body End -->
-
-                    <!-- Why Choose Item List Start -->
-                    <div class="why-choose-item-list wow fadeInUp" data-wow-delay="0.6s">
-                        <!-- Why Choose Item Start -->
-                        <div class="why-choose-item">
-                            <div class="icon-box">
-                                <img src="images/icon-why-choose-1.svg" alt="">
-                            </div>
-                            <div class="why-choose-item-content">
-                                <h3>Proactive Threat Detection</h3>
-                                <p>We don't just wait for threats to strike - our advanced monitoring tools
-                                    identify.</p>
-                            </div>
-                        </div>
-                        <!-- Why Choose Item End -->
-
-                        <!-- Why Choose Item Start -->
-                        <div class="why-choose-item">
-                            <div class="icon-box">
-                                <img src="images/icon-why-choose-2.svg" alt="">
-                            </div>
-                            <div class="why-choose-item-content">
-                                <h3>Tailored Security Solutions</h3>
-                                <p>We design customized cybersecurity strategy that align with your industry.</p>
-                            </div>
-                        </div>
-                        <!-- Why Choose Item End -->
-                    </div>
-                    <!-- Why Choose Item List End -->
+                   <!-- Section Title End -->                                  
 
                     <!-- Why Choose Button Start -->
                     <div class="why-choose-btn wow fadeInUp" data-wow-delay="0.8s">

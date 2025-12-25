@@ -338,7 +338,7 @@
                     <!-- Why Choose Image Box 1 Start -->
                     <div class="why-choose-img-box-1">
                         <!-- Why Choose Image Start -->
-                        <div class="why-choose-image image-1">
+                        <div class="why-choose-images image-1">
                             <figure class="image-anime reveal">
                                 <img src="assets1/img/a1.png" alt="">
                             </figure>

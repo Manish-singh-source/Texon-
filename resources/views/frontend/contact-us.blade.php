@@ -104,7 +104,7 @@
 
                     <!-- Google Map IFrame Start -->
                     <div class="google-map-iframe wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="assets1/img/map.webp" alt="">
+                        <img src="assets1/img/map.png" alt="" class="map">
                     </div>
                     <!-- Google Map IFrame End -->
                 </div>
