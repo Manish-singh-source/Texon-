@@ -11,7 +11,7 @@
                     <h1 class="text-anime-style-2" data-cursor="-opaque">Contact <span>Us</span></h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
                         </ol>
                     </nav>
@@ -97,8 +97,7 @@
                     <div class="section-title">
                         <h3 class="wow fadeInUp">Get In Touch</h3>
                         <h2 class="text-anime-style-2" data-cursor="-opaque">Contact us</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">Have questions or need help? Contact Texon
-                            Corporation today and let us know how we can assist you.</p>
+                       
                     </div>
                     <!-- Section Title End -->
 
@@ -116,10 +115,9 @@
                 <div class="contact-us-form">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h2 class="text-anime-style-2">Fill up the <span>form</span></h2>
-                        <!-- <p class="wow fadeInUp">Simply fill out the form below with your details and requirements, and
-                            the Texon team will get back to you promptly with the right solutions tailored to your
-                            needs.</p> -->
+                        <h2 class="text-anime-style-2">Fill up the <span>form</span></h2>   
+                         <p class="wow fadeInUp" data-wow-delay="0.2s">Have questions or need help? Contact Texon
+                            Corporation today and let us know how we can assist you.</p>                      
                     </div>
                     <!-- Section Title End -->
 
@@ -155,12 +153,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
 
-                            <div class="form-group col-md-12 mb-4">
-                                <label class="form-label">Product Name *</label>
-                                <input type="text" name="product" class="form-control" id="product"
-                                    placeholder="Your Product Name" required>
-                                <div class="help-block with-errors"></div>
-                            </div>
+                             
 
                             <div class="form-group col-md-12 mb-5">
                                 <label class="form-label">Message</label>

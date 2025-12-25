@@ -10,7 +10,7 @@
                     <h1 class="text-anime-style-2" data-cursor="-opaque">Category </h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Category</li>
                         </ol>
                     </nav>
@@ -63,7 +63,7 @@
 
                     <!-- Case Study Iten Content Start -->
                     <div class="case-study-item-content">
-                        <h3><a href="{{route('product')}}">Engineering</a></h3>
+                        <h3 class="text-center"><a href="{{route('product')}}">Engineering</a></h3>
                        
                     </div>
                     <!-- Case Study Item Content End -->
@@ -94,7 +94,7 @@
 
                     <!-- Case Study Iten Content Start -->
                     <div class="case-study-item-content">
-                        <h3><a href="{{route('product')}}">Life Science</a></h3>
+                        <h3 class="text-center"><a href="{{route('product')}}">Life Science</a></h3>
                         
                     </div>
                     <!-- Case Study Item Content End -->

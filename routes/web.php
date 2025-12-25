@@ -156,13 +156,21 @@ Route::get('/get-a-quote', function () {
     return view('frontend.get-a-quote');
 })->name('get-a-quote');
 
+Route::get('/request-a-quote', function () {
+    return view('frontend.request-a-quote');
+})->name('request-a-quote');
+
 Route::get('/our-presence', function () {
     return view('frontend.our-presence');
 })->name('our-presence');
 
 Route::get('/blogs', function () {
-    return view('frontend.blogs');
+    return view('frontend.blog');
 })->name('blogs');
+
+Route::get('/blog-details', function () {
+    return view('frontend.blog-details');
+})->name('blog-details');
 
 Route::get('/product-details', function () {
     return view('frontend.product-details');

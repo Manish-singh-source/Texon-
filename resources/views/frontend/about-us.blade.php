@@ -10,7 +10,7 @@
                     <h1 class="text-anime-style-2" data-cursor="-opaque">About <span>Us</span></h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">About Us</li>
                         </ol>
                     </nav>
@@ -45,7 +45,7 @@
 
                         <!-- Contact Us Circle Start -->
                         <div class="contact-us-circle">
-                            <a href="contact-us.php">
+                            <a href="{{route('contact-us')}}">
                                 <img src="assets1/img/circle.png" alt="">
                             </a>
                         </div>
@@ -171,7 +171,8 @@
                                 </div>
                             </div>
                             <div class="award-item-button">
-                                <a href="contact-us.php"><img src="assets1/images/arrow-primary.svg" alt=""></a>
+                                <a href="{{route('contact-us')}}"><img src="assets1/images/arrow-primary.svg"
+                                        alt=""></a>
                             </div>
                         </div>
                         <!-- Award Item End -->
@@ -193,7 +194,8 @@
                                 </div>
                             </div>
                             <div class="award-item-button">
-                                <a href="contact-us.php"><img src="assets1/images/arrow-primary.svg" alt=""></a>
+                                <a href="{{route('contact-us')}}"><img src="assets1/images/arrow-primary.svg"
+                                        alt=""></a>
                             </div>
                         </div>
                         <!-- Award Item End -->
@@ -214,7 +216,8 @@
                                 </div>
                             </div>
                             <div class="award-item-button">
-                                <a href="contact-us.php"><img src="assets1/images/arrow-primary.svg" alt=""></a>
+                                <a href="{{route('contact-us')}}"><img src="assets1/images/arrow-primary.svg"
+                                        alt=""></a>
                             </div>
                         </div>
                         <!-- Award Item End -->
@@ -235,7 +238,8 @@
                                 </div>
                             </div>
                             <div class="award-item-button">
-                                <a href="contact-us.php"><img src="assets1/images/arrow-primary.svg" alt=""></a>
+                                <a href="{{route('contact-us')}}"><img src="assets1/images/arrow-primary.svg"
+                                        alt=""></a>
                             </div>
                         </div>
                         <!-- Award Item End -->
@@ -325,7 +329,7 @@
 
                     <!-- Why Choose Button Start -->
                     <div class="why-choose-btn wow fadeInUp" data-wow-delay="0.8s">
-                        <a href="contact-us.php" class="btn-default">Learn more</a>
+                        <a href="{{route('contact-us')}}" class="btn-default">Contact Us</a>
                     </div>
                     <!-- Why Choose Button End -->
                 </div>

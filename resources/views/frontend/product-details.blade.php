@@ -291,16 +291,7 @@
                             and <span>unwavering security</span></h2>
                     </div>
                     <!-- Section Title End -->
-
-                    <!-- Intro Video List Start -->
-                    <div class="intro-video-list wow fadeInUp" data-wow-delay="0.2s">
-                        <ul>
-                            <li>From a Bold Vision to a Trusted Reality</li>
-                            <li>Evolving With the Digital Landscape</li>
-                            <li>Built on Trust, Innovation and Partnership</li>
-                        </ul>
-                    </div>
-                    <!-- Intro Video List End -->
+ 
                 </div>
                 <!-- Intro Video Box End -->
             </div>

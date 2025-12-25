@@ -382,9 +382,9 @@
                     <!-- Section Title Content End -->
 
                     <!-- Section Btn Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.4s">
+                    <!-- <div class="section-btn wow fadeInUp" data-wow-delay="0.4s">
                         <a href="javascript:void(0);" class="btn-default">View All Benefits</a>
-                    </div>
+                    </div> -->
                     <!-- Section Btn End -->
                 </div>
                 <!-- Section Content Btn End -->
@@ -724,7 +724,7 @@
 
                     <!-- Section Btn Start -->
                     <div class="section-btn wow fadeInUp" data-wow-delay="0.4s">
-                        <a href="javascript:void(0);" class="btn-default">View All Blogs</a>
+                        <a href="{{route('blogs')}}" class="btn-default">View All Blogs</a>
                     </div>
                     <!-- Section Btn End -->
                 </div>
@@ -738,7 +738,7 @@
                 <div class="post-item wow fadeInUp">
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
-                        <a href="javascript:void(0);" data-cursor-text="View">
+                        <a href="{{route('blog-details')}}" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="assets1/images/post-1.jpg" alt="">
                             </figure>
@@ -750,14 +750,14 @@
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Advancements in Measurement Technology for R&D and
+                            <h2><a href="{{route('blog-details')}}">Advancements in Measurement Technology for R&D and
                                     Healthcare</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
                         <div class="post-item-btn">
-                            <a href="javascript:void(0);" class="readmore-btn">read more</a>
+                            <a href="{{route('blog-details')}}" class="readmore-btn">read more</a>
                         </div>
                         <!-- Post Item Readmore Button End-->
                     </div>
@@ -771,7 +771,7 @@
                 <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
-                        <a href="javascript:void(0);" data-cursor-text="View">
+                        <a href="{{route('blog-details')}}" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="assets1/images/post-2.jpg" alt="">
                             </figure>
@@ -783,14 +783,14 @@
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Role of Load Cells and Dynamometers in Accurate
+                            <h2><a href="{{route('blog-details')}}">Role of Load Cells and Dynamometers in Accurate
                                     Measurement</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
                         <div class="post-item-btn">
-                            <a href="javascript:void(0);" class="readmore-btn">read more</a>
+                            <a href="{{route('blog-details')}}" class="readmore-btn">read more</a>
                         </div>
                         <!-- Post Item Readmore Button End-->
                     </div>
@@ -804,7 +804,7 @@
                 <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
-                        <a href="javascript:void(0);" data-cursor-text="View">
+                        <a href="{{route('blog-details')}}" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="assets1/images/post-3.jpg" alt="">
                             </figure>
@@ -816,14 +816,14 @@
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">Understanding Precision Sensors and Their Industrial
+                            <h2><a href="{{route('blog-details')}}">Understanding Precision Sensors and Their Industrial
                                     Applications</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
                         <div class="post-item-btn">
-                            <a href="javascript:void(0);" class="readmore-btn">read more</a>
+                            <a href="{{route('blog-details')}}" class="readmore-btn">read more</a>
                         </div>
                         <!-- Post Item Readmore Button End-->
                     </div>

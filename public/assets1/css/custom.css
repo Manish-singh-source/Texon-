@@ -2820,13 +2820,13 @@ header.main-header .container-fluid {
 /************************************/
 
 .main-footer {
-	background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 100%);
-	padding: 100px 0 0;
+    background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 100%);
+    padding: 50px 0 0;
 }
 
 .footer-scrolling-ticker-box {
-	margin-bottom: 80px;
-	padding-bottom: 100px;
+	margin-bottom: 50px;
+	padding-bottom: 50px;
 	border-bottom: 1px solid var(--dark-divider-color);
 }
 
@@ -2843,14 +2843,14 @@ header.main-header .container-fluid {
 }
 
 .footer-scrolling-ticker .scrolling-content span {
-	display: flex;
-	align-items: center;
-	font-size: 140px;
-	line-height: normal;
-	font-weight: 500;
-	letter-spacing: -0.02em;
-	text-transform: uppercase;
-	color: var(--white-color);
+    display: flex;
+    align-items: center;
+    font-size: 70px;
+    line-height: normal;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--white-color);
 }
 
 .footer-scrolling-ticker .scrolling-content span img {
@@ -4109,13 +4109,17 @@ header.main-header .container-fluid {
 }
 
 .post-social-sharing {
-	text-align: right;
+	text-align: left;
 }
 
 .post-social-sharing ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+
+.pt-30{
+	padding-top: 30px;
 }
 
 .post-social-sharing ul li {
@@ -7059,11 +7063,14 @@ header.main-header .container-fluid {
 }
 
 .social-media ul li {
-	list-style-type: none;
-	border: 1px solid #3b7aed;
-	border-radius: 50px;
-	padding: 10px;
-	background-color: #3b7aed;
+    list-style-type: none;
+    border: 1px solid #3b7aed;
+    border-radius: 50px;
+    width: 49px;
+    height: 48px;
+    line-height: 46px;
+    background-color: #3b7aed;
+    text-align: center;
 }
 
 .social-media ul li:hover {
@@ -7150,4 +7157,30 @@ header.main-header .container-fluid {
 
 .gl {
     padding-right: 100px;
+}
+
+.pb-30{
+	padding-bottom: 30px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 50px;
+    right: 40px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 57px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: #fff;
 }
