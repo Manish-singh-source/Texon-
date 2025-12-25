@@ -42,4 +42,10 @@ class HomeController extends Controller
         $product = Product::with(['productBanners', 'aboutProducts', 'productKeyPoints', 'productGalleries', 'bannerVideos', 'productFeatures'])->findOrFail($id);
         return view('frontend.product-details', compact('product'));
     }
+
+    public function blogDetails($id)
+    {
+        $blog = Blog::findOrFail($id);
+        return view('frontend.blog-details', compact('blog'));
+    }
 }

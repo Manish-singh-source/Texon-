@@ -172,3 +172,5 @@ Route::get('/blogs', function () {
 })->name('blogs');
 
 Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class, 'productDetails'])->name('product-details');
+
+Route::get('/blog-details', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
