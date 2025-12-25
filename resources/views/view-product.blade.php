@@ -44,10 +44,9 @@
                                                     <input type="file" class="form-control" name="product_thumbnail"
                                                         accept="image/*">
                                                     @if($product->product_thumbnail)
-                                                    <div class="mt-2">
-                                                        <img src="{{ asset('storage/' . $product->product_thumbnail) }}"
-                                                            class="img-fluid" style="max-width: 100px;">
-                                                    </div>
+                                                        <div class="mt-2">
+                                                            <img src="{{ asset('storage/' . $product->product_thumbnail) }}?t={{ time() }}" class="img-fluid" style="max-width: 100px;">
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -118,6 +117,21 @@
                                                 {{ $category->name }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Status</label>
+                                        <select class="form-select" name="status">
+                                            <option value="active" {{ $product->status == 'active' ? 'selected' : '' }}>Active</option>
+                                            <option value="inactive" {{ $product->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Sort Description</label>
+                                        <textarea class="form-control" name="sort_description" rows="3" placeholder="Enter sort description">{{ $product->sort_description }}</textarea>
                                     </div>
                                 </div>
 
@@ -231,13 +245,6 @@
                                                         <label class="form-label">Heading</label>
                                                         <input type="text" class="form-control" name="heading"
                                                             value="{{ $productBanner->heading ?? '' }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Subheading</label>
-                                                        <input type="text" class="form-control" name="subheading"
-                                                            value="{{ $productBanner->subheading ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

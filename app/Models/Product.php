@@ -13,6 +13,8 @@ class Product extends Model
         'product_thumbnail',
         'image_gallery',
         'product_video',
+        'sort_description',
+        'status',
     ];
 
     public function productBanners()

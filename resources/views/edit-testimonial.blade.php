@@ -8,7 +8,7 @@
         <!-- Breadcrumb -->
         <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
             <div class="my-auto mb-2">
-                <h2 class="mb-1">Add New Testimonial</h2>
+                <h2 class="mb-1">Edit Testimonial</h2>
                 {{-- <nav>
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item">
                             Testimonial
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Add New Testimonial</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Testimonial</li>
                     </ol>
                 </nav> --}}
             </div>
@@ -38,8 +38,9 @@
                         <h5 class="card-title">Testimonial Information</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('add-testimonial.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('edit-testimonial.update', $testimonial->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="bg-light w-100 rounded p-3 mb-4">
@@ -50,6 +51,12 @@
                                                     <label class="form-label">Testimonial Image</label>
                                                     <input type="file" class="form-control" name="testimonial_image" accept="image/*">
                                                     <small class="text-muted">Upload testimonial image (max 4MB)</small>
+                                                    @if($testimonial->testimonial_image)
+                                                        <div class="mt-2">
+                                                            <img src="{{ asset('storage/' . $testimonial->testimonial_image) }}" alt="Current Image" style="width: 100px; height: 100px; object-fit: cover;">
+                                                            <p class="text-muted">Current image</p>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -58,13 +65,13 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Name <span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" name="name">
+                                        <input type="text" class="form-control" name="name" value="{{ $testimonial->name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Position</label>
-                                        <input type="text" class="form-control" name="position">
+                                        <input type="text" class="form-control" name="position" value="{{ $testimonial->position }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -72,18 +79,18 @@
                                         <label class="form-label">Rating <span class="text-danger"> *</span></label>
                                         <select class="select" name="rating">
                                             <option>Select Rating</option>
-                                            <option value="1">1 Star</option>
-                                            <option value="2">2 Stars</option>
-                                            <option value="3">3 Stars</option>
-                                            <option value="4">4 Stars</option>
-                                            <option value="5">5 Stars</option>
+                                            <option value="1" {{ $testimonial->rating == 1 ? 'selected' : '' }}>1 Star</option>
+                                            <option value="2" {{ $testimonial->rating == 2 ? 'selected' : '' }}>2 Stars</option>
+                                            <option value="3" {{ $testimonial->rating == 3 ? 'selected' : '' }}>3 Stars</option>
+                                            <option value="4" {{ $testimonial->rating == 4 ? 'selected' : '' }}>4 Stars</option>
+                                            <option value="5" {{ $testimonial->rating == 5 ? 'selected' : '' }}>5 Stars</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Message <span class="text-danger"> *</span></label>
-                                        <textarea class="form-control" rows="4" name="message"></textarea>
+                                        <textarea class="form-control" rows="4" name="message">{{ $testimonial->message }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -91,15 +98,15 @@
                                         <label class="form-label">Status <span class="text-danger"> *</span></label>
                                         <select class="select" name="status">
                                             <option>Select</option>
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
+                                            <option value="active" {{ $testimonial->status == 'active' ? 'selected' : '' }}>Active</option>
+                                            <option value="inactive" {{ $testimonial->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-end">
                                 <a href="{{ route('testimonials') }}" class="btn btn-outline-light border me-2">Cancel</a>
-                                <button type="submit" class="btn btn-primary">Save Testimonial</button>
+                                <button type="submit" class="btn btn-primary">Update Testimonial</button>
                             </div>
                         </form>
                     </div>

@@ -84,7 +84,7 @@
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-md">
-                                                <input class="form-check-input" type="checkbox">
+                                                <input class="form-check-input category-checkbox" type="checkbox" name="category_ids[]" value="{{ $category->id }}">
                                             </div>
                                         </td>
                                         <td>{{ $index + 1 }}</td>
@@ -96,7 +96,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $category->name }}</td>
-                                        <td>0</td>
+                                        <td>{{ \App\Models\Product::where('category', (string)$category->name)->count() }}</td>
                                         <td>
                                             <span class="badge badge-{{ $category->status == 'active' ? 'success' : 'danger' }} d-inline-flex align-items-center badge-xs">
                                                 <i class="ti ti-point-filled me-1"></i>{{ ucfirst($category->status) }}
@@ -104,12 +104,14 @@
                                         </td>
                                         <td>
                                             <div class="action-icon d-inline-flex">
-                                                <a href="#" class="me-2">
+                                                <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_category" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-image="{{ $category->image }}" data-status="{{ $category->status }}">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal">
-                                                    <i class="ti ti-trash"></i>
-                                                </a>
+                                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete {{ addslashes($category->name) }}?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link p-0 text-danger"><i class="ti ti-trash"></i></button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -178,6 +180,67 @@
                         </div>
                     </div>
                     <!-- /Add Department -->
+
+                    <!-- Edit Category -->
+                    <div class="modal fade" id="edit_category">
+                        <div class="modal-dialog modal-dialog-centered modal-lg ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit Category</h4>
+                                    <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i class="ti ti-x"></i>
+                                    </button>
+                                </div>
+                                <form id="editCategoryForm" action="" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="modal-body pb-0">
+                                        <div class="row">
+                                            <!-- Row 1 -->
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Category Name <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="name" id="edit_name"
+                                                        placeholder="Enter Category Name">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Category Image</label>
+                                                    <input type="file" class="form-control" name="image" id="edit_image"
+                                                        accept="image/*">
+                                                    <img id="edit_image_preview" src="" alt="Current Image" style="max-width: 100px; margin-top: 10px; display: none;">
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Row 2 -->
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">General Status <span class="text-danger">*</span></label>
+                                                    <select class="form-select" name="status" id="edit_status">
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light me-2"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Update Category</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Edit Category -->
 
                     <!-- Add Department -->
                     <div class="modal fade" id="sub_categories">
@@ -282,5 +345,69 @@
         </div>
     </div>
     <!-- /Page Wrapper -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var editCategoryModal = document.getElementById('edit_category');
+        editCategoryModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            var name = button.getAttribute('data-name');
+            var image = button.getAttribute('data-image');
+            var status = button.getAttribute('data-status');
+
+            var form = document.getElementById('editCategoryForm');
+            form.action = '/admin/categories/' + id;
+
+            document.getElementById('edit_name').value = name;
+            document.getElementById('edit_status').value = status;
+
+            var preview = document.getElementById('edit_image_preview');
+            if (image) {
+                preview.src = '{{ asset("storage/") }}/' + image;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+    });
+    
+    // Bulk delete functionality
+    const selectAllCheckbox = document.getElementById('select-all');
+    const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+    const bulkDeleteBtn = document.getElementById('bulk-delete-btn');
+    const bulkDeleteForm = document.getElementById('bulk-delete-form');
+    
+    selectAllCheckbox.addEventListener('change', function() {
+        categoryCheckboxes.forEach(cb => cb.checked);
+        toggleBulkDeleteBtn();
+    });
+    
+    categoryCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            const allChecked = Array.from(categoryCheckboxes).every(cb => cb.checked);
+            const someChecked = Array.from(categoryCheckboxes).some(cb => cb.checked);
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = someChecked && !allChecked;
+            toggleBulkDeleteBtn();
+        });
+    });
+    
+    
+    bulkDeleteBtn.addEventListener('click', function() {
+        const selectedIds = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+        if (selectedIds.length === 0) return;
+        if (confirm('Are you sure you want to delete the selected categories?')) {
+            selectedIds.forEach(id => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'ids[]';
+                input.value = id;
+                bulkDeleteForm.appendChild(input);
+            });
+            bulkDeleteForm.submit();
+        }
+    });
+    </script>
 
 @endsection

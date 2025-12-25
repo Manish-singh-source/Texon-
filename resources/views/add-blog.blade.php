@@ -11,7 +11,7 @@
                     <div class="col">
                         <h3 class="page-title">Add Blog</h3>
                     </div>
-                    <nav>
+                    {{-- <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
                                 <a href="https://smarthr.co.in/demo/html/template/index.html">Home</a>
@@ -21,7 +21,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Add Blog</li>
                         </ol>
-                    </nav>
+                    </nav> --}}
                 </div>
             </div>
             <!-- /Page Header -->

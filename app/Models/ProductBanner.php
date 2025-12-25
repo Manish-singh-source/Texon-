@@ -11,7 +11,6 @@ class ProductBanner extends Model
         'video_upload',
         'banner_image',
         'heading',
-        'subheading',
         'button_name',
         'button_url',
     ];

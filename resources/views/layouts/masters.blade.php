@@ -11,13 +11,14 @@
 	<meta name="keywords" content="HR dashboard template, HRM admin template, Bootstrap 5 HR dashboard, workforce management dashboard, employee management system, payroll dashboard, HR analytics, admin dashboard, CRM admin template, human resources management, HR admin template, team management dashboard, recruitment dashboard, employee attendance system, performance management, HR CRM, HR dashboard HTML, Bootstrap HR template, employee engagement, HR software, project management dashboard">
 	<meta name="author" content="Technofra Technologies">
 	<meta name="robots" content="index, follow">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- Apple Touch Icon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/img/favicon.png')}}">
 
 	<!-- Favicon -->
-	<link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
-	<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+	<link rel="icon" href="{{asset('assets/img/favicon.png')}}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}" type="image/x-icon">
 
 	<!-- Theme Script js -->
 	<script src="{{asset('assets/js/theme-script.js')}}"></script>
@@ -3502,7 +3503,7 @@
 	<!-- /Main Wrapper -->
 
 	<!-- jQuery -->
-	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js"></script>
+	<script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
 
 	<!-- Bootstrap Core JS -->
 	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>

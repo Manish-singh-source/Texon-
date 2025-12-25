@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
-                        <a href="/add-new-product" class="btn btn-primary d-flex align-items-center"><i
+                        <a href="{{ route('add-new-product') }}" class="btn btn-primary d-flex align-items-center"><i
                                 class="ti ti-circle-plus me-2"></i>Add Product</a>
                     </div>
                     <div class="head-icons ms-2">
@@ -220,9 +220,10 @@
                                      <td>{{ $product->category ?? 'N/A' }}</td>
                                      <td>{{ $product->created_at->format('d M Y') }}</td>
                                      <td>
-                                         <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                             <i class="ti ti-point-filled me-1"></i>Active
-                                         </span>
+                                         <div class="form-check form-switch">
+                                             <input class="form-check-input status-toggle" type="checkbox" id="status-{{ $product->id }}" data-id="{{ $product->id }}" {{ $product->status == 'active' ? 'checked' : '' }}>
+                                             <label class="form-check-label" for="status-{{ $product->id }}"></label>
+                                         </div>
                                      </td>
                                      <td>
                                          <div class="action-icon d-inline-flex">
@@ -946,3 +947,34 @@
     <!-- /Add Product Success -->
 
 @endsection
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.status-toggle').forEach(function(toggle) {
+        toggle.addEventListener('change', function() {
+            const productId = this.getAttribute('data-id');
+            const isChecked = this.checked;
+            const status = isChecked ? 'active' : 'inactive';
+
+            fetch(`/admin/products/${productId}/toggle-status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ status: status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Optionally show a success message or handle response
+                console.log('Status updated:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Revert the toggle if error
+                this.checked = !isChecked;
+            });
+        });
+    });
+});
+</script>

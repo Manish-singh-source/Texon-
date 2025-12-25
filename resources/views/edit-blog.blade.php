@@ -11,17 +11,6 @@
 						<div class="col">
 							<h3 class="page-title">Edit Blog</h3>
 						</div>
-                        <nav>
-							<ol class="breadcrumb mb-0">
-								<li class="breadcrumb-item">
-									<a href="https://smarthr.co.in/demo/html/template/index.html">Home</a>
-								</li>
-								<li class="breadcrumb-item">
-									Blog
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Edit Blog</li>
-							</ol>
-						</nav>
 					</div>
 				</div>
 				<!-- /Page Header -->
@@ -93,7 +82,7 @@
 												<label class="form-label">Featured Image</label>
 												<input type="file" name="featured_image" class="form-control" accept="image/*">
 												@if($blog->featured_image)
-													<img src="{{ asset($blog->featured_image) }}" alt="Current Image" style="max-width: 200px; margin-top: 10px;">
+													<img src="{{ asset('storage/' . $blog->featured_image) }}" alt="Current Image" style="max-width: 200px; margin-top: 10px;">
 												@endif
 											</div>
 

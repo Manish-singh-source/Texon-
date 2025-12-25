@@ -45,6 +45,8 @@ class ProductController extends Controller
             'product_name' => 'required|string|max:255',
             'tags' => 'nullable|string',
             'category' => 'nullable|string',
+            'sort_description' => 'nullable|string',
+            'status' => 'nullable|string|in:active,inactive',
             'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
@@ -54,6 +56,8 @@ class ProductController extends Controller
             'product_name.max' => 'Product name must not exceed 255 characters.',
             'tags.string' => 'Tags must be a valid string.',
             'category.string' => 'Category must be a valid string.',
+            'status.string' => 'Status must be a valid string.',
+            'status.in' => 'Status must be either active or inactive.',
             'product_thumbnail.image' => 'Product thumbnail must be a valid image file.',
             'product_thumbnail.mimes' => 'Product thumbnail must be one of the following types: jpeg, png, jpg, gif.',
             'product_thumbnail.max' => 'Product thumbnail size must not exceed 4MB.',
@@ -64,7 +68,7 @@ class ProductController extends Controller
             'product_video.max' => 'Product video size must not exceed 10MB.',
         ]);
 
-        $data = $request->only(['product_name', 'tags', 'category']);
+        $data = $request->only(['product_name', 'tags', 'category', 'sort_description', 'status']);
 
         // Handle thumbnail
         if ($request->hasFile('product_thumbnail')) {
@@ -96,7 +100,6 @@ class ProductController extends Controller
             'video_upload' => 'nullable|mimes:mp4,avi,mov|max:10240',
             'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'heading' => 'nullable|string|max:255',
-            'subheading' => 'nullable|string|max:255',
             'button_name' => 'nullable|string|max:255',
             'button_url' => 'nullable|url',
         ], [
@@ -107,14 +110,12 @@ class ProductController extends Controller
             'banner_image.max' => 'Banner image size must not exceed 4MB.',
             'heading.string' => 'Heading must be a valid string.',
             'heading.max' => 'Heading must not exceed 255 characters.',
-            'subheading.string' => 'Subheading must be a valid string.',
-            'subheading.max' => 'Subheading must not exceed 255 characters.',
             'button_name.string' => 'Button name must be a valid string.',
             'button_name.max' => 'Button name must not exceed 255 characters.',
             'button_url.url' => 'Button URL must be a valid URL.',
         ]);
 
-        $data = $request->only(['heading', 'subheading', 'button_name', 'button_url']);
+        $data = $request->only(['heading', 'button_name', 'button_url']);
 
         // Handle video upload
         if ($request->hasFile('video_upload')) {
@@ -406,6 +407,8 @@ class ProductController extends Controller
             'product_name' => 'required|string|max:255',
             'tags' => 'nullable|string',
             'category' => 'nullable|string',
+            'sort_description' => 'nullable|string',
+            'status' => 'nullable|string|in:active,inactive',
             'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
@@ -415,6 +418,8 @@ class ProductController extends Controller
             'product_name.max' => 'Product name must not exceed 255 characters.',
             'tags.string' => 'Tags must be a valid string.',
             'category.string' => 'Category must be a valid string.',
+            'status.string' => 'Status must be a valid string.',
+            'status.in' => 'Status must be either active or inactive.',
             'product_thumbnail.image' => 'Product thumbnail must be a valid image file.',
             'product_thumbnail.mimes' => 'Product thumbnail must be one of the following types: jpeg, png, jpg, gif.',
             'product_thumbnail.max' => 'Product thumbnail size must not exceed 4MB.',
@@ -426,7 +431,7 @@ class ProductController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
-        $data = $request->only(['product_name', 'tags', 'category']);
+        $data = $request->only(['product_name', 'tags', 'category', 'sort_description', 'status']);
 
         // Handle thumbnail
         if ($request->hasFile('product_thumbnail')) {
@@ -452,6 +457,15 @@ class ProductController extends Controller
         $product->update($data);
 
         return redirect()->back()->with('success', 'Product updated successfully!');
+    }
+
+    public function toggleStatus($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->status = $product->status == 'active' ? 'inactive' : 'active';
+        $product->save();
+
+        return response()->json(['status' => $product->status]);
     }
 
     public function destroy($id)

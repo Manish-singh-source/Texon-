@@ -1,4 +1,4 @@
-@extends('layouts.masters')
+`@extends('layouts.masters')
 @section('content')
     <!-- Page Wrapper -->
     <div class="page-wrapper">
@@ -103,6 +103,7 @@
                                     <th>Sr No</th>
                                     <th>Image</th>
                                     <th>Name</th>
+                                    <th>Position</th>
                                     <th>Message</th>
                                     <th>Rating</th>
                                     <th>Status</th>
@@ -124,6 +125,7 @@
                                         </div>
                                     </td>
                                     <td>{{ $testimonial->name }}</td>
+                                    <td>{{ $testimonial->position ?? '-' }}</td>
                                     <td>{{ $testimonial->message }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -140,7 +142,7 @@
                                     </td>
                                     <td>
                                         <div class="action-icon d-inline-flex">
-                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_testimonial"><i class="ti ti-edit"></i></a>
+                                            <a href="{{ route('edit-testimonial', $testimonial->id) }}" class="me-2"><i class="ti ti-edit"></i></a>
                                             <form action="{{ route('testimonials.destroy', $testimonial->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')

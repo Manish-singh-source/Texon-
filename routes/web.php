@@ -20,6 +20,8 @@ Route::prefix('admin')->group(function () {
 
         Route::put('/view-product/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('view-product.update');
 
+        Route::patch('/products/{id}/toggle-status', [App\Http\Controllers\ProductController::class, 'toggleStatus'])->name('products.toggle-status');
+
         Route::post('/view-product/{productId}/store-banner', [App\Http\Controllers\ProductController::class, 'storeProductBanner'])->name('view-product.store-banner');
 
         Route::post('/view-product/{productId}/store-about', [App\Http\Controllers\ProductController::class, 'storeAboutProduct'])->name('view-product.store-about');
@@ -68,6 +70,10 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/add-testimonial', [App\Http\Controllers\TestimonialController::class, 'store'])->name('add-testimonial.store');
 
+        Route::get('/edit-testimonial/{id}', [App\Http\Controllers\TestimonialController::class, 'edit'])->name('edit-testimonial');
+
+        Route::put('/edit-testimonial/{id}', [App\Http\Controllers\TestimonialController::class, 'update'])->name('edit-testimonial.update');
+
         Route::delete('/testimonials/{id}', [App\Http\Controllers\TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
         Route::post('/logout', [App\Http\Controllers\RegisterController::class, 'logout'])->name('logout');
@@ -81,6 +87,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories');
 
         Route::post('/categories', [App\Http\Controllers\CategoryController::class, 'store'])->name('categories.store');
+
+        Route::get('/categories/{id}/edit', [App\Http\Controllers\CategoryController::class, 'edit'])->name('categories.edit');
+
+        Route::put('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
+
+        Route::delete('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('categories.destroy');
+        Route::post('/categories/bulk-delete', [App\Http\Controllers\CategoryController::class, 'bulkDelete'])->name('categories.bulk-delete');
         Route::get('/view-category', function () {
             return view('view-categories');
         })->name('view-category');
@@ -128,25 +141,15 @@ Route::prefix('admin')->group(function () {
 
 // Forntend part
 
-Route::get('/', function () {
-    return view('frontend.index');
-})->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', function () {
     return view('frontend.about-us');
 })->name('about-us');
 
-Route::get('/category', function () {
-    return view('frontend.category');
-})->name('category');
+Route::get('/category', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 
-Route::get('/product', function () {
-    return view('frontend.products');
-})->name('product');
-
-Route::get('/portfolio', function () {
-    return view('frontend.category');
-})->name('portfolio');
+Route::get('/portfolio', [App\Http\Controllers\HomeController::class, 'products'])->name('portfolio');
 
 Route::get('/contact-us', function () {
     return view('frontend.contact-us');
@@ -168,10 +171,4 @@ Route::get('/blogs', function () {
     return view('frontend.blog');
 })->name('blogs');
 
-Route::get('/blog-details', function () {
-    return view('frontend.blog-details');
-})->name('blog-details');
-
-Route::get('/product-details', function () {
-    return view('frontend.product-details');
-})->name('product-details');
+Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class, 'productDetails'])->name('product-details');

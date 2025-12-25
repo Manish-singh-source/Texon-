@@ -13,25 +13,25 @@
     <!-- Page Title -->
     <title>Texon - Corporation</title>
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets1/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets1/img/favicon.png') }}">
     <!-- Google Fonts Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&amp;display=swap" rel="stylesheet">
     <!-- Bootstrap Css -->
-    <link href="assets1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="{{ asset('assets1/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <!-- SlickNav Css -->
-    <link href="assets1/css/slicknav.min.css" rel="stylesheet">
+    <link href="{{ asset('assets1/css/slicknav.min.css') }}" rel="stylesheet">
     <!-- Swiper Css -->
-    <link rel="stylesheet" href="assets1/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('assets1/css/swiper-bundle.min.css') }}">
     <!-- Animated Css -->
-    <link href="assets1/css/animate.css" rel="stylesheet">
+    <link href="{{ asset('assets1/css/animate.css') }}" rel="stylesheet">
     <!-- Magnific Popup Core Css File -->
-    <link rel="stylesheet" href="assets1/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('assets1/css/magnific-popup.css') }}">
     <!-- Mouse Cursor Css File -->
-    <link rel="stylesheet" href="assets1/css/mousecursor.css">
+    <link rel="stylesheet" href="{{ asset('assets1/css/mousecursor.css') }}">
     <!-- Main Custom Css -->
-    <link href="assets1/css/custom.css" rel="stylesheet" media="screen">
+    <link href="{{ asset('assets1/css/custom.css') }}" rel="stylesheet" media="screen">
     <!-- FontAwesome 5 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.5/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -49,7 +49,7 @@
                 <div class="container-fluid">
                     <!-- Logo Start -->
                     <a class="navbar-brand" href="index.php">
-                        <img src="assets1/img/logo.png" alt="Logo">
+                        <img src="{{ asset('assets1/img/logo.png') }}" alt="Logo">
                     </a>
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
@@ -158,7 +158,7 @@
                     <div class="about-footer">
                         <!-- Footer Logo Start -->
                         <div class="footer-logo">
-                            <img src="assets1/img/logo.png" alt="">
+                            <img src="{{ asset('assets1/img/logo.png') }}" alt="">
                         </div>
                         <!-- Footer Logo End -->
 
@@ -279,38 +279,38 @@
     </script>
 
     <!-- Jquery Library File -->
-    <script src="assets1/js/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('assets1/js/jquery-3.7.1.min.js') }}"></script>
     <!-- Circle Progress Js File -->
-    <script src="assets1/js/circle-progress.min.js"></script>
+    <script src="{{ asset('assets1/js/circle-progress.min.js') }}"></script>
     <!-- Bootstrap js file -->
-    <script src="assets1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets1/js/bootstrap.min.js') }}"></script>
     <!-- Validator js file -->
-    <script src="assets1/js/validator.min.js"></script>
+    <script src="{{ asset('assets1/js/validator.min.js') }}"></script>
     <!-- SlickNav js file -->
-    <script src="assets1/js/jquery.slicknav.js"></script>
+    <script src="{{ asset('assets1/js/jquery.slicknav.js') }}"></script>
     <!-- Swiper js file -->
-    <script src="assets1/js/swiper-bundle.min.js"></script>
+    <script src="{{ asset('assets1/js/swiper-bundle.min.js') }}"></script>
     <!-- Counter js file -->
-    <script src="assets1/js/jquery.waypoints.min.js"></script>
-    <script src="assets1/js/jquery.counterup.min.js"></script>
+    <script src="{{ asset('assets1/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets1/js/jquery.counterup.min.js') }}"></script>
     <!-- Magnific js file -->
-    <script src="assets1/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('assets1/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- SmoothScroll -->
-    <script src="assets1/js/SmoothScroll.js"></script>
+    <script src="{{ asset('assets1/js/SmoothScroll.js') }}"></script>
     <!-- Parallax js -->
-    <script src="assets1/js/parallaxie.js"></script>
+    <script src="{{ asset('assets1/js/parallaxie.js') }}"></script>
     <!-- MagicCursor js file -->
-    <script src="assets1/js/gsap.min.js"></script>
-    <script src="assets1/js/magiccursor.js"></script>
+    <script src="{{ asset('assets1/js/gsap.min.js') }}"></script>
+    <script src="{{ asset('assets1/js/magiccursor.js') }}"></script>
     <!-- Text Effect js file -->
-    <script src="assets1/js/SplitText.min.js"></script>
-    <script src="assets1/js/ScrollTrigger.min.js"></script>
+    <script src="{{ asset('assets1/js/SplitText.min.js') }}"></script>
+    <script src="{{ asset('assets1/js/ScrollTrigger.min.js') }}"></script>
     <!-- YTPlayer js File -->
-    <script src="assets1/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="{{ asset('assets1/js/jquery.mb.YTPlayer.min.js') }}"></script>
     <!-- Wow js file -->
-    <script src="assets1/js/wow.min.js"></script>
+    <script src="{{ asset('assets1/js/wow.min.js') }}"></script>
     <!-- Main Custom js file -->
-    <script src="assets1/js/function.js"></script>
+    <script src="{{ asset('assets1/js/function.js') }}"></script>
 </body>
 
 </html>
