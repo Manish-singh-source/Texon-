@@ -7,11 +7,11 @@
             <div class="col-lg-12">
                 <!-- Page Header Box Start -->
                 <div class="page-header-box">
-                    <h1 class="text-anime-style-2" data-cursor="-opaque">Get A <span>Quote</span></h1>
+                    <h1 class="text-anime-style-2" data-cursor="-opaque">Request A <span>Quote</span></h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Get a Quote</li>
+                            <li class="breadcrumb-item active" aria-current="page">Request a Quote</li>
                         </ol>
                     </nav>
                 </div>
@@ -26,6 +26,7 @@
 <div class="page-contact-us">
     <div class="container">
         <div class="row">
+
             <div class="col-xl-7">
                 <!-- Contact Us Form Start -->
                 <div class="contact-us-form">
@@ -69,16 +70,11 @@
                                     placeholder="Your Phone Number" required>
                                 <div class="help-block with-errors"></div>
                             </div>
+
                             <div class="form-group col-md-12 mb-4">
                                 <label class="form-label">Product Name *</label>
                                 <input type="text" name="product" class="form-control" id="product"
                                     placeholder="Your Product Name" required>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-md-12 mb-4">
-                                <label class="form-label">Company Name *</label>
-                                <input type="text" name="company" class="form-control" id="company"
-                                    placeholder="Your Company Name" required>
                                 <div class="help-block with-errors"></div>
                             </div>
 
@@ -100,29 +96,21 @@
                     <!-- Contact Form End -->
                 </div>
             </div>
-            <div class="col-xl-5">
+               <div class="col-xl-5">
                 <!-- Contact Us Content Start -->
                 <div class="contact-content-box">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">Our Product</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">Product Detail</h2>
-                        
+                        <h3 class="wow fadeInUp">Request Your Free Quote</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Experience the Texon difference</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Get in touch with Texon today for a free quote and discover solutions designed to meet your exact needs. We are committed to quality, efficiency, and customer satisfaction.</p>
                     </div>
                     <!-- Section Title End -->
 
-                    <!-- Product Detail Start -->
-                    <div class="product-detail-box wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="product-image pb-30">
-                            <img src="assets1/img/pd1.png" alt="Trigno Centro" style="width: 300px; height: auto; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
-                        </div>
-                        <div class="product-info">
-                            <h3>Trigno Centro</h3>
-                            <p>Created from over 30 years of experience and close collaboration with the EMG research community, Trigno Centro represents an evolutionary leap at the heart of our product ecosystem.</p>
-                            <p>Engineered to deliver uncompromising signal quality, Trigno Centro provides a powerful, centralized platform for acquiring and synchronizing high-fidelity biosignals.</p>
-                        </div>
-                    </div>
-                     
+                    <!-- Google Map IFrame Start -->
+                                      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3767.7701736415747!2d72.83828007520857!3d19.205237982026066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDEyJzE4LjkiTiA3MsKwNTAnMjcuMSJF!5e0!3m2!1sen!2sin!4v1766642264015!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <!-- Google Map IFrame End -->
                 </div>
                 <!-- Contact Us Content End -->
             </div>
