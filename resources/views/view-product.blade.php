@@ -128,14 +128,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Sort Description</label>
-                                        <textarea class="form-control" name="sort_description" rows="3" placeholder="Enter sort description">{{ $product->sort_description }}</textarea>
-                                    </div>
-                                </div>
-
-
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary me-2">Save</button>
@@ -190,6 +182,12 @@
                                             id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
                                             role="tab" aria-controls="tab4" aria-selected="false"
                                             style="border: 1px solid #007bff;">Product Features</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
+                                            id="tab7-tab" data-bs-toggle="tab" data-bs-target="#tab7" type="button"
+                                            role="tab" aria-controls="tab7" aria-selected="false"
+                                            style="border: 1px solid #007bff;">Description</button>
                                     </li>
 
                                 </ul>
@@ -281,11 +279,12 @@
                                                             accept="image/*">
                                                         <small class="text-muted">Upload multiple images</small>
                                                         @if(isset($aboutProduct) && $aboutProduct->images)
-                                                        <div class="mt-2 row">
+                                                        <div class="mt-2 row" id="about-images-preview">
                                                             @foreach(json_decode($aboutProduct->images, true) as $image)
-                                                            <div class="col-md-3 mb-2">
+                                                            <div class="col-md-3 mb-2 position-relative about-image" data-image="{{ $image }}">
                                                                 <img src="{{ asset('storage/' . $image) }}"
                                                                     class="img-fluid" style="max-width: 100px;">
+                                                                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeAboutImage(this)">×</button>
                                                             </div>
                                                             @endforeach
                                                         </div>
@@ -462,7 +461,7 @@
                                                         @if(is_array($galleryImages))
                                                         @foreach($galleryImages as $index => $image)
                                                         <div class="col-md-3 mb-3 position-relative gallery-image"
-                                                            data-order="{{ $index }}">
+                                                            data-order="{{ $index }}" data-image="{{ $image }}">
                                                             <img src="{{ asset('storage/' . $image) }}"
                                                                 class="img-thumbnail"
                                                                 style="width:100%; height:200px; object-fit:contain;">
@@ -616,6 +615,23 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="tab-pane fade" id="tab7" role="tabpanel" aria-labelledby="tab7-tab">
+                                        <form method="POST" action="{{ route('view-product.update', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sort Description</label>
+                                                        <textarea class="form-control" name="sort_description" rows="3" placeholder="Enter sort description">{{ $product->sort_description }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -636,7 +652,7 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
 <script>
 ClassicEditor
-    .create(document.querySelector('textarea[name=description]'), {
+    .create(document.querySelector('#tab5 textarea[name=description]'), {
         toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
     })
     .catch(error => {
@@ -644,7 +660,7 @@ ClassicEditor
     });
 
 ClassicEditor
-    .create(document.querySelector('textarea[name=description2]'), {
+    .create(document.querySelector('#tab7 textarea[name=sort_description]'), {
         toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
     })
     .catch(error => {
@@ -716,14 +732,6 @@ document.getElementById('add-card2-tab4').addEventListener('click', function() {
     container.insertAdjacentHTML('beforeend', newItemHTML);
 });
 
-ClassicEditor
-    .create(document.querySelector('textarea[name=description]'), {
-        toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
-    })
-    .catch(error => {
-        console.error(error);
-    });
-
 document.querySelector('input[name="images[]"]').addEventListener('change', function(e) {
     const previews = document.getElementById('image-previews-gallery');
     const existingCount = previews.querySelectorAll('.gallery-image').length;
@@ -762,7 +770,27 @@ function moveDownGallery(btn) {
 }
 
 function removeImage(btn) {
-    btn.parentElement.remove();
+    const div = btn.parentElement;
+    const image = div.dataset.image;
+    const form = document.querySelector('form[action*="store-gallery"]');
+    const hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = 'delete_images[]';
+    hidden.value = image;
+    form.appendChild(hidden);
+    div.remove();
+}
+
+function removeAboutImage(btn) {
+    const div = btn.parentElement;
+    const image = div.dataset.image;
+    const form = document.querySelector('#tab5 form');
+    const hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = 'delete_images[]';
+    hidden.value = image;
+    form.appendChild(hidden);
+    div.remove();
 }
 
 // Handle form submit to include image order

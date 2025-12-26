@@ -9,6 +9,8 @@ use App\Models\Testimonial;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Presence;
+use App\Models\FeaturedProduct;
 
 class HomeController extends Controller
 {
@@ -18,7 +20,8 @@ class HomeController extends Controller
         $banners = Banner::where('status', 'active')->get();
         $testimonials = Testimonial::where('status', 'active')->get();
         $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
-        return view('frontend.index', compact('brands', 'banners', 'testimonials', 'blogs'));
+        $featuredProducts = FeaturedProduct::where('status', 'active')->get();
+        return view('frontend.index', compact('brands', 'banners', 'testimonials', 'blogs', 'featuredProducts'));
     }
 
     public function category()
@@ -47,5 +50,34 @@ class HomeController extends Controller
     {
         $blog = Blog::findOrFail($id);
         return view('frontend.blog-details', compact('blog'));
+    }
+
+    public function ourPresence()
+    {
+        $presences = Presence::where('status', 'active')->get();
+        return view('frontend.our-presence', compact('presences'));
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $query = $request->get('q');
+        if (!$query) {
+            return response()->json([]);
+        }
+
+        $products = Product::where('status', 'active')
+            ->where('product_name', 'LIKE', '%' . $query . '%')
+            ->limit(6)
+            ->get(['id', 'product_name', 'product_thumbnail']);
+
+        $results = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'name' => $product->product_name,
+                'thumbnail' => asset('storage/' . $product->product_thumbnail),
+            ];
+        });
+
+        return response()->json($results);
     }
 }

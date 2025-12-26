@@ -27,113 +27,19 @@
         <div class="container">
             <!-- gallery section start -->
             <div class="row gallery-items page-gallery-box">
+                @foreach($presences as $index => $presence)
                 <div class="col-lg-4 col-6">
                     <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp">
-                        <a href="assets1/img/gl1.png" data-cursor-text="View">
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="{{ $index * 0.2 }}s">
+                        <a href="{{ asset('storage/' . $presence->image) }}" data-cursor-text="View">
                             <figure class="image-anime">
-                                <img src="assets1/img/gl1.png" alt="">
+                                <img src="{{ asset('storage/' . $presence->image) }}" alt="">
                             </figure>
                         </a>
                     </div>
                     <!-- Image Gallery end -->
                 </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="assets1/img/gl2.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl2.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.4s">
-                        <a href="assets1/img/gl3.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl3.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.6s">
-                        <a href="assets1/img/gl4.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl4.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.8s">
-                        <a href="assets1/img/gl5.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl5.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1s">
-                        <a href="assets1/img/gl6.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl6.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-                
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.2s">
-                        <a href="assets1/img/gl7.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl7.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.4s">
-                        <a href="assets1/img/gl8.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl8.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
-
-                <div class="col-lg-4 col-6">
-                    <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.6s">
-                        <a href="assets1/img/gl9.png" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="assets1/img/gl9.png" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Image Gallery end -->
-                </div>
+                @endforeach
             </div>
             <!-- gallery section end -->
         </div>

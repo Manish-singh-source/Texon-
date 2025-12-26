@@ -1199,6 +1199,11 @@
 						<li>
 							<ul>
 								<li>
+									<a href="{{ route('featured-products') }}">
+										<i class="ti ti-apps"></i><span>Featured Products</span>
+									</a>
+								</li>
+								<li>
 									<a href="{{route('products')}}">
 										<i class="ti ti-apps"></i><span>Products</span>
 									</a>

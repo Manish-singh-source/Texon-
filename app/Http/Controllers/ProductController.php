@@ -140,6 +140,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'delete_images' => 'nullable|array',
+            'delete_images.*' => 'nullable|string',
             'heading' => 'nullable|string|max:255',
             'subheading' => 'nullable|string|max:255',
             'description' => 'nullable|string',
@@ -147,6 +149,8 @@ class ProductController extends Controller
             'images.*.image' => 'Each image must be a valid image file.',
             'images.*.mimes' => 'Each image must be one of the following types: jpeg, png, jpg, gif.',
             'images.*.max' => 'Each image size must not exceed 4MB.',
+            'delete_images.array' => 'Delete images must be an array.',
+            'delete_images.*.string' => 'Each delete image must be a string.',
             'heading.string' => 'Heading must be a valid string.',
             'heading.max' => 'Heading must not exceed 255 characters.',
             'subheading.string' => 'Subheading must be a valid string.',
@@ -156,6 +160,15 @@ class ProductController extends Controller
 
         $data = $request->only(['heading', 'subheading', 'description']);
 
+        // Get existing about product
+        $existingAbout = AboutProduct::where('product_id', $productId)->first();
+        $existingImages = $existingAbout ? json_decode($existingAbout->images, true) : [];
+
+        // Remove deleted images
+        if ($request->has('delete_images') && is_array($request->delete_images)) {
+            $existingImages = array_diff($existingImages, $request->delete_images);
+        }
+
         // Handle multiple image uploads
         $imagePaths = [];
         if ($request->hasFile('images')) {
@@ -163,7 +176,10 @@ class ProductController extends Controller
                 $imagePaths[] = $file->store('products/about/images', 'public');
             }
         }
-        $data['images'] = json_encode($imagePaths);
+
+        // Combine existing (minus deleted) and new images
+        $allImages = array_merge($existingImages, $imagePaths);
+        $data['images'] = json_encode($allImages);
 
         // Update or create the about product for this product
         AboutProduct::updateOrCreate(
@@ -270,6 +286,11 @@ class ProductController extends Controller
         // Get existing gallery to merge images
         $existingGallery = ProductGallery::where('product_id', $productId)->first();
         $existingImages = $existingGallery ? json_decode($existingGallery->images, true) : [];
+
+        // Remove deleted images
+        if ($request->has('delete_images') && is_array($request->delete_images)) {
+            $existingImages = array_diff($existingImages, $request->delete_images);
+        }
 
         // Combine existing and new images
         $allImages = array_merge($existingImages, $imagePaths);
