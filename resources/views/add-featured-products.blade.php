@@ -9,7 +9,7 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">Add Presence</h3>
+							<h3 class="page-title">Add Featured Product</h3>
 						</div>
 
 					</div>
@@ -23,19 +23,23 @@
 						<div class="card">
 
 							<div class="card-body">
-								<form action="{{ route('add-presence.store') }}" method="POST" enctype="multipart/form-data">
+								<form action="{{ route('add-featured-product.store') }}" method="POST" enctype="multipart/form-data">
 									@csrf
-									<h5 class="card-title">Presence Information</h5>
+									<h5 class="card-title">Featured Product Information</h5>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
-												<label class="form-label">Presence Name <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" name="name" placeholder="Enter Presence Name">
+												<label class="form-label">Heading <span class="text-danger">*</span></label>
+												<input type="text" class="form-control" name="heading" placeholder="Enter Heading">
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Presence Image <span class="text-danger">( 470*360 PX )</span></label>
-												<input type="file" class="form-control" name="presence_image" accept="image/*">
-												<small class="text-muted">Upload presence image (JPEG, PNG, JPG, GIF - Max: 2MB)</small>
+												<label class="form-label">Description <span class="text-danger">*</span></label>
+												<textarea class="form-control" name="description" rows="4" placeholder="Enter Description"></textarea>
+											</div>
+											<div class="mb-3">
+												<label class="form-label">Featured Product Image <span class="text-danger">( 170*41 PX )</span></label>
+												<input type="file" class="form-control" name="featured_product_image" accept="image/*">
+												<small class="text-muted">Upload featured product image (JPEG, PNG, JPG, GIF - Max: 2MB)</small>
 											</div>
 
 										</div>

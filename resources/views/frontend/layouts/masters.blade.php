@@ -36,6 +36,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.5/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <style>
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+        .search-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .search-item:hover {
+            background: #f8f9fa;
+        }
+        .search-thumb {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        .search-item span {
+            flex: 1;
+        }
+        .search-item mark {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .search-loader, .no-results {
+            padding: 10px;
+            text-align: center;
+            color: #666;
+        }
+        .search-loader {
+            font-style: italic;
+        }
+        .no-results {
+            color: #999;
+        }
+        .search-form {
+            position: relative;
+        }
+    </style>
+
 
 
 
@@ -69,11 +125,12 @@
                                 </li>
                                 <li class="nav-item mobile-search">
                                     <h5>Search Here</h5>
-                                    <form action="search.php" method="get" class="search-form">
-                                        <input type="text" name="q" placeholder="Search..." class="search-input">
-                                        <button type="submit" class="search-btn"> <img src="assets1/img/search.png"
+                                    <form class="search-form">
+                                        <input type="text" id="mobile-search-input" placeholder="Search..." class="search-input">
+                                        <button type="button" class="search-btn"> <img src="assets1/img/search.png"
                                                 alt="">
                                         </button>
+                                        <div class="search-dropdown" id="mobile-search-dropdown"></div>
                                     </form>
                                 </li>
                             </ul>
@@ -81,10 +138,11 @@
 
                         <!-- Header Search Start -->
                         <div class="header-search">
-                            <form action="search.php" method="get" class="search-form">
-                                <input type="text" name="q" placeholder="Search..." class="search-input">
-                                <button type="submit" class="search-btn"> <img src="assets1/img/search.png" alt="">
+                            <form class="search-form">
+                                <input type="text" id="desktop-search-input" placeholder="Search..." autocomplete="off" class="search-input">
+                                <button type="button" class="search-btn"> <img src="assets1/img/search.png" alt="">
                                 </button>
+                                <div class="search-dropdown" id="desktop-search-dropdown"></div>
                             </form>
                         </div>
                         <!-- Header Search End -->
@@ -311,6 +369,68 @@
     <script src="{{ asset('assets1/js/wow.min.js') }}"></script>
     <!-- Main Custom js file -->
     <script src="{{ asset('assets1/js/function.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            let searchTimeout;
+
+            function performSearch(input, dropdown) {
+                const query = input.val().trim();
+                if (query.length < 2) {
+                    dropdown.hide();
+                    return;
+                }
+
+                dropdown.html('<div class="search-loader">Searching...</div>').show();
+
+                $.get('/api/search-products', { q: query })
+                    .done(function(data) {
+                        dropdown.empty();
+                        if (data.length === 0) {
+                            dropdown.html('<div class="no-results">No products found</div>');
+                        } else {
+                            data.forEach(product => {
+                                const highlightedName = product.name.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`);
+                                const item = `
+                                    <div class="search-item" data-id="${product.id}">
+                                        <img src="${product.thumbnail}" alt="${product.name}" class="search-thumb">
+                                        <span>${highlightedName}</span>
+                                    </div>
+                                `;
+                                dropdown.append(item);
+                            });
+                        }
+                    })
+                    .fail(function() {
+                        dropdown.html('<div class="no-results">Error searching products</div>');
+                    });
+            }
+
+            $('#mobile-search-input, #desktop-search-input').on('input', function() {
+                const input = $(this);
+                const dropdown = input.siblings('.search-dropdown');
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => performSearch(input, dropdown), 300);
+            });
+
+            $(document).on('click', '.search-item', function() {
+                const id = $(this).data('id');
+                window.location.href = `/product-details/${id}`;
+            });
+
+            $('#mobile-search-input, #desktop-search-input').on('blur', function() {
+                const dropdown = $(this).siblings('.search-dropdown');
+                setTimeout(() => dropdown.hide(), 200);
+            });
+
+            $('#mobile-search-input, #desktop-search-input').on('focus', function() {
+                const dropdown = $(this).siblings('.search-dropdown');
+                if (dropdown.children().length > 0) {
+                    dropdown.show();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

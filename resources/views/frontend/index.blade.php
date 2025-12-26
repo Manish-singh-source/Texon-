@@ -213,139 +213,25 @@
             <div class="col-lg-12">
                 <!-- Feature Item Box Start -->
                 <div class="feature-item-box">
+                    @foreach($featuredProducts as $index => $product)
                     <!-- Feature Item Start -->
-                    <div class="feature-item box-1 wow fadeInUp">
+                    <div class="feature-item box-{{ $index + 1 }} wow fadeInUp" @if($index > 0) data-wow-delay="{{ 0.2 * $index }}s" @endif>
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/prod1.png" alt="" class="imgh">
+                                @if($product->image)
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->heading }}" class="imgh">
+                                @else
+                                    <img src="assets1/img/prod{{ $index + 1 }}.png" alt="" class="imgh">
+                                @endif
                             </figure>
                         </div>
                         <div class="feature-item-content">
-                            <h3>Bending Beam Load cell</h3>
-                            <p>Load cell Ideally suited for high accuracy industrial weighing applications such as
-                                dosing machines and tank, vessel or hopper weighing.</p>
+                            <h3>{{ $product->heading }}</h3>
+                            <p>{{ $product->description }}</p>
                         </div>
                     </div>
                     <!-- Feature Item End -->
-
-                    <!-- Feature Item Start -->
-                    <div class="feature-item box-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <!-- Scrolling Ticker Box Start -->
-                        <!-- <div class="scrolling-ticker feature-scrolling-ticker">
-                                <div class="scrolling-ticker-box">
-                                    <div class="scrolling-content">
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                    </div>
-
-                                    <div class="scrolling-content">
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                    </div>
-                                </div>
-
-                                <div class="scrolling-ticker-box scroll-reverse">
-                                    <div class="scrolling-content">
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                    </div>
-
-                                    <div class="scrolling-content">
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Risk Management</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Next-Gen Security</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Network Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Data Protection</span>
-                                        <span><img src="assets1/images/icon-feature-ticker.svg" alt="">Cyber Defense</span>
-                                    </div>
-                                </div>
-                            </div> -->
-                        <!-- Scrolling Ticker Box End -->
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod2.png" alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>Delsys Wireless EMG </h3>
-                            <p>Delsys EMG systems are advanced tools designed for the precise measurement and analysis
-                                of muscle activity through electromyography (EMG).</p>
-                        </div>
-                    </div>
-                    <!-- Feature Item End -->
-
-                    <!-- Feature Item Start -->
-                    <div class="feature-item box-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod3.png" alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>MB ruler GONIOMETER</h3>
-                            <p>This transparent plastic goniometer permits observation of a joint's axis of motion and
-                                its range of motion. </p>
-                        </div>
-                    </div>
-                    <!-- Feature Item End -->
-
-                    <!-- Feature Item Start -->
-                    <div class="feature-item box-4 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod4.png" alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>Sysmex Manual Mandibulometer</h3>
-                            <p>Mandibular length, mandibular angle, and maximum ramus height measurements used during
-                                forensic evaluation of skeletal remains require use of a mandibulometer..</p>
-                        </div>
-                    </div>
-                    <!-- Feature Item End -->
-
-                    <!-- Feature Item Start -->
-                    <div class="feature-item box-5 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="feature-image">
-                            <figure>
-                                <img src="assets1/img/prod5.png" alt="" class="imgh">
-                            </figure>
-                        </div>
-                        <div class="feature-item-content">
-                            <h3>CanDo Pedal Exerciser - with Digital Display, Fold-up</h3>
-                            <p>The CanDo fold-up digital pedal exerciser ships pre-assembled - just add tension knob!
-                                This model folds for easy storage, transportation and shipping. </p>
-                        </div>
-                    </div>
-                    <!-- Feature Item End -->
+                    @endforeach
                 </div>
                 <!-- Feature Item Box End -->
             </div>
@@ -353,7 +239,7 @@
             <div class="col-lg-12">
                 <!-- Section Footer Text Start -->
                 <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
-                    <p><span>View All Products</span> </p>
+                    <p><a href="{{ route('category') }}" style="text-decoration: none;"><span>View All Products </span>   </a> </p>
                     <!-- <p>Protecting what matters most - <a href="contact.html">See how our services
                                 keep you safe!</a></p> -->
                 </div>

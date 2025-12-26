@@ -37,28 +37,46 @@
 
 
 
-<div class="about-us pb-60 bg">
+<div class="about-us pb-60 bg"> 
     <div class="container">
         <div class="row">
             <div class="col-lg-6 gl">
                 <!-- About Image Box Start -->
                 <div class="image-gallery" style="position: relative;">
+                    @php
+                        $aboutProduct = $product->aboutProducts->first();
+                        $productImages = [];
+
+                        if ($aboutProduct && $aboutProduct->images) {
+                            // Check if images is already an array or needs to be decoded
+                            if (is_string($aboutProduct->images)) {
+                                $productImages = json_decode($aboutProduct->images, true) ?? [];
+                            } elseif (is_array($aboutProduct->images)) {
+                                $productImages = $aboutProduct->images;
+                            }
+                        }
+
+                        $firstImage = !empty($productImages) ? asset('storage/' . $productImages[0]) : asset('assets1/img/pd1.png');
+                    @endphp
+
                     <figure>
-                        <img id="sidebar-image" src="assets1/img/pd1.png" alt="Product Image"  >
+                        <img id="sidebar-image" src="{{ $firstImage }}" alt="Product Image">
                     </figure>
                     <div class="thumbnails">
-                        <img src="assets1/img/pd1.png" alt="" class="thumbnail active" data-index="0">
-                        <img src="assets1/img/pd2.png" alt="" class="thumbnail" data-index="1">
-                        <img src="assets1/img/pd3.png" alt="" class="thumbnail" data-index="2">
-                        <img src="assets1/img/pd4.png" alt="" class="thumbnail" data-index="3">
-                        <img src="assets1/img/pd5.png" alt="" class="thumbnail" data-index="4">
+                        @if(!empty($productImages) && is_array($productImages))
+                            @foreach($productImages as $index => $image)
+                                <img src="{{ asset('storage/' . $image) }}" alt="" class="thumbnail {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}">
+                            @endforeach
+                        @else
+                            <img src="{{asset('assets1/img/pd1.png')}}" alt="" class="thumbnail active" data-index="0">
+                        @endif
                     </div>
                     <button id="prev-btn" class="btn-defaults"
                         style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"> <img
-                            src="assets1/img/left-arrow.png" alt=""> </button>
+                            src="{{asset('assets1/img/left-arrow.png')}}" alt=""> </button>
                     <button id="next-btn" class="btn-defaults"
                         style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"> <img
-                            src="assets1/img/right-arrow.png" alt=""> </button>
+                            src="{{asset('assets1/img/right-arrow.png')}}" alt=""> </button>
                 </div>
             </div>
 
@@ -68,11 +86,11 @@
                 <!-- Sidebar Content Start -->
                 <div class="sidebar-content">
                     <div class="section-sub-title">
-                        <h3 class="wow fadeInUp">About Product </h3>
+                        <h3 class="wow fadeInUp">{{ $product->aboutProducts->first()->subheading ?? 'About Product' }}</h3>
                     </div>
                     <div class="section-title">
-                        <h2 class="text-effect" data-cursor="-opaque">{{ $product->product_name }}</h2>
-                        <p class="wow fadeInUp">{{ $product->sort_description }}</p>
+                        <h2 class="text-effect" data-cursor="-opaque">{{ $product->aboutProducts->first()->heading ?? $product->product_name }}</h2>
+                        <div class="wow fadeInUp">{!! $product->aboutProducts->first()->description ?? $product->sort_description !!}</div>
                     </div>
 
                 </div>
@@ -85,90 +103,40 @@
 
 <section class="services-section">
     <div class="containers container">
+        @php
+            $keyPoint = $product->productKeyPoints->where('type', 'card1')->first();
+        @endphp
 
         <!-- LEFT STICKY -->
         <div class="left">
             <div class="sticky-box">
-                <div class="video-box" onclick="openVideo()">
-                    <img src="assets1/img/prd1.jpg" alt="Business">                    
+                <div class="video-box">
+                    <img src="{{ $keyPoint && $keyPoint->image ? asset('storage/' . $keyPoint->image) : 'assets1/img/prd1.jpg' }}" alt="Business">
                 </div>
                 <h2 class="title text-white text-anime-style-2" data-cursor="-opaque">
-                    Services Built for
-                    <span>Business</span> Goal
-                    Success
+                    {!! $keyPoint && $keyPoint->title ? $keyPoint->title : 'Services Built for <span>Business</span> Goal Success' !!}
                 </h2>
 
-                <button class="btn">More services →</button>
+                <a href="{{ $keyPoint && $keyPoint->url ? $keyPoint->url : 'javascript:void(0);' }}" class="btn">{{ $keyPoint && $keyPoint->button ? $keyPoint->button : 'More services →' }}</a>
             </div>
         </div>
 
         <!-- RIGHT SCROLLABLE -->
         <div class="right">
+            @foreach($product->productKeyPoints->where('type', 'card2') as $index => $keyPoint)
             <div class="service">
                 <div class="img-box">
-                    <h3 class="title text-white">01. Business process optimization</h3>
+                    <h3 class="title text-white">{{ str_pad($index + 0, 2, '0', STR_PAD_LEFT) }}. {{ $keyPoint->heading }}</h3>
                     <p>
-                        In today’s dynamic business environment, the key to success lies
-                        in strategic planning and operational excellence.
+                        {{ $keyPoint->description }}
                     </p>
                 </div>
 
                 <div class="service-item-btn">
-                    <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
+                    <a href="javascript:void(0);"><img src="{{asset('assets1/images/arrow-primary.svg')}}" alt=""></a>
                 </div>
             </div>
-
-            <div class="service">
-                <div class="img-box">
-                    <h3 class="title text-white">02. Strategic planning & execution</h3>
-                    <p>
-                        In today’s dynamic business environment, the key to success lies
-                        in strategic planning and operational excellence.
-                    </p>
-                </div>
-                <div class="service-item-btn">
-                    <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
-                </div>
-            </div>
-
-
-            <div class="service">
-                <div class="img-box">
-                    <h3 class="title text-white">03. Leadership executive coaching</h3>
-                    <p>
-                        In today’s dynamic business environment, the key to success lies
-                        in strategic planning and operational excellence.
-                    </p>
-                </div>
-                <div class="service-item-btn">
-                    <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
-                </div>
-            </div>
-
-            <div class="service">
-                <div class="img-box">
-                    <h3 class="title text-white">04. Business process optimization</h3>
-                    <p>
-                        In today’s dynamic business environment, the key to success lies
-                        in strategic planning and operational excellence.
-                    </p>
-                </div>
-                <div class="service-item-btn">
-                    <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
-                </div>
-            </div>
-            <div class="service">
-                <div class="img-box">
-                    <h3 class="title text-white">05. Business process optimization</h3>
-                    <p>
-                        In today’s dynamic business environment, the key to success lies
-                        in strategic planning and operational excellence.
-                    </p>
-                </div>
-                <div class="service-item-btn">
-                    <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
     </div>
@@ -180,11 +148,9 @@
             <div class="col-lg-12">
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
-                    <h3 class="wow fadeInUp">Our Product</h3>
-                    <h2 class="text-anime-style-2" data-cursor="-opaque">Compatible with all <span>Trigno EMG
-                            Sensors</span></h2>
-                    <p>Trigno Centro offers unparalleled flexibility. Design your system to be as unique as your
-                        research.</p>
+                    <h3 class="wow fadeInUp">{{ $product->productGalleries->first()->heading ?? 'Our Product' }}</h3>
+                    <h2 class="text-anime-style-2" data-cursor="-opaque">{{ $product->productGalleries->first()->subheading ?? 'Heading' }}</h2>
+                    <p>{!! $product->productGalleries->first()->description ?? 'Trigno Centro offers unparalleled flexibility. Design your system to be as unique as your research.' !!}</p>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -194,11 +160,15 @@
             <div class="col-lg-12">
                 <!-- Feature Item Box Start -->
                 <div class="feature-item-box">
+                    @php
+                        $gallery = $product->productGalleries->first();
+                        $galleryImages = $gallery && $gallery->images ? json_decode($gallery->images, true) : [];
+                    @endphp
                     <!-- Feature Item Start -->
                     <div class="feature-item box-1 wow fadeInUp">
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/p1.png" alt="">
+                                <img src="{{ isset($galleryImages[0]) ? asset('storage/' . $galleryImages[0]) : 'assets1/img/p1.png' }}" alt="">
                             </figure>
                         </div>
 
@@ -211,7 +181,7 @@
 
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/p5.png" alt="">
+                                <img src="{{ isset($galleryImages[1]) ? asset('storage/' . $galleryImages[1]) : 'assets1/img/p5.png' }}" alt="">
                             </figure>
                         </div>
                     </div>
@@ -221,7 +191,7 @@
                     <div class="feature-item box-3 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/p2.png" alt="">
+                                <img src="{{ isset($galleryImages[2]) ? asset('storage/' . $galleryImages[2]) : 'assets1/img/p2.png' }}" alt="">
                             </figure>
                         </div>
 
@@ -232,7 +202,7 @@
                     <div class="feature-item box-4 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/p3.webp" alt="">
+                                <img src="{{ isset($galleryImages[3]) ? asset('storage/' . $galleryImages[3]) : 'assets1/img/p3.webp' }}" alt="">
                             </figure>
                         </div>
 
@@ -243,7 +213,7 @@
                     <div class="feature-item box-5 wow fadeInUp" data-wow-delay="0.8s">
                         <div class="feature-image">
                             <figure>
-                                <img src="assets1/img/p4.png" alt="">
+                                <img src="{{ isset($galleryImages[4]) ? asset('storage/' . $galleryImages[4]) : 'assets1/img/p4.png' }}" alt="">
                             </figure>
                         </div>
 
@@ -434,21 +404,46 @@
 
 
 <script>
-const images = ['assets1/img/pd1.png', 'assets1/img/pd2.png', 'assets1/img/pd3.png', 'assets1/img/pd4.png', 'assets1/img/pd5.png'];
+@php
+    $aboutProduct = $product->aboutProducts->first();
+    $productImages = [];
+
+    if ($aboutProduct && $aboutProduct->images) {
+        // Check if images is already an array or needs to be decoded
+        if (is_string($aboutProduct->images)) {
+            $productImages = json_decode($aboutProduct->images, true) ?? [];
+        } elseif (is_array($aboutProduct->images)) {
+            $productImages = $aboutProduct->images;
+        }
+    }
+@endphp
+
+const images = [
+    @if(!empty($productImages) && is_array($productImages))
+        @foreach($productImages as $index => $image)
+            '{{ asset('storage/' . $image) }}'{{ $index < count($productImages) - 1 ? ',' : '' }}
+        @endforeach
+    @else
+        '{{ asset('assets1/img/pd1.png') }}'
+    @endif
+];
+
 let currentIndex = 0;
 const imgElement = document.getElementById('sidebar-image');
 
 function updateImage() {
-    imgElement.src = images[currentIndex];
+    if (imgElement && images.length > 0) {
+        imgElement.src = images[currentIndex];
+    }
 }
 
-document.getElementById('prev-btn').addEventListener('click', () => {
+document.getElementById('prev-btn')?.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
     updateActiveThumbnail();
 });
 
-document.getElementById('next-btn').addEventListener('click', () => {
+document.getElementById('next-btn')?.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
     updateActiveThumbnail();

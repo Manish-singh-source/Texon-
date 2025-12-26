@@ -108,6 +108,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/view-brand', function () {
             return view('view-brands');
         })->name('view-brand');
+        Route::get('/add-featured-product', function () {
+            return view('add-featured-products');
+        })->name('add-featured-product');
+        Route::post('/add-featured-product', [App\Http\Controllers\FeaturedProductController::class, 'store'])->name('add-featured-product.store');
+        Route::get('/featured-products', [App\Http\Controllers\FeaturedProductController::class, 'index'])->name('featured-products');
+        Route::get('/edit-featured-product/{id}', [App\Http\Controllers\FeaturedProductController::class, 'edit'])->name('edit-featured-product');
+        Route::put('/edit-featured-product/{id}', [App\Http\Controllers\FeaturedProductController::class, 'update'])->name('edit-featured-product.update');
+        Route::delete('/featured-products/{id}', [App\Http\Controllers\FeaturedProductController::class, 'destroy'])->name('featured-products.destroy');
         Route::get('/presence', [App\Http\Controllers\PresenceController::class, 'index'])->name('presence');
         Route::get('/add-presence', function () {
             return view('add-presence');
@@ -163,9 +171,7 @@ Route::get('/request-a-quote', function () {
     return view('frontend.request-a-quote');
 })->name('request-a-quote');
 
-Route::get('/our-presence', function () {
-    return view('frontend.our-presence');
-})->name('our-presence');
+Route::get('/our-presence', [App\Http\Controllers\HomeController::class, 'ourPresence'])->name('our-presence');
 
 Route::get('/blogs', function () {
     return view('frontend.blog');
@@ -174,3 +180,5 @@ Route::get('/blogs', function () {
 Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class, 'productDetails'])->name('product-details');
 
 Route::get('/blog-details', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
+
+Route::get('/api/search-products', [App\Http\Controllers\HomeController::class, 'searchProducts'])->name('api.search-products');

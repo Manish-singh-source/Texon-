@@ -24,7 +24,14 @@ class PresenceController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('presence_image')) {
-            $imagePath = $request->file('presence_image')->store('presences', 'public');
+            $file = $request->file('presence_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $directory = storage_path('app/public/presences');
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+            $file->move($directory, $filename);
+            $imagePath = 'presences/' . $filename;
         }
 
         Presence::create([
@@ -58,7 +65,14 @@ class PresenceController extends Controller
             if ($presence->image) {
                 Storage::disk('public')->delete($presence->image);
             }
-            $imagePath = $request->file('presence_image')->store('presences', 'public');
+            $file = $request->file('presence_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $directory = storage_path('app/public/presences');
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+            $file->move($directory, $filename);
+            $imagePath = 'presences/' . $filename;
         }
 
         $presence->update([
