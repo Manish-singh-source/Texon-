@@ -199,10 +199,11 @@
                                         </div>
                                     </th>
                                     <th>Enquiry ID</th>
-                                    <th>Product ID</th>
+                                    <th>Product Name</th>
                                     <th>User Name</th>
                                     <th>User Email</th>
                                     <th>User Phone</th>
+                                    <th>Company</th>
                                     <th>Message</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -216,12 +217,13 @@
                                              <input class="form-check-input" type="checkbox">
                                          </div>
                                      </td>
-                                     <td><a href="/view-enquiry">{{ $enquiry->enquiry_id }}</a></td>
-                                     <td>{{ $enquiry->product_id }}</td>
+                                     <td><a href="{{ route('view-enquiry', $enquiry->id) }}">{{ $enquiry->enquiry_id }}</a></td>
+                                     <td>{{ $enquiry->product->product_name ?? 'N/A' }}</td>
                                      <td>{{ $enquiry->user_name }}</td>
                                      <td>{{ $enquiry->user_email }}</td>
                                      <td>{{ $enquiry->user_phone }}</td>
-                                     <td>{{ $enquiry->message }}</td>
+                                     <td>{{ $enquiry->company }}</td>
+                                     <td>{{ Str::limit($enquiry->message, 50) }}</td>
                                      <td>
                                          @if($enquiry->status == 'pending')
                                          <span class="badge badge-warning d-inline-flex align-items-center badge-xs">
@@ -239,7 +241,7 @@
                                      </td>
                                      <td>
                                          <div class="action-icon d-inline-flex">
-                                             <a href="/view-enquiry" class="me-2"><i class="ti ti-eye"></i></a>
+                                             <a href="{{ route('view-enquiry', $enquiry->id) }}" class="me-2"><i class="ti ti-eye"></i></a>
                                              <a href="#" class="me-2" data-bs-toggle="modal"
                                                  data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
                                              <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i

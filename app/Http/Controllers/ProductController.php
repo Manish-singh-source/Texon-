@@ -97,7 +97,7 @@ class ProductController extends Controller
     public function storeProductBanner(Request $request, $productId)
     {
         $request->validate([
-            'video_upload' => 'nullable|mimes:mp4,avi,mov|max:10240',
+            'video_upload' => 'nullable|mimes:mp4,avi,mov|',
             'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'heading' => 'nullable|string|max:255',
             'button_name' => 'nullable|string|max:255',

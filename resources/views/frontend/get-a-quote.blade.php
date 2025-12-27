@@ -39,8 +39,12 @@
                     <!-- Section Title End -->
 
                     <!-- Contact Form Start -->
-                    <form id="contactForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp"
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    <form id="contactForm" action="{{ route('get-a-quote.store', $product->id) }}" method="POST" data-toggle="validator" class="wow fadeInUp"
                         data-wow-delay="0.2s">
+                        @csrf
                         <div class="row">
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">First Name *</label>
@@ -69,12 +73,7 @@
                                     placeholder="Your Phone Number" required>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group col-md-12 mb-4">
-                                <label class="form-label">Product Name *</label>
-                                <input type="text" name="product" class="form-control" id="product"
-                                    placeholder="Your Product Name" required>
-                                <div class="help-block with-errors"></div>
-                            </div>
+                           
                             <div class="form-group col-md-12 mb-4">
                                 <label class="form-label">Company Name *</label>
                                 <input type="text" name="company" class="form-control" id="company"
@@ -114,12 +113,27 @@
                     <!-- Product Detail Start -->
                     <div class="product-detail-box wow fadeInUp" data-wow-delay="0.4s">
                         <div class="product-image pb-30">
-                            <img src="assets1/img/pd1.png" alt="Trigno Centro" style="width: 300px; height: auto; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                            @php
+                                $aboutProduct = $product->aboutProducts->first();
+                                $productImages = [];
+
+                                if ($aboutProduct && $aboutProduct->images) {
+                                    if (is_string($aboutProduct->images)) {
+                                        $productImages = json_decode($aboutProduct->images, true) ?? [];
+                                    } elseif (is_array($aboutProduct->images)) {
+                                        $productImages = $aboutProduct->images;
+                                    }
+                                }
+
+                                $firstImage = !empty($productImages)
+                                    ? asset('storage/' . $productImages[0])
+                                    : ($product->product_thumbnail ? asset('storage/' . $product->product_thumbnail) : asset('assets1/img/pd1.png'));
+                            @endphp
+                            <img src="{{ $firstImage }}" alt="{{ $product->product_name }}" style="width: 300px; height: auto; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
                         </div>
                         <div class="product-info">
-                            <h3>Trigno Centro</h3>
-                            <p>Created from over 30 years of experience and close collaboration with the EMG research community, Trigno Centro represents an evolutionary leap at the heart of our product ecosystem.</p>
-                            <p>Engineered to deliver uncompromising signal quality, Trigno Centro provides a powerful, centralized platform for acquiring and synchronizing high-fidelity biosignals.</p>
+                            <h3>{{ $product->product_name }}</h3>
+                            <p>{!! $product->sort_description ?: 'No description available.' !!}</p>
                         </div>
                     </div>
                      

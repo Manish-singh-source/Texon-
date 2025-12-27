@@ -2158,7 +2158,7 @@ header.main-header .container-fluid {
 
 .intro-videos {
 	position: relative;
-	background: url('../images/intro-video-bg.jpg') no-repeat;
+	background: url('https://placehold.co/100x100') no-repeat;
 	background-position: center center;
 	background-size: cover;
 	padding: 280px 0 50px;

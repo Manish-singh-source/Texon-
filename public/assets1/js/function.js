@@ -324,14 +324,17 @@
 		/* Ajax call to submit form */
 		$.ajax({
 			type: "POST",
-			url: "form-process.php",
+			url: $contactform.attr('action'),
 			data: $contactform.serialize(),
-			success : function(text){
-				if (text === "success"){
+			success : function(response){
+				if (response.status === "success"){
 					formSuccess();
 				} else {
-					submitMSG(false,text);
+					submitMSG(false, response.message || 'An error occurred');
 				}
+			},
+			error: function(){
+				submitMSG(false, 'An error occurred');
 			}
 		});
 	}

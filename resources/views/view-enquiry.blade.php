@@ -8,130 +8,125 @@
             <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
                 <div class="my-auto mb-2">
                     <h2 class="mb-1">Enquiry Details</h2>
-                    <nav>
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="/"><i class="ti ti-smart-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="/enquiries">Enquiries</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Enquiry Details</li>
-                        </ol>
-                    </nav>
                 </div>
-                <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+                <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
                     <div class="mb-2">
-                        <a href="/enquiries" class="btn btn-outline-primary d-flex align-items-center"><i class="ti ti-arrow-left me-2"></i>Back to Enquiries</a>
+                        <a href="{{ route('enquiries') }}" class="btn btn-outline-primary d-flex align-items-center"><i class="ti ti-arrow-left me-2"></i>Back to Enquiries</a>
                     </div>
                 </div>
             </div>
             <!-- /Breadcrumb -->
 
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row align-items-start">
+
+                        <!-- Left Profile -->
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-start">
+                                <div
+                                    style="width:120px;height:120px;background:#e0e0e0;border-radius:4px;
+						display:flex;align-items:center;justify-content:center;">
+                                    <img src="{{ $product->product_thumbnail ? asset('storage/' . $product->product_thumbnail) : asset('assets1/img/pd1.png') }}" alt="{{ $product->product_name }}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">
+                                </div>
+
+                                <div class="ms-3">
+                                    <h3 class="mb-1">{{ $enquiry->user_name }}</h3>
+                                    <p class="mb-0 text-muted">Enquiry Date {{ $enquiry->created_at->format('d M Y') }}</p>
+                                    <p class="text-muted">Product: {{ $product->product_name }}</p>
+
+                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Info -->
+                        <div class="col-md-8">
+                            <div class="border rounded">
+
+                                <div class="d-flex justify-content-between border-bottom p-3">
+                                    <span>Email</span>
+                                    <strong>{{ $enquiry->user_email }}</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between border-bottom p-3">
+                                    <span>Phone</span>
+                                    <strong>{{ $enquiry->user_phone }}</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between border-bottom p-3">
+                                    <span>Company</span>
+                                    <strong>{{ $enquiry->company }}</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between p-3">
+                                    <span>Status</span>
+                                    <span class="badge bg-{{ $enquiry->status == 'pending' ? 'warning' : ($enquiry->status == 'responded' ? 'success' : 'secondary') }}">{{ ucfirst($enquiry->status) }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
                     <!-- Product Information -->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h5 class="card-title">Product Information</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Product Name</label>
-                                        <p>Laptop</p>
-                                    </div>
+                    <h5 class="mb-3">Product Information</h5>
+
+                    <div class="card-body pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <p class="mb-1">Product Name</p>
+                                    <h6 class="fw-normal">{{ $product->product_name }}</h6>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Product SKU</label>
-                                        <p>LAPTOP-001</p>
-                                    </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <p class="mb-1">Category</p>
+                                    <h6 class="fw-normal">{{ $product->category ?? 'N/A' }}</h6>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Product Category</label>
-                                        <p>Electronics</p>
-                                    </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <p class="mb-1">Enquiry ID</p>
+                                    <h6 class="fw-normal">{{ $enquiry->enquiry_id }}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <p class="mb-1">Created At</p>
+                                    <h6 class="fw-normal">{{ $enquiry->created_at->format('d M Y') }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- User Information -->
-                    <div class="card mb-3">
+                    <!-- Enquiry Message -->
+                    <div class="card mt-4">
                         <div class="card-header">
-                            <h5 class="card-title">User Information</h5>
+                            <h5 class="card-title mb-0">Enquiry Message</h5>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">User Name</label>
-                                        <p>John Doe</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">User Email</label>
-                                        <p>john@example.com</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">User Phone</label>
-                                        <p>+1234567890</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p>{{ $enquiry->message ?: 'No message provided.' }}</p>
                         </div>
                     </div>
 
-                    <!-- Enquiry Details -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Enquiry Details</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Enquiry Message</label>
-                                        <p>Interested in this product. Can you provide more details about the specifications and pricing?</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Enquiry Status</label>
-                                        <p><span class="badge badge-warning">Pending</span></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Created At</label>
-                                        <p>12 Sep 2024</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Updated At</label>
-                                        <p>15 Sep 2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-        </div>
+            <!-- Footer -->
+            <div class="footer d-flex align-items-center justify-content-center bg-white border-top p-3">
+                <p class="mb-0">
+                    © 2025 - Made by
+                    <a href="https://technofra.com/" class="text-primary">Technofra</a>
+                </p>
+            </div>
+            <!-- /Footer -->
+            <!-- /Page Wrapper -->
 
-        <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
-            <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-            <p>Designed & Developed By <a href="javascript:void(0);" class="text-primary">Technofra</a></p>
         </div>
-
-    </div>
-    <!-- /Page Wrapper -->
+        <!-- /Page Wrapper -->
 @endsection

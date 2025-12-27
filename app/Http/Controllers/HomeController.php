@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Brand;
 use App\Models\Banner;
 use App\Models\Testimonial;
@@ -11,6 +12,9 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Presence;
 use App\Models\FeaturedProduct;
+use App\Models\Enquiry;
+use App\Mail\UserThankYouEmail;
+use App\Mail\AdminEnquiryNotificationEmail;
 
 class HomeController extends Controller
 {
@@ -56,6 +60,52 @@ class HomeController extends Controller
     {
         $presences = Presence::where('status', 'active')->get();
         return view('frontend.our-presence', compact('presences'));
+    }
+
+    public function getAQuote($id)
+    {
+        $product = Product::with(['productBanners', 'aboutProducts'])->findOrFail($id);
+        return view('frontend.get-a-quote', compact('product'));
+    }
+
+    public function storeEnquiry(Request $request, $id)
+    {
+        $request->validate([
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'company' => 'required|string|max:255',
+            'message' => 'nullable|string',
+        ]);
+
+        $enquiryId = 'ENQ-' . strtoupper(uniqid());
+
+        $enquiry = Enquiry::create([
+            'enquiry_id' => $enquiryId,
+            'product_id' => $id,
+            'user_name' => $request->fname . ' ' . $request->lname,
+            'user_email' => $request->email,
+            'user_phone' => $request->phone,
+            'company' => $request->company,
+            'message' => $request->message,
+            'status' => 'pending',
+        ]);
+
+        // Load product relationship
+        $enquiry->load('product');
+
+        // Send thank you email to user
+        Mail::to($enquiry->user_email)->send(new UserThankYouEmail($enquiry));
+
+        // Send notification email to admin
+        Mail::to(env('ADMIN_EMAIL'))->send(new AdminEnquiryNotificationEmail($enquiry));
+
+        if ($request->ajax()) {
+            return response()->json(['status' => 'success', 'message' => 'Your enquiry has been submitted successfully!']);
+        }
+
+        return redirect()->back()->with('success', 'Your enquiry has been submitted successfully!');
     }
 
     public function searchProducts(Request $request)

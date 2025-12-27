@@ -36,9 +36,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
-        Route::get('/view-enquiry', function () {
-            return view('view-enquiry');
-        })->name('view-enquiry');
+        Route::get('/view-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'show'])->name('view-enquiry');
 
         Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
@@ -163,9 +161,9 @@ Route::get('/contact-us', function () {
     return view('frontend.contact-us');
 })->name('contact-us');
 
-Route::get('/get-a-quote', function () {
-    return view('frontend.get-a-quote');
-})->name('get-a-quote');
+Route::get('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'getAQuote'])->name('get-a-quote');
+
+Route::post('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'storeEnquiry'])->name('get-a-quote.store');
 
 Route::get('/request-a-quote', function () {
     return view('frontend.request-a-quote');

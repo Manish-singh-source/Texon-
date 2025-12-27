@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Enquiry extends Model
 {
@@ -12,7 +13,17 @@ class Enquiry extends Model
         'user_name',
         'user_email',
         'user_phone',
+        'company',
         'message',
         'status',
     ];
+
+    protected $casts = [
+        'product_id' => 'integer',
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }
