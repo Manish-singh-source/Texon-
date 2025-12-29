@@ -103,9 +103,9 @@
 											<div class="row">
 												<div class="col-md-12">
 													<div class="mb-3">
-														<label class="form-label">Blog Content <span class="text-danger">*</span></label>
-														<textarea name="content" class="form-control" rows="10">{{ old('content', $blog->content) }}</textarea>
-													</div>
+															    <label class="form-label">Blog Content <span class="text-danger">*</span></label>
+															    <textarea name="content" id="content-editor" class="form-control" rows="10">{{ old('content', $blog->content) }}</textarea>
+															</div>
 												</div>
 
 											</div>
@@ -128,5 +128,13 @@
 
 			</div>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+<script>
+			 ClassicEditor
+			     .create( document.querySelector( '#content-editor' ) )
+			     .catch( error => {
+			         console.error( error );
+			     } );
+</script>
 
 @endsection

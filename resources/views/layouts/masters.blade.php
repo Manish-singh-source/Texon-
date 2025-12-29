@@ -1254,6 +1254,11 @@
 										<i class="ti ti-message"></i><span>Blogs</span>
 									</a>
 								</li>
+								<li>
+									<a href="{{ route('supports') }}">
+										<i class="ti ti-message"></i><span>Support</span>
+									</a>
+								</li>
 							</ul>
 						</li>
 						

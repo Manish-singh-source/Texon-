@@ -78,10 +78,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 15px 20px; border-bottom: 1px solid #e0e0e0; background-color: #fafafa; width: 35%; font-weight: 600; color: #555555; font-size: 14px;">
+                                    <td style="padding: 15px 20px; {{ $enquiry->message ? 'border-bottom: 1px solid #e0e0e0;' : '' }} background-color: #fafafa; width: 35%; font-weight: 600; color: #555555; font-size: 14px;">
                                         Company
                                     </td>
-                                    <td style="padding: 15px 20px; border-bottom: 1px solid #e0e0e0; color: #333333; font-size: 14px;">
+                                    <td style="padding: 15px 20px; {{ $enquiry->message ? 'border-bottom: 1px solid #e0e0e0;' : '' }} color: #333333; font-size: 14px;">
                                         {{ $enquiry->company }}
                                     </td>
                                 </tr>

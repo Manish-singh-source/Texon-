@@ -40,8 +40,10 @@
                     <!-- Section Title End -->
 
                     <!-- Contact Form Start -->
-                    <form id="contactForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp"
+                    <form  action="{{ route('request-a-quote.store') }}" method="POST" data-toggle="validator" class="wow fadeInUp"
                         data-wow-delay="0.2s">
+                        @csrf
+                        <input type="hidden" name="page" value="request-a-quote">
                         <div class="row">
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">First Name *</label>
@@ -87,8 +89,7 @@
 
                             <div class="col-lg-12">
                                 <div class="contact-form-btn">
-                                    <button type="submit" class="btn-default"><span>Submit Form</span></button>
-                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                    <button type="submit"  class="btn-default"><span>Submit Form</span></button>
                                 </div>
                             </div>
                         </div>
