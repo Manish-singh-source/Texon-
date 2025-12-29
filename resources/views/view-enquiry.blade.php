@@ -36,7 +36,7 @@
                                     <p class="mb-0 text-muted">Enquiry Date {{ $enquiry->created_at->format('d M Y') }}</p>
                                     <p class="text-muted">Product: {{ $product->product_name }}</p>
 
-                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{ route('edit-enquiry', $enquiry->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                 </div>
                             </div>
                         </div>

@@ -38,6 +38,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/view-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'show'])->name('view-enquiry');
 
+        Route::get('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'edit'])->name('edit-enquiry');
+
+        Route::put('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'update'])->name('edit-enquiry.update');
+
+        Route::delete('/enquiries/{id}', [App\Http\Controllers\EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
         Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
         Route::get('/add-banner', function () {
@@ -130,6 +136,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/view-blog/{id}', [App\Http\Controllers\BlogController::class, 'show'])->name('view-blog');
         Route::get('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'edit'])->name('edit-blog');
         Route::put('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('edit-blog.update');
+
+        Route::get('/supports', [App\Http\Controllers\SupportController::class, 'index'])->name('supports');
     });
 
     Route::get('/register', [App\Http\Controllers\RegisterController::class, 'showRegisterForm'])->name('register');
@@ -161,6 +169,8 @@ Route::get('/contact-us', function () {
     return view('frontend.contact-us');
 })->name('contact-us');
 
+Route::post('/contact-us', [App\Http\Controllers\SupportController::class, 'store'])->name('contact-us.store');
+
 Route::get('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'getAQuote'])->name('get-a-quote');
 
 Route::post('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'storeEnquiry'])->name('get-a-quote.store');
@@ -168,6 +178,8 @@ Route::post('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 's
 Route::get('/request-a-quote', function () {
     return view('frontend.request-a-quote');
 })->name('request-a-quote');
+
+Route::post('/request-a-quote', [App\Http\Controllers\SupportController::class, 'store'])->name('request-a-quote.store');
 
 Route::get('/our-presence', [App\Http\Controllers\HomeController::class, 'ourPresence'])->name('our-presence');
 
@@ -177,6 +189,6 @@ Route::get('/blogs', function () {
 
 Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class, 'productDetails'])->name('product-details');
 
-Route::get('/blog-details', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
+Route::get('/blog-details/{id}', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
 
 Route::get('/api/search-products', [App\Http\Controllers\HomeController::class, 'searchProducts'])->name('api.search-products');

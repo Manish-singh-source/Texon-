@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{Auth, DB, Log, Validator, Storage};
 
 class BlogController extends Controller
 {
@@ -30,7 +30,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // Validate input
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'category' => 'nullable|string|max:255',
@@ -41,18 +42,33 @@ class BlogController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $data = $request->all();
-
-        if ($request->hasFile('featured_image')) {
-            $file = $request->file('featured_image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $path = $file->storeAs('blogs', $filename, 'public');
-            $data['featured_image'] = $path;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Blog::create($data);
+        DB::beginTransaction();
+        try {
+            $data = $request->only(['title', 'author', 'category', 'tags', 'status', 'published_date', 'content']);
 
-        return redirect()->route('blog')->with('success', 'Blog created successfully.');
+            // Handle featured image upload
+            if ($request->hasFile('featured_image')) {
+                $file = $request->file('featured_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('blogs', $filename, 'public');
+                $data['featured_image'] = $path;
+            }
+
+            // Create blog
+            $blog = Blog::create($data);
+
+            DB::commit();
+
+            return redirect()->route('blog')->with('success', 'Blog created successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Blog creation failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error creating blog: ' . $e->getMessage())->withInput();
+        }
     }
 
     /**
@@ -78,7 +94,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+        // Validate input
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'category' => 'nullable|string|max:255',
@@ -89,24 +106,39 @@ class BlogController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $blog = Blog::findOrFail($id);
-        $data = $request->all();
-
-        if ($request->hasFile('featured_image')) {
-            // Delete old image if exists
-            if ($blog->featured_image) {
-                Storage::disk('public')->delete($blog->featured_image);
-            }
-
-            $file = $request->file('featured_image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $path = $file->storeAs('blogs', $filename, 'public');
-            $data['featured_image'] = $path;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $blog->update($data);
+        DB::beginTransaction();
+        try {
+            $blog = Blog::findOrFail($id);
+            $data = $request->only(['title', 'author', 'category', 'tags', 'status', 'published_date', 'content']);
 
-        return redirect()->route('blog')->with('success', 'Blog updated successfully.');
+            // Handle featured image upload
+            if ($request->hasFile('featured_image')) {
+                // Delete old image if exists
+                if ($blog->featured_image) {
+                    Storage::disk('public')->delete($blog->featured_image);
+                }
+
+                $file = $request->file('featured_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('blogs', $filename, 'public');
+                $data['featured_image'] = $path;
+            }
+
+            // Update blog
+            $blog->update($data);
+
+            DB::commit();
+
+            return redirect()->route('blog')->with('success', 'Blog updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Blog update failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error updating blog: ' . $e->getMessage())->withInput();
+        }
     }
 
     /**

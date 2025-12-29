@@ -617,7 +617,7 @@
                 <div class="post-item wow fadeInUp" @if($loop->index > 0) data-wow-delay="{{ 0.2 * $loop->index }}s" @endif>
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
-                        <a href="{{route('blog-details')}}" data-cursor-text="View">
+                        <a href="{{route('blog-details', $blog->id)}}" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="{{ asset('storage/' . $blog->featured_image) }}" alt="{{ $blog->title }}">
                             </figure>
@@ -629,13 +629,13 @@
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="javascript:void(0);">{{ $blog->title }}</a></h2>
+                            <h2><a href="{{route('blog-details', $blog->id)}}">{{ $blog->title }}</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
                         <div class="post-item-btn">
-                            <a href="{{route('blog-details')}}" class="readmore-btn">read more</a>
+                            <a href="{{route('blog-details', $blog->id)}}" class="readmore-btn">read more</a>
                         </div>
                         <!-- Post Item Readmore Button End-->
                     </div>
