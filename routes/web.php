@@ -38,6 +38,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/view-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'show'])->name('view-enquiry');
 
+        Route::get('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'edit'])->name('edit-enquiry');
+
+        Route::put('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'update'])->name('edit-enquiry.update');
+
+        Route::delete('/enquiries/{id}', [App\Http\Controllers\EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
         Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
         Route::get('/add-banner', function () {

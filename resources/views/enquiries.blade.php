@@ -242,10 +242,12 @@
                                      <td>
                                          <div class="action-icon d-inline-flex">
                                              <a href="{{ route('view-enquiry', $enquiry->id) }}" class="me-2"><i class="ti ti-eye"></i></a>
-                                             <a href="#" class="me-2" data-bs-toggle="modal"
-                                                 data-bs-target="#edit_enquiry"><i class="ti ti-edit"></i></a>
-                                             <a href="#" data-bs-toggle="modal" data-bs-target="#delete_modal"><i
-                                                     class="ti ti-trash"></i></a>
+                                             <a href="{{ route('edit-enquiry', $enquiry->id) }}" class="me-2"><i class="ti ti-edit"></i></a>
+                                             <form action="{{ route('enquiries.destroy', $enquiry->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this enquiry?')">
+                                                 @csrf
+                                                 @method('DELETE')
+                                                 <button type="submit" class="btn btn-link p-0 text-danger" style="border: none; background: none;"><i class="ti ti-trash"></i></button>
+                                             </form>
                                          </div>
                                      </td>
                                  </tr>

@@ -104,7 +104,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <!-- Logo Start -->
-                    <a class="navbar-brand" href="index.php">
+                    <a class="navbar-brand" href="{{route('home')}}">
                         <img src="{{ asset('assets1/img/logo.png') }}" alt="Logo">
                     </a>
                     <div class="collapse navbar-collapse main-menu">
@@ -127,7 +127,7 @@
                                     <h5>Search Here</h5>
                                     <form class="search-form">
                                         <input type="text" id="mobile-search-input" placeholder="Search..." class="search-input">
-                                        <button type="button" class="search-btn"> <img src="assets1/img/search.png"
+                                        <button type="button" class="search-btn"> <img src="{{asset('assets1/img/search.png')}}"
                                                 alt="">
                                         </button>
                                         <div class="search-dropdown" id="mobile-search-dropdown"></div>
@@ -140,7 +140,7 @@
                         <div class="header-search">
                             <form class="search-form">
                                 <input type="text" id="desktop-search-input" placeholder="Search..." autocomplete="off" class="search-input">
-                                <button type="button" class="search-btn"> <img src="assets1/img/search.png" alt="">
+                                <button type="button" class="search-btn"> <img src="{{asset('assets1/img/search.png')}}" alt="">
                                 </button>
                                 <div class="search-dropdown" id="desktop-search-dropdown"></div>
                             </form>
@@ -411,6 +411,13 @@
                 const dropdown = input.siblings('.search-dropdown');
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(() => performSearch(input, dropdown), 300);
+            });
+
+            $('.search-btn').on('click', function(e) {
+                e.preventDefault();
+                const input = $(this).siblings('.search-input');
+                const dropdown = $(this).siblings('.search-dropdown');
+                performSearch(input, dropdown);
             });
 
             $(document).on('click', '.search-item', function() {
