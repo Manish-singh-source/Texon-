@@ -25,7 +25,10 @@ class FeaturedProductController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('featured_product_image')) {
-            $imagePath = $request->file('featured_product_image')->store('featured-products', 'public');
+            $file = $request->file('featured_product_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/featured-products'), $filename);
+            $imagePath = 'featured-products/' . $filename;
         }
 
         FeaturedProduct::create([
@@ -59,9 +62,12 @@ class FeaturedProductController extends Controller
         if ($request->hasFile('featured_product_image')) {
             // Delete old image if exists
             if ($featuredProduct->image) {
-                Storage::disk('public')->delete($featuredProduct->image);
+                unlink(public_path('storage/' . $featuredProduct->image));
             }
-            $imagePath = $request->file('featured_product_image')->store('featured-products', 'public');
+            $file = $request->file('featured_product_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/featured-products'), $filename);
+            $imagePath = 'featured-products/' . $filename;
         }
 
         $featuredProduct->update([
@@ -80,7 +86,7 @@ class FeaturedProductController extends Controller
 
         // Delete image if exists
         if ($featuredProduct->image) {
-            Storage::disk('public')->delete($featuredProduct->image);
+            unlink(public_path('storage/' . $featuredProduct->image));
         }
 
         $featuredProduct->delete();

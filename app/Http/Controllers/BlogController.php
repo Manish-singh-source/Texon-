@@ -56,8 +56,8 @@ class BlogController extends Controller
             if ($request->hasFile('featured_image')) {
                 $file = $request->file('featured_image');
                 $filename = time() . '_' . $file->getClientOriginalName();
-                $path = $file->storeAs('blogs', $filename, 'public');
-                $data['featured_image'] = $path;
+                $file->move(public_path('storage/blogs'), $filename);
+                $data['featured_image'] = 'blogs/' . $filename;
             }
 
             // Create blog
@@ -122,13 +122,13 @@ class BlogController extends Controller
             if ($request->hasFile('featured_image')) {
                 // Delete old image if exists
                 if ($blog->featured_image) {
-                    Storage::disk('public')->delete($blog->featured_image);
+                    unlink(public_path('storage/' . $blog->featured_image));
                 }
 
                 $file = $request->file('featured_image');
                 $filename = time() . '_' . $file->getClientOriginalName();
-                $path = $file->storeAs('blogs', $filename, 'public');
-                $data['featured_image'] = $path;
+                $file->move(public_path('storage/blogs'), $filename);
+                $data['featured_image'] = 'blogs/' . $filename;
             }
 
             // Update blog
@@ -153,7 +153,7 @@ class BlogController extends Controller
 
         // Delete featured image if exists
         if ($blog->featured_image) {
-            Storage::disk('public')->delete($blog->featured_image);
+            unlink(public_path('storage/' . $blog->featured_image));
         }
 
         $blog->delete();

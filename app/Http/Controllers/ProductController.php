@@ -72,21 +72,29 @@ class ProductController extends Controller
 
         // Handle thumbnail
         if ($request->hasFile('product_thumbnail')) {
-            $data['product_thumbnail'] = $request->file('product_thumbnail')->store('products/thumbnails', 'public');
+            $file = $request->file('product_thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/thumbnails'), $filename);
+            $data['product_thumbnail'] = 'products/thumbnails/' . $filename;
         }
 
         // Handle gallery
         $galleryPaths = [];
         if ($request->hasFile('image_gallery')) {
             foreach ($request->file('image_gallery') as $file) {
-                $galleryPaths[] = $file->store('products/gallery', 'public');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/products/gallery'), $filename);
+                $galleryPaths[] = 'products/gallery/' . $filename;
             }
         }
         $data['image_gallery'] = json_encode($galleryPaths);
 
         // Handle video
         if ($request->hasFile('product_video')) {
-            $data['product_video'] = $request->file('product_video')->store('products/videos', 'public');
+            $file = $request->file('product_video');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/videos'), $filename);
+            $data['product_video'] = 'products/videos/' . $filename;
         }
 
         Product::create($data);
@@ -119,12 +127,18 @@ class ProductController extends Controller
 
         // Handle video upload
         if ($request->hasFile('video_upload')) {
-            $data['video_upload'] = $request->file('video_upload')->store('products/banners/videos', 'public');
+            $file = $request->file('video_upload');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/banners/videos'), $filename);
+            $data['video_upload'] = 'products/banners/videos/' . $filename;
         }
 
         // Handle banner image
         if ($request->hasFile('banner_image')) {
-            $data['banner_image'] = $request->file('banner_image')->store('products/banners/images', 'public');
+            $file = $request->file('banner_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/banners/images'), $filename);
+            $data['banner_image'] = 'products/banners/images/' . $filename;
         }
 
         // Update or create the banner for this product
@@ -173,7 +187,9 @@ class ProductController extends Controller
         $imagePaths = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                $imagePaths[] = $file->store('products/about/images', 'public');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/products/about/images'), $filename);
+                $imagePaths[] = 'products/about/images/' . $filename;
             }
         }
 
@@ -230,7 +246,10 @@ class ProductController extends Controller
         ];
 
         if ($request->hasFile('image')) {
-            $card1Data['image'] = $request->file('image')->store('products/keypoints/images', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/keypoints/images'), $filename);
+            $card1Data['image'] = 'products/keypoints/images/' . $filename;
         }
 
         if ($request->title || $request->button || $request->url || $request->hasFile('image')) {
@@ -279,7 +298,9 @@ class ProductController extends Controller
         $imagePaths = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                $imagePaths[] = $file->store('products/gallery/images', 'public');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/products/gallery/images'), $filename);
+                $imagePaths[] = 'products/gallery/images/' . $filename;
             }
         }
 
@@ -343,7 +364,10 @@ class ProductController extends Controller
 
         // Handle banner image
         if ($request->hasFile('banner_image')) {
-            $data['banner_image'] = $request->file('banner_image')->store('products/banner-video/images', 'public');
+            $file = $request->file('banner_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/banner-video/images'), $filename);
+            $data['banner_image'] = 'products/banner-video/images/' . $filename;
         }
 
         // Update or create the banner video for this product
@@ -404,7 +428,10 @@ class ProductController extends Controller
                 $iconImagePath = null;
 
                 if (isset($request->file('icon_image')[$index])) {
-                    $iconImagePath = $request->file('icon_image')[$index]->store('products/features/icons', 'public');
+                    $file = $request->file('icon_image')[$index];
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('storage/products/features/icons'), $filename);
+                    $iconImagePath = 'products/features/icons/' . $filename;
                 }
 
                 if ($title || $description || $iconImagePath) {
@@ -456,14 +483,19 @@ class ProductController extends Controller
 
         // Handle thumbnail
         if ($request->hasFile('product_thumbnail')) {
-            $data['product_thumbnail'] = $request->file('product_thumbnail')->store('products/thumbnails', 'public');
+            $file = $request->file('product_thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/thumbnails'), $filename);
+            $data['product_thumbnail'] = 'products/thumbnails/' . $filename;
         }
 
         // Handle gallery
         $galleryPaths = [];
         if ($request->hasFile('image_gallery')) {
             foreach ($request->file('image_gallery') as $file) {
-                $galleryPaths[] = $file->store('products/gallery', 'public');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/products/gallery'), $filename);
+                $galleryPaths[] = 'products/gallery/' . $filename;
             }
         }
         if (!empty($galleryPaths)) {
@@ -472,7 +504,10 @@ class ProductController extends Controller
 
         // Handle video
         if ($request->hasFile('product_video')) {
-            $data['product_video'] = $request->file('product_video')->store('products/videos', 'public');
+            $file = $request->file('product_video');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/videos'), $filename);
+            $data['product_video'] = 'products/videos/' . $filename;
         }
 
         $product->update($data);

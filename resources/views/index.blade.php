@@ -31,92 +31,6 @@
 
 			
 
-				<!-- KPI Cards -->
-				<div class="row mb-3">
-					<div class="col-md-4">
-						<div class="card text-center kpi-card" data-bs-toggle="tooltip" data-bs-placement="top" title="Total revenue from sales">
-							<div class="card-body">
-								<h5 class="card-title text-primary">Total Sales Revenue</h5>
-								<h3 class="text-success">₹1,250,000</h3>
-								<p class="text-muted">Last Month</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card text-center kpi-card" data-bs-toggle="tooltip" data-bs-placement="top" title="Total number of transactions">
-							<div class="card-body">
-								<h5 class="card-title text-primary">Number of Transactions</h5>
-								<h3 class="text-success">15,420</h3>
-								<p class="text-muted">This Month</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card text-center kpi-card" data-bs-toggle="tooltip" data-bs-placement="top" title="Growth compared to previous period">
-							<div class="card-body">
-								<h5 class="card-title text-primary">Growth Percentage</h5>
-								<h3 class="text-success">+12.5%</h3>
-								<p class="text-muted">Compared to Last Month</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /KPI Cards -->
-
-				<div class="row">
-
-					<!-- Monthly Income Trends -->
-					<div class="col-xl-6 d-flex">
-						<div class="card flex-fill">
-							<div class="card-header pb-2 d-flex align-items-center justify-content-between flex-wrap">
-								<h5 class="mb-2">Monthly Income Trends</h5>
-								<div class="d-flex align-items-center">
-									<div class="dropdown mb-2">
-										<a href="javascript:void(0);" class="dropdown-toggle btn btn-white border-0 btn-sm d-inline-flex align-items-center fs-13 me-2" data-bs-toggle="dropdown">
-											All Departments
-										</a>
-										<ul class="dropdown-menu  dropdown-menu-end p-3">
-											<li>
-												<a href="javascript:void(0);" class="dropdown-item rounded-1">UI/UX Designer</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" class="dropdown-item rounded-1">HR Manager</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" class="dropdown-item rounded-1">Junior Tester</a>
-											</li>
-										</ul>
-									</div>	
-								</div>
-							</div>
-							<div class="card-body pb-0">
-								<div class="d-flex align-items-center justify-content-between flex-wrap">
-									<div class="d-flex align-items-center mb-1">
-										<p class="fs-13 text-gray-9 me-3 mb-0"><i class="ti ti-square-filled me-2 text-primary"></i>Income</p>
-										<p class="fs-13 text-gray-9 mb-0"><i class="ti ti-square-filled me-2 text-gray-2"></i>Expenses</p>
-									</div>
-									<p class="fs-13 mb-1">Last Updated at 11:30PM</p>
-								</div>
-								<div id="sales-income"></div>
-							</div>
-						</div>
-					</div>
-					<!-- /Sales Overview -->
-
-					<!-- Income Distribution -->
-					<div class="col-xl-6 d-flex">
-						<div class="card flex-fill">
-							<div class="card-header pb-2 d-flex align-items-center justify-content-between flex-wrap">
-								<h5 class="mb-2">Income Distribution</h5>
-							</div>
-							<div class="card-body">
-								<div id="income-distribution"></div>
-							</div>
-						</div>
-					</div>
-					<!-- /Income Distribution -->
-
-				</div>
 
 				<!-- Project Data Cards -->
 				<div class="row">
@@ -127,11 +41,11 @@
 									<i class="ti ti-message-circle fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Enquiries</h6>
-								<h3 class="mb-3">245 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+15.3%</span></h3>
+								<h3 class="mb-3">{{ $totalEnquiries }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+15.3%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Pending: 10</span>
-									<span class="fs-12 text-muted">Replied: 5</span>
-									<span class="fs-12 text-muted">New: 3</span>
+									<span class="fs-12 text-muted">Pending: {{ $pendingEnquiries }}</span>
+									<span class="fs-12 text-muted">Replied: {{ $repliedEnquiries }}</span>
+									<span class="fs-12 text-muted">New: {{ $newEnquiries }}</span>
 								</div>
 								<a href="#" class="link-default">View All Enquiries</a>
 							</div>
@@ -144,11 +58,11 @@
 									<i class="ti ti-package fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Products</h6>
-								<h3 class="mb-3">156 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+8.7%</span></h3>
+								<h3 class="mb-3">{{ $totalProducts }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+8.7%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: 150</span>
-									<span class="fs-12 text-muted">Inactive: 6</span>
-									<span class="fs-12 text-muted">New: 12</span>
+									<span class="fs-12 text-muted">Active: {{ $activeProducts }}</span>
+									<span class="fs-12 text-muted">Inactive: {{ $inactiveProducts }}</span>
+									<span class="fs-12 text-muted">New: {{ $newProducts }}</span>
 								</div>
 								<a href="#" class="link-default">View All Products</a>
 							</div>
@@ -161,11 +75,11 @@
 									<i class="ti ti-category fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Categories</h6>
-								<h3 class="mb-3">42 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+5.2%</span></h3>
+								<h3 class="mb-3">{{ $totalCategories }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+5.2%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: 40</span>
-									<span class="fs-12 text-muted">Sub: 20</span>
-									<span class="fs-12 text-muted">Empty: 2</span>
+									<span class="fs-12 text-muted">Active: {{ $activeCategories }}</span>
+									<span class="fs-12 text-muted">Sub: {{ $subCategories }}</span>
+									<span class="fs-12 text-muted">Empty: {{ $emptyCategories }}</span>
 								</div>
 								<a href="#" class="link-default">View All Categories</a>
 							</div>
@@ -178,11 +92,11 @@
 									<i class="ti ti-star fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Testimonials</h6>
-								<h3 class="mb-3">89 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+12.1%</span></h3>
+								<h3 class="mb-3">{{ $totalTestimonials }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+12.1%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Published: 85</span>
-									<span class="fs-12 text-muted">Pending: 4</span>
-									<span class="fs-12 text-muted">5-Star: 70</span>
+									<span class="fs-12 text-muted">Published: {{ $publishedTestimonials }}</span>
+									<span class="fs-12 text-muted">Pending: {{ $pendingTestimonials }}</span>
+									<span class="fs-12 text-muted">5-Star: {{ $fiveStarTestimonials }}</span>
 								</div>
 								<a href="#" class="link-default">View All Testimonials</a>
 							</div>
@@ -195,11 +109,11 @@
 									<i class="ti ti-brand-dribbble fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Brands</h6>
-								<h3 class="mb-3">28 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+3.4%</span></h3>
+								<h3 class="mb-3">{{ $totalBrands }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+3.4%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: 25</span>
-									<span class="fs-12 text-muted">Inactive: 3</span>
-									<span class="fs-12 text-muted">Premium: 10</span>
+									<span class="fs-12 text-muted">Active: {{ $activeBrands }}</span>
+									<span class="fs-12 text-muted">Inactive: {{ $inactiveBrands }}</span>
+									<span class="fs-12 text-muted">Premium: {{ $premiumBrands }}</span>
 								</div>
 								<a href="#" class="link-default">View All Brands</a>
 							</div>
@@ -212,19 +126,17 @@
 									<i class="ti ti-users fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Customers</h6>
-								<h3 class="mb-3">1347 <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+22.5%</span></h3>
+								<h3 class="mb-3">{{ $totalCustomers }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+22.5%</span></h3>
 								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: 1300</span>
-									<span class="fs-12 text-muted">New: 50</span>
-									<span class="fs-12 text-muted">VIP: 100</span>
+									<span class="fs-12 text-muted">Active: {{ $activeCustomers }}</span>
+									<span class="fs-12 text-muted">New: {{ $newCustomers }}</span>
+									<span class="fs-12 text-muted">VIP: {{ $vipCustomers }}</span>
 								</div>
 								<a href="#" class="link-default">View All Customers</a>
 							</div>
 						</div>
 					</div>
 					<!-- /Project Data Cards -->
-				</div>
-
 				</div>
 
 				
@@ -239,42 +151,20 @@
 								<a href="#" class="btn btn-light btn-md mb-2">View All</a>
 							</div>
 							<div class="card-body">
-								<div class="d-flex align-items-center justify-content-between mb-4">
+								@foreach($recentEnquiries as $enquiry)
+								<div class="d-flex align-items-center justify-content-between {{ $loop->last ? 'mb-0' : 'mb-4' }}">
 									<div class="d-flex align-items-center">
 										<a href="#" class="avatar overflow-hidden flex-shrink-0">
 											<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
 										</a>
 										<div class="ms-2 overflow-hidden">
-											<p class="text-dark fw-medium text-truncate mb-0"><a href="#">John Doe</a></p>
-											<span class="fs-13 d-inline-flex align-items-center">Product Inquiry <i class="ti ti-circle-filled fs-4 mx-2 text-primary"></i>john@example.com</span>
+											<p class="text-dark fw-medium text-truncate mb-0"><a href="#">{{ $enquiry->user_name }}</a></p>
+											<span class="fs-13 d-inline-flex align-items-center">{{ $enquiry->product ? $enquiry->product->product_name : 'General' }} <i class="ti ti-circle-filled fs-4 mx-2 text-primary"></i>{{ $enquiry->user_email }}</span>
 										</div>
 									</div>
-									<span class="badge badge-secondary badge-xs">Pending</span>
+									<span class="badge badge-{{ $enquiry->status == 'pending' ? 'secondary' : ($enquiry->status == 'replied' ? 'info' : 'purple') }} badge-xs">{{ ucfirst($enquiry->status) }}</span>
 								</div>
-								<div class="d-flex align-items-center justify-content-between mb-4">
-									<div class="d-flex align-items-center">
-										<a href="#" class="avatar overflow-hidden flex-shrink-0">
-											<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
-										</a>
-										<div class="ms-2 overflow-hidden">
-											<p class="text-dark fw-medium text-truncate mb-0"><a href="#">Jane Smith</a></p>
-											<span class="fs-13 d-inline-flex align-items-center">Category Question <i class="ti ti-circle-filled fs-4 mx-2 text-primary"></i>jane@example.com</span>
-										</div>
-									</div>
-									<span class="badge badge-info badge-xs">Replied</span>
-								</div>
-								<div class="d-flex align-items-center justify-content-between mb-0">
-									<div class="d-flex align-items-center">
-										<a href="javascript:void(0);" class="avatar overflow-hidden flex-shrink-0">
-											<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
-										</a>
-										<div class="ms-2 overflow-hidden">
-											<p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Mike Johnson</a></p>
-											<span class="fs-13 d-inline-flex align-items-center">Brand Partnership <i class="ti ti-circle-filled fs-4 mx-2 text-primary"></i>mike@example.com</span>
-										</div>
-									</div>
-									<span class="badge badge-purple badge-xs">New</span>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -299,72 +189,30 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>
+											@foreach($topProducts as $product)
+											<tr {{ $loop->last ? 'class="border-0"' : '' }}>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
 													<div class="d-flex align-items-center">
 														<a href="javascript:void(0);" class="avatar">
-															<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
+															<img src="{{ asset('storage/' . $product->product_thumbnail) }}" class="img-fluid rounded-circle" alt="img">
 														</a>
 														<div class="ms-2">
-															<h6 class="fw-medium"><a href="javascript:void(0);">Texon Grooved Pegboard</a></h6>
-															<span class="fs-12">Electronics</span>
+															<h6 class="fw-medium"><a href="javascript:void(0);">{{ $product->product_name }}</a></h6>
+															<span class="fs-12">{{ $product->category }}</span>
 														</div>
 													</div>
 												</td>
-												<td>
-													<span class="badge badge-secondary-transparent badge-xs">Electronics</span>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
+													<span class="badge badge-secondary-transparent badge-xs">{{ $product->category }}</span>
 												</td>
-												<td>245</td>
-												<td>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>0</td>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
 													<span class="badge badge-success d-inline-flex align-items-center badge-xs">
-														<i class="ti ti-point-filled me-1"></i>Active
+														<i class="ti ti-point-filled me-1"></i>{{ ucfirst($product->status) }}
 													</span>
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<div class="d-flex align-items-center">
-														<a href="#" class="avatar">
-															<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
-														</a>
-														<div class="ms-2">
-															<h6 class="fw-medium"><a href="#">Rehabilitation Equipment</a></h6>
-															<span class="fs-12">Electronics</span>
-														</div>
-													</div>
-												</td>
-												<td>
-													<span class="badge badge-danger-transparent badge-xs">Electronics</span>
-												</td>
-												<td>189</td>
-												<td>
-													<span class="badge badge-success d-inline-flex align-items-center badge-xs">
-														<i class="ti ti-point-filled me-1"></i>Active
-													</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="border-0">
-													<div class="d-flex align-items-center">
-														<a href="javascript:void(0);" class="avatar">
-															<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
-														</a>
-														<div class="ms-2">
-															<h6 class="fw-medium"><a href="javascript:void(0);">Fashion Bag</a></h6>
-															<span class="fs-12">Fashion</span>
-														</div>
-													</div>
-												</td>
-												<td class="border-0">
-													<span class="badge badge-info-transparent badge-xs">Fashion</span>
-												</td>
-												<td class="border-0">156</td>
-												<td class="border-0">
-													<span class="badge badge-success d-inline-flex align-items-center badge-xs">
-														<i class="ti ti-point-filled me-1"></i>Active
-													</span>
-												</td>
-											</tr>
+											@endforeach
 										</tbody>
 									</table>
 								</div>
