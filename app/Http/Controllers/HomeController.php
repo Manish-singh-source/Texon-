@@ -57,6 +57,12 @@ class HomeController extends Controller
         return view('frontend.product-details', compact('product'));
     }
 
+    public function blogs()
+    {
+        $blogs = Blog::where('status', 'published')->latest()->paginate(6);
+        return view('frontend.blog', compact('blogs'));
+    }
+
     public function blogDetails($id)
     {
         $blog = Blog::findOrFail($id);

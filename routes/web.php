@@ -160,6 +160,7 @@ Route::get('/about-us', function () {
     return view('frontend.about-us');
 })->name('about-us');
 
+
 Route::get('/category', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 
 Route::get('/portfolio', [App\Http\Controllers\HomeController::class, 'products'])->name('portfolio');
@@ -182,9 +183,7 @@ Route::post('/request-a-quote', [App\Http\Controllers\SupportController::class, 
 
 Route::get('/our-presence', [App\Http\Controllers\HomeController::class, 'ourPresence'])->name('our-presence');
 
-Route::get('/blogs', function () {
-    return view('frontend.blog');
-})->name('blogs');
+Route::get('/blogs', [App\Http\Controllers\HomeController::class, 'blogs'])->name('blogs');
 
 Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class, 'productDetails'])->name('product-details');
 

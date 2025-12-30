@@ -27,7 +27,7 @@ class TestimonialController extends Controller
             'rating' => 'required|integer|min:1|max:5',
             'message' => 'required|string',
             'status' => 'required|in:active,inactive',
-            'testimonial_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'testimonial_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
         ]);
 
         $imagePath = null;
@@ -66,7 +66,7 @@ class TestimonialController extends Controller
             'rating' => 'required|integer|min:1|max:5',
             'message' => 'required|string',
             'status' => 'required|in:active,inactive',
-            'testimonial_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'testimonial_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
         ]);
 
         $data = $request->only(['name', 'position', 'rating', 'message', 'status']);
