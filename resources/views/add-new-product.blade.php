@@ -42,7 +42,7 @@
                                                     <small class="text-muted">Upload a single thumbnail image (max 4MB)</small>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Image Gallery</label>
                                                     <input type="file" class="form-control" name="image_gallery[]" multiple accept="image/*">
@@ -55,7 +55,7 @@
                                                     <input type="file" class="form-control" name="product_video" accept="video/*">
                                                     <small class="text-muted">Upload product video (optional)</small>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                     </div>

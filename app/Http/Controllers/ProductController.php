@@ -47,7 +47,7 @@ class ProductController extends Controller
             'category' => 'nullable|string',
             'sort_description' => 'nullable|string',
             'status' => 'nullable|string|in:active,inactive',
-            'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
         ], [
@@ -106,7 +106,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'video_upload' => 'nullable|mimes:mp4,avi,mov|',
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'heading' => 'nullable|string|max:255',
             'button_name' => 'nullable|string|max:255',
             'button_url' => 'nullable|url',
@@ -153,7 +153,7 @@ class ProductController extends Controller
     public function storeAboutProduct(Request $request, $productId)
     {
         $request->validate([
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'delete_images' => 'nullable|array',
             'delete_images.*' => 'nullable|string',
             'heading' => 'nullable|string|max:255',
@@ -209,7 +209,7 @@ class ProductController extends Controller
     public function storeProductKeyPoints(Request $request, $productId)
     {
         $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'title' => 'nullable|string|max:255',
             'button' => 'nullable|string|max:255',
             'url' => 'nullable|url',
@@ -280,7 +280,7 @@ class ProductController extends Controller
             'heading' => 'nullable|string|max:255',
             'subheading' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
         ], [
             'heading.string' => 'Heading must be a valid string.',
             'heading.max' => 'Heading must not exceed 255 characters.',
@@ -342,7 +342,7 @@ class ProductController extends Controller
     public function storeBannerVideo(Request $request, $productId)
     {
         $request->validate([
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'banner_video_url' => [
                 'nullable',
                 'url',
@@ -387,7 +387,7 @@ class ProductController extends Controller
             'title' => 'nullable|array',
             'title.*' => 'nullable|string|max:255',
             'icon_image' => 'nullable|array',
-            'icon_image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'icon_image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'description' => 'nullable|array',
             'description.*' => 'nullable|string',
         ], [
@@ -457,7 +457,7 @@ class ProductController extends Controller
             'category' => 'nullable|string',
             'sort_description' => 'nullable|string',
             'status' => 'nullable|string|in:active,inactive',
-            'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
         ], [

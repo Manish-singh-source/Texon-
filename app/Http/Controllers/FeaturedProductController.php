@@ -85,12 +85,25 @@ class FeaturedProductController extends Controller
         $featuredProduct = FeaturedProduct::findOrFail($id);
 
         // Delete image if exists
-        if ($featuredProduct->image) {
+        if ($featuredProduct->image && file_exists(public_path('storage/' . $featuredProduct->image))) {
             unlink(public_path('storage/' . $featuredProduct->image));
         }
 
         $featuredProduct->delete();
 
         return redirect()->route('featured-products')->with('success', 'Featured Product deleted successfully.');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $featuredProducts = FeaturedProduct::whereIn('id', $ids)->get();
+        foreach ($featuredProducts as $product) {
+            if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+                unlink(public_path('storage/' . $product->image));
+            }
+        }
+        FeaturedProduct::destroy($ids);
+        return redirect()->back()->with('success', 'Selected featured products deleted successfully.');
     }
 }

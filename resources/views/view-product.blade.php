@@ -183,12 +183,7 @@
                                             role="tab" aria-controls="tab4" aria-selected="false"
                                             style="border: 1px solid #007bff;">Product Features</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
-                                            id="tab7-tab" data-bs-toggle="tab" data-bs-target="#tab7" type="button"
-                                            role="tab" aria-controls="tab7" aria-selected="false"
-                                            style="border: 1px solid #007bff;">Description</button>
-                                    </li>
+                                  
 
                                 </ul>
                             </div>
@@ -607,23 +602,6 @@
                                                                     class="ti ti-trash"></i> Remove</button>
                                                         </div>
                                                         @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-end">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab7" role="tabpanel" aria-labelledby="tab7-tab">
-                                        <form method="POST" action="{{ route('view-product.update', $product->id) }}" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Sort Description</label>
-                                                        <textarea class="form-control" name="sort_description" rows="3" placeholder="Enter sort description">{{ $product->sort_description }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
