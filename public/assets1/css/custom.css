@@ -7184,7 +7184,7 @@ header.main-header .container-fluid {
     transform: scale(1.1);
     color: #fff;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
    .thumbnails {
     display: flex;
     justify-content: space-evenly;
@@ -7194,5 +7194,8 @@ header.main-header .container-fluid {
 }
 .gl {
     padding-right: 0px;
+}
+.order2{
+	order: 2;
 }
 }

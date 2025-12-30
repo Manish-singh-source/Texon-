@@ -47,7 +47,7 @@
     <div class="about-us pb-60 bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 gl">
+                <div class="col-lg-6 gl order2">
                     <!-- About Image Box Start -->
                     <div class="image-gallery" style="position: relative;">
                         @php
