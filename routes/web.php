@@ -117,6 +117,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/featured-products', [App\Http\Controllers\FeaturedProductController::class, 'index'])->name('featured-products');
         Route::get('/edit-featured-product/{id}', [App\Http\Controllers\FeaturedProductController::class, 'edit'])->name('edit-featured-product');
         Route::put('/edit-featured-product/{id}', [App\Http\Controllers\FeaturedProductController::class, 'update'])->name('edit-featured-product.update');
+        Route::delete('/featured-products/delete-selected', [App\Http\Controllers\FeaturedProductController::class, 'deleteSelected'])->name('delete.selected.featured-product');
         Route::delete('/featured-products/{id}', [App\Http\Controllers\FeaturedProductController::class, 'destroy'])->name('featured-products.destroy');
         Route::get('/presence', [App\Http\Controllers\PresenceController::class, 'index'])->name('presence');
         Route::get('/add-presence', function () {
