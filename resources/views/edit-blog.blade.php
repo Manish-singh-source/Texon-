@@ -50,10 +50,9 @@
 												<label class="form-label">Category</label>
 												<select name="category" class="select">
 													<option value="">Select</option>
-													<option value="technology" {{ old('category', $blog->category) == 'technology' ? 'selected' : '' }}>Technology</option>
-													<option value="ai" {{ old('category', $blog->category) == 'ai' ? 'selected' : '' }}>AI</option>
-													<option value="business" {{ old('category', $blog->category) == 'business' ? 'selected' : '' }}>Business</option>
-
+													@foreach($categories as $category)
+														<option value="{{ $category->name }}" {{ old('category', $blog->category) == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
+													@endforeach
 												</select>
 											</div>
 

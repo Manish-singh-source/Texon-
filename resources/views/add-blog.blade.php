@@ -64,14 +64,9 @@
                                             <label class="form-label">Category</label>
                                             <select name="category" class="select">
                                                 <option value="">Select</option>
-                                                <option value="technology"
-                                                    {{ old('category') == 'technology' ? 'selected' : '' }}>Technology
-                                                </option>
-                                                <option value="ai" {{ old('category') == 'ai' ? 'selected' : '' }}>AI
-                                                </option>
-                                                <option value="business"
-                                                    {{ old('category') == 'business' ? 'selected' : '' }}>Business</option>
-
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->name }}" {{ old('category') == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="mb-3">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, DB, Log, Validator, Storage};
 
@@ -22,7 +23,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('add-blog');
+        $categories = Category::all();
+        return view('add-blog', compact('categories'));
     }
 
     /**
@@ -86,7 +88,8 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('edit-blog', compact('blog'));
+        $categories = Category::all();
+        return view('edit-blog', compact('blog', 'categories'));
     }
 
     /**

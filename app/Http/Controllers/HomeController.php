@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\Presence;
 use App\Models\FeaturedProduct;
 use App\Models\Enquiry;
+use App\Models\PromotionalBanner;
 use App\Mail\UserThankYouEmail;
 use App\Mail\AdminEnquiryNotificationEmail;
 
@@ -25,7 +26,13 @@ class HomeController extends Controller
         $testimonials = Testimonial::where('status', 'active')->get();
         $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
         $featuredProducts = FeaturedProduct::where('status', 'active')->get();
-        return view('frontend.index', compact('brands', 'banners', 'testimonials', 'blogs', 'featuredProducts'));
+
+        // Get active promotional banner within date range
+        $promotionalBanner = PromotionalBanner::active()
+            ->withinDateRange()
+            ->first();
+
+        return view('frontend.index', compact('brands', 'banners', 'testimonials', 'blogs', 'featuredProducts', 'promotionalBanner'));
     }
 
     public function category()

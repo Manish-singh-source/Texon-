@@ -649,6 +649,74 @@
 </div>
 <!-- Our Blog Section End -->
 
+@if($promotionalBanner)
+<!-- Promotional Banner Modal -->
+<div class="modal fade" id="promotionalModal" tabindex="-1" aria-labelledby="promotionalModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg">
+            @if($promotionalBanner->title)
+            <div class="modal-header border-0 bg-primary text-white">
+                <h5 class="modal-title fw-bold" id="promotionalModalLabel">{{ $promotionalBanner->title }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @else
+            <div class="modal-header border-0 bg-primary text-white justify-content-end">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @endif
+            <div class="modal-body p-0">
+                @if($promotionalBanner->banner_image)
+                    <div class="promotional-banner-image">
+                        <img src="{{ asset('storage/' . $promotionalBanner->banner_image) }}" class="img-fluid w-100" alt="{{ $promotionalBanner->title ?? 'Promotional Banner' }}" style="max-height: 400px; object-fit: cover;">
+                    </div>
+                @endif
+                @if($promotionalBanner->description)
+                    <div class="p-4">
+                        <p class="mb-0 text-center fs-5">{{ $promotionalBanner->description }}</p>
+                    </div>
+                @endif
+            </div>
+            <div class="modal-footer border-0 justify-content-center pb-4">
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<style>
+    #promotionalModal .modal-content {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    #promotionalModal .modal-header {
+        padding: 1.5rem;
+    }
+    #promotionalModal .promotional-banner-image {
+        position: relative;
+        overflow: hidden;
+    }
+    #promotionalModal .promotional-banner-image img {
+        transition: transform 0.3s ease;
+    }
+    #promotionalModal .promotional-banner-image:hover img {
+        transform: scale(1.05);
+    }
+</style>
+
+<script>
+@if($promotionalBanner)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if modal was already shown in this session
+    if (!sessionStorage.getItem('promotionalModalShown')) {
+        var promotionalModal = new bootstrap.Modal(document.getElementById('promotionalModal'));
+        promotionalModal.show();
+
+        // Mark as shown in session storage
+        sessionStorage.setItem('promotionalModalShown', 'true');
+    }
+});
+@endif
+</script>
+@endif
 
 @endsection
