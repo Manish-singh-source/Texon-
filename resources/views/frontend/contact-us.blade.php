@@ -36,7 +36,8 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Contact us</h3>
-                            <p><a href="tel:+919769606708">+91 9769 60 6708</a></p>
+                            <p><a href="tel:+919769606708">+91 - 976960708</a></p>
+                            <p><a href="tel:+919867636276">+91 - 9867636276</a></p>
                             <!-- <p><a href="tel:+798765878">+(798) 765-878</a></p> -->
                         </div>
                     </div>
@@ -61,7 +62,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Address</h3>
-                            <p>Mumbai </p>
+                            <p>111, 1st floor , Dheeraj Center, Evershine City, Vasai East </p>
                         </div>
                     </div>
                     <!-- Contact Info Item End -->
@@ -75,13 +76,14 @@
                         </div>
                         <div class="contact-info-content ">
                             <h3>Social Media</h3>
-                            <div class="social-medias ">
+                            <div class="">
+                                <div class="post-social-sharing wow fadeInUp text-center" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
                                 <ul>
-                                    <li> <a href="" target="_blank"><img src="assets1/img/whatsapp.png" alt=""></a> </li>
-                                    <li><a href="" target="_blank"><img src="assets1/img/facebook.png" alt=""> </a> </li>
-                                    <li><a href="" target="_blank"><img src="assets1/img/linkedin.png" alt=""></a> </li>
-                                    <li><a href="" target="_blank"><img src="assets1/img/twitter.png" alt=""></a> </li>
+                                    <li><a href="https://in.linkedin.com/company/texoncorporation" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.instagram.com/texon_corporation/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="https://www.youtube.com/@texoncorporation" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
                                 </ul>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -116,8 +118,7 @@
                     <!-- Section Title Start -->
                     <div class="section-title">
                         <h2 class="text-anime-style-2">Fill up the <span>form</span></h2>   
-                         <p class="wow fadeInUp" data-wow-delay="0.2s">Have questions or need help? Contact Texon
-                            Corporation today and let us know how we can assist you.</p>                      
+                         <p class="wow fadeInUp" data-wow-delay="0.2s">We’d love to hear from you. Get in touch with Texon Corporation for product inquiries, demos, support, or consultations.</p>                      
                     </div>
                     <!-- Section Title End -->
 

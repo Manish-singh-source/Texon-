@@ -81,6 +81,12 @@ class TestimonialController extends Controller
                 unlink(public_path('storage/' . $testimonial->testimonial_image));
             }
             $data['testimonial_image'] = $newImagePath;
+        } elseif ($request->input('remove_image') == '1') {
+            // Remove the image
+            if ($testimonial->testimonial_image && file_exists(public_path('storage/' . $testimonial->testimonial_image))) {
+                unlink(public_path('storage/' . $testimonial->testimonial_image));
+            }
+            $data['testimonial_image'] = null;
         }
 
         $testimonial->update($data);

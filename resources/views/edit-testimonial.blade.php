@@ -41,6 +41,7 @@
                         <form action="{{ route('edit-testimonial.update', $testimonial->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="remove_image" id="remove_image" value="0">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="bg-light w-100 rounded p-3 mb-4">
@@ -52,8 +53,11 @@
                                                     <input type="file" class="form-control" name="testimonial_image" accept="image/*">
                                                     <small class="text-muted">Upload testimonial image (max 4MB)</small>
                                                     @if($testimonial->testimonial_image)
-                                                        <div class="mt-2">
+                                                        <div class="mt-2 position-relative" id="image-preview">
                                                             <img src="{{ asset('storage/' . $testimonial->testimonial_image) }}" alt="Current Image" style="width: 100px; height: 100px; object-fit: cover;">
+                                                            <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0" onclick="removeImage()" style="padding: 2px 5px; font-size: 12px;">
+                                                                <i class="ti ti-x"></i>
+                                                            </button>
                                                             <p class="text-muted">Current image</p>
                                                         </div>
                                                     @endif
@@ -123,5 +127,12 @@
 
 </div>
 <!-- /Page Wrapper -->
+
+<script>
+function removeImage() {
+    document.getElementById('remove_image').value = '1';
+    document.getElementById('image-preview').style.display = 'none';
+}
+</script>
 
 @endsection
