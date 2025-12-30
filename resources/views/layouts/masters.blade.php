@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-sidebar="darkgray" data-color="primary" data-topbar="white" data-layout="default" data-topbarcolor="white" data-card="bordered" data-size="default" data-width="fluid" data-loader="enable" style="--sidebar-rgb: 0, 0, 0; --topbarcolor-rgb: 0, 31, 213;">
 <head>
 
 	<!-- Meta Tags -->
@@ -1121,7 +1121,7 @@
 					<img src="assets/img/logo.svg" alt="Logo">
 				</a> --}}
 				<a href="{{route('index')}}" class="logo-small">
-					<img src="assets/img/favicon.png" alt="Logo">
+					<img src="{{asset('assets/img/favicon.png')}}" alt="Logo">
 				</a>
 				<a href="{{route('index')}}" class="dark-logo">
 					<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
