@@ -12,14 +12,7 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
 						
-						<div class="mb-2">
-							<div class="input-icon w-100 position-relative">
-								<span class="input-icon-addon">
-									<i class="ti ti-calendar text-gray-9"></i>
-								</span>
-								<input type="text" class="form-control daterange" placeholder="Select Date Range">
-							</div>
-						</div>
+						
 						<div class="ms-2 head-icons">
 							<a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Collapse" id="collapse-header">
 								<i class="ti ti-chevrons-up"></i>
@@ -41,13 +34,13 @@
 									<i class="ti ti-message-circle fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Enquiries</h6>
-								<h3 class="mb-3">{{ $totalEnquiries }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+15.3%</span></h3>
+								<h3 class="mb-3">{{ $totalEnquiries }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Pending: {{ $pendingEnquiries }}</span>
 									<span class="fs-12 text-muted">Replied: {{ $repliedEnquiries }}</span>
 									<span class="fs-12 text-muted">New: {{ $newEnquiries }}</span>
 								</div>
-								<a href="#" class="link-default">View All Enquiries</a>
+								<a href="{{ route('enquiries') }}" class="link-default">View All Enquiries</a>
 							</div>
 						</div>
 					</div>
@@ -58,13 +51,13 @@
 									<i class="ti ti-package fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Products</h6>
-								<h3 class="mb-3">{{ $totalProducts }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+8.7%</span></h3>
+								<h3 class="mb-3">{{ $totalProducts }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Active: {{ $activeProducts }}</span>
 									<span class="fs-12 text-muted">Inactive: {{ $inactiveProducts }}</span>
 									<span class="fs-12 text-muted">New: {{ $newProducts }}</span>
 								</div>
-								<a href="#" class="link-default">View All Products</a>
+								<a href="{{ route('products') }}" class="link-default">View All Products</a>
 							</div>
 						</div>
 					</div>
@@ -75,13 +68,13 @@
 									<i class="ti ti-category fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Categories</h6>
-								<h3 class="mb-3">{{ $totalCategories }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+5.2%</span></h3>
+								<h3 class="mb-3">{{ $totalCategories }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Active: {{ $activeCategories }}</span>
 									<span class="fs-12 text-muted">Sub: {{ $subCategories }}</span>
 									<span class="fs-12 text-muted">Empty: {{ $emptyCategories }}</span>
 								</div>
-								<a href="#" class="link-default">View All Categories</a>
+								<a href="{{ route('categories') }}" class="link-default">View All Categories</a>
 							</div>
 						</div>
 					</div>
@@ -92,13 +85,13 @@
 									<i class="ti ti-star fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Testimonials</h6>
-								<h3 class="mb-3">{{ $totalTestimonials }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+12.1%</span></h3>
+								<h3 class="mb-3">{{ $totalTestimonials }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Published: {{ $publishedTestimonials }}</span>
 									<span class="fs-12 text-muted">Pending: {{ $pendingTestimonials }}</span>
 									<span class="fs-12 text-muted">5-Star: {{ $fiveStarTestimonials }}</span>
 								</div>
-								<a href="#" class="link-default">View All Testimonials</a>
+								<a href="{{ route('testimonials') }}" class="link-default">View All Testimonials</a>
 							</div>
 						</div>
 					</div>
@@ -109,13 +102,13 @@
 									<i class="ti ti-brand-dribbble fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Brands</h6>
-								<h3 class="mb-3">{{ $totalBrands }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+3.4%</span></h3>
+								<h3 class="mb-3">{{ $totalBrands }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Active: {{ $activeBrands }}</span>
 									<span class="fs-12 text-muted">Inactive: {{ $inactiveBrands }}</span>
 									<span class="fs-12 text-muted">Premium: {{ $premiumBrands }}</span>
 								</div>
-								<a href="#" class="link-default">View All Brands</a>
+								<a href="{{ route('brands') }}" class="link-default">View All Brands</a>
 							</div>
 						</div>
 					</div>
@@ -126,13 +119,13 @@
 									<i class="ti ti-users fs-16"></i>
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Customers</h6>
-								<h3 class="mb-3">{{ $totalCustomers }} <span class="fs-12 fw-medium text-success"><i class="fa-solid fa-caret-up me-1"></i>+22.5%</span></h3>
+								<h3 class="mb-3">{{ $totalCustomers }}</h3>
 								<div class="d-flex justify-content-between mb-2">
 									<span class="fs-12 text-muted">Active: {{ $activeCustomers }}</span>
 									<span class="fs-12 text-muted">New: {{ $newCustomers }}</span>
 									<span class="fs-12 text-muted">VIP: {{ $vipCustomers }}</span>
 								</div>
-								<a href="#" class="link-default">View All Customers</a>
+								<a href="{{ route('customers') }}" class="link-default">View All Customers</a>
 							</div>
 						</div>
 					</div>
@@ -227,8 +220,7 @@
 			</div>
 
 			<div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
-				<p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-				<p>Designed &amp; Developed By <a href="javascript:void(0);" class="text-primary">T</a></p>
+				<p class="mb-0">2025 &copy; Texon.</p>
 			</div>
 
 		</div>

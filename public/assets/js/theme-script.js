@@ -12,7 +12,7 @@ document.querySelector("html").setAttribute('data-loader', localStorage.getItem(
 
 let themesettings = `
 <div class="sidebar-contact ">
-    <div class="toggle-theme"  data-bs-toggle="offcanvas" data-bs-target="#theme-setting"><i class="fa fa-cog fa-w-16 fa-spin"></i></div>
+    <div class="toggle-theme" style="display: none;"  data-bs-toggle="offcanvas" data-bs-target="#theme-setting"><i class="fa fa-cog fa-w-16 fa-spin"></i></div>
     </div>
     <div class="sidebar-themesettings offcanvas offcanvas-end" id="theme-setting">
     <div class="offcanvas-header d-flex align-items-center justify-content-between bg-dark">
