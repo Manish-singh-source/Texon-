@@ -32,7 +32,10 @@ class TestimonialController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('testimonial_image')) {
-            $imagePath = $request->file('testimonial_image')->store('testimonials', 'public');
+            $file = $request->file('testimonial_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/testimonials'), $filename);
+            $imagePath = 'testimonials/' . $filename;
         }
 
         Testimonial::create([
@@ -69,10 +72,13 @@ class TestimonialController extends Controller
         $data = $request->only(['name', 'position', 'rating', 'message', 'status']);
 
         if ($request->hasFile('testimonial_image')) {
-            $newImagePath = $request->file('testimonial_image')->store('testimonials', 'public');
+            $file = $request->file('testimonial_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/testimonials'), $filename);
+            $newImagePath = 'testimonials/' . $filename;
             // Delete old image if exists
-            if ($testimonial->testimonial_image && Storage::disk('public')->exists($testimonial->testimonial_image)) {
-                Storage::disk('public')->delete($testimonial->testimonial_image);
+            if ($testimonial->testimonial_image && file_exists(public_path('storage/' . $testimonial->testimonial_image))) {
+                unlink(public_path('storage/' . $testimonial->testimonial_image));
             }
             $data['testimonial_image'] = $newImagePath;
         }
@@ -87,8 +93,8 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::findOrFail($id);
 
         // Delete the image file if it exists
-        if ($testimonial->testimonial_image && Storage::disk('public')->exists($testimonial->testimonial_image)) {
-            Storage::disk('public')->delete($testimonial->testimonial_image);
+        if ($testimonial->testimonial_image && file_exists(public_path('storage/' . $testimonial->testimonial_image))) {
+            unlink(public_path('storage/' . $testimonial->testimonial_image));
         }
 
         $testimonial->delete();

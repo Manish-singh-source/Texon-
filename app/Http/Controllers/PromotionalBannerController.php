@@ -39,7 +39,10 @@ class PromotionalBannerController extends Controller
             $data = $request->only(['title', 'start_date', 'end_date', 'description', 'status']);
 
             if ($request->hasFile('banner_image')) {
-                $data['banner_image'] = $request->file('banner_image')->store('promotional_banners/images', 'public');
+                $file = $request->file('banner_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/promotional_banners/images'), $filename);
+                $data['banner_image'] = 'promotional_banners/images/' . $filename;
             }
 
             $banner = PromotionalBanner::create($data);
@@ -67,7 +70,7 @@ class PromotionalBannerController extends Controller
 
             // Delete associated file if any
             if ($banner->banner_image) {
-                Storage::disk('public')->delete($banner->banner_image);
+                unlink(public_path('storage/' . $banner->banner_image));
             }
 
             $banner->delete();
@@ -117,9 +120,12 @@ class PromotionalBannerController extends Controller
             if ($request->hasFile('banner_image')) {
                 // Delete old image if exists
                 if ($banner->banner_image) {
-                    Storage::disk('public')->delete($banner->banner_image);
+                    unlink(public_path('storage/' . $banner->banner_image));
                 }
-                $data['banner_image'] = $request->file('banner_image')->store('promotional_banners/images', 'public');
+                $file = $request->file('banner_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/promotional_banners/images'), $filename);
+                $data['banner_image'] = 'promotional_banners/images/' . $filename;
             }
 
             $banner->update($data);

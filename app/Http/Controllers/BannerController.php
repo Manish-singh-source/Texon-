@@ -30,11 +30,17 @@ class BannerController extends Controller
         $data = $request->only(['heading', 'subheading', 'button_name', 'button_url', 'status']);
 
         if ($request->hasFile('video_upload')) {
-            $data['video_upload'] = $request->file('video_upload')->store('banners/videos', 'public');
+            $file = $request->file('video_upload');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/banners/videos'), $filename);
+            $data['video_upload'] = 'banners/videos/' . $filename;
         }
 
         if ($request->hasFile('banner_image')) {
-            $data['banner_image'] = $request->file('banner_image')->store('banners/images', 'public');
+            $file = $request->file('banner_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/banners/images'), $filename);
+            $data['banner_image'] = 'banners/images/' . $filename;
         }
 
         Banner::create($data);
@@ -48,10 +54,10 @@ class BannerController extends Controller
 
         // Delete associated files if any
         if ($banner->banner_image) {
-            Storage::disk('public')->delete($banner->banner_image);
+            unlink(public_path('storage/' . $banner->banner_image));
         }
         if ($banner->video_upload) {
-            Storage::disk('public')->delete($banner->video_upload);
+            unlink(public_path('storage/' . $banner->video_upload));
         }
 
         $banner->delete();
@@ -82,19 +88,25 @@ class BannerController extends Controller
         $data = $request->only(['heading', 'subheading', 'button_name', 'button_url', 'status']);
 
         if ($request->hasFile('video_upload')) {
-            $newVideoPath = $request->file('video_upload')->store('banners/videos', 'public');
+            $file = $request->file('video_upload');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/banners/videos'), $filename);
+            $newVideoPath = 'banners/videos/' . $filename;
             // Delete old video if exists
             if ($banner->video_upload) {
-                Storage::disk('public')->delete($banner->video_upload);
+                unlink(public_path('storage/' . $banner->video_upload));
             }
             $data['video_upload'] = $newVideoPath;
         }
 
         if ($request->hasFile('banner_image')) {
-            $newImagePath = $request->file('banner_image')->store('banners/images', 'public');
+            $file = $request->file('banner_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/banners/images'), $filename);
+            $newImagePath = 'banners/images/' . $filename;
             // Delete old image if exists
             if ($banner->banner_image) {
-                Storage::disk('public')->delete($banner->banner_image);
+                unlink(public_path('storage/' . $banner->banner_image));
             }
             $data['banner_image'] = $newImagePath;
         }

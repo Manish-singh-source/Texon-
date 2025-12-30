@@ -24,7 +24,10 @@ class CategoryController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('categories', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/categories'), $filename);
+            $imagePath = 'categories/' . $filename;
         }
 
         Category::create([
@@ -55,10 +58,13 @@ class CategoryController extends Controller
         $imagePath = $category->image;
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($imagePath && Storage::disk('public')->exists($imagePath)) {
-                Storage::disk('public')->delete($imagePath);
+            if ($imagePath && file_exists(public_path('storage/' . $imagePath))) {
+                unlink(public_path('storage/' . $imagePath));
             }
-            $imagePath = $request->file('image')->store('categories', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/categories'), $filename);
+            $imagePath = 'categories/' . $filename;
         }
 
         $category->update([
@@ -75,8 +81,8 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
 
         // Delete image if exists
-        if ($category->image && Storage::disk('public')->exists($category->image)) {
-            Storage::disk('public')->delete($category->image);
+        if ($category->image && file_exists(public_path('storage/' . $category->image))) {
+            unlink(public_path('storage/' . $category->image));
         }
 
         $category->delete();
@@ -94,8 +100,8 @@ class CategoryController extends Controller
         $categories = Category::whereIn('id', $ids)->get();
         foreach ($categories as $category) {
             // Delete image if exists
-            if ($category->image && Storage::disk('public')->exists($category->image)) {
-                Storage::disk('public')->delete($category->image);
+            if ($category->image && file_exists(public_path('storage/' . $category->image))) {
+                unlink(public_path('storage/' . $category->image));
             }
         }
 

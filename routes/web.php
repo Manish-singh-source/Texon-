@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
     Route::middleware('auth:register')->group(function () {
 
-        Route::get('/', function () {
-            return view('index');
-        })->name('index');
+        Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
         Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
         Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
