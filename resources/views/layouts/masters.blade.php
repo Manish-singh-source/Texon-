@@ -1123,8 +1123,8 @@
 				<a href="{{route('index')}}" class="logo-small">
 					<img src="{{asset('assets/img/favicon.png')}}" alt="Logo">
 				</a>
-				<a href="{{route('index')}}" class="dark-logo">
-					<img src="{{asset('assets/img/logo.png')}}" alt="Logo">
+				<a href="{{route('index')}}" class="light-logo">
+					<img src="{{asset('assets/img/Logo.png')}}" alt="Logo">
 				</a>
 			</div>
 			<!-- /Logo -->
