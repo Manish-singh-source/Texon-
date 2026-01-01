@@ -26,11 +26,7 @@ class PresenceController extends Controller
         if ($request->hasFile('presence_image')) {
             $file = $request->file('presence_image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $directory = storage_path('app/public/presences');
-            if (!file_exists($directory)) {
-                mkdir($directory, 0755, true);
-            }
-            $file->move($directory, $filename);
+            $file->move(public_path('storage/presences'), $filename);
             $imagePath = 'presences/' . $filename;
         }
 
@@ -67,11 +63,7 @@ class PresenceController extends Controller
             }
             $file = $request->file('presence_image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $directory = storage_path('app/public/presences');
-            if (!file_exists($directory)) {
-                mkdir($directory, 0755, true);
-            }
-            $file->move($directory, $filename);
+            $file->move(public_path('storage/presences'), $filename);
             $imagePath = 'presences/' . $filename;
         }
 
