@@ -35,11 +35,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Enquiries</h6>
 								<h3 class="mb-3">{{ $totalEnquiries }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Pending: {{ $pendingEnquiries }}</span>
-									<span class="fs-12 text-muted">Replied: {{ $repliedEnquiries }}</span>
-									<span class="fs-12 text-muted">New: {{ $newEnquiries }}</span>
-								</div>
+								
 								<a href="{{ route('enquiries') }}" class="link-default">View All Enquiries</a>
 							</div>
 						</div>
@@ -52,11 +48,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Products</h6>
 								<h3 class="mb-3">{{ $totalProducts }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: {{ $activeProducts }}</span>
-									<span class="fs-12 text-muted">Inactive: {{ $inactiveProducts }}</span>
-									<span class="fs-12 text-muted">New: {{ $newProducts }}</span>
-								</div>
+								
 								<a href="{{ route('products') }}" class="link-default">View All Products</a>
 							</div>
 						</div>
@@ -69,11 +61,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Categories</h6>
 								<h3 class="mb-3">{{ $totalCategories }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: {{ $activeCategories }}</span>
-									<span class="fs-12 text-muted">Sub: {{ $subCategories }}</span>
-									<span class="fs-12 text-muted">Empty: {{ $emptyCategories }}</span>
-								</div>
+								
 								<a href="{{ route('categories') }}" class="link-default">View All Categories</a>
 							</div>
 						</div>
@@ -86,11 +74,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Testimonials</h6>
 								<h3 class="mb-3">{{ $totalTestimonials }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Published: {{ $publishedTestimonials }}</span>
-									<span class="fs-12 text-muted">Pending: {{ $pendingTestimonials }}</span>
-									<span class="fs-12 text-muted">5-Star: {{ $fiveStarTestimonials }}</span>
-								</div>
+								
 								<a href="{{ route('testimonials') }}" class="link-default">View All Testimonials</a>
 							</div>
 						</div>
@@ -103,11 +87,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Brands</h6>
 								<h3 class="mb-3">{{ $totalBrands }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: {{ $activeBrands }}</span>
-									<span class="fs-12 text-muted">Inactive: {{ $inactiveBrands }}</span>
-									<span class="fs-12 text-muted">Premium: {{ $premiumBrands }}</span>
-								</div>
+								
 								<a href="{{ route('brands') }}" class="link-default">View All Brands</a>
 							</div>
 						</div>
@@ -120,11 +100,7 @@
 								</span>
 								<h6 class="fs-13 fw-medium text-default mb-1">Total Customers</h6>
 								<h3 class="mb-3">{{ $totalCustomers }}</h3>
-								<div class="d-flex justify-content-between mb-2">
-									<span class="fs-12 text-muted">Active: {{ $activeCustomers }}</span>
-									<span class="fs-12 text-muted">New: {{ $newCustomers }}</span>
-									<span class="fs-12 text-muted">VIP: {{ $vipCustomers }}</span>
-								</div>
+								
 								<a href="{{ route('customers') }}" class="link-default">View All Customers</a>
 							</div>
 						</div>
@@ -147,9 +123,7 @@
 								@foreach($recentEnquiries as $enquiry)
 								<div class="d-flex align-items-center justify-content-between {{ $loop->last ? 'mb-0' : 'mb-4' }}">
 									<div class="d-flex align-items-center">
-										<a href="#" class="avatar overflow-hidden flex-shrink-0">
-											<img src="https://placehold.co/100x100" class="img-fluid rounded-circle" alt="img">
-										</a>
+										
 										<div class="ms-2 overflow-hidden">
 											<p class="text-dark fw-medium text-truncate mb-0"><a href="#">{{ $enquiry->user_name }}</a></p>
 											<span class="fs-13 d-inline-flex align-items-center">{{ $enquiry->product ? $enquiry->product->product_name : 'General' }} <i class="ti ti-circle-filled fs-4 mx-2 text-primary"></i>{{ $enquiry->user_email }}</span>

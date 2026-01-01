@@ -297,7 +297,7 @@
                         <!-- Service Item Header Start -->
                         <div class="service-item-header">
                             <div class="service-item-title">
-                                <h3><a href="javascript:void(0);">High Accuracy</a></h3>
+                                <h3><a href="javascript:void(0);">Proven Technical Expertise</a></h3>
                             </div>
                             <div class="service-item-btn">
                                 <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
@@ -307,7 +307,7 @@
 
                         <!-- Service Item Content Start -->
                         <div class="service-item-content">
-                            <p>Ensures precise measurements for research, industrial, and clinical applications.
+                            <p>Deep domain knowledge in advanced motion capture, tracking software, and engineering technologies ensures reliable and accurate solutions.
                             </p>
                         </div>
                         <!-- Service Item Content End -->
@@ -337,7 +337,7 @@
                         <!-- Service Item Header Start -->
                         <div class="service-item-header">
                             <div class="service-item-title">
-                                <h3><a href="javascript:void(0);">Reliability</a></h3>
+                                <h3><a href="javascript:void(0);">Customized Solutions</a></h3>
                             </div>
                             <div class="service-item-btn">
                                 <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
@@ -347,7 +347,7 @@
 
                         <!-- Service Item Content Start -->
                         <div class="service-item-content">
-                            <p>Durable and consistent performance under demanding conditions.</p>
+                            <p>We understand that every project is unique. Our solutions are tailored to meet specific application, industry, and research requirements.</p>
                         </div>
                         <!-- Service Item Content End -->
                     </div>
@@ -376,7 +376,7 @@
                         <!-- Service Item Header Start -->
                         <div class="service-item-header">
                             <div class="service-item-title">
-                                <h3><a href="javascript:void(0);">Wide Range of Solutions</a></h3>
+                                <h3><a href="javascript:void(0);">End-to-End Support</a></h3>
                             </div>
                             <div class="service-item-btn">
                                 <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
@@ -386,7 +386,7 @@
 
                         <!-- Service Item Content Start -->
                         <div class="service-item-content">
-                            <p>Instruments for load measurement, dynamometry, clinical analysis, and more.</p>
+                            <p>From consultation and system design to installation, training, and after-sales support, we provide complete lifecycle assistance.</p>
                         </div>
                         <!-- Service Item Content End -->
                     </div>
@@ -415,7 +415,7 @@
                         <!-- Service Item Header Start -->
                         <div class="service-item-header">
                             <div class="service-item-title">
-                                <h3><a href="javascript:void(0);">Global Standards</a></h3>
+                                <h3><a href="javascript:void(0);">Scalable & Future-Ready</a></h3>
                             </div>
                             <div class="service-item-btn">
                                 <a href="javascript:void(0);"><img src="assets1/images/arrow-primary.svg" alt=""></a>
@@ -425,8 +425,7 @@
 
                         <!-- Service Item Content Start -->
                         <div class="service-item-content">
-                            <p>Products sourced from trusted international manufacturers meeting rigorous quality
-                                benchmarks.
+                            <p>Our solutions are designed to scale as your needs grow, ensuring long-term value and flexibility.
                             </p>
                         </div>
                         <!-- Service Item Content End -->

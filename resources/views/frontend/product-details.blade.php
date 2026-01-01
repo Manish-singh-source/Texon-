@@ -1,5 +1,10 @@
 @extends('frontend.layouts.masters')
 @section('content')
+<style>
+    .footer-scrolling-ticker .scrolling-content span {
+    display: block;
+}
+    </style>
     <!-- Banner Section Start -->
     @if($product->banner_active)
     <div class="intro-videos dark-section parallaxie"

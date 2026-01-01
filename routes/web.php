@@ -8,6 +8,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
         Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
+        Route::delete('/products/delete-selected', [App\Http\Controllers\ProductController::class, 'deleteSelected'])->name('delete.selected.product');
+
         Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
 
         Route::get('/add-new-product', [App\Http\Controllers\ProductController::class, 'create'])->name('add-new-product');
@@ -36,6 +38,8 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
+        Route::delete('/enquiries/delete-selected', [App\Http\Controllers\EnquiryController::class, 'deleteSelected'])->name('delete.selected.enquiry');
+
         Route::get('/view-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'show'])->name('view-enquiry');
 
         Route::get('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'edit'])->name('edit-enquiry');
@@ -43,6 +47,10 @@ Route::prefix('admin')->group(function () {
         Route::put('/edit-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'update'])->name('edit-enquiry.update');
 
         Route::delete('/enquiries/{id}', [App\Http\Controllers\EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
+        Route::post('/enquiries/{id}/mark-as-read', [App\Http\Controllers\EnquiryController::class, 'markAsRead'])->name('enquiries.mark-as-read');
+
+        Route::post('/enquiries/mark-all-as-read', [App\Http\Controllers\EnquiryController::class, 'markAllAsRead'])->name('enquiries.mark-all-as-read');
 
         Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
@@ -69,6 +77,8 @@ Route::prefix('admin')->group(function () {
         Route::put('/edit-promotional-banner/{id}', [App\Http\Controllers\PromotionalBannerController::class, 'update'])->name('edit-promotional-banner.update');
 
         Route::get('/testimonials', [App\Http\Controllers\TestimonialController::class, 'index'])->name('testimonials');
+
+        Route::delete('/testimonials/delete-selected', [App\Http\Controllers\TestimonialController::class, 'deleteSelected'])->name('delete.selected.testimonial');
 
         Route::get('/add-testimonial', [App\Http\Controllers\TestimonialController::class, 'create'])->name('add-testimonial');
 
@@ -106,6 +116,7 @@ Route::prefix('admin')->group(function () {
         })->name('add-brand');
         Route::post('/add-brand', [App\Http\Controllers\BrandController::class, 'store'])->name('add-brand.store');
         Route::get('/brands', [App\Http\Controllers\BrandController::class, 'index'])->name('brands');
+        Route::delete('/brands/delete-selected', [App\Http\Controllers\BrandController::class, 'deleteSelected'])->name('delete.selected.brand');
         Route::get('/edit-brand/{id}', [App\Http\Controllers\BrandController::class, 'edit'])->name('edit-brand');
         Route::put('/edit-brand/{id}', [App\Http\Controllers\BrandController::class, 'update'])->name('edit-brand.update');
         Route::delete('/brands/{id}', [App\Http\Controllers\BrandController::class, 'destroy'])->name('brands.destroy');
@@ -122,6 +133,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/featured-products/delete-selected', [App\Http\Controllers\FeaturedProductController::class, 'deleteSelected'])->name('delete.selected.featured-product');
         Route::delete('/featured-products/{id}', [App\Http\Controllers\FeaturedProductController::class, 'destroy'])->name('featured-products.destroy');
         Route::get('/presence', [App\Http\Controllers\PresenceController::class, 'index'])->name('presence');
+        Route::delete('/presence/delete-selected', [App\Http\Controllers\PresenceController::class, 'deleteSelected'])->name('delete.selected.presence');
         Route::get('/add-presence', function () {
             return view('add-presence');
         })->name('add-presence');
@@ -129,6 +141,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit-presence/{id}', [App\Http\Controllers\PresenceController::class, 'edit'])->name('edit-presence');
         Route::put('/edit-presence/{id}', [App\Http\Controllers\PresenceController::class, 'update'])->name('edit-presence.update');
         Route::delete('/presence/{id}', [App\Http\Controllers\PresenceController::class, 'destroy'])->name('presence.destroy');
+        Route::delete('/blogs/delete-selected', [App\Http\Controllers\BlogController::class, 'deleteSelected'])->name('delete.selected.blog');
         Route::resource('blogs', App\Http\Controllers\BlogController::class);
 
         Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');

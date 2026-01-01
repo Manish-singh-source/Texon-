@@ -22,7 +22,7 @@ class PromotionalBannerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:5120',
+            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg,gif,webp',
             'title' => 'nullable|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
@@ -99,7 +99,7 @@ class PromotionalBannerController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:5120',
+            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg,gif,webp',
             'title' => 'nullable|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',

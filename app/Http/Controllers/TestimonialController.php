@@ -107,4 +107,17 @@ class TestimonialController extends Controller
 
         return redirect()->route('testimonials')->with('success', 'Testimonial deleted successfully.');
     }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $testimonials = Testimonial::whereIn('id', $ids)->get();
+        foreach ($testimonials as $testimonial) {
+            if ($testimonial->testimonial_image && file_exists(public_path('storage/' . $testimonial->testimonial_image))) {
+                unlink(public_path('storage/' . $testimonial->testimonial_image));
+            }
+        }
+        Testimonial::destroy($ids);
+        return redirect()->back()->with('success', 'Selected testimonials deleted successfully.');
+    }
 }

@@ -54,10 +54,14 @@ class BannerController extends Controller
 
         // Delete associated files if any
         if ($banner->banner_image) {
-            unlink(public_path('storage/' . $banner->banner_image));
+            if (file_exists(public_path('storage/' . $banner->banner_image))) {
+                unlink(public_path('storage/' . $banner->banner_image));
+            }
         }
         if ($banner->video_upload) {
-            unlink(public_path('storage/' . $banner->video_upload));
+            if (file_exists(public_path('storage/' . $banner->video_upload))) {
+                unlink(public_path('storage/' . $banner->video_upload));
+            }
         }
 
         $banner->delete();

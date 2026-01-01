@@ -18,7 +18,7 @@ class BrandController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'brand_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'brand_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -49,7 +49,7 @@ class BrandController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'brand_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'brand_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -82,11 +82,26 @@ class BrandController extends Controller
 
         // Delete image if exists
         if ($brand->image) {
-            unlink(public_path('storage/' . $brand->image));
+            if (file_exists(public_path('storage/' . $brand->image))) {
+                unlink(public_path('storage/' . $brand->image));
+            }
         }
 
         $brand->delete();
 
         return redirect()->route('brands')->with('success', 'Brand deleted successfully.');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $brands = Brand::whereIn('id', $ids)->get();
+        foreach ($brands as $brand) {
+            if ($brand->image && file_exists(public_path('storage/' . $brand->image))) {
+                unlink(public_path('storage/' . $brand->image));
+            }
+        }
+        Brand::destroy($ids);
+        return redirect()->back()->with('success', 'Selected brands deleted successfully.');
     }
 }

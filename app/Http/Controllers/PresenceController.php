@@ -18,7 +18,7 @@ class PresenceController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -49,7 +49,7 @@ class PresenceController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -88,5 +88,18 @@ class PresenceController extends Controller
         $presence->delete();
 
         return redirect()->route('presence')->with('success', 'Presence deleted successfully.');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $presences = Presence::whereIn('id', $ids)->get();
+        foreach ($presences as $presence) {
+            if ($presence->image && file_exists(public_path('storage/' . $presence->image))) {
+                unlink(public_path('storage/' . $presence->image));
+            }
+        }
+        Presence::destroy($ids);
+        return redirect()->back()->with('success', 'Selected presences deleted successfully.');
     }
 }

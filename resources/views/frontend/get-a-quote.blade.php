@@ -42,7 +42,7 @@
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
-                    <form id="contactForm" action="{{ route('get-a-quote.store', $product->id) }}" method="POST" class="wow fadeInUp"
+                    <form id="contactForm1" action="{{ route('get-a-quote.store', $product->id) }}" method="POST" class="wow fadeInUp"
                         data-wow-delay="0.2s">
                         @csrf
                         <div class="row">
@@ -90,19 +90,8 @@
 
                             <div class="col-lg-12">
                                 <div class="contact-form-btn">
-                                    <button type="submit" id="submitBtn" class="btn-default">
-                                        <span id="btnText">Submit Form</span>
-                                        <span id="btnLoader" style="display: none;">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
-                                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
-                                                <path d="M12 2 A10 10 0 0 1 22 12" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round">
-                                                    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
-                                                </path>
-                                            </svg>
-                                            Submitting...
-                                        </span>
-                                    </button>
-                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                  <button type="submit" id="myBtn" onclick="showLoading()" class="btn-default"><span>Submit Form</span></button>
+
                                 </div>
                             </div>
                         </div>
@@ -156,102 +145,27 @@
 </div>
 <!-- Page Contact Us End -->
 
-<style>
-    #submitBtn:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-        pointer-events: none;
-    }
-
-    .alert {
-        padding: 15px;
-        margin-top: 20px;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    .alert-success {
-        background-color: #d4edda;
-        border: 1px solid #c3e6cb;
-        color: #155724;
-    }
-
-    .alert-danger {
-        background-color: #f8d7da;
-        border: 1px solid #f5c6cb;
-        color: #721c24;
-    }
-
-    .hidden {
-        display: none;
-    }
-</style>
 
 <script>
-$(document).ready(function() {
-    $('#contactForm').on('submit', function(e) {
-        e.preventDefault(); // Prevent default form submission
+function showLoading() {
+    const btn = document.getElementById("myBtn");
 
-        var form = $(this);
-        var submitBtn = $('#submitBtn');
-        var btnText = $('#btnText');
-        var btnLoader = $('#btnLoader');
-        var msgSubmit = $('#msgSubmit');
+    // disable button
+    btn.disabled = true;
 
-        // Disable the submit button and show loader
-        submitBtn.prop('disabled', true);
-        btnText.hide();
-        btnLoader.show();
+    // show loading text
+    btn.innerText = "Loading...";
 
-        // Clear previous messages
-        msgSubmit.removeClass('alert alert-success alert-danger').addClass('hidden').text('');
+    //form submit
+    document.getElementById("contactForm1").submit();
 
-        $.ajax({
-            url: form.attr('action'),
-            type: 'POST',
-            data: form.serialize(),
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            success: function(response) {
-                // Show success message
-                msgSubmit.removeClass('hidden').addClass('alert alert-success').text(response.message);
-
-                // Reset the form
-                form[0].reset();
-
-                // Re-enable the submit button and hide loader
-                submitBtn.prop('disabled', false);
-                btnLoader.hide();
-                btnText.show();
-
-                // Scroll to success message
-                $('html, body').animate({
-                    scrollTop: msgSubmit.offset().top - 100
-                }, 500);
-            },
-            error: function(xhr) {
-                var errorMessage = 'An error occurred. Please try again.';
-                if (xhr.responseJSON && xhr.responseJSON.errors) {
-                    errorMessage = Object.values(xhr.responseJSON.errors).flat().join('<br>');
-                }
-
-                // Show error message
-                msgSubmit.removeClass('hidden').addClass('alert alert-danger').html(errorMessage);
-
-                // Re-enable button on error so user can try again
-                submitBtn.prop('disabled', false);
-                btnLoader.hide();
-                btnText.show();
-
-                // Scroll to error message
-                $('html, body').animate({
-                    scrollTop: msgSubmit.offset().top - 100
-                }, 500);
-            }
-        });
-    });
-});
+    // fake API call / delay
+    setTimeout(() => {
+        btn.innerText = "Submit";
+        btn.disabled = false;
+        alert("Done!");
+    }, 3000);
+}
 </script>
 
 @endsection
