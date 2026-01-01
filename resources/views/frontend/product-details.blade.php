@@ -1,6 +1,7 @@
 @extends('frontend.layouts.masters')
 @section('content')
-    <!-- Intro Video Section Start -->
+    <!-- Banner Section Start -->
+    @if($product->banner_active)
     <div class="intro-videos dark-section parallaxie"
         @if (
             $product->productBanners->first() &&
@@ -41,9 +42,11 @@
         </div>
         <!-- Intro Video Section End -->
     </div>
+    @endif
+    <!-- Banner Section End -->
 
-
-
+    <!-- About Product Section Start -->
+    @if($product->about_product_active)
     <div class="about-us pb-60 bg">
         <div class="container">
             <div class="row">
@@ -113,8 +116,11 @@
             </div>
         </div>
     </div>
+    @endif
+    <!-- About Product Section End -->
 
-
+    <!-- Product Key Points Section Start -->
+    @if($product->key_points_active)
     <section class="services-section">
         <div class="containers container">
             @php
@@ -159,7 +165,11 @@
 
         </div>
     </section>
-    <!-- Our Features Section Start -->
+    @endif
+    <!-- Product Key Points Section End -->
+
+    <!-- Product Gallery Section Start -->
+    @if($product->gallery_active)
     <div class="our-features">
         <div class="container">
             <div class="row section-row">
@@ -252,8 +262,11 @@
             </div>
         </div>
     </div>
-    <!-- Our Features Section End -->
-    <!-- Intro Video Section Start -->
+    @endif
+    <!-- Product Gallery Section End -->
+
+    <!-- Banner Video Section Start -->
+    @if($product->banner_video_active)
     @php
         $bannerVideo = $product->bannerVideos->first();
     @endphp
@@ -287,10 +300,11 @@
             </div>
         </div>
     </div>
-    <!-- Intro Video Section End -->
+    @endif
+    <!-- Banner Video Section End -->
 
-
-    <!-- Our Services Section Start -->
+    <!-- Product Features Section Start -->
+    @if($product->features_active)
     <div class="our-services">
         <div class="container">
             <div class="row section-row align-items-center">
@@ -355,9 +369,8 @@
             </div>
         </div>
     </div>
-
-
-
+    @endif
+    <!-- Product Features Section End -->
 
     <script>
         @php

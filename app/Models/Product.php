@@ -15,6 +15,21 @@ class Product extends Model
         'product_video',
         'sort_description',
         'status',
+        'banner_active',
+        'about_product_active',
+        'key_points_active',
+        'gallery_active',
+        'banner_video_active',
+        'features_active',
+    ];
+
+    protected $casts = [
+        'banner_active' => 'boolean',
+        'about_product_active' => 'boolean',
+        'key_points_active' => 'boolean',
+        'gallery_active' => 'boolean',
+        'banner_video_active' => 'boolean',
+        'features_active' => 'boolean',
     ];
 
     public function productBanners()

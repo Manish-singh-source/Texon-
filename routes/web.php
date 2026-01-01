@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/view-product/{productId}/store-features', [App\Http\Controllers\ProductController::class, 'storeProductFeatures'])->name('view-product.store-features');
 
+        Route::patch('/products/{id}/toggle-section', [App\Http\Controllers\ProductController::class, 'toggleSection'])->name('products.toggle-section');
+
         Route::get('/enquiries', [App\Http\Controllers\EnquiryController::class, 'index'])->name('enquiries');
 
         Route::get('/view-enquiry/{id}', [App\Http\Controllers\EnquiryController::class, 'show'])->name('view-enquiry');
