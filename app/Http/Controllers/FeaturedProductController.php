@@ -19,7 +19,7 @@ class FeaturedProductController extends Controller
         $request->validate([
             'heading' => 'required|string|max:255',
             'description' => 'required|string',
-            'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -52,7 +52,7 @@ class FeaturedProductController extends Controller
         $request->validate([
             'heading' => 'required|string|max:255',
             'description' => 'required|string',
-            'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:active,inactive',
         ]);
 

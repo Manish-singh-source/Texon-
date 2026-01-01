@@ -177,19 +177,19 @@
                             <div class="scrolling-ticker-box">
                                 <!-- Scrolling Ticker Content Start -->
                                 <div class="scrolling-content">
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
                                 </div>
                                 <!-- Scrolling Ticker Content End -->
 
                                 <!-- Scrolling Ticker Content Start -->
                                 <div class="scrolling-content">
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
-                                    <span><img src="assets1/images/icon-asterisk.svg" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
+                                    <span><img src="{{ asset('assets1/images/icon-asterisk.svg') }}" alt=""> Let's Work Together</span>
                                 </div>
                                 <!-- Scrolling Ticker Content End -->
                             </div>

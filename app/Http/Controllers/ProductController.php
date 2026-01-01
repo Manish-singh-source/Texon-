@@ -49,7 +49,7 @@ class ProductController extends Controller
             'sort_description' => 'nullable|string',
             'status' => 'nullable|string|in:active,inactive',
             'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
-            'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
         ], [
             'product_name.required' => 'Product name is required.',
@@ -459,7 +459,7 @@ class ProductController extends Controller
             'sort_description' => 'nullable|string',
             'status' => 'nullable|string|in:active,inactive',
             'product_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
-            'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'image_gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'product_video' => 'nullable|mimes:mp4,avi,mov|max:10240',
         ], [
             'product_name.required' => 'Product name is required.',
@@ -570,5 +570,22 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products')->with('success', 'Product deleted successfully!');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $products = Product::whereIn('id', $ids)->get();
+        foreach ($products as $product) {
+            // Delete related data
+            $product->productBanners()->delete();
+            $product->aboutProducts()->delete();
+            $product->productKeyPoints()->delete();
+            $product->productGalleries()->delete();
+            $product->bannerVideos()->delete();
+            $product->productFeatures()->delete();
+        }
+        Product::destroy($ids);
+        return redirect()->back()->with('success', 'Selected products deleted successfully.');
     }
 }

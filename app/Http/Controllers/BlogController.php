@@ -41,7 +41,7 @@ class BlogController extends Controller
             'status' => 'required|in:draft,published',
             'published_date' => 'nullable|date',
             'content' => 'required|string',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($validator->fails()) {
@@ -106,7 +106,7 @@ class BlogController extends Controller
             'status' => 'required|in:draft,published',
             'published_date' => 'nullable|date',
             'content' => 'required|string',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($validator->fails()) {
@@ -153,11 +153,27 @@ class BlogController extends Controller
 
         // Delete featured image if exists
         if ($blog->featured_image) {
-            unlink(public_path('storage/' . $blog->featured_image));
+            if (file_exists(public_path('storage/' . $blog->featured_image))) {
+                unlink(public_path('storage/' . $blog->featured_image));
+            }
+            
         }
 
         $blog->delete();
 
         return redirect()->route('blog')->with('success', 'Blog deleted successfully.');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        $blogs = Blog::whereIn('id', $ids)->get();
+        foreach ($blogs as $blog) {
+            if ($blog->featured_image && file_exists(public_path('storage/' . $blog->featured_image))) {
+                unlink(public_path('storage/' . $blog->featured_image));
+            }
+        }
+        Blog::destroy($ids);
+        return redirect()->back()->with('success', 'Selected blogs deleted successfully.');
     }
 }

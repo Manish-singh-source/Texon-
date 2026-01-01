@@ -11,17 +11,7 @@
 						<div class="col">
 							<h3 class="page-title">Add Customer</h3>
 						</div>
-                        <nav>
-							<ol class="breadcrumb mb-0">
-								<li class="breadcrumb-item">
-									<a href="https://smarthr.co.in/demo/html/template/index.html">Home</a>
-								</li>
-								<li class="breadcrumb-item">
-									Customer
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add Customer</li>
-							</ol>
-						</nav>
+                        
 					</div>
 				</div>
 				<!-- /Page Header -->

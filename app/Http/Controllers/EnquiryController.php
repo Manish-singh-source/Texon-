@@ -56,4 +56,11 @@ class EnquiryController extends Controller
 
         return redirect()->route('enquiries')->with('success', 'Enquiry deleted successfully.');
     }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        Enquiry::destroy($ids);
+        return redirect()->back()->with('success', 'Selected enquiries deleted successfully.');
+    }
 }

@@ -21,11 +21,19 @@
 						</nav>-->
                     </div>
                     <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+                        <div class="dropdown mb-3" style="margin-right: 10px;">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item cursor-pointer" id="delete-selected">Delete Selected</a></li>
+                            </ul>
+                        </div>
                         <div class="mb-3" style="margin-right: 10px;">
                             <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal"
                                 data-bs-target="#add_category">Create Categories</a>
                         </div>
-                       
+
                         <div class="ms-2 head-icons">
                             <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-original-title="Collapse" id="collapse-header">
@@ -84,7 +92,7 @@
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-md">
-                                                <input class="form-check-input category-checkbox" type="checkbox" name="category_ids[]" value="{{ $category->id }}">
+                                                <input class="form-check-input category-checkbox" type="checkbox" name="ids[]" value="{{ $category->id }}">
                                             </div>
                                         </td>
                                         <td>{{ $index + 1 }}</td>
@@ -372,40 +380,34 @@
         });
     });
     
-    // Bulk delete functionality
-    const selectAllCheckbox = document.getElementById('select-all');
-    const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
-    const bulkDeleteBtn = document.getElementById('bulk-delete-btn');
-    const bulkDeleteForm = document.getElementById('bulk-delete-form');
-    
-    selectAllCheckbox.addEventListener('change', function() {
-        categoryCheckboxes.forEach(cb => cb.checked);
-        toggleBulkDeleteBtn();
+    // Select All functionality
+    const selectAll = document.getElementById('select-all');
+    const checkboxes = document.querySelectorAll('.category-checkbox');
+    selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = selectAll.checked);
     });
-    
-    categoryCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function() {
-            const allChecked = Array.from(categoryCheckboxes).every(cb => cb.checked);
-            const someChecked = Array.from(categoryCheckboxes).some(cb => cb.checked);
-            selectAllCheckbox.checked = allChecked;
-            selectAllCheckbox.indeterminate = someChecked && !allChecked;
-            toggleBulkDeleteBtn();
+
+    // Delete Selected functionality
+    document.getElementById('delete-selected').addEventListener('click', function() {
+        let selected = [];
+        document.querySelectorAll('.category-checkbox:checked').forEach(cb => {
+            selected.push(cb.value);
         });
-    });
-    
-    
-    bulkDeleteBtn.addEventListener('click', function() {
-        const selectedIds = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-        if (selectedIds.length === 0) return;
-        if (confirm('Are you sure you want to delete the selected categories?')) {
-            selectedIds.forEach(id => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'ids[]';
-                input.value = id;
-                bulkDeleteForm.appendChild(input);
-            });
-            bulkDeleteForm.submit();
+        if (selected.length === 0) {
+            alert('Please select at least one record.');
+            return;
+        }
+        if (confirm('Are you sure you want to delete selected records?')) {
+            // Create a form and submit
+            let form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ route('categories.bulk-delete') }}';
+            form.innerHTML = `
+                @csrf
+                ${selected.map(id => `<input type="hidden" name="ids[]" value="${id}">`).join('')}
+            `;
+            document.body.appendChild(form);
+            form.submit();
         }
     });
     </script>

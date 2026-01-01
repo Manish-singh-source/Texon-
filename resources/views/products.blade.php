@@ -12,7 +12,15 @@
                 </div>
                 <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
                     <div class="me-2 mb-2">
-                        
+
+                    </div>
+                    <div class="dropdown mb-3" style="margin-right: 10px;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item cursor-pointer" id="delete-selected">Delete Selected</a></li>
+                        </ul>
                     </div>
                     <div class="mb-2">
                         <a href="{{ route('add-new-product') }}" class="btn btn-primary d-flex align-items-center"><i
@@ -132,33 +140,6 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
                     <h5>Product List</h5>
-                    <div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
-                        <div class="me-3">
-                            <div class="input-icon-end position-relative">
-                                <input type="text" class="form-control date-range bookingrange"
-                                    placeholder="dd/mm/yyyy - dd/mm/yyyy">
-                                <span class="input-icon-addon">
-                                    <i class="ti ti-chevron-down"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="dropdown me-3">
-                            <a href="javascript:void(0);"
-                                class="dropdown-toggle btn btn-white d-inline-flex align-items-center"
-                                data-bs-toggle="dropdown">
-                                Select Status
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end p-3">
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="custom-datatable-filter table-responsive">
@@ -181,11 +162,11 @@
                             <tbody>
                                 @foreach($products as $product)
                                 <tr>
-                                     <td>
-                                         <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
-                                         </div>
-                                     </td>
+                                 <td>
+                                     <div class="form-check form-check-md">
+                                         <input class="form-check-input row-checkbox" type="checkbox" name="ids[]" value="{{ $product->id }}">
+                                     </div>
+                                 </td>
                                      <td><a href="#">{{ 'Prod-' . str_pad($product->id, 3, '0', STR_PAD_LEFT) }}</a></td>
                                      <td>
                                          <div class="d-flex align-items-center">
@@ -955,6 +936,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.checked = !isChecked;
             });
         });
+    });
+
+    // Select All functionality
+    const selectAll = document.getElementById('select-all');
+    const checkboxes = document.querySelectorAll('.row-checkbox');
+    selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+    });
+
+    // Delete Selected functionality
+    document.getElementById('delete-selected').addEventListener('click', function() {
+        let selected = [];
+        document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
+            selected.push(cb.value);
+        });
+        if (selected.length === 0) {
+            alert('Please select at least one record.');
+            return;
+        }
+        if (confirm('Are you sure you want to delete selected records?')) {
+            // Create a form and submit
+            let form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ route('delete.selected.product') }}';
+            form.innerHTML = `
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="ids" value="${selected.join(',')}">
+            `;
+            document.body.appendChild(form);
+            form.submit();
+        }
     });
 });
 </script>

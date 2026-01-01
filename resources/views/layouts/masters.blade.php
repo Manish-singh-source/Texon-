@@ -1016,41 +1016,9 @@
 											<div class="border-bottom mb-3 pb-3">
 												<a href="{{route('enquiries')}}">
 													<div class="d-flex">
-														<span class="avatar avatar-lg me-2 flex-shrink-0">
-															<img src="assets/img/profiles/avatar-27.jpg" alt="Profile">
-														</span>
 														<div class="flex-grow-1">
 															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ001<br><strong>Customer:</strong> John Doe<br><strong>Product:</strong> Web Development Service</p>
 															<span>Just Now</span>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="border-bottom mb-3 pb-3">
-												<a href="{{route('enquiries')}}" class="pb-0">
-													<div class="d-flex">
-														<span class="avatar avatar-lg me-2 flex-shrink-0">
-															<img src="assets/img/profiles/avatar-23.jpg" alt="Profile">
-														</span>
-														<div class="flex-grow-1">
-															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ002<br><strong>Customer:</strong> Jane Smith<br><strong>Product:</strong> Mobile App Development</p>
-															<span>10 mins ago</span>
-															<div class="d-flex justify-content-start align-items-center mt-1">
-																<span class="btn btn-primary btn-sm">View Details</span>
-															</div>
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="border-0 mb-3 pb-0">
-												<a href="{{route('enquiries')}}">
-													<div class="d-flex">
-														<span class="avatar avatar-lg me-2 flex-shrink-0">
-															<img src="assets/img/profiles/avatar-25.jpg" alt="Profile">
-														</span>
-														<div class="flex-grow-1">
-															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ003<br><strong>Customer:</strong> Mike Johnson<br><strong>Product:</strong> SEO Optimization</p>
-															<span>2 hrs ago</span>
 														</div>
 													</div>
 												</a>
@@ -1225,11 +1193,11 @@
 									</a>
 								</li>
 								
-								<li>
+								{{-- <li>
 									<a href="{{route('customers')}}">
 										<i class="ti ti-message"></i><span>Customers</span>
 									</a>
-								</li>
+								</li> --}}
 								<li>
 									<a href="{{route('categories')}}">
 										<i class="ti ti-message"></i><span>Categories</span>

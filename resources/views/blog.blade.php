@@ -21,14 +21,19 @@
 						</nav>
 					</div>
 					<div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
-
-
 						<div class="mb-2">
 							<a href="{{route('add-blog')}}" class="btn btn-primary d-flex align-items-center">
 								Add New Blog
 							</a>
 						</div>
-
+						<div class="dropdown mb-2" style="margin-left: 10px;">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+								Actions
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<li><a class="dropdown-item cursor-pointer" id="delete-selected">Delete Selected</a></li>
+							</ul>
+						</div>
 						<div class="head-icons ms-2">
 							<a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
 								title="Collapse" id="collapse-header">
@@ -97,7 +102,7 @@
 											<tr>
 												<td>
 													<div class="form-check form-check-md">
-														<input class="form-check-input" type="checkbox">
+														<input class="form-check-input row-checkbox" type="checkbox" name="ids[]" value="{{ $blog->id }}">
 													</div>
 												</td>
 												<td>
@@ -155,4 +160,40 @@
 		</div>
 		<!-- /Page Wrapper -->
 
-@endsection
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// Select All functionality
+				const selectAll = document.getElementById('select-all');
+				const checkboxes = document.querySelectorAll('.row-checkbox');
+				selectAll.addEventListener('change', function() {
+					checkboxes.forEach(cb => cb.checked = selectAll.checked);
+				});
+
+				// Delete Selected functionality
+				document.getElementById('delete-selected').addEventListener('click', function() {
+					let selected = [];
+					document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
+						selected.push(cb.value);
+					});
+					if (selected.length === 0) {
+						alert('Please select at least one record.');
+						return;
+					}
+					if (confirm('Are you sure you want to delete selected records?')) {
+						// Create a form and submit
+						let form = document.createElement('form');
+						form.method = 'POST';
+						form.action = '{{ route('delete.selected.blog') }}';
+						form.innerHTML = `
+							@csrf
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="hidden" name="ids" value="${selected.join(',')}">
+						`;
+						document.body.appendChild(form);
+						form.submit();
+					}
+				});
+			});
+		</script>
+
+	@endsection

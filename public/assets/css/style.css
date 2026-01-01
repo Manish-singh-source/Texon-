@@ -5050,7 +5050,7 @@ button:focus {
 .dropdown .dropdown-toggle {
   font-weight: 400;
   font-size: 14px;
-  color: #111827;
+  color: #fff;
   border: 1px solid #E5E7EB;
 }
 .dropdown .dropdown-toggle:after {
