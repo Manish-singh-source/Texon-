@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\{Auth, DB, Log, Validator};
 use App\Models\Product;
 use App\Models\ProductBanner;
 use App\Models\AboutProduct;
@@ -522,6 +523,35 @@ class ProductController extends Controller
         $product->save();
 
         return response()->json(['status' => $product->status]);
+    }
+
+    public function toggleSection(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'section' => 'required|in:banner,about_product,key_points,gallery,banner_video,features',
+            'active' => 'required|boolean'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => 'Invalid data'], 422);
+        }
+
+        DB::beginTransaction();
+        try {
+            $product = Product::findOrFail($id);
+            $field = $request->section . '_active';
+            $product->$field = $request->active;
+            $product->save();
+
+            DB::commit();
+            // activity()->performedOn($product)->causedBy(Auth::user())->log('Section toggle: ' . $request->section);
+
+            return response()->json(['success' => true, 'active' => $product->$field]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function destroy($id)

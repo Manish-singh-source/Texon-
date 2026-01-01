@@ -192,10 +192,16 @@
                                     <div class="tab-pane fade show active" id="tab1" role="tabpanel"
                                         aria-labelledby="tab1-tab">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h5>General</h5>
+                                            <h5>Banner Section</h5>
                                             <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="toggle1">
-                                                <label class="form-check-label" for="toggle1"></label>
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-banner" data-section="banner"
+                                                    {{ $product->banner_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-banner">
+                                                    <span class="badge {{ $product->banner_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->banner_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
                                             </div>
                                         </div>
                                         <form method="POST"
@@ -262,6 +268,19 @@
 
                                     </div>
                                     <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5>About Product Section</h5>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-about-product" data-section="about_product"
+                                                    {{ $product->about_product_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-about-product">
+                                                    <span class="badge {{ $product->about_product_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->about_product_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <form method="POST"
                                             action="{{ route('view-product.store-about', $product->id) }}"
                                             enctype="multipart/form-data">
@@ -314,6 +333,19 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab6-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5>Product Key Points Section</h5>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-key-points" data-section="key_points"
+                                                    {{ $product->key_points_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-key-points">
+                                                    <span class="badge {{ $product->key_points_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->key_points_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <form method="POST"
                                             action="{{ route('view-product.store-keypoints', $product->id) }}"
                                             enctype="multipart/form-data">
@@ -407,6 +439,19 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5>Product Gallery Section</h5>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-gallery" data-section="gallery"
+                                                    {{ $product->gallery_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-gallery">
+                                                    <span class="badge {{ $product->gallery_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->gallery_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="card mt-3">
                                             <div class="card-header">
                                                 <h5>Product Gallery</h5>
@@ -482,6 +527,19 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5>Banner Video Section</h5>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-banner-video" data-section="banner_video"
+                                                    {{ $product->banner_video_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-banner-video">
+                                                    <span class="badge {{ $product->banner_video_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->banner_video_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <form method="POST"
                                             action="{{ route('view-product.store-banner-video', $product->id) }}"
                                             enctype="multipart/form-data">
@@ -523,6 +581,19 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5>Product Features Section</h5>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input section-toggle" type="checkbox"
+                                                    id="toggle-features" data-section="features"
+                                                    {{ $product->features_active ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="toggle-features">
+                                                    <span class="badge {{ $product->features_active ? 'bg-success' : 'bg-secondary' }}">
+                                                        {{ $product->features_active ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <form method="POST"
                                             action="{{ route('view-product.store-features', $product->id) }}"
                                             enctype="multipart/form-data">
@@ -779,6 +850,68 @@ document.querySelector('form[action*="store-gallery"]').addEventListener('submit
     orderInput.name = 'image_order';
     orderInput.value = Array.from(images).map(img => img.dataset.order).join(',');
     this.appendChild(orderInput);
+});
+
+// Section Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.section-toggle').forEach(function(toggle) {
+        toggle.addEventListener('change', function() {
+            const productId = {{ $product->id }};
+            const section = this.getAttribute('data-section');
+            const isChecked = this.checked;
+            const badge = this.nextElementSibling.querySelector('.badge');
+
+            fetch(`/admin/products/${productId}/toggle-section`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    section: section,
+                    active: isChecked ? 1 : 0
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update badge
+                    if (isChecked) {
+                        badge.classList.remove('bg-secondary');
+                        badge.classList.add('bg-success');
+                        badge.textContent = 'Active';
+                    } else {
+                        badge.classList.remove('bg-success');
+                        badge.classList.add('bg-secondary');
+                        badge.textContent = 'Inactive';
+                    }
+
+                    // Show success message
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3';
+                    alertDiv.style.zIndex = '9999';
+                    alertDiv.innerHTML = `
+                        <strong>Success!</strong> Section ${isChecked ? 'activated' : 'deactivated'} successfully.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    `;
+                    document.body.appendChild(alertDiv);
+
+                    setTimeout(() => {
+                        alertDiv.remove();
+                    }, 3000);
+                } else {
+                    // Revert toggle on error
+                    toggle.checked = !isChecked;
+                    alert('Error updating section status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                toggle.checked = !isChecked;
+                alert('Error updating section status');
+            });
+        });
+    });
 });
 </script>
 @endsection
