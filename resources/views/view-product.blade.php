@@ -289,17 +289,25 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Image Upload</label>
-                                                        <input type="file" class="form-control" name="images[]" multiple
-                                                            accept="image/*">
-                                                        <small class="text-muted">Upload multiple images</small>
+                                                        <label class="form-label">Media Upload</label>
+                                                        <input type="file" class="form-control" name="media[]" multiple
+                                                            accept="image/*,video/*">
+                                                        <small class="text-muted">Upload multiple images and videos</small>
                                                         @if(isset($aboutProduct) && $aboutProduct->images)
-                                                        <div class="mt-2 row" id="about-images-preview">
-                                                            @foreach(json_decode($aboutProduct->images, true) as $image)
-                                                            <div class="col-md-3 mb-2 position-relative about-image" data-image="{{ $image }}">
-                                                                <img src="{{ asset('storage/' . $image) }}"
+                                                        <div class="mt-2 row" id="about-media-preview">
+                                                            @foreach(json_decode($aboutProduct->images, true) as $media)
+                                                            @php $ext = strtolower(pathinfo($media, PATHINFO_EXTENSION)); $isVideo = in_array($ext, ['mp4','avi','mov','webm','ogg']); @endphp
+                                                            <div class="col-md-3 mb-2 position-relative about-media" data-image="{{ $media }}">
+                                                                @if($isVideo)
+                                                                <video width="100" controls>
+                                                                    <source src="{{ asset('storage/' . $media) }}" type="video/{{ $ext }}">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                @else
+                                                                <img src="{{ asset('storage/' . $media) }}"
                                                                     class="img-fluid" style="max-width: 100px;">
-                                                                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeAboutImage(this)">×</button>
+                                                                @endif
+                                                                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeAboutMedia(this)">×</button>
                                                             </div>
                                                             @endforeach
                                                         </div>
@@ -831,14 +839,14 @@ function removeImage(btn) {
     div.remove();
 }
 
-function removeAboutImage(btn) {
+function removeAboutMedia(btn) {
     const div = btn.parentElement;
-    const image = div.dataset.image;
+    const media = div.dataset.image;
     const form = document.querySelector('#tab5 form');
     const hidden = document.createElement('input');
     hidden.type = 'hidden';
-    hidden.name = 'delete_images[]';
-    hidden.value = image;
+    hidden.name = 'delete_media[]';
+    hidden.value = media;
     form.appendChild(hidden);
     div.remove();
 }

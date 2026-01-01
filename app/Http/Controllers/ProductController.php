@@ -189,18 +189,18 @@ class ProductController extends Controller
     public function storeAboutProduct(Request $request, $productId)
     {
         $request->validate([
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
-            'delete_images' => 'nullable|array',
-            'delete_images.*' => 'nullable|string',
+            'media.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,webp,mp4,avi,mov|max:10240',
+            'delete_media' => 'nullable|array',
+            'delete_media.*' => 'nullable|string',
             'heading' => 'nullable|string|max:255',
             'subheading' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ], [
-            'images.*.image' => 'Each image must be a valid image file.',
-            'images.*.mimes' => 'Each image must be one of the following types: jpeg, png, jpg, gif.',
-            'images.*.max' => 'Each image size must not exceed 4MB.',
-            'delete_images.array' => 'Delete images must be an array.',
-            'delete_images.*.string' => 'Each delete image must be a string.',
+            'media.*.file' => 'Each media file must be a valid file.',
+            'media.*.mimes' => 'Each media file must be one of the following types: jpeg, png, jpg, gif, webp, mp4, avi, mov.',
+            'media.*.max' => 'Each media file size must not exceed 10MB.',
+            'delete_media.array' => 'Delete media must be an array.',
+            'delete_media.*.string' => 'Each delete media must be a string.',
             'heading.string' => 'Heading must be a valid string.',
             'heading.max' => 'Heading must not exceed 255 characters.',
             'subheading.string' => 'Subheading must be a valid string.',
@@ -212,26 +212,26 @@ class ProductController extends Controller
 
         // Get existing about product
         $existingAbout = AboutProduct::where('product_id', $productId)->first();
-        $existingImages = $existingAbout ? json_decode($existingAbout->images, true) : [];
+        $existingMedia = $existingAbout ? json_decode($existingAbout->images, true) : [];
 
-        // Remove deleted images
-        if ($request->has('delete_images') && is_array($request->delete_images)) {
-            $existingImages = array_diff($existingImages, $request->delete_images);
+        // Remove deleted media
+        if ($request->has('delete_media') && is_array($request->delete_media)) {
+            $existingMedia = array_diff($existingMedia, $request->delete_media);
         }
 
-        // Handle multiple image uploads
-        $imagePaths = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $file) {
+        // Handle multiple media uploads
+        $mediaPaths = [];
+        if ($request->hasFile('media')) {
+            foreach ($request->file('media') as $file) {
                 $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('storage/products/about/images'), $filename);
-                $imagePaths[] = 'products/about/images/' . $filename;
+                $file->move(public_path('storage/products/about/media'), $filename);
+                $mediaPaths[] = 'products/about/media/' . $filename;
             }
         }
 
-        // Combine existing (minus deleted) and new images
-        $allImages = array_merge($existingImages, $imagePaths);
-        $data['images'] = json_encode($allImages);
+        // Combine existing (minus deleted) and new media
+        $allMedia = array_merge($existingMedia, $mediaPaths);
+        $data['images'] = json_encode($allMedia);
 
         // Update or create the about product for this product
         AboutProduct::updateOrCreate(

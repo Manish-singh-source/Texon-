@@ -71,24 +71,44 @@
                                 }
                             }
 
-                            $firstImage = !empty($productImages)
-                                ? asset('storage/' . $productImages[0])
-                                : asset('assets1/img/pd1.png');
+                            // Check if first media is video or image
+                            $firstMedia = !empty($productImages) ? $productImages[0] : null;
+                            $firstExt = $firstMedia ? strtolower(pathinfo($firstMedia, PATHINFO_EXTENSION)) : null;
+                            $firstIsVideo = $firstExt && in_array($firstExt, ['mp4','avi','mov','webm','ogg']);
                         @endphp
 
-                        <figure>
-                            <img id="sidebar-image" src="{{ $firstImage }}" alt="Product Image">
+                        <figure id="main-media-container">
+                            @if($firstIsVideo && $firstMedia)
+                                <video id="sidebar-video" style="border-radius: 10px; width: 100%; height: auto;" controls>
+                                    <source src="{{ asset('storage/' . $firstMedia) }}" type="video/{{ $firstExt }}">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @else
+                                <img id="sidebar-image" src="{{ $firstMedia ? asset('storage/' . $firstMedia) : asset('assets1/img/pd1.png') }}" style="border-radius: 10px;" alt="Product Image">
+                            @endif
                         </figure>
                         <div class="thumbnails">
                             @if (!empty($productImages) && is_array($productImages))
-                                @foreach ($productImages as $index => $image)
-                                    <img src="{{ asset('storage/' . $image) }}" alt=""
-                                        class="thumbnail {{ $index === 0 ? 'active' : '' }}"
-                                        data-index="{{ $index }}">
+                                @foreach ($productImages as $index => $media)
+                                    @php
+                                        $ext = strtolower(pathinfo($media, PATHINFO_EXTENSION));
+                                        $isVideo = in_array($ext, ['mp4','avi','mov','webm','ogg']);
+                                    @endphp
+                                    @if($isVideo)
+                                        <div class="thumbnail {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}" data-type="video" data-src="{{ asset('storage/' . $media) }}" data-ext="{{ $ext }}" style="position: relative; cursor: pointer; border: 2px solid {{ $index === 0 ? '#007bff' : 'transparent' }}; border-radius: 5px; overflow: hidden; display: inline-block; width: 80px; height: 80px;">
+                                            <video style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+                                                <source src="{{ asset('storage/' . $media) }}" type="video/{{ $ext }}">
+                                            </video>
+                                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="bx bx-play" style="color: white; font-size: 16px;"></i>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <img src="{{ asset('storage/' . $media) }}" alt="" class="thumbnail {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}" data-type="image" data-src="{{ asset('storage/' . $media) }}" style="cursor: pointer; border: 2px solid {{ $index === 0 ? '#007bff' : 'transparent' }}; border-radius: 5px;">
+                                    @endif
                                 @endforeach
                             @else
-                                <img src="{{ asset('assets1/img/pd1.png') }}" alt="" class="thumbnail active"
-                                    data-index="0">
+                                <img src="{{ asset('assets1/img/pd1.png') }}" alt="" class="thumbnail active" data-index="0" data-type="image" data-src="{{ asset('assets1/img/pd1.png') }}" style="cursor: pointer; border: 2px solid #007bff; border-radius: 5px;">
                             @endif
                         </div>
                         <button id="prev-btn" class="btn-defaults"
@@ -203,8 +223,22 @@
                         <div class="feature-item box-1 wow fadeInUp">
                             <div class="feature-image">
                                 <figure>
-                                    <img src="{{ isset($galleryImages[0]) ? asset('storage/' . $galleryImages[0]) : 'assets1/img/p1.png' }}"
-                                        alt="">
+                                    @if(isset($galleryImages[0]))
+                                        @php
+                                            $ext0 = strtolower(pathinfo($galleryImages[0], PATHINFO_EXTENSION));
+                                            $isVideo0 = in_array($ext0, ['mp4','avi','mov','webm','ogg']);
+                                        @endphp
+                                        @if($isVideo0)
+                                            <video style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" controls>
+                                                <source src="{{ asset('storage/' . $galleryImages[0]) }}" type="video/{{ $ext0 }}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('storage/' . $galleryImages[0]) }}" alt="">
+                                        @endif
+                                    @else
+                                        <img src="assets1/img/p1.png" alt="">
+                                    @endif
                                 </figure>
                             </div>
 
@@ -217,8 +251,22 @@
 
                             <div class="feature-image">
                                 <figure>
-                                    <img src="{{ isset($galleryImages[1]) ? asset('storage/' . $galleryImages[1]) : 'assets1/img/p5.png' }}"
-                                        alt="">
+                                    @if(isset($galleryImages[1]))
+                                        @php
+                                            $ext1 = strtolower(pathinfo($galleryImages[1], PATHINFO_EXTENSION));
+                                            $isVideo1 = in_array($ext1, ['mp4','avi','mov','webm','ogg']);
+                                        @endphp
+                                        @if($isVideo1)
+                                            <video style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" controls>
+                                                <source src="{{ asset('storage/' . $galleryImages[1]) }}" type="video/{{ $ext1 }}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('storage/' . $galleryImages[1]) }}" alt="">
+                                        @endif
+                                    @else
+                                        <img src="assets1/img/p5.png" alt="">
+                                    @endif
                                 </figure>
                             </div>
                         </div>
@@ -228,8 +276,22 @@
                         <div class="feature-item box-3 wow fadeInUp" data-wow-delay="0.4s">
                             <div class="feature-image">
                                 <figure>
-                                    <img src="{{ isset($galleryImages[2]) ? asset('storage/' . $galleryImages[2]) : 'assets1/img/p2.png' }}"
-                                        alt="">
+                                    @if(isset($galleryImages[2]))
+                                        @php
+                                            $ext2 = strtolower(pathinfo($galleryImages[2], PATHINFO_EXTENSION));
+                                            $isVideo2 = in_array($ext2, ['mp4','avi','mov','webm','ogg']);
+                                        @endphp
+                                        @if($isVideo2)
+                                            <video style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" controls>
+                                                <source src="{{ asset('storage/' . $galleryImages[2]) }}" type="video/{{ $ext2 }}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('storage/' . $galleryImages[2]) }}" alt="">
+                                        @endif
+                                    @else
+                                        <img src="assets1/img/p2.png" alt="">
+                                    @endif
                                 </figure>
                             </div>
 
@@ -240,8 +302,22 @@
                         <div class="feature-item box-4 wow fadeInUp" data-wow-delay="0.6s">
                             <div class="feature-image">
                                 <figure>
-                                    <img src="{{ isset($galleryImages[3]) ? asset('storage/' . $galleryImages[3]) : 'assets1/img/p3.webp' }}"
-                                        alt="">
+                                    @if(isset($galleryImages[3]))
+                                        @php
+                                            $ext3 = strtolower(pathinfo($galleryImages[3], PATHINFO_EXTENSION));
+                                            $isVideo3 = in_array($ext3, ['mp4','avi','mov','webm','ogg']);
+                                        @endphp
+                                        @if($isVideo3)
+                                            <video style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" controls>
+                                                <source src="{{ asset('storage/' . $galleryImages[3]) }}" type="video/{{ $ext3 }}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('storage/' . $galleryImages[3]) }}" alt="">
+                                        @endif
+                                    @else
+                                        <img src="assets1/img/p3.webp" alt="">
+                                    @endif
                                 </figure>
                             </div>
 
@@ -252,8 +328,22 @@
                         <div class="feature-item box-5 wow fadeInUp" data-wow-delay="0.8s">
                             <div class="feature-image">
                                 <figure>
-                                    <img src="{{ isset($galleryImages[4]) ? asset('storage/' . $galleryImages[4]) : 'assets1/img/p4.png' }}"
-                                        alt="">
+                                    @if(isset($galleryImages[4]))
+                                        @php
+                                            $ext4 = strtolower(pathinfo($galleryImages[4], PATHINFO_EXTENSION));
+                                            $isVideo4 = in_array($ext4, ['mp4','avi','mov','webm','ogg']);
+                                        @endphp
+                                        @if($isVideo4)
+                                            <video style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" controls>
+                                                <source src="{{ asset('storage/' . $galleryImages[4]) }}" type="video/{{ $ext4 }}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('storage/' . $galleryImages[4]) }}" alt="">
+                                        @endif
+                                    @else
+                                        <img src="assets1/img/p4.png" alt="">
+                                    @endif
                                 </figure>
                             </div>
 
@@ -392,35 +482,59 @@
             }
         @endphp
 
-        const images = [
+        const mediaItems = [
             @if (!empty($productImages) && is_array($productImages))
-                @foreach ($productImages as $index => $image)
-                    '{{ asset('storage/' . $image) }}'
-                    {{ $index < count($productImages) - 1 ? ',' : '' }}
+                @foreach ($productImages as $index => $media)
+                    @php
+                        $ext = strtolower(pathinfo($media, PATHINFO_EXTENSION));
+                        $isVideo = in_array($ext, ['mp4','avi','mov','webm','ogg']);
+                    @endphp
+                    {
+                        src: '{{ asset('storage/' . $media) }}',
+                        type: '{{ $isVideo ? 'video' : 'image' }}',
+                        ext: '{{ $ext }}'
+                    }{{ $index < count($productImages) - 1 ? ',' : '' }}
                 @endforeach
             @else
-                '{{ asset('assets1/img/pd1.png') }}'
+                {
+                    src: '{{ asset('assets1/img/pd1.png') }}',
+                    type: 'image',
+                    ext: 'png'
+                }
             @endif
         ];
 
         let currentIndex = 0;
-        const imgElement = document.getElementById('sidebar-image');
+        const mainMediaContainer = document.getElementById('main-media-container');
 
-        function updateImage() {
-            if (imgElement && images.length > 0) {
-                imgElement.src = images[currentIndex];
+        function updateMedia() {
+            if (mainMediaContainer && mediaItems.length > 0) {
+                const currentMedia = mediaItems[currentIndex];
+
+                if (currentMedia.type === 'video') {
+                    mainMediaContainer.innerHTML = `
+                        <video id="sidebar-video" style="border-radius: 10px; width: 100%; height: auto;" controls>
+                            <source src="${currentMedia.src}" type="video/${currentMedia.ext}">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                } else {
+                    mainMediaContainer.innerHTML = `
+                        <img id="sidebar-image" src="${currentMedia.src}" style="border-radius: 10px;" alt="Product Image">
+                    `;
+                }
             }
         }
 
         document.getElementById('prev-btn')?.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateImage();
+            currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+            updateMedia();
             updateActiveThumbnail();
         });
 
         document.getElementById('next-btn')?.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateImage();
+            currentIndex = (currentIndex + 1) % mediaItems.length;
+            updateMedia();
             updateActiveThumbnail();
         });
 
@@ -428,19 +542,25 @@
         thumbnails.forEach((thumb, index) => {
             thumb.addEventListener('click', () => {
                 currentIndex = index;
-                updateImage();
+                updateMedia();
                 updateActiveThumbnail();
             });
         });
 
         function updateActiveThumbnail() {
             thumbnails.forEach((thumb, idx) => {
-                thumb.classList.toggle('active', idx === currentIndex);
+                if (idx === currentIndex) {
+                    thumb.classList.add('active');
+                    thumb.style.border = '2px solid #007bff';
+                } else {
+                    thumb.classList.remove('active');
+                    thumb.style.border = '2px solid transparent';
+                }
             });
         }
 
         // Initial load
-        updateImage();
+        updateMedia();
         updateActiveThumbnail();
     </script>
     <script>
