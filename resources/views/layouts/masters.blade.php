@@ -979,50 +979,42 @@
 								<a href="#" class="btn btn-menubar position-relative me-1" id="notification_popup"
 									data-bs-toggle="dropdown">
 									<i class="ti ti-bell"></i>
-									<span class="notification-status-dot"></span>
+									@if(isset($unreadEnquiriesCount) && $unreadEnquiriesCount > 0)
+										<span class="notification-status-dot"></span>
+									@endif
 								</a>
 								<div class="dropdown-menu dropdown-menu-end notification-dropdown p-4">
 									<div class="d-flex align-items-center justify-content-between border-bottom p-0 pb-3 mb-3">
-										<h4 class="notification-title">Enquiries (3)</h4>
+										<h4 class="notification-title">Enquiries ({{ $unreadEnquiriesCount ?? 0 }})</h4>
 										<div class="d-flex align-items-center">
-											<a href="#" class="text-primary fs-15 me-3 lh-1">Mark all as read</a>
-											<div class="dropdown">
-												<a href="javascript:void(0);" class="bg-white dropdown-toggle"
-													data-bs-toggle="dropdown">
-													<i class="ti ti-calendar-due me-1"></i>Today
-												</a>
-												<ul class="dropdown-menu mt-2 p-3">
-													<li>
-														<a href="javascript:void(0);" class="dropdown-item rounded-1">
-															This Week
-														</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);" class="dropdown-item rounded-1">
-															Last Week
-														</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);" class="dropdown-item rounded-1">
-															Last Month
-														</a>
-													</li>
-												</ul>
-											</div>
+											@if(isset($unreadEnquiriesCount) && $unreadEnquiriesCount > 0)
+												<a href="#" class="text-primary fs-15 me-3 lh-1" id="markAllAsRead">Mark all as read</a>
+											@endif
 										</div>
 									</div>
 									<div class="noti-content">
 										<div class="d-flex flex-column">
-											<div class="border-bottom mb-3 pb-3">
-												<a href="{{route('enquiries')}}">
-													<div class="d-flex">
-														<div class="flex-grow-1">
-															<p class="mb-1"><strong>Enquiry ID:</strong> #ENQ001<br><strong>Customer:</strong> John Doe<br><strong>Product:</strong> Web Development Service</p>
-															<span>Just Now</span>
+											@forelse($recentEnquiries ?? [] as $enquiry)
+												<div class="border-bottom mb-3 pb-3">
+													<a href="{{ route('view-enquiry', $enquiry->id) }}">
+														<div class="d-flex">
+															<div class="flex-grow-1">
+																<p class="mb-1">
+																	<strong>Enquiry ID:</strong> {{ $enquiry->enquiry_id }}<br>
+																	<strong>Customer:</strong> {{ $enquiry->user_name }}<br>
+																	<strong>Product:</strong> {{ $enquiry->product->product_name ?? 'N/A' }}
+																</p>
+																<span class="text-muted small">{{ $enquiry->time_ago }}</span>
+															</div>
 														</div>
-													</div>
-												</a>
-											</div>
+													</a>
+												</div>
+											@empty
+												<div class="text-center text-muted py-4">
+													<i class="ti ti-inbox fs-1 mb-2"></i>
+													<p class="mb-0">No enquiries found</p>
+												</div>
+											@endforelse
 										</div>
 									</div>
 									<div class="d-flex p-0">
@@ -3523,6 +3515,33 @@
 	<script src="{{asset('assets/js/todo.js')}}"></script>
 	<script src="{{asset('assets/js/theme-colorpicker.js')}}"></script>
 	<script src="{{asset('assets/js/script.js')}}"></script>
+
+	<!-- Notification Mark as Read Script -->
+	<script>
+		$(document).ready(function() {
+			// Mark all enquiries as read
+			$('#markAllAsRead').on('click', function(e) {
+				e.preventDefault();
+
+				$.ajax({
+					url: '{{ route("enquiries.mark-all-as-read") }}',
+					type: 'POST',
+					data: {
+						_token: '{{ csrf_token() }}'
+					},
+					success: function(response) {
+						if (response.success) {
+							// Reload page to update notification count
+							location.reload();
+						}
+					},
+					error: function(xhr) {
+						console.error('Error marking enquiries as read');
+					}
+				});
+			});
+		});
+	</script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d05194593ce14c8fa5c20a9737ff5d07","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>

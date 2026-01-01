@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Enquiry;
 use App\Models\Product;
+use Illuminate\Support\Facades\{Auth, DB, Log, Validator};
 
 class EnquiryController extends Controller
 {
@@ -20,9 +21,29 @@ class EnquiryController extends Controller
 
     public function show($id)
     {
-        $enquiry = Enquiry::findOrFail($id);
-        $product = Product::with(['aboutProducts'])->findOrFail($enquiry->product_id);
-        return view('view-enquiry', compact('enquiry', 'product'));
+        DB::beginTransaction();
+        try {
+            $enquiry = Enquiry::findOrFail($id);
+            $product = Product::with(['aboutProducts'])->findOrFail($enquiry->product_id);
+
+            // Mark enquiry as read when viewed
+            if (!$enquiry->is_read) {
+                $enquiry->is_read = true;
+                $enquiry->save();
+
+                // activity()
+                //     ->performedOn($enquiry)
+                //     ->causedBy(Auth::user())
+                //     ->log('Enquiry marked as read');
+            }
+
+            DB::commit();
+            return view('view-enquiry', compact('enquiry', 'product'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error viewing enquiry: ' . $e->getMessage());
+            return redirect()->route('enquiries')->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 
     public function edit($id)
@@ -62,5 +83,63 @@ class EnquiryController extends Controller
         $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
         Enquiry::destroy($ids);
         return redirect()->back()->with('success', 'Selected enquiries deleted successfully.');
+    }
+
+    /**
+     * Mark a single enquiry as read
+     */
+    public function markAsRead($id)
+    {
+        DB::beginTransaction();
+        try {
+            $enquiry = Enquiry::findOrFail($id);
+            $enquiry->is_read = true;
+            $enquiry->save();
+
+            DB::commit();
+
+            if (request()->ajax()) {
+                return response()->json(['success' => true, 'message' => 'Enquiry marked as read']);
+            }
+
+            return redirect()->back()->with('success', 'Enquiry marked as read');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error marking enquiry as read: ' . $e->getMessage());
+
+            if (request()->ajax()) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            }
+
+            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Mark all enquiries as read
+     */
+    public function markAllAsRead()
+    {
+        DB::beginTransaction();
+        try {
+            Enquiry::unread()->update(['is_read' => true]);
+
+            DB::commit();
+
+            if (request()->ajax()) {
+                return response()->json(['success' => true, 'message' => 'All enquiries marked as read']);
+            }
+
+            return redirect()->back()->with('success', 'All enquiries marked as read');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error marking all enquiries as read: ' . $e->getMessage());
+
+            if (request()->ajax()) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            }
+
+            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 }

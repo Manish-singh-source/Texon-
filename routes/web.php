@@ -48,6 +48,10 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/enquiries/{id}', [App\Http\Controllers\EnquiryController::class, 'destroy'])->name('enquiries.destroy');
 
+        Route::post('/enquiries/{id}/mark-as-read', [App\Http\Controllers\EnquiryController::class, 'markAsRead'])->name('enquiries.mark-as-read');
+
+        Route::post('/enquiries/mark-all-as-read', [App\Http\Controllers\EnquiryController::class, 'markAllAsRead'])->name('enquiries.mark-all-as-read');
+
         Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
 
         Route::get('/add-banner', function () {
