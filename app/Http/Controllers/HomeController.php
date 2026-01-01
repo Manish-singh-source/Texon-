@@ -54,6 +54,20 @@ class HomeController extends Controller
     public function productDetails($id)
     {
         $product = Product::with(['productBanners', 'aboutProducts', 'productKeyPoints', 'productGalleries', 'bannerVideos', 'productFeatures'])->findOrFail($id);
+
+        // Check if at least one section is active
+        $hasActiveSection = $product->banner_active ||
+                           $product->about_product_active ||
+                           $product->key_points_active ||
+                           $product->gallery_active ||
+                           $product->banner_video_active ||
+                           $product->features_active;
+
+        // If no section is active, abort with 404
+        if (!$hasActiveSection) {
+            abort(404, 'Product details not available. Please activate at least one section from admin panel.');
+        }
+
         return view('frontend.product-details', compact('product'));
     }
 
