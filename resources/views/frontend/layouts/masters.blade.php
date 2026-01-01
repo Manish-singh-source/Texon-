@@ -228,10 +228,9 @@
                         <div class="pt-30">
                             <div class="post-social-sharing wow fadeInUp  " data-wow-delay="0.5s">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li><a href="https://www.instagram.com/texon_corporation/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="https://in.linkedin.com/company/texoncorporation" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.youtube.com/@texoncorporation" target="_blank"><i class="fa-brands fa-youtube" ></i></a></li>
                                 </ul>
                             </div>
                         </div>

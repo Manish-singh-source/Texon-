@@ -106,8 +106,10 @@ class ProductController extends Controller
     public function storeProductBanner(Request $request, $productId)
     {
         $request->validate([
-            'video_upload' => 'nullable|mimes:mp4,avi,mov|',
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+            'video_upload' => 'nullable|mimes:mp4,avi,mov|max:10240',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:4096',
+            'delete_banner_image' => 'nullable|string',
+            'delete_video_upload' => 'nullable|string',
             'heading' => 'nullable|string|max:255',
             'button_name' => 'nullable|string|max:255',
             'button_url' => 'nullable|url',
@@ -117,6 +119,8 @@ class ProductController extends Controller
             'banner_image.image' => 'Banner image must be a valid image file.',
             'banner_image.mimes' => 'Banner image must be one of the following types: jpeg, png, jpg, gif.',
             'banner_image.max' => 'Banner image size must not exceed 4MB.',
+            'delete_banner_image.string' => 'Delete banner image must be a string.',
+            'delete_video_upload.string' => 'Delete video upload must be a string.',
             'heading.string' => 'Heading must be a valid string.',
             'heading.max' => 'Heading must not exceed 255 characters.',
             'button_name.string' => 'Button name must be a valid string.',
@@ -126,8 +130,33 @@ class ProductController extends Controller
 
         $data = $request->only(['heading', 'button_name', 'button_url']);
 
+        // Get existing banner
+        $existingBanner = ProductBanner::where('product_id', $productId)->first();
+
+        // Handle delete banner image
+        if ($request->has('delete_banner_image') && $existingBanner && $existingBanner->banner_image) {
+            if (file_exists(public_path('storage/' . $existingBanner->banner_image))) {
+                unlink(public_path('storage/' . $existingBanner->banner_image));
+            }
+            $data['banner_image'] = null;
+        }
+
+        // Handle delete video upload
+        if ($request->has('delete_video_upload') && $existingBanner && $existingBanner->video_upload) {
+            if (file_exists(public_path('storage/' . $existingBanner->video_upload))) {
+                unlink(public_path('storage/' . $existingBanner->video_upload));
+            }
+            $data['video_upload'] = null;
+        }
+
         // Handle video upload
         if ($request->hasFile('video_upload')) {
+            // Delete old video if exists
+            if ($existingBanner && $existingBanner->video_upload) {
+                if (file_exists(public_path('storage/' . $existingBanner->video_upload))) {
+                    unlink(public_path('storage/' . $existingBanner->video_upload));
+                }
+            }
             $file = $request->file('video_upload');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('storage/products/banners/videos'), $filename);
@@ -136,6 +165,12 @@ class ProductController extends Controller
 
         // Handle banner image
         if ($request->hasFile('banner_image')) {
+            // Delete old image if exists
+            if ($existingBanner && $existingBanner->banner_image) {
+                if (file_exists(public_path('storage/' . $existingBanner->banner_image))) {
+                    unlink(public_path('storage/' . $existingBanner->banner_image));
+                }
+            }
             $file = $request->file('banner_image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('storage/products/banners/images'), $filename);

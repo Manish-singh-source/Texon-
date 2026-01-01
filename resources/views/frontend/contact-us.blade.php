@@ -1,6 +1,11 @@
 @extends('frontend.layouts.masters')
 @section('content')
-
+<style>
+.post-social-sharing{
+    z-index: 1;
+    position: relative;
+}
+</style>
 <!-- Page Header Section Start -->
 <div class="page-header">
     <div class="container">

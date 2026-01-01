@@ -232,9 +232,10 @@
                                                         <input type="file" class="form-control" name="banner_image"
                                                             accept="image/*">
                                                         @if(isset($productBanner) && $productBanner->banner_image)
-                                                        <div class="mt-2">
+                                                        <div class="mt-2 position-relative banner-image" data-image="{{ $productBanner->banner_image }}">
                                                             <img src="{{ asset('storage/' . $productBanner->banner_image) }}"
                                                                 class="img-fluid" style="max-width: 200px;">
+                                                            <button type="button" class="btn btn-sm btn-danger position-absolute top-0 start-0" onclick="removeBannerImage(this)">×</button>
                                                         </div>
                                                         @endif
                                                     </div>
@@ -837,6 +838,18 @@ function removeAboutImage(btn) {
     const hidden = document.createElement('input');
     hidden.type = 'hidden';
     hidden.name = 'delete_images[]';
+    hidden.value = image;
+    form.appendChild(hidden);
+    div.remove();
+}
+
+function removeBannerImage(btn) {
+    const div = btn.parentElement;
+    const image = div.dataset.image;
+    const form = document.querySelector('#tab1 form');
+    const hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = 'delete_banner_image';
     hidden.value = image;
     form.appendChild(hidden);
     div.remove();
