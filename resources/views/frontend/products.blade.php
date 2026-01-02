@@ -54,7 +54,7 @@
                             <div class="feature-item-content">
                                 <h3>{{ $product->product_name }}</h3>
                                 <p>{{ $product->sort_description }}</p>
-                                <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="section-footer-text">
                                     @php
                                         $hasActiveSection = $product->banner_active ||
                                                            $product->about_product_active ||

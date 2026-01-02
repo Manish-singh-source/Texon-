@@ -132,20 +132,20 @@
                                                             Me</label>
                                                     </div>
                                                 </div>
-                                                <div class="text-end">
+                                                {{-- <div class="text-end">
                                                     <a href="https://smarthr.co.in/demo/html/template/forgot-password.html"
                                                         class="link-danger">Forgot Password?</a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-primary w-100">Sign In</button>
                                             </div>
-                                            <div class="text-center">
+                                            {{-- <div class="text-center">
                                                 <h6 class="fw-normal text-dark mb-0">Don’t have an account?
                                                     <a href="{{ route('register') }}" class="hover-a"> Create
                                                         Account</a>
                                                 </h6>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                         <div class="mt-5 pb-4 text-center">

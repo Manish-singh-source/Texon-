@@ -110,7 +110,7 @@
 <div class="why-choose-us">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-6">
+            <div class="col-xl-6 order2">
                 <!-- Why Choose Image Box Start -->
                 <div class="why-choose-image-box wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Why Choose Image Box 2 Start -->

@@ -26,7 +26,7 @@
 <div class="our-value">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-6">
+            <div class="col-xl-6  order2">
                 <!-- Our Value Image Box Start -->
                 <div class="our-value-image-box wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Our Value Image 1 Start -->
