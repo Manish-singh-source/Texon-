@@ -40,42 +40,48 @@
         </div>
 
         <div class="row">
-            @foreach($categories as $index => $category)
-            <div class="col-xl-6 col-md-6">
-                <!-- Case Study Item Start -->
-                <div class="case-study-item wow fadeInUp">
-                    <!-- Case Study Image Start -->
-                    <div class="case-study-image">
-                        <a href="{{ route('portfolio', ['category' => $category->name]) }}" data-cursor-text="View">
-                            <figure>
-                                <img src="{{ $category->image ? asset('storage/' . $category->image) : 'assets1/img/default.png' }}" alt="{{ $category->name }}">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Case Study Image End -->
+            @if($categories->isEmpty())
+                <div class="col-12 text-center">No record found</div>
+            @else
+                @foreach($categories as $index => $category)
+                <div class="col-xl-6 col-md-6">
+                    <!-- Case Study Item Start -->
+                    <div class="case-study-item wow fadeInUp">
+                        <!-- Case Study Image Start -->
+                        <div class="case-study-image">
+                            <a href="{{ route('portfolio', ['category' => $category->name]) }}" data-cursor-text="View">
+                                <figure>
+                                    <img src="{{ $category->image ? asset('storage/' . $category->image) : 'assets1/img/default.png' }}" alt="{{ $category->name }}">
+                                </figure>
+                            </a>
+                        </div>
+                        <!-- Case Study Image End -->
 
-                    <!-- Case Study Item Button Start -->
-                    <div class="case-study-item-btn">
-                        <a href="{{ route('portfolio', ['category' => $category->name]) }}">
-                            <img src="assets1/images/arrow-white.svg" alt="">
-                        </a>
-                    </div>
-                    <!-- Case Study Item Button End -->
+                        <!-- Case Study Item Button Start -->
+                        <div class="case-study-item-btn">
+                            <a href="{{ route('portfolio', ['category' => $category->name]) }}">
+                                <img src="assets1/images/arrow-white.svg" alt="">
+                            </a>
+                        </div>
+                        <!-- Case Study Item Button End -->
 
-                    <!-- Case Study Iten Content Start -->
-                    <div class="case-study-item-content">
-                        <h3><a href="{{ route('portfolio', ['category' => $category->name]) }}">{{ $category->name }}</a></h3>
+                        <!-- Case Study Iten Content Start -->
+                        <div class="case-study-item-content">
+                            <h3><a href="{{ route('portfolio', ['category' => $category->name]) }}">{{ $category->name }}</a></h3>
 
+                        </div>
+                        <!-- Case Study Item Content End -->
                     </div>
-                    <!-- Case Study Item Content End -->
+                    <!-- Case Study Item End -->
                 </div>
-                <!-- Case Study Item End -->
-            </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
+        @if(!$categories->isEmpty())
         <div class="d-flex justify-content-center">
             {{ $categories->links('pagination::bootstrap-4') }}
         </div>
+        @endif
     </div>
 </div>
 <!-- Our Case Studies Section End -->

@@ -193,6 +193,74 @@
     @endif
     <!-- Product Key Points Section End -->
 
+
+<!-- Related Products Section Start -->
+@if($product->category)
+@php
+    $relatedProducts = \App\Models\Product::where('category', $product->category)
+        ->where('id', '!=', $product->id)
+        ->where('status', 'active')
+        ->limit(4)
+        ->get();
+@endphp
+@if($relatedProducts->isNotEmpty())
+<div class="our-features">
+    <div class="container">
+        <div class="row section-row">
+            <div class="col-lg-12">
+                <!-- Section Title Start -->
+                <div class="section-title section-title-center">
+                    <h2 class="text-anime-style-2" data-cursor="-opaque">Relevant Products</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Feature Item Box Start -->
+                <div class="feature-item-box">
+                    @foreach($relatedProducts as $index => $relatedProduct)
+                    <div class="feature-item box-{{3 + $index}} wow fadeInUp" data-wow-delay="{{0.4 + $index * 0.2}}s">
+                        <div class="feature-image">
+                            <figure>
+                                <img src="{{ asset('./storage/'.$relatedProduct->product_thumbnail) }}" alt="" class="imgh">
+                            </figure>
+                        </div>
+                        <div class="feature-item-content">
+                            <h3>{{ $relatedProduct->product_name }}</h3>
+                            <p>{{ $relatedProduct->sort_description }}</p>
+                            <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
+                                @php
+                                    $hasActiveSectionRel = $relatedProduct->banner_active ||
+                                                           $relatedProduct->about_product_active ||
+                                                           $relatedProduct->key_points_active ||
+                                                           $relatedProduct->gallery_active ||
+                                                           $relatedProduct->banner_video_active ||
+                                                           $relatedProduct->features_active;
+                                @endphp
+                                @if($hasActiveSectionRel)
+                                    <a href="{{ route('product-details', $relatedProduct->id) }}">
+                                        <p><span>Learn More</span></p>
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" style="opacity: 0.5; cursor: not-allowed;" title="Product details not available">
+                                        <p><span>Coming Soon</span></p>
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Feature Item Box End -->
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+@endif
+<!-- Related Products Section End -->
     <!-- Product Gallery Section Start -->
     @if($product->gallery_active)
     <div class="our-features">
