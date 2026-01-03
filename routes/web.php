@@ -152,6 +152,9 @@ Route::prefix('admin')->group(function () {
         Route::put('/edit-blog/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('edit-blog.update');
 
         Route::get('/supports', [App\Http\Controllers\SupportController::class, 'index'])->name('supports');
+
+        Route::get('/analytics-test', [App\Http\Controllers\AnalyticsController::class, 'test'])->name('analytics-test');
+        Route::get('/analytics-dashboard', [App\Http\Controllers\AnalyticsController::class, 'dashboard'])->name('analytics-dashboard');
     });
 
     Route::get('/register', [App\Http\Controllers\RegisterController::class, 'showRegisterForm'])->name('register');
