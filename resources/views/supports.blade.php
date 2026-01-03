@@ -40,6 +40,8 @@
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Company</th>
+                                    <th>Application</th>
                                     <th>Message</th>
                                     <th>Product</th>
                                     <th>Page</th>
@@ -60,6 +62,8 @@
                                      <td>{{ $support->last_name }}</td>
                                      <td>{{ $support->email }}</td>
                                      <td>{{ $support->phone }}</td>
+                                     <td>{{ $support->company ?? 'N/A' }}</td>
+                                     <td>{{ $support->application ?? 'N/A' }}</td>
                                      <td>{{ Str::limit($support->message, 50) }}</td>
                                      <td>{{ $support->product ?? 'N/A' }}</td>
                                      <td>{{ $support->page }}</td>

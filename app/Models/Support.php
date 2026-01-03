@@ -11,6 +11,8 @@ class Support extends Model
         'last_name',
         'email',
         'phone',
+        'company',
+        'application',
         'message',
         'product',
         'page',

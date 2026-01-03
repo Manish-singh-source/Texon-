@@ -104,6 +104,7 @@ class HomeController extends Controller
             'phone' => 'required|string|max:20',
             'company' => 'required|string|max:255',
             'message' => 'nullable|string',
+            'application' => 'nullable|string',
         ]);
 
         $enquiryId = 'ENQ-' . strtoupper(uniqid());
@@ -116,6 +117,7 @@ class HomeController extends Controller
             'user_phone' => $request->phone,
             'company' => $request->company,
             'message' => $request->message,
+            'application' => $request->application,
             'status' => 'pending',
         ]);
 

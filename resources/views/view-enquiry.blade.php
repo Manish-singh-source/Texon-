@@ -114,6 +114,16 @@
                         </div>
                     </div>
 
+                    <!-- Application -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Application</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{{ $enquiry->application ?: 'No application details provided.' }}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

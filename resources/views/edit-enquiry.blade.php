@@ -125,6 +125,16 @@
                             </div>
                         </div>
 
+                        <!-- Application -->
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Application</h5>
+                            </div>
+                            <div class="card-body">
+                                <textarea class="form-control" id="application" name="application" rows="4">{{ $enquiry->application }}</textarea>
+                            </div>
+                        </div>
+
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary">Update Enquiry</button>
                             <a href="{{ route('view-enquiry', $enquiry->id) }}" class="btn btn-secondary">Cancel</a>

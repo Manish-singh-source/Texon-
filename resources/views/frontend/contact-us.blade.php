@@ -161,6 +161,20 @@
                                 <div class="help-block with-errors"></div>
                             </div>
 
+                            <div class="form-group col-md-6 mb-4">
+                                <label class="form-label">Company Name *</label>
+                                <input type="text" name="company" class="form-control" id="company"
+                                    placeholder="Your Company Name" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <label class="form-label">Application</label>
+                                <input type="text" name="application" class="form-control" id="application"
+                                    placeholder="Your Application" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+
                              
 
                             <div class="form-group col-md-12 mb-5">

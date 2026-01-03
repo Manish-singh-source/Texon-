@@ -81,9 +81,16 @@
                                 <div class="help-block with-errors"></div>
                             </div>
 
-                            <div class="form-group col-md-12 mb-5">
+                            <div class="form-group col-md-6 mb-5">
                                 <label class="form-label">Message</label>
                                 <textarea name="message" class="form-control" id="message" rows="5"
+                                    placeholder="Any Message..."></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-5">
+                                <label class="form-label">Application</label>
+                                <textarea name="application" class="form-control" id="application" rows="5"
                                     placeholder="Any Message..."></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>

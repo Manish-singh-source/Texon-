@@ -1198,12 +1198,11 @@ header.main-header .container-fluid {
 /************************************/
 /***   05. Scrolling Ticker css   ***/
 /************************************/
-
 .our-scrolling-ticker {
-	position: relative;
-	background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 100%);
-	padding: 25px 0;
-	z-index: 1;
+    position: relative;
+    background: linear-gradient(90deg, #3963af 0%, var(--accent-color) 100%);
+    padding: 25px 0;
+    z-index: 1;
 }
 
 .scrolling-ticker-box {
@@ -7204,4 +7203,10 @@ header.main-header .container-fluid {
 .post-social-sharing ul {
     text-align: center;
 }
+}
+
+.presence {
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 15px;
 }

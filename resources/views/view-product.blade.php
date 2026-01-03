@@ -173,11 +173,17 @@
                                             role="tab" aria-controls="tab6" aria-selected="false"
                                             style="border: 1px solid #007bff;">Product Key Points</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
+                                    {{-- <li class="nav-item" role="presentation">
                                         <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
                                             id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
                                             role="tab" aria-controls="tab2" aria-selected="false"
                                             style="border: 1px solid #007bff;">Product Gallery</button>
+                                    </li> --}}
+                                     <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
+                                            id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
+                                            role="tab" aria-controls="tab4" aria-selected="false"
+                                            style="border: 1px solid #007bff;">Product Features</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
@@ -185,12 +191,7 @@
                                             role="tab" aria-controls="tab3" aria-selected="false"
                                             style="border: 1px solid #007bff;">Banner Video</button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
-                                            id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
-                                            role="tab" aria-controls="tab4" aria-selected="false"
-                                            style="border: 1px solid #007bff;">Product Features</button>
-                                    </li>
+                                   
                                   
 
                                 </ul>
@@ -455,7 +456,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                    {{-- <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h5>Product Gallery Section</h5>
                                             <div class="form-check form-switch">
@@ -542,7 +543,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h5>Banner Video Section</h5>
