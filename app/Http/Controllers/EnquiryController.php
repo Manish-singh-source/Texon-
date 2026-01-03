@@ -62,10 +62,11 @@ class EnquiryController extends Controller
             'company' => 'nullable|string|max:255',
             'status' => 'required|in:pending,responded,closed',
             'message' => 'nullable|string',
+            'application' => 'nullable|string',
         ]);
 
         $enquiry = Enquiry::findOrFail($id);
-        $enquiry->update($request->only(['user_name', 'user_email', 'user_phone', 'company', 'status', 'message']));
+        $enquiry->update($request->only(['user_name', 'user_email', 'user_phone', 'company', 'status', 'message', 'application']));
 
         return redirect()->route('view-enquiry', $id)->with('success', 'Enquiry updated successfully.');
     }

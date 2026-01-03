@@ -7205,3 +7205,9 @@ header.main-header .container-fluid {
     text-align: center;
 }
 }
+
+.presence {
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 15px;
+}

@@ -15,6 +15,7 @@ class Enquiry extends Model
         'user_phone',
         'company',
         'message',
+        'application',
         'status',
         'is_read',
     ];

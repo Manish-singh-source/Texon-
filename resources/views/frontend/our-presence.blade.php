@@ -30,12 +30,13 @@
                 @foreach($presences as $index => $presence)
                 <div class="col-lg-4 col-6">
                     <!-- Image Gallery start -->
-                    <div class="photo-gallery wow fadeInUp" data-wow-delay="{{ $index * 0.2 }}s">
+                    <div class="photo-gallery wow fadeInUp presence" data-wow-delay="{{ $index * 0.2 }}s">
                         <a href="{{ asset('storage/' . $presence->image) }}" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="{{ asset('storage/' . $presence->image) }}" alt="">
                             </figure>
                         </a>
+                        <p class="text-center pt-2">{{ $presence->name }}</p>
                     </div>
                     <!-- Image Gallery end -->
                 </div>
