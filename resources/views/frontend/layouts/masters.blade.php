@@ -262,7 +262,7 @@
                     <!-- Footer Contact End -->
                 </div>
 
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-3 col">
                     <!-- Footer Newsletter Form Start -->
                     <div class="footer-newsletter-form footer-links">
                         <h3>Quick Links</h3>
@@ -277,7 +277,7 @@
                     </div>
 
                 </div>
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-3 col">
                     <!-- Footer Newsletter Form Start -->
                     <div class="footer-newsletter-form footer-links">
                         <h3>Contact Us</h3>

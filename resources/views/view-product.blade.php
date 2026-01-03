@@ -129,6 +129,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Sort Description</label>
+                                        <textarea class="form-control" name="sort_description" rows="3">{{ $product->sort_description }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary me-2">Save</button>
                                 <a href="{{ route('products') }}" class="btn btn-outline-light border">Back</a>
@@ -718,7 +726,7 @@ ClassicEditor
     });
 
 ClassicEditor
-    .create(document.querySelector('#tab7 textarea[name=sort_description]'), {
+    .create(document.querySelector('textarea[name=sort_description]'), {
         toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
     })
     .catch(error => {

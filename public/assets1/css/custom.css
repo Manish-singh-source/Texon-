@@ -7198,4 +7198,10 @@ header.main-header .container-fluid {
 .order2{
 	order: 2;
 }
+.our-award-content {
+    padding-left: 16px;
+}
+.post-social-sharing ul {
+    text-align: center;
+}
 }
