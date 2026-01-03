@@ -219,7 +219,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Video Upload</label>
+                                                        <label class="form-label">Video Upload <span class="text-danger">(1913*549)</span></label>
                                                         <input type="file" class="form-control" name="video_upload"
                                                             accept="video/*">
                                                         @if(isset($productBanner) && $productBanner->video_upload)
@@ -236,7 +236,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Banner Image Upload</label>
+                                                        <label class="form-label">Banner Image Upload <span class="text-danger">(1913*549)</span></label>
                                                         <input type="file" class="form-control" name="banner_image"
                                                             accept="image/*">
                                                         @if(isset($productBanner) && $productBanner->banner_image)
