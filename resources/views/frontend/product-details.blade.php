@@ -328,7 +328,7 @@
             $relatedProducts = \App\Models\Product::where('category', $product->category)
                 ->where('id', '!=', $product->id)
                 ->where('status', 'active')
-                ->limit(4)
+                ->limit(5)
                 ->get();
         @endphp
         @if ($relatedProducts->isNotEmpty())
@@ -349,7 +349,7 @@
                             <!-- Feature Item Box Start -->
                             <div class="feature-item-box">
                                 @foreach ($relatedProducts as $index => $relatedProduct)
-                                    <div class="feature-item box-{{ 3 + $index }} wow fadeInUp"
+                                    <div class="feature-item box-{{ $index + 1 }} wow fadeInUp"
                                         data-wow-delay="{{ 0.4 + $index * 0.2 }}s">
                                         <div class="feature-image">
                                             <figure>
