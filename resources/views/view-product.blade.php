@@ -297,7 +297,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Media Upload</label>
+                                                        <label class="form-label">Media Upload <span class="text-danger">(635*440)</span></label>
                                                         <input type="file" class="form-control" name="media[]" multiple
                                                             accept="image/*,video/*">
                                                         <small class="text-muted">Upload multiple images and videos</small>
@@ -375,7 +375,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Image Upload</label>
+                                                                <label class="form-label">Image Upload <span class="text-danger">(638*442)</span></label>
                                                                 <input type="file" class="form-control" name="image"
                                                                     accept="image/*">
                                                                 @php $card1 = $keyPoints->where('type',

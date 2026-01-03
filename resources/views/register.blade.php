@@ -71,7 +71,7 @@
 									@csrf
 									<div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
 										<div class=" mx-auto mb-5 text-center">
-											<img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" alt="Logo">
+											<img src="{{ asset('assets/img/Logo.png') }}" class="img-fluid" alt="Logo">
 										</div>
 										<div class="">
 											<div class="text-center mb-3">
