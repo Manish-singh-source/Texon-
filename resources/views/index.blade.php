@@ -108,7 +108,75 @@
 					<!-- /Project Data Cards -->
 				</div>
 
-				
+				<!-- Analytics Section -->
+				<div class="row">
+					<div class="col-md-6 d-flex">
+						<div class="card flex-fill">
+							<div class="card-body">
+								<span class="avatar rounded-circle bg-primary mb-2">
+									<i class="ti ti-users fs-16"></i>
+								</span>
+								<h6 class="fs-13 fw-medium text-default mb-1">Total Visitors (Last 7 Days)</h6>
+								<h3 class="mb-3">{{ number_format($totalVisitors) }}</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 d-flex">
+						<div class="card flex-fill">
+							<div class="card-body">
+								<span class="avatar rounded-circle bg-secondary mb-2">
+									<i class="ti ti-eye fs-16"></i>
+								</span>
+								<h6 class="fs-13 fw-medium text-default mb-1">Total Page Views (Last 7 Days)</h6>
+								<h3 class="mb-3">{{ number_format($totalPageViews) }}</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Top Pages Table -->
+				<div class="row">
+					<div class="col-12 d-flex">
+						<div class="card flex-fill">
+							<div class="card-header pb-2 d-flex align-items-center justify-content-between flex-wrap">
+								<h5 class="mb-2">Top 5 Most Visited Pages (Last 7 Days)</h5>
+							</div>
+							<div class="card-body p-0">
+								<div class="table-responsive">
+									<table class="table table-nowrap mb-0">
+										<thead>
+											<tr>
+												<th>Page Title</th>
+												<th>URL</th>
+												<th>Views</th>
+											</tr>
+										</thead>
+										<tbody>
+											@forelse($topPages as $page)
+											<tr {{ $loop->last ? 'class="border-0"' : '' }}>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
+													{{ $page['pageTitle'] ?? 'N/A' }}
+												</td>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
+													{{ $page['fullPageUrl'] ?? $page['pagePath'] ?? 'N/A' }}
+												</td>
+												<td {{ $loop->last ? 'class="border-0"' : '' }}>
+													{{ number_format($page['screenPageViews'] ?? $page['pageViews'] ?? 0) }}
+												</td>
+											</tr>
+											@empty
+											<tr>
+												<td colspan="3" class="text-center text-muted py-4">No data available</td>
+											</tr>
+											@endforelse
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Analytics Section -->
 
 				<div class="row">
 

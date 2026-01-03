@@ -182,7 +182,7 @@
 
                     <!-- Why Choose Button Start -->
                     <div class="why-choose-btn wow fadeInUp" data-wow-delay="0.8s">
-                        <a href="contact.html" class="btn-default">Learn more</a>
+                        <a href="{{route('about-us')}}" class="btn-default">Learn more</a>
                     </div>
                     <!-- Why Choose Button End -->
                 </div>

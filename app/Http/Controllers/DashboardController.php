@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\{Auth, DB, Log};
+use Spatie\Analytics\Facades\Analytics;
+use Spatie\Analytics\Period;
 use App\Models\Enquiry;
 use App\Models\Product;
 use App\Models\Category;
@@ -51,6 +54,25 @@ class DashboardController extends Controller
         // Top products (assuming based on enquiries or sales, but since no sales, maybe by creation or random)
         $topProducts = Product::latest()->limit(3)->get();
 
+        // Fetch analytics data
+        try {
+            $period = Period::days(7);
+            $visitorsAndPageViews = Analytics::fetchVisitorsAndPageViews($period);
+            $topPages = Analytics::fetchMostVisitedPages($period, 5);
+
+            $totalVisitors = $visitorsAndPageViews->sum('activeUsers');
+            $totalPageViews = $visitorsAndPageViews->sum('screenPageViews');
+        } catch (\Exception $e) {
+            Log::error('Analytics Dashboard Error: ' . $e->getMessage(), [
+                'user_id' => Auth::id(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            $totalVisitors = 0;
+            $totalPageViews = 0;
+            $topPages = collect([]);
+        }
+
         return view('index', compact(
             'totalEnquiries', 'pendingEnquiries', 'repliedEnquiries', 'newEnquiries',
             'totalProducts', 'activeProducts', 'inactiveProducts', 'newProducts',
@@ -58,7 +80,8 @@ class DashboardController extends Controller
             'totalTestimonials', 'publishedTestimonials', 'pendingTestimonials', 'fiveStarTestimonials',
             'totalBrands', 'activeBrands', 'inactiveBrands', 'premiumBrands',
             'totalCustomers', 'activeCustomers', 'newCustomers', 'vipCustomers',
-            'recentEnquiries', 'topProducts'
+            'recentEnquiries', 'topProducts',
+            'totalVisitors', 'totalPageViews', 'topPages'
         ));
     }
 }
