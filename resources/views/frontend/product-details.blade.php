@@ -359,7 +359,7 @@
                                         </div>
                                         <div class="feature-item-content">
                                             <h3>{{ $relatedProduct->product_name }}</h3>
-                                            <p>{{ $relatedProduct->sort_description }}</p>
+                                            <p>{!! $relatedProduct->sort_description !!}</p>
                                             <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
                                                 @php
                                                     $hasActiveSectionRel =

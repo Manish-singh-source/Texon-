@@ -662,10 +662,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            @php$card1 = $productFeatures
-                                                                                                                                                                                                    ->where('type', 'card1')
-                                                                                                                                                                                                    ->first();
-                                                                                                                                                                                    @endphp ?> ?>
+                                                          @php
+                                                            $card1 = $productFeatures->where('type', 'card1')->first();
+                                                            @endphp
                                                             <div class="col-md-6">
                                                                 <div class="mb-3">
                                                                     <label class="form-label">Page Heading</label>

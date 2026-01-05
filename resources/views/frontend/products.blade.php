@@ -53,7 +53,7 @@
                             </div>
                             <div class="feature-item-content">
                                 <h3>{{ $product->product_name }}</h3>
-                                <p>{{ $product->sort_description }}</p>
+                               <p>{!! $product->sort_description !!}</p>
                                 <div class="section-footer-text">
                                     @php
                                         $hasActiveSection = $product->banner_active ||
