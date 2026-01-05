@@ -562,29 +562,50 @@ class ProductController extends Controller
 
     public function toggleSection(Request $request, $id)
     {
+        Log::info('Toggle section called', [
+            'product_id' => $id,
+            'request_data' => $request->all()
+        ]);
+
         $validator = Validator::make($request->all(), [
             'section' => 'required|in:banner,about_product,key_points,gallery,banner_video,features',
             'active' => 'required|boolean'
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['success' => false, 'message' => 'Invalid data'], 422);
+            Log::error('Validation failed', ['errors' => $validator->errors()]);
+            return response()->json(['success' => false, 'message' => 'Invalid data', 'errors' => $validator->errors()], 422);
         }
 
         DB::beginTransaction();
         try {
             $product = Product::findOrFail($id);
             $field = $request->section . '_active';
+
+            Log::info('Updating field', [
+                'field' => $field,
+                'old_value' => $product->$field,
+                'new_value' => $request->active
+            ]);
+
             $product->$field = $request->active;
             $product->save();
 
             DB::commit();
+
+            Log::info('Section toggled successfully', [
+                'field' => $field,
+                'value' => $product->$field
+            ]);
+
             // activity()->performedOn($product)->causedBy(Auth::user())->log('Section toggle: ' . $request->section);
 
             return response()->json(['success' => true, 'active' => $product->$field]);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error($e->getMessage());
+            Log::error('Toggle section error: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString()
+            ]);
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
