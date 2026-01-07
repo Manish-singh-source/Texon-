@@ -25,7 +25,7 @@ class HomeController extends Controller
         $banners = Banner::where('status', 'active')->get();
         $testimonials = Testimonial::where('status', 'active')->get();
         $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
-        $featuredProducts = FeaturedProduct::where('status', 'active')->get();
+        $featuredProducts = FeaturedProduct::with('product')->where('status', 'active')->get();
 
         // Get active promotional banner within date range
         $promotionalBanner = PromotionalBanner::active()

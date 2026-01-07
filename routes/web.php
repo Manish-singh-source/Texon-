@@ -123,9 +123,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/view-brand', function () {
             return view('view-brands');
         })->name('view-brand');
-        Route::get('/add-featured-product', function () {
-            return view('add-featured-products');
-        })->name('add-featured-product');
+        Route::get('/add-featured-product', [App\Http\Controllers\FeaturedProductController::class, 'create'])->name('add-featured-product');
         Route::post('/add-featured-product', [App\Http\Controllers\FeaturedProductController::class, 'store'])->name('add-featured-product.store');
         Route::get('/featured-products', [App\Http\Controllers\FeaturedProductController::class, 'index'])->name('featured-products');
         Route::get('/edit-featured-product/{id}', [App\Http\Controllers\FeaturedProductController::class, 'edit'])->name('edit-featured-product');
