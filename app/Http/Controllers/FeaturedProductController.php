@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FeaturedProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class FeaturedProductController extends Controller
 {
+    public function create()
+    {
+        $products = Product::all();
+        return view('add-featured-products', compact('products'));
+    }
+
     public function index()
     {
         $featuredProducts = FeaturedProduct::all();
@@ -17,6 +24,7 @@ class FeaturedProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'product_id' => 'required|exists:products,id',
             'heading' => 'required|string|max:255',
             'description' => 'required|string',
             'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -32,6 +40,7 @@ class FeaturedProductController extends Controller
         }
 
         FeaturedProduct::create([
+            'product_id' => $request->product_id,
             'heading' => $request->heading,
             'description' => $request->description,
             'image' => $imagePath,
@@ -44,12 +53,14 @@ class FeaturedProductController extends Controller
     public function edit($id)
     {
         $featuredProduct = FeaturedProduct::findOrFail($id);
-        return view('edit-featured-products', compact('featuredProduct'));
+        $products = Product::all();
+        return view('edit-featured-products', compact('featuredProduct', 'products'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
+            'product_id' => 'required|exists:products,id',
             'heading' => 'required|string|max:255',
             'description' => 'required|string',
             'featured_product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -71,6 +82,7 @@ class FeaturedProductController extends Controller
         }
 
         $featuredProduct->update([
+            'product_id' => $request->product_id,
             'heading' => $request->heading,
             'description' => $request->description,
             'image' => $imagePath,

@@ -226,7 +226,7 @@
                             </figure>
                         </div>
                         <div class="feature-item-content">
-                            <h3>{{ $product->heading }}</h3>
+                            <h3><a href="{{ route('product-details', $product->product_id) }}" style="text-decoration: none; color: inherit;">{{ $product->heading }}</a></h3>
                             <p>{{ $product->description }}</p>
                         </div>
                     </div>

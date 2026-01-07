@@ -29,6 +29,15 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mb-3">
+												<label class="form-label">Product <span class="text-danger">*</span></label>
+												<select class="form-select" name="product_id">
+													<option value="">Select Product</option>
+													@foreach($products as $product)
+														<option value="{{ $product->id }}">{{ $product->product_name }}</option>
+													@endforeach
+												</select>
+											</div>
+											<div class="mb-3">
 												<label class="form-label">Heading <span class="text-danger">*</span></label>
 												<input type="text" class="form-control" name="heading" placeholder="Enter Heading">
 											</div>

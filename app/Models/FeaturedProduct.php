@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class FeaturedProduct extends Model
 {
-    protected $fillable = ['image', 'heading', 'description', 'status'];
+    protected $fillable = ['product_id', 'image', 'heading', 'description', 'status'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
