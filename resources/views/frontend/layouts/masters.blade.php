@@ -227,7 +227,7 @@
                     <div class="about-footer">
                         <!-- Footer Logo Start -->
                         <div class="footer-logo">
-                            <img src="{{ asset('assets1/img/logo.png') }}" alt="">
+                            <img src="{{ asset('assets1/img/footer.png') }}" alt="">
                         </div>
                         <!-- Footer Logo End -->
 
@@ -293,11 +293,11 @@
                     <div class="footer-newsletter-form footer-links">
                         <h3>Contact Us</h3>
                         <ul>
-                            <li><a href="javascript:void(0)">Refund Policy</a></li>
-                            <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                            <li><a href="javascript:void(0)">Shipping Policy</a></li>
-                            <li><a href="javascript:void(0)">Terms and Conditions</a></li>
-                            <li><a href="javascript:void(0)">Site Map</a></li>
+                            <li><a href="{{route('refund-policy')}}">Refund Policy</a></li>
+                            <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
+                            <li><a href="{{route('shipping-policy')}}">Shipping Policy</a></li>
+                            <li><a href="{{route('terms-conditions')}}">Terms and Conditions</a></li>
+                            {{-- <li><a href="javascript:void(0)">Site Map</a></li> --}}
                         </ul>
                     </div>
 

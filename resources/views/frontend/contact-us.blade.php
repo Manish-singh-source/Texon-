@@ -54,7 +54,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Email us</h3>
-                            <p><a href="mailto:admin@texon-corporation.com">admin@texon-corporation.com</a></p>
+                            <p><a href="mailto:sales@texon-corporation.com">sales@texon-corporation.com</a></p>
                             <!-- <p><a href="mailto:support@domainname.com">support@domainname.com</a></p> -->
                         </div>
                     </div>
@@ -67,7 +67,9 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Address</h3>
-                            <p>111, 1st floor , Dheeraj Center, Evershine City, Vasai East </p>
+                            <p>111,Infinity Business square , Golani Industrial Area
+Vasai (East), Mumbai, Maharashtra ,India 401208 
+</p>
                         </div>
                     </div>
                     <!-- Contact Info Item End -->
@@ -110,7 +112,7 @@
 
                     <!-- Google Map IFrame Start -->
                     <div class="google-map-iframe wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="assets1/img/map.png" alt="" class="map">
+                        <img src="assets1/images/image.png" alt="" class="map">
                     </div>
                     <!-- Google Map IFrame End -->
                 </div>

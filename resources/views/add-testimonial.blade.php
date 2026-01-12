@@ -47,7 +47,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Testimonial Image</label>
+                                                    <label class="form-label">Testimonial Image <span class="text-danger">( 160*160 PX )</span></label>
                                                     <input type="file" class="form-control" name="testimonial_image" accept="image/*">
                                                     <small class="text-muted">Upload testimonial image (max 4MB)</small>
                                                 </div>

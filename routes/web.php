@@ -206,3 +206,24 @@ Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class,
 Route::get('/blog-details/{id}', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
 
 Route::get('/api/search-products', [App\Http\Controllers\HomeController::class, 'searchProducts'])->name('api.search-products');
+
+Route::get('/refund-policy', function () {
+    return view('frontend.refund-policy');
+})->name('refund-policy');
+
+Route::get('/privacy-policy', function () {
+    return view('frontend.privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/shipping-policy', function () {
+    return view('frontend.shipping-policy');
+})->name('shipping-policy');
+
+
+Route::get('/terms-conditions', function () {
+    return view('frontend.terms-conditions');
+})->name('terms-conditions');
+
+Route::get('/news-events', function () {
+    return view('frontend.news-events');
+})->name('news-events');

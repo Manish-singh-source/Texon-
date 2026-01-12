@@ -175,7 +175,7 @@
                                             <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
                                                 id="tab6-tab" data-bs-toggle="tab" data-bs-target="#tab6"
                                                 type="button" role="tab" aria-controls="tab6" aria-selected="false"
-                                                style="border: 1px solid #007bff;">Product Key Points</button>
+                                                style="border: 1px solid #007bff;">Product 5 Features </button>
                                         </li>
                                         {{-- <li class="nav-item" role="presentation">
                                         <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
@@ -187,13 +187,13 @@
                                             <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
                                                 id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4"
                                                 type="button" role="tab" aria-controls="tab4" aria-selected="false"
-                                                style="border: 1px solid #007bff;">Product Features</button>
+                                                style="border: 1px solid #007bff;">Applications</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link btn btn-outline-primary w-100 mb-2 text-start"
                                                 id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3"
                                                 type="button" role="tab" aria-controls="tab3" aria-selected="false"
-                                                style="border: 1px solid #007bff;">Banner Video</button>
+                                                style="border: 1px solid #007bff;">Product Video</button>
                                         </li>
 
 
@@ -205,7 +205,7 @@
                                         <div class="tab-pane fade show active" id="tab1" role="tabpanel"
                                             aria-labelledby="tab1-tab">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h5>Banner Section</h5>
+                                                <h5>Banner</h5>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input section-toggle" type="checkbox"
                                                         id="toggle-banner" data-section="banner"
@@ -290,7 +290,7 @@
                                         <div class="tab-pane fade" id="tab5" role="tabpanel"
                                             aria-labelledby="tab5-tab">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h5>About Product Section</h5>
+                                                <h5>About Product</h5>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input section-toggle" type="checkbox"
                                                         id="toggle-about-product" data-section="about_product"
@@ -384,7 +384,7 @@
                                         <div class="tab-pane fade" id="tab6" role="tabpanel"
                                             aria-labelledby="tab6-tab">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h5>Product Key Points Section</h5>
+                                                <h5>Product 5 Features </h5>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input section-toggle" type="checkbox"
                                                         id="toggle-key-points" data-section="key_points"
@@ -581,7 +581,7 @@
                                         <div class="tab-pane fade" id="tab3" role="tabpanel"
                                             aria-labelledby="tab3-tab">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h5>Banner Video Section</h5>
+                                                <h5>Product Video</h5>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input section-toggle" type="checkbox"
                                                         id="toggle-banner-video" data-section="banner_video"
@@ -639,7 +639,7 @@
                                         <div class="tab-pane fade" id="tab4" role="tabpanel"
                                             aria-labelledby="tab4-tab">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h5>Product Features Section</h5>
+                                                <h5>Applications</h5>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input section-toggle" type="checkbox"
                                                         id="toggle-features" data-section="features"

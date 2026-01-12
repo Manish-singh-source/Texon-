@@ -1870,6 +1870,24 @@ header.main-header .container-fluid {
 	z-index: 1;
 }
 
+.year-experience-box1 {
+	position: relative;
+	max-width: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 50%, var(--accent-secondary-color));
+	background-size: 200% auto;
+	border: 4px solid var(--white-color);
+	border-radius: 12px;
+	padding: 20px;
+	margin-top: 10px;
+	margin-left: auto;
+	transition: all 0.4s ease-in-out;
+	animation: yearboxmove 2s infinite alternate linear;
+	z-index: 1;
+}
+
 
 @keyframes yearboxmove {
 	from {
@@ -1891,6 +1909,11 @@ header.main-header .container-fluid {
 	width: 70px;
 	margin-right: 10px;
 }
+.year-experience-box1 h2 {
+	font-size: 34px;
+	color: var(--white-color);
+	margin-right: 10px;
+}
 
 .year-experience-box p {
 	font-weight: 600;
@@ -1898,6 +1921,68 @@ header.main-header .container-fluid {
 	margin-bottom: 0;
 }
 
+.year-experience-box1 p {
+	font-weight: 600;
+	color: var(--white-color);
+	margin-bottom: 0;
+}
+
+/* News & Events Cards Section */
+.news-events-cards {
+	padding: 60px 0;
+	background: var(--secondary-color);
+}
+
+.news-card {
+	position: relative;
+	height: 400px;
+	border-radius: 12px;
+	overflow: hidden;
+	margin-bottom: 30px;
+	background-size: cover;
+	background-position: center;
+	transition: all 0.4s ease-in-out;
+}
+
+.news-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+	padding: 30px;
+	color: var(--white-color);
+}
+
+.card-overlay h3 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.card-overlay p {
+	margin-bottom: 15px;
+	font-size: 16px;
+}
+
+.card-overlay .btn {
+	background: var(--accent-color);
+	border: none;
+	color: var(--white-color);
+	padding: 10px 20px;
+	border-radius: 25px;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+}
+
+.card-overlay .btn:hover {
+	background: var(--primary-color);
+	color: var(--white-color);
+}
 /************************************/
 /*** 	  09. How It Work css 	  ***/
 /************************************/
@@ -2673,7 +2758,6 @@ header.main-header .container-fluid {
 }
 
 .testimonial-header {
-	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
@@ -2681,8 +2765,10 @@ header.main-header .container-fluid {
 }
 
 .testimonial-logo img {
-	width: 100%;
-	max-width: 160px;
+    width: 100%;
+    max-width: 160px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .testimonial-quote img {
@@ -2899,10 +2985,10 @@ header.main-header .container-fluid {
 }
 
 .footer-logo img {
-	width: 100%;
-	max-width: 160px;
+    width: 100%;
+    max-width: 160px;
+    border-radius: 3px;
 }
-
 .about-footer-content {
 	margin-top: 20px;
 }
@@ -6230,7 +6316,12 @@ header.main-header .container-fluid {
 		width: 100%;
 		padding: 20px;
 	}
-
+	.year-experience-box1 {
+		max-width: 100%;
+		margin: 15px 0 0;
+		padding: 15px;
+		animation: none;
+	}
 	.hero-item-content h3 {
 		font-size: 18px;
 	}
@@ -6370,6 +6461,17 @@ header.main-header .container-fluid {
 
 	.year-experience-box h2 {
 		font-size: 22px;
+	}
+
+	.year-experience-box1 {
+		max-width: 100% !important;
+		margin: 15px 0 0 !important;
+		padding: 15px !important;
+		animation: none !important;
+	}
+
+	.year-experience-box1 h2 {
+		font-size: 22px !important;
 	}
 
 	.how-work-item-content h3 {
@@ -7209,4 +7311,38 @@ header.main-header .container-fluid {
     background-color: aliceblue;
     border-radius: 20px;
     padding: 15px;
+}
+
+.year-experience-box1 {
+	position: relative;
+	max-width: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 50%, var(--accent-secondary-color));
+	background-size: 200% auto;
+	border: 4px solid var(--white-color);
+	border-radius: 12px;
+	padding: 20px;
+	margin-top: 10px;
+	margin-left: auto;
+	transition: all 0.4s ease-in-out;
+	animation: yearboxmove 2s infinite alternate linear;
+	z-index: 1;
+}
+
+.year-experience-box1:hover {
+	background-position: right center;
+}
+
+.year-experience-box1 h2 {
+	font-size: 34px;
+	color: var(--white-color);
+	margin-right: 10px;
+}
+
+.year-experience-box1 p {
+	font-weight: 600;
+	color: var(--white-color);
+	margin-bottom: 0;
 }

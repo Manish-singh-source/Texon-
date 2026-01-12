@@ -1212,7 +1212,7 @@
 								</li>
 								<li>
 									<a href="{{ route('supports') }}">
-										<i class="ti ti-message"></i><span>Support</span>
+										<i class="ti ti-message"></i><span>Inquiry</span>
 									</a>
 								</li>
 							</ul>
