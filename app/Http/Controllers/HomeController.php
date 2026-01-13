@@ -89,6 +89,18 @@ class HomeController extends Controller
         return view('frontend.our-presence', compact('presences'));
     }
 
+    public function newsEvents()
+    {
+        $presences = Presence::where('status', 'published')->latest()->paginate(9);
+        return view('frontend.news-events', compact('presences'));
+    }
+
+    public function presenceDetails($id)
+    {
+        $presence = Presence::findOrFail($id);
+        return view('frontend.presence-details', compact('presence'));
+    }
+
     public function getAQuote($id)
     {
         $product = Product::with(['productBanners', 'aboutProducts'])->findOrFail($id);

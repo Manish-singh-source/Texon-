@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('featured_products', function (Blueprint $table) {
-            $table->unsignedBigInteger('product_id')->nullable()->after('id');
-            $table->foreign('product_id')->references('id')->on('products');
+            if (!Schema::hasColumn('featured_products', 'product_id')) {
+                $table->unsignedBigInteger('product_id')->nullable()->after('id');
+                $table->foreign('product_id')->references('id')->on('products');
+            }
         });
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Presence;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{DB, Log, Validator, Storage};
 
 class PresenceController extends Controller
 {
@@ -14,29 +14,51 @@ class PresenceController extends Controller
         return view('presence', compact('presences'));
     }
 
+    public function create()
+    {
+        return view('add-presence');
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'status' => 'required|in:active,inactive',
+        // Validate input
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'tags' => 'nullable|string',
+            'status' => 'required|in:draft,published',
+            'published_date' => 'nullable|date',
+            'content' => 'required|string',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $imagePath = null;
-        if ($request->hasFile('presence_image')) {
-            $file = $request->file('presence_image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/presences'), $filename);
-            $imagePath = 'presences/' . $filename;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Presence::create([
-            'name' => $request->name,
-            'image' => $imagePath,
-            'status' => $request->status,
-        ]);
+        DB::beginTransaction();
+        try {
+            $data = $request->only(['title', 'author', 'tags', 'status', 'published_date', 'content']);
 
-        return redirect()->route('presence')->with('success', 'Presence added successfully.');
+            // Handle featured image upload
+            if ($request->hasFile('featured_image')) {
+                $file = $request->file('featured_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/presences'), $filename);
+                $data['featured_image'] = 'presences/' . $filename;
+            }
+
+            // Create presence
+            $presence = Presence::create($data);
+
+            DB::commit();
+
+            return redirect()->route('presence')->with('success', 'Presence created successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Presence creation failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error creating presence: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function edit($id)
@@ -47,42 +69,61 @@ class PresenceController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'presence_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'status' => 'required|in:active,inactive',
+        // Validate input
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'tags' => 'nullable|string',
+            'status' => 'required|in:draft,published',
+            'published_date' => 'nullable|date',
+            'content' => 'required|string',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $presence = Presence::findOrFail($id);
-
-        $imagePath = $presence->image;
-        if ($request->hasFile('presence_image')) {
-            // Delete old image if exists
-            if ($presence->image) {
-                Storage::disk('public')->delete($presence->image);
-            }
-            $file = $request->file('presence_image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/presences'), $filename);
-            $imagePath = 'presences/' . $filename;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $presence->update([
-            'name' => $request->name,
-            'image' => $imagePath,
-            'status' => $request->status,
-        ]);
+        DB::beginTransaction();
+        try {
+            $presence = Presence::findOrFail($id);
+            $data = $request->only(['title', 'author', 'tags', 'status', 'published_date', 'content']);
 
-        return redirect()->route('presence')->with('success', 'Presence updated successfully.');
+            // Handle featured image upload
+            if ($request->hasFile('featured_image')) {
+                // Delete old image if exists
+                if ($presence->featured_image) {
+                    unlink(public_path('storage/' . $presence->featured_image));
+                }
+
+                $file = $request->file('featured_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/presences'), $filename);
+                $data['featured_image'] = 'presences/' . $filename;
+            }
+
+            // Update presence
+            $presence->update($data);
+
+            DB::commit();
+
+            return redirect()->route('presence')->with('success', 'Presence updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Presence update failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error updating presence: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function destroy($id)
     {
         $presence = Presence::findOrFail($id);
 
-        // Delete image if exists
-        if ($presence->image) {
-            Storage::disk('public')->delete($presence->image);
+        // Delete featured image if exists
+        if ($presence->featured_image) {
+            if (file_exists(public_path('storage/' . $presence->featured_image))) {
+                unlink(public_path('storage/' . $presence->featured_image));
+            }
         }
 
         $presence->delete();
@@ -95,8 +136,8 @@ class PresenceController extends Controller
         $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
         $presences = Presence::whereIn('id', $ids)->get();
         foreach ($presences as $presence) {
-            if ($presence->image && file_exists(public_path('storage/' . $presence->image))) {
-                unlink(public_path('storage/' . $presence->image));
+            if ($presence->featured_image && file_exists(public_path('storage/' . $presence->featured_image))) {
+                unlink(public_path('storage/' . $presence->featured_image));
             }
         }
         Presence::destroy($ids);

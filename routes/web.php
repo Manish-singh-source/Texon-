@@ -205,6 +205,8 @@ Route::get('/product-details/{id}', [App\Http\Controllers\HomeController::class,
 
 Route::get('/blog-details/{id}', [App\Http\Controllers\HomeController::class, 'blogDetails'])->name('blog-details');
 
+Route::get('/presence-details/{id}', [App\Http\Controllers\HomeController::class, 'presenceDetails'])->name('presence-details');
+
 Route::get('/api/search-products', [App\Http\Controllers\HomeController::class, 'searchProducts'])->name('api.search-products');
 
 Route::get('/refund-policy', function () {
@@ -224,6 +226,4 @@ Route::get('/terms-conditions', function () {
     return view('frontend.terms-conditions');
 })->name('terms-conditions');
 
-Route::get('/news-events', function () {
-    return view('frontend.news-events');
-})->name('news-events');
+Route::get('/news-events', [App\Http\Controllers\HomeController::class, 'newsEvents'])->name('news-events');

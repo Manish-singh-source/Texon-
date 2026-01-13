@@ -30,7 +30,7 @@
                             </ul>
                         </div>
                         <div class="mb-3" style="margin-right: 10px;">
-                            <a href="{{ route('add-presence') }}" class="btn btn-primary d-flex align-items-center">Create Presence</a>
+                            <a href="{{ route('add-presence') }}" class="btn btn-primary d-flex align-items-center">Create News & Events</a>
                         </div>
                         <div class="ms-2 head-icons">
                             <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -55,8 +55,9 @@
                                             </div>
                                         </th>
                                         <th>Sr. No.</th>
-                                        <th>Presence Image</th>
-                                        <th>Presence Name</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Published Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
 
@@ -73,28 +74,26 @@
                                         <td><a href="#">{{ $index + 1 }}</a></td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                    class="avatar avatar-md" data-bs-toggle="modal"
-                                                    data-bs-target="#view_details">
-                                                    @if($presence->image)
-                                                        <img src="{{ asset('storage/' . $presence->image) }}"
-                                                             class="img-fluid rounded-circle" alt="img">
+                                                <div class="me-2">
+                                                    @if($presence->featured_image)
+                                                        <img src="{{ asset('storage/' . $presence->featured_image) }}" alt="presence image" width="40">
                                                     @else
-                                                        <img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg"
-                                                             class="img-fluid rounded-circle" alt="img">
+                                                        <img src="https://smarthr.co.in/demo/html/template/assets/img/users/user-32.jpg" alt="default image" width="40">
                                                     @endif
-                                                </a>
+                                                </div>
+                                                <h6 class="fw-medium">{{ $presence->title }}</h6>
                                             </div>
                                         </td>
-                                        <td>{{ $presence->name }}</td>
+                                        <td>{{ $presence->author }}</td>
+                                        <td>{{ $presence->published_date ? \Carbon\Carbon::parse($presence->published_date)->format('d M Y') : 'N/A' }}</td>
                                         <td>
-                                            @if($presence->status == 'active')
+                                            @if($presence->status == 'published')
                                                 <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Active
+                                                    <i class="ti ti-point-filled me-1"></i>Published
                                                 </span>
                                             @else
                                                 <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Inactive
+                                                    <i class="ti ti-point-filled me-1"></i>Draft
                                                 </span>
                                             @endif
                                         </td>

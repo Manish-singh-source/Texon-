@@ -281,7 +281,7 @@
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('about-us')}}">About Us</a></li>
                             <li><a href="{{route('portfolio')}}">Portfolio</a></li>
-                            <li><a href="{{route('our-presence')}}">Our Presence</a></li>
+                            <li><a href="{{route('news-events')}}">News & Events</a></li>
                             <li><a href="{{route('blogs')}}">Blogs</a></li>
                             <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                         </ul>

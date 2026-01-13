@@ -1202,7 +1202,7 @@
 								</li>
 								<li>
 									<a href="{{route('presence')}}">
-										<i class="ti ti-message"></i><span>Presence</span>
+										<i class="ti ti-message"></i><span>News & Events</span>
 									</a>
 								</li>
 								<li>
