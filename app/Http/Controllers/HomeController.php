@@ -47,7 +47,7 @@ class HomeController extends Controller
         if ($request->has('category') && $request->category) {
             $query->where('category', $request->category);
         }
-        $products = $query->paginate(3);
+        $products = $query->paginate(6)->appends(request()->query());
         return view('frontend.products', compact('products'));
     }
 
