@@ -151,6 +151,10 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/supports', [App\Http\Controllers\SupportController::class, 'index'])->name('supports');
 
+        Route::delete('/supports/delete-selected', [App\Http\Controllers\SupportController::class, 'deleteSelected'])->name('delete.selected.support');
+
+        Route::delete('/supports/{id}', [App\Http\Controllers\SupportController::class, 'destroy'])->name('supports.destroy');
+
         Route::get('/analytics-test', [App\Http\Controllers\AnalyticsController::class, 'test'])->name('analytics-test');
         Route::get('/analytics-dashboard', [App\Http\Controllers\AnalyticsController::class, 'dashboard'])->name('analytics-dashboard');
     });

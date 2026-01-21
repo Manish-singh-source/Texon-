@@ -50,4 +50,22 @@ class SupportController extends Controller
 
         return redirect()->back()->with('success', 'Your message has been submitted successfully!');
     }
+
+    public function destroy($id)
+    {
+        $support = Support::findOrFail($id);
+        $support->delete();
+
+        return redirect()->back()->with('success', 'Support entry deleted successfully!');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = is_array($request->ids) ? $request->ids : explode(',', $request->ids);
+        if ($ids) {
+            Support::destroy($ids);
+            return redirect()->back()->with('success', 'Selected support entries deleted successfully!');
+        }
+        return redirect()->back()->with('error', 'No entries selected.');
+    }
 }

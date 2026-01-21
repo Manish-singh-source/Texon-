@@ -11,6 +11,14 @@
 
                 </div>
                 <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+                    <div class="dropdown mb-3" style="margin-right: 10px;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item cursor-pointer" id="delete-selected">Delete Selected</a></li>
+                        </ul>
+                    </div>
                     <div class="head-icons ms-2">
                         <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-original-title="Collapse" id="collapse-header">
@@ -54,7 +62,7 @@
                                 <tr>
                                      <td>
                                          <div class="form-check form-check-md">
-                                             <input class="form-check-input" type="checkbox">
+                                             <input class="form-check-input row-checkbox" type="checkbox" name="ids[]" value="{{ $support->id }}">
                                          </div>
                                      </td>
                                      <td>{{ $support->id }}</td>
@@ -70,7 +78,7 @@
                                      <td>{{ $support->created_at->format('d/m/Y') }}</td>
                                      <td>
                                          <div class="action-icon d-inline-flex">
-                                             <form action="#" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this support?')">
+                                             <form action="{{ route('supports.destroy', $support->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this support?')">
                                                  @csrf
                                                  @method('DELETE')
                                                  <button type="submit" class="btn btn-link p-0 text-danger" style="border: none; background: none;"><i class="ti ti-trash"></i></button>
@@ -115,4 +123,40 @@
         </div>
     </div>
     <!-- /Delete Modal -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select All functionality
+            const selectAll = document.getElementById('select-all');
+            const checkboxes = document.querySelectorAll('.row-checkbox');
+            selectAll.addEventListener('change', function() {
+                checkboxes.forEach(cb => cb.checked = selectAll.checked);
+            });
+
+            // Delete Selected functionality
+            document.getElementById('delete-selected').addEventListener('click', function() {
+                let selected = [];
+                document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
+                    selected.push(cb.value);
+                });
+                if (selected.length === 0) {
+                    alert('Please select at least one record.');
+                    return;
+                }
+                if (confirm('Are you sure you want to delete selected records?')) {
+                    // Create a form and submit
+                    let form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '{{ route('delete.selected.support') }}';
+                    form.innerHTML = `
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="ids" value="${selected.join(',')}">
+                    `;
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection
