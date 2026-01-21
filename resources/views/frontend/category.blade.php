@@ -44,7 +44,7 @@
                 <div class="col-12 text-center">No record found</div>
             @else
                 @foreach($categories as $index => $category)
-                <div class="col-xl-6 col-md-6">
+                <div class="col-xl-4 col-md-6">
                     <!-- Case Study Item Start -->
                     <div class="case-study-item wow fadeInUp">
                         <!-- Case Study Image Start -->
