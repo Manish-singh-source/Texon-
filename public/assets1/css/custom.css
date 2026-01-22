@@ -6893,10 +6893,10 @@ header.main-header .container-fluid {
 }
 
 
-.imgh {
+/* .imgh {
 	height: 50% !important;
 	max-width: 50% !important;
-}
+} */
 
 .intro-video {
 	position: relative;
