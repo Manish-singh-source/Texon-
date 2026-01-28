@@ -1,4 +1,33 @@
 @extends('frontend.layouts.masters')
+
+@section('title', $product->product_name . ' - Texon Corporation')
+
+@section('meta')
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ $product->sort_description ?? 'Discover ' . $product->product_name . ' at Texon Corporation' }}">
+    <meta name="keywords" content="{{ $product->tags ?? 'products, texon, ' . $product->product_name }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $product->product_name }}">
+    <meta property="og:description" content="{{ $product->sort_description ?? 'Discover ' . $product->product_name . ' at Texon Corporation' }}">
+    @if($product->product_thumbnail)
+        <meta property="og:image" content="{{ url('storage/' . $product->product_thumbnail) }}">
+        <meta property="og:image:alt" content="{{ $product->product_name }}">
+    @endif
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $product->product_name }}">
+    <meta property="twitter:description" content="{{ $product->sort_description ?? 'Discover ' . $product->product_name . ' at Texon Corporation' }}">
+    @if($product->product_thumbnail)
+        <meta property="twitter:image" content="{{ url('storage/' . $product->product_thumbnail) }}">
+        <meta property="twitter:image:alt" content="{{ $product->product_name }}">
+    @endif
+@endsection
+
 @section('content')
     <style>
         .footer-scrolling-ticker .scrolling-content span {

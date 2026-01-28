@@ -10,8 +10,9 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Awaiken">
+    @yield('meta')
     <!-- Page Title -->
-    <title>Texon - Corporation</title>
+    <title>@yield('title', 'Texon - Corporation')</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets1/img/favicon.png') }}">
     <!-- Google Fonts Css-->
