@@ -4,7 +4,7 @@
 
 @section('meta')
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{{ $product->sort_description ?? 'Discover ' . $product->product_name . ' at Texon Corporation' }}">
+    <meta name="description" content="{!! $product->sort_description ?? 'Discover ' . $product->product_name . ' at Texon Corporation' !!}">
     <meta name="keywords" content="{{ $product->tags ?? 'products, texon, ' . $product->product_name }}">
 
     <!-- Open Graph / Facebook -->
