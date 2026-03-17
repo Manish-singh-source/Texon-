@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use App\Models\Brand;
 use App\Models\Banner;
 use App\Models\Testimonial;
@@ -119,6 +120,28 @@ class HomeController extends Controller
             'application' => 'nullable|string',
         ]);
 
+        $normalizedMessage = Str::squish((string) $request->message);
+        $normalizedApplication = Str::squish((string) $request->application);
+
+        $recentDuplicate = Enquiry::where('product_id', $id)
+            ->where('user_email', $request->email)
+            ->where('user_phone', $request->phone)
+            ->where('company', $request->company)
+            ->where('message', $normalizedMessage ?: null)
+            ->where('application', $normalizedApplication ?: null)
+            ->where('created_at', '>=', now()->subMinutes(5))
+            ->exists();
+
+        if ($recentDuplicate) {
+            $response = ['status' => 'success', 'message' => 'Your enquiry has already been submitted recently.'];
+
+            if ($request->ajax()) {
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with('success', $response['message']);
+        }
+
         $enquiryId = 'ENQ-' . strtoupper(uniqid());
 
         $enquiry = Enquiry::create([
@@ -128,8 +151,8 @@ class HomeController extends Controller
             'user_email' => $request->email,
             'user_phone' => $request->phone,
             'company' => $request->company,
-            'message' => $request->message,
-            'application' => $request->application,
+            'message' => $normalizedMessage ?: null,
+            'application' => $normalizedApplication ?: null,
             'status' => 'pending',
         ]);
 
@@ -172,3 +195,6 @@ class HomeController extends Controller
         return response()->json($results);
     }
 }
+
+
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use App\Mail\UserThankYouEmail;
 use App\Mail\AdminEnquiryNotificationEmail;
 
@@ -30,14 +31,33 @@ class SupportController extends Controller
             'page' => 'required|string|max:255',
         ]);
 
+        $normalizedApplication = Str::squish((string) $request->application);
+        $normalizedMessage = Str::squish((string) $request->message);
+
+        $recentDuplicate = Support::where('first_name', $request->fname)
+            ->where('last_name', $request->lname)
+            ->where('email', $request->email)
+            ->where('phone', $request->phone)
+            ->where('company', $request->company)
+            ->where('application', $normalizedApplication ?: null)
+            ->where('message', $normalizedMessage ?: null)
+            ->where('product', $request->product)
+            ->where('page', $request->page)
+            ->where('created_at', '>=', now()->subMinutes(5))
+            ->exists();
+
+        if ($recentDuplicate) {
+            return redirect()->back()->with('success', 'Your message has already been submitted recently.');
+        }
+
         $support = Support::create([
             'first_name' => $request->fname,
             'last_name' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
             'company' => $request->company,
-            'application' => $request->application,
-            'message' => $request->message,
+            'application' => $normalizedApplication ?: null,
+            'message' => $normalizedMessage ?: null,
             'product' => $request->product,
             'page' => $request->page,
         ]);
@@ -46,7 +66,7 @@ class SupportController extends Controller
         Mail::to($support->email)->send(new UserThankYouEmail($support));
 
         // Send notification to admin
-        Mail::to(config('mail.from.address'))->send(new AdminEnquiryNotificationEmail($support));
+        Mail::to(env('ADMIN_EMAIL', config('mail.from.address')))->send(new AdminEnquiryNotificationEmail($support));
 
         return redirect()->back()->with('success', 'Your message has been submitted successfully!');
     }
@@ -69,3 +89,8 @@ class SupportController extends Controller
         return redirect()->back()->with('error', 'No entries selected.');
     }
 }
+
+
+
+
+

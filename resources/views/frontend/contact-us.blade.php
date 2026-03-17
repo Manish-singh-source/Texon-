@@ -190,7 +190,7 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
 
                             <div class="col-lg-12">
                                 <div class="contact-form-btn">
-                                    <button type="submit" id="myBtn" onclick="showLoading()" class="btn-default"><span>Submit Form</span></button>
+                                    <button type="submit" id="myBtn" class="btn-default"><span>Submit Form</span></button>
                                     {{-- <div id="msgSubmit" class="h3 hidden"></div> --}}
                                 </div>
                             </div>
@@ -204,25 +204,12 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
 </div>
 <!-- Page Contact Us End -->
 <script>
-function showLoading() {
+document.getElementById("contactForm").addEventListener("submit", function () {
     const btn = document.getElementById("myBtn");
-
-    // disable button
     btn.disabled = true;
-
-    // show loading text
-    btn.innerText = "Loading...";
-
-    //form submit
-    document.getElementById("contactForm").submit();
-
-    // fake API call / delay
-    setTimeout(() => {
-        btn.innerText = "Submit";
-        btn.disabled = false;
-        alert("Done!");
-    }, 3000);
-}
+    btn.textContent = "Loading...";
+});
 </script>
 
 @endsection
+

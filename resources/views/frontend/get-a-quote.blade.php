@@ -97,7 +97,7 @@
 
                             <div class="col-lg-12">
                                 <div class="contact-form-btn">
-                                  <button type="submit" id="myBtn" onclick="showLoading()" class="btn-default"><span>Submit Form</span></button>
+                                  <button type="submit" id="myBtn" class="btn-default"><span>Submit Form</span></button>
 
                                 </div>
                             </div>
@@ -154,25 +154,12 @@
 
 
 <script>
-function showLoading() {
+document.getElementById("contactForm1").addEventListener("submit", function () {
     const btn = document.getElementById("myBtn");
-
-    // disable button
     btn.disabled = true;
-
-    // show loading text
-    btn.innerText = "Loading...";
-
-    //form submit
-    document.getElementById("contactForm1").submit();
-
-    // fake API call / delay
-    setTimeout(() => {
-        btn.innerText = "Submit";
-        btn.disabled = false;
-        alert("Done!");
-    }, 3000);
-}
+    btn.textContent = "Loading...";
+});
 </script>
 
 @endsection
+
