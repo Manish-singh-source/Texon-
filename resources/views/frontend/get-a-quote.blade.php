@@ -123,7 +123,7 @@
 
                             <div class="form-group col-md-12 mb-4">
                                 @if($recaptchaSiteKey)
-                                    <div id="quoteRecaptcha"></div>
+                                    <div class="g-recaptcha" data-sitekey="{{ $recaptchaSiteKey }}"></div>
                                 @else
                                     <div class="alert alert-warning mb-0">reCAPTCHA is not configured. Add `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` in `.env`.</div>
                                 @endif
@@ -189,16 +189,7 @@
 </div>
 <!-- Page Contact Us End -->
 @if($recaptchaSiteKey)
-<script>
-window.renderQuoteRecaptcha = function () {
-    if (document.getElementById('quoteRecaptcha') && typeof grecaptcha !== 'undefined') {
-        grecaptcha.render('quoteRecaptcha', {
-            sitekey: '{{ $recaptchaSiteKey }}'
-        });
-    }
-};
-</script>
-<script src="https://www.google.com/recaptcha/api.js?onload=renderQuoteRecaptcha&render=explicit" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endif
 
 <script>
@@ -268,6 +259,7 @@ $(function () {
 </script>
 
 @endsection
+
 
 
 
