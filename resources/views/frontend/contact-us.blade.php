@@ -137,6 +137,7 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
                     @if($errors->any())
                         <div class="alert alert-danger">{{ $errors->first() }}</div>
                     @endif
+                    <div id="contactFormAlert"></div>
                     <form id="contactForm" action="{{ route('contact-us.store') }}" method="POST" data-toggle="validator" class="wow fadeInUp"
                         data-wow-delay="0.2s">
                         @csrf
@@ -242,30 +243,74 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endif
 <script>
-document.getElementById("contactForm").addEventListener("submit", function () {
-    const btn = document.getElementById("myBtn");
-    const recaptchaReady = typeof grecaptcha === "undefined" || grecaptcha.getResponse().length > 0;
+$(function () {
+    const $form = $("#contactForm");
+    const $button = $("#myBtn");
+    const $alert = $("#contactFormAlert");
 
-    if (!this.checkValidity() || !recaptchaReady) {
-        btn.disabled = false;
-        btn.innerHTML = "<span>Submit Form</span>";
-        return;
+    function setButtonState(loading) {
+        $button.prop("disabled", loading);
+        $button.html(loading ? "<span>Loading...</span>" : "<span>Submit Form</span>");
     }
 
-    btn.disabled = true;
-    btn.innerHTML = "<span>Loading...</span>";
-});
-
-window.addEventListener("pageshow", function () {
-    const btn = document.getElementById("myBtn");
-    if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = "<span>Submit Form</span>";
+    function showAlert(type, message) {
+        $alert.html(`<div class="alert alert-${type}">${message}</div>`);
     }
+
+    $form.on("submit", function (e) {
+        e.preventDefault();
+        $alert.html("");
+
+        if (this.checkValidity && !this.checkValidity()) {
+            this.reportValidity();
+            return;
+        }
+
+        if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
+            showAlert("danger", "Please complete the reCAPTCHA verification.");
+            return;
+        }
+
+        setButtonState(true);
+
+        $.ajax({
+            url: $form.attr("action"),
+            type: "POST",
+            data: $form.serialize(),
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    window.location.reload();
+                    return;
+                }
+
+                showAlert("danger", response.message || "Request completed.");
+            },
+            error: function (xhr) {
+                if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+                    const messages = Object.values(xhr.responseJSON.errors).flat().join("<br>");
+                    showAlert("danger", messages);
+                } else {
+                    showAlert("danger", "Something went wrong. Please try again.");
+                }
+
+                if (typeof grecaptcha !== "undefined") {
+                    grecaptcha.reset();
+                }
+            },
+            complete: function () {
+                setButtonState(false);
+            }
+        });
+    });
 });
 </script>
 
 @endsection
+
+
 
 
 

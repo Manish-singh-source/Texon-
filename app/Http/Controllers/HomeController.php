@@ -176,7 +176,7 @@ class HomeController extends Controller
         Mail::to(env('ADMIN_EMAIL'))->send(new AdminEnquiryNotificationEmail($enquiry));
 
         if ($request->ajax()) {
-            return response()->json(['status' => 'success', 'message' => 'Your enquiry has been submitted successfully!']);
+            return response()->json(['status' => 'success', 'message' => 'Your enquiry has been submitted successfully!', 'reset' => true]);
         }
 
         return redirect()->route('get-a-quote')->with('success', 'Your enquiry has been submitted successfully!');
@@ -205,3 +205,4 @@ class HomeController extends Controller
         return response()->json($results);
     }
 }
+

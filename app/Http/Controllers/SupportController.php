@@ -57,7 +57,17 @@ class SupportController extends Controller
             ->exists();
 
         if ($recentDuplicate) {
-            return redirect()->route('request-a-quote')->with('success', 'Your message has already been submitted recently.');
+            $response = [
+                'status' => 'success',
+                'message' => 'Your message has already been submitted recently.',
+                'reset' => true,
+            ];
+
+            if ($request->ajax()) {
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with('success', $response['message']);
         }
 
         $support = Support::create([
@@ -78,7 +88,17 @@ class SupportController extends Controller
         // Send notification to admin
         Mail::to(env('ADMIN_EMAIL', config('mail.from.address')))->send(new AdminEnquiryNotificationEmail($support));
 
-        return redirect()->route('request-a-quote')->with('success', 'Your message has been submitted successfully!');
+        $response = [
+            'status' => 'success',
+            'message' => 'Your message has been submitted successfully!',
+            'reset' => true,
+        ];
+
+        if ($request->ajax()) {
+            return response()->json($response);
+        }
+
+        return redirect()->back()->with('success', $response['message']);
     }
 
     public function destroy($id)
