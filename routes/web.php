@@ -193,13 +193,13 @@ Route::post('/contact-us', [App\Http\Controllers\SupportController::class, 'stor
 
 Route::get('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'getAQuote'])->name('get-a-quote');
 
-Route::post('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'storeEnquiry'])->name('get-a-quote.store');
+Route::post('/get-a-quote/{id}', [App\Http\Controllers\HomeController::class, 'storeEnquiry'])->name('get-a-quote.store')->middleware('throttle:10,1');
 
 Route::get('/request-a-quote', function () {
     return view('frontend.request-a-quote');
 })->name('request-a-quote');
 
-Route::post('/request-a-quote', [App\Http\Controllers\SupportController::class, 'store'])->name('request-a-quote.store');
+Route::post('/request-a-quote', [App\Http\Controllers\SupportController::class, 'store'])->name('request-a-quote.store')->middleware('throttle:10,1');
 
 Route::get('/our-presence', [App\Http\Controllers\HomeController::class, 'ourPresence'])->name('our-presence');
 
