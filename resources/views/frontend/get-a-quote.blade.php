@@ -194,9 +194,26 @@
 <script>
 document.getElementById("contactForm1").addEventListener("submit", function () {
     const btn = document.getElementById("myBtn");
+    const recaptchaReady = typeof grecaptcha === "undefined" || grecaptcha.getResponse().length > 0;
+
+    if (!this.checkValidity() || !recaptchaReady) {
+        btn.disabled = false;
+        btn.innerHTML = "<span>Submit Form</span>";
+        return;
+    }
+
     btn.disabled = true;
-    btn.textContent = "Loading...";
+    btn.innerHTML = "<span>Loading...</span>";
+});
+
+window.addEventListener("pageshow", function () {
+    const btn = document.getElementById("myBtn");
+    if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = "<span>Submit Form</span>";
+    }
 });
 </script>
 
 @endsection
+
