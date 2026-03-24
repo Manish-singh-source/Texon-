@@ -124,12 +124,19 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
                 <div class="contact-us-form">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h2 class="text-anime-style-2">Fill up the <span>form</span></h2>   
-                         <p class="wow fadeInUp" data-wow-delay="0.2s">We’d love to hear from you. Get in touch with Texon Corporation for product inquiries, demos, support, or consultations.</p>                      
+                        <h2 class="text-anime-style-2">Fill up the <span>form</span></h2>
+                         <p class="wow fadeInUp" data-wow-delay="0.2s">We'd love to hear from you. Get in touch with Texon Corporation for product inquiries, demos, support, or consultations.</p>
                     </div>
                     <!-- Section Title End -->
 
                     <!-- Contact Form Start -->
+                    @php($recaptchaSiteKey = config('services.recaptcha.site_key'))
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if($errors->any())
+                        <div class="alert alert-danger">{{ $errors->first() }}</div>
+                    @endif
                     <form id="contactForm" action="{{ route('contact-us.store') }}" method="POST" data-toggle="validator" class="wow fadeInUp"
                         data-wow-delay="0.2s">
                         @csrf
@@ -138,55 +145,83 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">First Name *</label>
                                 <input type="text" name="fname" class="form-control" id="fname"
-                                    placeholder="Your First Name" required>
+                                    placeholder="Your First Name" value="{{ old('fname') }}" required>
+                                @error('fname')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">Last Name *</label>
                                 <input type="text" name="lname" class="form-control" id="lname"
-                                    placeholder="Your Last Name" required>
+                                    placeholder="Your Last Name" value="{{ old('lname') }}" required>
+                                @error('lname')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">Email Address *</label>
                                 <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="Your Email Address" required>
+                                    placeholder="Your Email Address" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">Phone Number *</label>
                                 <input type="text" name="phone" class="form-control" id="phone"
-                                    placeholder="Your Phone Number" required>
+                                    placeholder="Your Phone Number" value="{{ old('phone') }}" required>
+                                @error('phone')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">Company Name *</label>
                                 <input type="text" name="company" class="form-control" id="company"
-                                    placeholder="Your Company Name" required>
+                                    placeholder="Your Company Name" value="{{ old('company') }}" required>
+                                @error('company')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-md-6 mb-4">
                                 <label class="form-label">Application</label>
                                 <input type="text" name="application" class="form-control" id="application"
-                                    placeholder="Your Application" >
+                                    placeholder="Your Application" value="{{ old('application') }}">
+                                @error('application')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
-
-                             
 
                             <div class="form-group col-md-12 mb-5">
                                 <label class="form-label">Message</label>
                                 <textarea name="message" class="form-control" id="message" rows="5"
-                                    placeholder="Any Message..."></textarea>
+                                    placeholder="Any Message...">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                                 <div class="help-block with-errors"></div>
                             </div>
 
-                           
+                            <div class="form-group col-md-12 mb-4">
+                                @if($recaptchaSiteKey)
+                                    <div class="g-recaptcha" data-sitekey="{{ $recaptchaSiteKey }}"></div>
+                                @else
+                                    <div class="alert alert-warning mb-0">reCAPTCHA is not configured. Add `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` in `.env`.</div>
+                                @endif
+                                @error('g-recaptcha-response')
+                                    <div class="text-danger small mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="col-lg-12">
                                 <div class="contact-form-btn">
@@ -203,6 +238,9 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
     </div>
 </div>
 <!-- Page Contact Us End -->
+@if($recaptchaSiteKey)
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endif
 <script>
 document.getElementById("contactForm").addEventListener("submit", function () {
     const btn = document.getElementById("myBtn");
@@ -212,4 +250,5 @@ document.getElementById("contactForm").addEventListener("submit", function () {
 </script>
 
 @endsection
+
 

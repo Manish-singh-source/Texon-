@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Mail\UserThankYouEmail;
 use App\Mail\AdminEnquiryNotificationEmail;
+use App\Services\RecaptchaService;
 
 class SupportController extends Controller
 {
+    public function __construct(private readonly RecaptchaService $recaptchaService)
+    {
+    }
+
     public function index()
     {
         $supports = Support::all();
@@ -29,6 +34,11 @@ class SupportController extends Controller
             'message' => 'nullable|string',
             'product' => 'nullable|string|max:255',
             'page' => 'required|string|max:255',
+            'g-recaptcha-response' => ['required', function ($attribute, $value, $fail) use ($request) {
+                if (! $this->recaptchaService->verify($value, $request->ip())) {
+                    $fail('reCAPTCHA verification failed. Please try again.');
+                }
+            }],
         ]);
 
         $normalizedApplication = Str::squish((string) $request->application);
@@ -89,8 +99,3 @@ class SupportController extends Controller
         return redirect()->back()->with('error', 'No entries selected.');
     }
 }
-
-
-
-
-

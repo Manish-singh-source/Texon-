@@ -17,9 +17,14 @@ use App\Models\Enquiry;
 use App\Models\PromotionalBanner;
 use App\Mail\UserThankYouEmail;
 use App\Mail\AdminEnquiryNotificationEmail;
+use App\Services\RecaptchaService;
 
 class HomeController extends Controller
 {
+    public function __construct(private readonly RecaptchaService $recaptchaService)
+    {
+    }
+
     public function index()
     {
         $brands = Brand::where('status', 'active')->get();
@@ -65,7 +70,7 @@ class HomeController extends Controller
                            $product->features_active;
 
         // If no section is active, abort with 404
-        if (!$hasActiveSection) {
+        if (! $hasActiveSection) {
             abort(404, 'Product details not available. Please activate at least one section from admin panel.');
         }
 
@@ -118,6 +123,11 @@ class HomeController extends Controller
             'company' => 'required|string|max:255',
             'message' => 'nullable|string',
             'application' => 'nullable|string',
+            'g-recaptcha-response' => ['required', function ($attribute, $value, $fail) use ($request) {
+                if (! $this->recaptchaService->verify($value, $request->ip())) {
+                    $fail('reCAPTCHA verification failed. Please try again.');
+                }
+            }],
         ]);
 
         $normalizedMessage = Str::squish((string) $request->message);
@@ -175,7 +185,7 @@ class HomeController extends Controller
     public function searchProducts(Request $request)
     {
         $query = $request->get('q');
-        if (!$query) {
+        if (! $query) {
             return response()->json([]);
         }
 
@@ -195,6 +205,3 @@ class HomeController extends Controller
         return response()->json($results);
     }
 }
-
-
-
