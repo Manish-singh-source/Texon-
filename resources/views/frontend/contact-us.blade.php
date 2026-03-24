@@ -243,7 +243,7 @@ Vasai (East), Mumbai, Maharashtra ,India 401208
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endif
 
-<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
 <script>
 $(function () {
     const $form = $("#contactForm");
@@ -311,6 +311,7 @@ $(function () {
 </script>
 
 @endsection
+
 
 
 
