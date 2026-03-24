@@ -57,7 +57,7 @@ class SupportController extends Controller
             ->exists();
 
         if ($recentDuplicate) {
-            return redirect()->back()->with('success', 'Your message has already been submitted recently.');
+            return redirect()->route('request-a-quote')->with('success', 'Your message has already been submitted recently.');
         }
 
         $support = Support::create([
@@ -78,7 +78,7 @@ class SupportController extends Controller
         // Send notification to admin
         Mail::to(env('ADMIN_EMAIL', config('mail.from.address')))->send(new AdminEnquiryNotificationEmail($support));
 
-        return redirect()->back()->with('success', 'Your message has been submitted successfully!');
+        return redirect()->route('request-a-quote')->with('success', 'Your message has been submitted successfully!');
     }
 
     public function destroy($id)

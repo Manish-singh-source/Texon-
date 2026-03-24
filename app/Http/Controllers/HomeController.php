@@ -149,7 +149,7 @@ class HomeController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('success', $response['message']);
+            return redirect()->route('get-a-quote')->with('success', $response['message']);
         }
 
         $enquiryId = 'ENQ-' . strtoupper(uniqid());
@@ -179,7 +179,7 @@ class HomeController extends Controller
             return response()->json(['status' => 'success', 'message' => 'Your enquiry has been submitted successfully!']);
         }
 
-        return redirect()->back()->with('success', 'Your enquiry has been submitted successfully!');
+        return redirect()->route('get-a-quote')->with('success', 'Your enquiry has been submitted successfully!');
     }
 
     public function searchProducts(Request $request)
